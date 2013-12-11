@@ -13,6 +13,7 @@ angular.module('sheetApp')
 
 				result.get('https://www.googleapis.com/oauth2/v3/userinfo').done(function(res) {
 					angular.extend(user, res);
+					user.id = user.sub;
 					$scope.user = user;
 					$cookieStore.put('sheetuser', user);
 					$scope.$apply();

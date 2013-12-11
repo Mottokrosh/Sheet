@@ -43,6 +43,28 @@ footer p:first-of-type { float: left; padding: 0; background: none; }
 footer p { float: left; color: #fff; font-weight: bold; height: 40px; line-height: 40px; padding: 0 22px 0 20px; }
 aside { height: 20px; line-height: 20px; position: fixed; left: 0; bottom: 40px; }
 p.logo { height: 130px; margin-top: -20px; }
+button, [role='button'] {
+	display: inline-block;
+	background: #111;
+	padding: 5px 10px;
+	border-radius: 3px;
+	color: #fff;
+	font-family: 'Goudy Bookletter 1911', times, serif; font-size: 16px;
+	cursor: pointer;
+}
+nav ul {
+	list-style: none;
+}
+nav.main {
+	width: 400px;
+	margin: 0 auto;
+}
+nav.main button {
+	width: 100%;
+	font-size: 22px;
+	padding: 20px;
+	margin-bottom: 10px;
+}
 #wrapper h1 { font-size: 30px; line-height: 40px; text-align: center; margin: 0 10px 10px 0; font-weight: bold; padding-left: 28px; }
 #wrapper h1 span { float: right; line-height: 40px; opacity: 0.2; }
 #wrapper h1 span a { display: inline-block; width: 28px; height: 28px; margin: 6px 0 0 0; }
