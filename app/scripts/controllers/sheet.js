@@ -10,13 +10,27 @@ angular.module('sheetApp')
 		} else {
 			$scope.character = new Character();
 			$scope.character.user = user;
+			console.log($scope.character);
 		}
 
-		function saveOrUpdateSuccess() {}
+		function saveOrUpdateSuccess() {
+			$scope.unsavedChanges = false;
+		}
+
 		function saveOrUpdateError() {}
 
 		$scope.saveCharacter = function () {
+			// ensure we have a character name at least
+			if (!$scope.character.name) {
+				$scope.character.name = 'Unnamed Character';
+			}
+
+			// save character resource
 			$scope.character.saveOrUpdate(saveOrUpdateSuccess, saveOrUpdateSuccess, saveOrUpdateError, saveOrUpdateError);
+		};
+
+		$scope.showCharacterResource = function () {
+			console.log($scope.character);
 		};
 
 	});

@@ -1,16 +1,15 @@
 <div id="wrapper">
 	<header>
-		<p class="logo"><img src="images/Pathfinder_Roleplaying_Game.png" width="480" height="160" /></p>
+		<p class="logo"><a href="#/"><img src="images/Pathfinder_Roleplaying_Game.png" width="480" height="160" /></a></p>
 		<h1>Character Sheet</h1>
 	</header>
-	<pre>{{user|json}}</pre>
 	<form ng-model="sheet">
 		<article>
 			<h1><a name="general"></a>General<span><a href="" class="expand-collapse"></a></span></h1>
 			<section>
 				<div class="w400"><label>Character Name</label><input type="text" name="characterName" ng-model="character.name" class="left"></div>
 				<div class="w170"><label>Alignment</label><input type="text" name="alignment" ng-model="character.alignment"></div>
-				<div class="w400"><label>Player Name</label><input type="text" name="playerName" ng-model="user.fullName" class="left"></div>
+				<div class="w400"><label>Player Name</label><input type="text" name="playerName" ng-model="user.name" class="left"></div>
 
 				<div class="w580"><label>Character Level</label><input type="text" name="characterLevel" ng-model="character.level" class="left"></div>
 				<div class="w170"><label>Deity</label><input type="text" name="deity" ng-model="character.deity" class="left"></div>
@@ -1046,7 +1045,10 @@
 	<footer>
 		<nav>
 			<p><img src="images/footer-divider.png" width="2" height="40" /></p>
-			<p id="status">Unsaved</p>
+			<p id="status">
+				<button ng-click="saveCharacter()">Save<span ng-show="unsavedChanges">*</span></button>
+				<button ng-click="showCharacterResource()">D</button>
+			</p>
 			<a href="#">Load</a>
 			<a href="#">New</a>
 			<a href="#general">General</a>
