@@ -1,3 +1,5 @@
+/* jshint camelcase: false */
+
 // Generated on 2013-12-03 using generator-angular 0.6.0-rc.2
 'use strict';
 
@@ -309,6 +311,14 @@ module.exports = function (grunt) {
 		//   dist: {}
 		// },
 
+		gss_pull: {
+			your_target: {
+				files: {
+					'<%= yeoman.app %>/spells.json' : ['0AhwDI9kFz9SddG5GNlY5bGNoS2VKVC11YXhMLTlDLUE']
+				},
+			},
+		},
+
 		// Test settings
 		karma: {
 			unit: {
@@ -317,7 +327,6 @@ module.exports = function (grunt) {
 			}
 		}
 	});
-
 
 	grunt.registerTask('serve', function (target) {
 		if (target === 'dist') {

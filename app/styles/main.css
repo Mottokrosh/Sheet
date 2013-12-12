@@ -51,6 +51,9 @@ button, [role='button'] {
 	color: #fff;
 	font-family: 'Goudy Bookletter 1911', times, serif; font-size: 16px;
 	cursor: pointer;
+	text-align: center;
+	box-sizing: border-box;
+	text-decoration: none;
 }
 nav ul {
 	list-style: none;
@@ -59,11 +62,14 @@ nav.main {
 	width: 400px;
 	margin: 0 auto;
 }
-nav.main button {
+nav.main button, nav.main [role='button'] {
 	width: 100%;
 	font-size: 22px;
 	padding: 20px;
 	margin-bottom: 10px;
+}
+.space-top {
+	margin-top: 20px !important;
 }
 #wrapper h1 { font-size: 30px; line-height: 40px; text-align: center; margin: 0 10px 10px 0; font-weight: bold; padding-left: 28px; }
 #wrapper h1 span { float: right; line-height: 40px; opacity: 0.2; }
@@ -159,54 +165,3 @@ footer {
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.8);
 }
 footer a, footer p { background: url(../images/footer-divider.png) no-repeat right top; }
-
-/* ==|================================================
-	Reveal Modals
-	================================================== */
-
-.reveal-modal-bg {
-	position: fixed;
-	height: 100%;
-	width: 100%;
-	background: #000;
-	background: rgba(0,0,0,.8);
-	z-index: 100;
-	display: none;
-	top: 0;
-	left: 0;
-}
-
-.reveal-modal {
-	visibility: hidden;
-	top: 100px;
-	left: 50%;
-	margin-left: -300px;
-	width: 520px;
-	background: #eee url(/img/modal-gloss.png) no-repeat -200px -80px;
-	position: absolute;
-	z-index: 101;
-	padding: 30px 40px 34px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
-	-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
-	-box-shadow: 0 0 10px rgba(0,0,0,.4);
-}
-
-.reveal-modal.small     { width: 200px; margin-left: -140px;}
-.reveal-modal.medium    { width: 400px; margin-left: -240px;}
-.reveal-modal.large     { width: 600px; margin-left: -340px;}
-.reveal-modal.xlarge    { width: 800px; margin-left: -440px;}
-
-.reveal-modal .close-reveal-modal {
-	font-size: 22px;
-	line-height: .5;
-	position: absolute;
-	top: 8px;
-	right: 11px;
-	color: #aaa;
-	text-shadow: 0 -1px 1px rbga(0,0,0,.6);
-	font-weight: bold;
-	cursor: pointer;
-}

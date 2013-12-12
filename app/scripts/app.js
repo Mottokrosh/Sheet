@@ -13,7 +13,7 @@ angular.module('sheetApp', [
 				templateUrl: 'views/main.html',
 				controller: 'MainCtrl'
 			})
-			.when('/sheet/:characterId', {
+			.when('/sheet/:characterId?', {
 				templateUrl: 'views/sheet.html',
 				controller: 'SheetCtrl'
 			})
@@ -30,7 +30,8 @@ angular.module('sheetApp', [
 	})
 	.constant('API_KEY', '4fd0a186e4b00ba3dc958235')
 	.constant('DB_NAME', 'pathfinder_sheet')
-	.run(function ($rootScope, $location, user) {
+	.value('cache', {})
+	.run(function ($rootScope, $location, user, cache) {
 		// http://arthur.gonigberg.com/2013/06/29/angularjs-role-based-auth/
 		var routesThatDontRequireAuth = ['/login', '/logout'];
 
@@ -44,7 +45,8 @@ angular.module('sheetApp', [
 
 		$rootScope.$on('$routeChangeStart', function () {
 			if (!routeClean($location.url()) && !user.id) {
-				// redirect back to login
+				cache.redirect = $location.url();
+				// redirect to login
 				$location.path('/login');
 			}
 		});

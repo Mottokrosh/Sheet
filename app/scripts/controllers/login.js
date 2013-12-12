@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sheetApp')
-	.controller('LoginCtrl', function ($scope, $cookieStore, user) {
+	.controller('LoginCtrl', function ($scope, $cookieStore, $location, user, cache) {
 		OAuth.initialize('NeqqWIumLIg8LeJjPZdSkDjXmW0');
 
 		$scope.user = user;
@@ -17,6 +17,12 @@ angular.module('sheetApp')
 					$scope.user = user;
 					$cookieStore.put('sheetuser', user);
 					$scope.$apply();
+
+					if (cache.redirect) {
+						var target = cache.redirect;
+						cache.redirect = null;
+						$location.path(target);
+					}
 				});
 
 				$scope.$apply();
