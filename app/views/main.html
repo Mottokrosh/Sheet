@@ -5,8 +5,22 @@
 	</header>
 	<nav class="main space-top">
 		<ul>
-			<li><button>Load Character</button></li>
+			<li>
+				<button>Load Character</button>
+				<div ng-repeat="c in characters" class="character-slip">
+					<div class="title">
+						<h1>{{c.name}}</h1>
+						<p>{{c.level}}</p>
+					</div>
+					<div class="actions">
+						<button title="Download">D</button>
+						<button title="Delete">&times;</button>
+						<a href="#/sheet/{{c.id}}" role="button">Load</a>
+					</div>
+				</div>
+			</li>
 			<li><a href="#/sheet" role="button">New Character</a></li>
 		</ul>
 	</nav>
+	<pre>{{characters|json}}</pre>
 </div>

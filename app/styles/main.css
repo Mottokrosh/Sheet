@@ -75,7 +75,7 @@ nav.main {
 	width: 400px;
 	margin: 0 auto;
 }
-nav.main button, nav.main [role='button'] {
+nav.main li > button, nav.main li > [role='button'] {
 	width: 100%;
 	font-size: 22px;
 	padding: 20px;
@@ -83,6 +83,31 @@ nav.main button, nav.main [role='button'] {
 }
 .space-top {
 	margin-top: 20px !important;
+}
+#wrapper .character-slip {
+	background: url(../images/bg-paper-2.jpg);
+	padding: 20px;
+	width: 100%;
+	box-sizing: border-box;
+}
+#wrapper .character-slip h1 {
+	margin: 0 0 10px 0;
+	padding: 0;
+	text-align: left;
+	line-height: 1;
+}
+#wrapper .character-slip p {
+	margin-bottom: 0;
+}
+#wrapper .character-slip .title {
+	float: left;
+	max-width: 225px;
+}
+#wrapper .character-slip .actions {
+	float: right;
+}
+#wrapper .character-slip div {
+	margin: 0;
 }
 #wrapper h1 { font-size: 30px; line-height: 40px; text-align: center; margin: 0 10px 10px 0; font-weight: bold; padding-left: 28px; }
 #wrapper h1 span { float: right; line-height: 40px; opacity: 0.2; }
