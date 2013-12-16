@@ -25,6 +25,9 @@ angular.module('sheetApp')
 				$scope.character.name = 'Unnamed Character';
 			}
 
+			// update timestamp
+			$scope.character.modified = new Date();
+
 			// save character resource
 			$scope.character.saveOrUpdate(saveOrUpdateSuccess, saveOrUpdateSuccess, saveOrUpdateError, saveOrUpdateError);
 		};

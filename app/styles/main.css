@@ -3,7 +3,7 @@ body { font-family: 'Goudy Bookletter 1911', times, serif; font-size: 16px; }
 header { text-align: center; }
 #wrapper { float: none; width: 1000px; margin: 0 auto; padding: 10px 0 30px 10px; }
 article { margin-bottom: 10px; overflow: auto; }
-#wrapper div { float: left; overflow: hidden; margin-right: 10px; margin-bottom: 10px; }
+.container div { float: left; overflow: hidden; margin-right: 10px; margin-bottom: 10px; }
 #wrapper div.gear { margin: 0; }
 #wrapper div.gear input:not([type="checkbox"]) { border-right: none; border-bottom: none; }
 #wrapper div label { display: block; font-size: 16px; line-height: 20px; height: 20px; text-align: center; }
@@ -83,6 +83,11 @@ nav.main li > button, nav.main li > [role='button'] {
 }
 .space-top {
 	margin-top: 20px !important;
+}
+#wrapper .character-list time {
+	display: block;
+	clear: both;
+	opacity: 0.4;
 }
 #wrapper .character-slip {
 	background: url(../images/bg-paper-2.jpg);

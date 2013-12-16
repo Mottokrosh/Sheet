@@ -1,1068 +1,1063 @@
-<div id="wrapper">
-	<header>
-		<p class="logo"><a href="#/"><img src="images/Pathfinder_Roleplaying_Game.png" width="480" height="160" /></a></p>
-		<h1>Character Sheet</h1>
-	</header>
-	<form ng-model="sheet">
-		<article>
-			<h1><a name="general"></a>General<span><a href="" class="expand-collapse"></a></span></h1>
+<form ng-model="sheet">
+	<article>
+		<h1><a name="general"></a>General<span><a href="" class="expand-collapse"></a></span></h1>
+		<section>
+			<div class="w400"><label>Character Name</label><input type="text" name="characterName" ng-model="character.name" class="left"></div>
+			<div class="w170"><label>Alignment</label><input type="text" name="alignment" ng-model="character.alignment"></div>
+			<div class="w400"><label>Player Name</label><input type="text" name="playerName" ng-model="user.name" class="left"></div>
+
+			<div class="w580"><label>Character Level</label><input type="text" name="characterLevel" ng-model="character.level" class="left"></div>
+			<div class="w170"><label>Deity</label><input type="text" name="deity" ng-model="character.deity" class="left"></div>
+			<div class="w220"><label>Homeland</label><input type="text" name="homeland" ng-model="character.homeland" class="left"></div>
+
+			<div class="w220"><label>Race</label><input type="text" name="race" ng-model="character.race" class="left"></div>
+			<div class="w100"><label>Size</label><input type="text" name="size" ng-model="character.size"></div>
+			<div class="w100"><label>Gender</label><input type="text" name="gender" ng-model="character.gender"></div>
+			<div class="w100"><label>Age</label><input type="text" name="age" ng-model="character.age"></div>
+			<div class="w100"><label>Height</label><input type="text" name="height" ng-model="character.height"></div>
+			<div class="w100"><label>Weight</label><input type="text" name="weight" ng-model="character.weight"></div>
+			<div class="w100"><label>Hair</label><input type="text" name="hair" ng-model="character.hair"></div>
+			<div class="w100"><label>Eyes</label><input type="text" name="eyes" ng-model="character.eyes"></div>
+		</section>
+	</article>
+
+	<article>
+		<h1><a name="abilities"></a>Abilities<span><a href="" class="expand-collapse"></a></span></h1>
+		<section>
+			<div class="w60 black"><span>Str</span><label>Strength</label></div>
+			<div class="w50 small"><input type="text" name="str" ng-model="character.abilities.str.score" class="ability-score" /><label>Ability Score</label></div>
+			<div class="w60 small"><input type="text" name="str-modifier" ng-model="character.abilities.str.modifier" class="ability-modifier-str-original auto-calc"><label>Ability Modifier</label></div>
+			<div class="w50 small"><input type="text" name="str-temp-score" ng-model="character.abilities.str.tempScore" class="temp-ability-score-str"><label>Temp Score</label></div>
+			<div class="w60 small"><input type="text" name="str-temp-modifier" ng-model="character.abilities.str.tempModifier" class="temp-ability-modifier-str auto-calc"><label>Temp Modifier</label></div>
+			<div class="w60 black"><span>Dex</span><label>Dexterity</label></div>
+			<div class="w50 small"><input type="text" name="dex" class="ability-score"><label>Ability Score</label></div>
+			<div class="w60 small"><input type="text" name="dex-modifier" class="ability-modifier-dex-original auto-calc"><label>Ability Modifier</label></div>
+			<div class="w50 small"><input type="text" name="dex-temp-score" class="temp-ability-score-dex"><label>Temp Score</label></div>
+			<div class="w60 small"><input type="text" name="dex-temp-modifier" class="temp-ability-modifier-dex auto-calc"><label>Temp Modifier</label></div>
+			<div class="w70 black"><span>Con</span><label>Constitution</label></div>
+			<div class="w50 small"><input type="text" name="con" class="ability-score"><label>Ability Score</label></div>
+			<div class="w60 small"><input type="text" name="con-modifier" class="ability-modifier-con-original auto-calc"><label>Ability Modifier</label></div>
+			<div class="w50 small"><input type="text" name="con-temp-score" class="temp-ability-score-con"><label>Temp Score</label></div>
+			<div class="w60 small"><input type="text" name="con-temp-modifier" class="temp-ability-modifier-con auto-calc"><label>Temp Modifier</label></div>
+
+			<div class="w60 black new-line"><span>Int</span><label>Intelligence</label></div>
+			<div class="w50 small"><input type="text" name="int" class="ability-score"><label>Ability Score</label></div>
+			<div class="w60 small"><input type="text" name="int-modifier" class="ability-modifier-int-original auto-calc"><label>Ability Modifier</label></div>
+			<div class="w50 small"><input type="text" name="int-temp-score" class="temp-ability-score-int"><label>Temp Score</label></div>
+			<div class="w60 small"><input type="text" name="int-temp-modifier" class="temp-ability-modifier-int auto-calc"><label>Temp Modifier</label></div>
+			<div class="w60 black"><span>Wis</span><label>Wisdom</label></div>
+			<div class="w50 small"><input type="text" name="wis" class="ability-score"><label>Ability Score</label></div>
+			<div class="w60 small"><input type="text" name="wis-modifier" class="ability-modifier-wis-original auto-calc"><label>Ability Modifier</label></div>
+			<div class="w50 small"><input type="text" name="wis-temp-score" class="temp-ability-score-wis"><label>Temp Score</label></div>
+			<div class="w60 small"><input type="text" name="wis-temp-modifier" class="temp-ability-modifier-wis auto-calc"><label>Temp Modifier</label></div>
+			<div class="w70 black"><span>Cha</span><label>Charisma</label></div>
+			<div class="w50 small"><input type="text" name="cha" class="ability-score"><label>Ability Score</label></div>
+			<div class="w60 small"><input type="text" name="cha-modifier" class="ability-modifier-cha-original auto-calc"><label>Ability Modifier</label></div>
+			<div class="w50 small"><input type="text" name="cha-temp-score" class="temp-ability-score-cha"><label>Temp Score</label></div>
+			<div class="w60 small"><input type="text" name="cha-temp-modifier" class="temp-ability-modifier-cha auto-calc"><label>Temp Modifier</label></div>
+		</section>
+	</article>
+
+	<article>
+		<h1><a name="defense"></a>Defense<span><a href="" class="expand-collapse"></a></span></h1>
 			<section>
-				<div class="w400"><label>Character Name</label><input type="text" name="characterName" ng-model="character.name" class="left"></div>
-				<div class="w170"><label>Alignment</label><input type="text" name="alignment" ng-model="character.alignment"></div>
-				<div class="w400"><label>Player Name</label><input type="text" name="playerName" ng-model="user.name" class="left"></div>
+			<div class="w70 black"><span>AC</span><label>Armor Class</label></div>
+			<div class="w70"><input type="text" name="ac" /><label>Total =</label></div>
+			<div class="w50 stand-alone"><label>10+</label></div>
+			<div class="w70 small"><input type="text" name="ac-armor-bonus" /><label>Armor Bonus</label></div>
+			<div class="w70 small"><input type="text" name="ac-shield-bonus" /><label>Shield Bonus</label></div>
+			<div class="w70 small"><input type="text" name="ac-dex-modifier" class="ability-modifier-dex auto-calc" /><label>Dex Modifier</label></div>
+			<div class="w70 small"><input type="text" name="ac-size-modifier" /><label>Size Modifier</label></div>
+			<div class="w70 small"><input type="text" name="ac-natural-armor" /><label>Natural Armor</label></div>
+			<div class="w70 small"><input type="text" name="ac-deflection-modifier" /><label>Deflection</label></div>
+			<div class="w290 small"><input type="text" name="ac-misc-modifier" class="left" /><label>Misc Modifier</label></div>
 
-				<div class="w580"><label>Character Level</label><input type="text" name="characterLevel" ng-model="character.level" class="left"></div>
-				<div class="w170"><label>Deity</label><input type="text" name="deity" ng-model="character.deity" class="left"></div>
-				<div class="w220"><label>Homeland</label><input type="text" name="homeland" ng-model="character.homeland" class="left"></div>
+			<div class="w100 black new-line"><span>Touch</span><label>Armor Class</label></div>
+			<div class="w70"><input type="text" name="ac-touch" /><label>&nbsp;</label></div>
+			<div class="w140 black"><span>Flat-Footed</span><label>Armor Class</label></div>
+			<div class="w70"><input type="text" name="ac-flat-footed" /><label>&nbsp;</label></div>
+			<div class="w570"><input type="text" name="ac-modifiers" class="left" /><label>Other AC Modifiers</label></div>
 
-				<div class="w220"><label>Race</label><input type="text" name="race" ng-model="character.race" class="left"></div>
-				<div class="w100"><label>Size</label><input type="text" name="size" ng-model="character.size"></div>
-				<div class="w100"><label>Gender</label><input type="text" name="gender" ng-model="character.gender"></div>
-				<div class="w100"><label>Age</label><input type="text" name="age" ng-model="character.age"></div>
-				<div class="w100"><label>Height</label><input type="text" name="height" ng-model="character.height"></div>
-				<div class="w100"><label>Weight</label><input type="text" name="weight" ng-model="character.weight"></div>
-				<div class="w100"><label>Hair</label><input type="text" name="hair" ng-model="character.hair"></div>
-				<div class="w100"><label>Eyes</label><input type="text" name="eyes" ng-model="character.eyes"></div>
-			</section>
-		</article>
+			<div class="w70 black new-line"><span>HP</span><label>Hit Points</label></div>
+			<div class="w80"><input type="text" name="hp-total" /><label>Total</label></div>
+			<div class="w180"><input type="text" name="hp-wounds" /><label>Wounds/Current</label></div>
+			<div class="w180"><input type="text" name="hp-non-lethal" /><label>Non-Lethal Damage</label></div>
+			<div class="w100 black"><span>DR</span><label>Damage Reduction</label></div>
+			<div class="w150"><input type="text" name="dr" /><label>&nbsp;</label></div>
+			<div class="w90 black"><span>SR</span><label>Spell Resistance</label></div>
+			<div class="w70"><input type="text" name="sr" /><label>&nbsp;</label></div>
 
-		<article>
-			<h1><a name="abilities"></a>Abilities<span><a href="" class="expand-collapse"></a></span></h1>
+			<div class="w120 black new-line"><span>Fortitude</span><label>(Constitution)</label></div>
+			<div class="w70"><input type="text" name="fort-save" /><label>Total =</label></div>
+			<div class="w70 small"><input type="text" name="fort-save-base" /><label>Base Save</label></div>
+			<div class="w70 small"><input type="text" name="fort-save-ability-modifier" class="ability-modifier-con auto-calc" /><label>+ Ability Modifier</label></div>
+			<div class="w70 small"><input type="text" name="fort-save-magic-modifier" /><label>+ Magic Modifier</label></div>
+			<div class="w70 small"><input type="text" name="fort-save-misc-modifier" /><label>+ Misc Modifier</label></div>
+			<div class="w70 small"><input type="text" name="fort-save-temp-modifier" /><label>+ Temp Modifier</label></div>
+			<div class="w380"><input type="text" name="fort-save-modifiers" class="left" /><label>Other Modifiers</label></div>
+
+			<div class="w120 black new-line"><span>Reflex</span><label>(Dexterity)</label></div>
+			<div class="w70"><input type="text" name="dex-save" /><label>Total =</label></div>
+			<div class="w70 small"><input type="text" name="dex-save-base" /><label>Base Save</label></div>
+			<div class="w70 small"><input type="text" name="dex-save-ability-modifier" class="ability-modifier-dex auto-calc" /><label>+ Ability Modifier</label></div>
+			<div class="w70 small"><input type="text" name="dex-save-magic-modifier" /><label>+ Magic Modifier</label></div>
+			<div class="w70 small"><input type="text" name="dex-save-misc-modifier" /><label>+ Misc Modifier</label></div>
+			<div class="w70 small"><input type="text" name="dex-save-temp-modifier" /><label>+ Temp Modifier</label></div>
+			<div class="w380"><input type="text" name="dex-save-modifiers" class="left" /><label>Other Modifiers</label></div>
+
+			<div class="w120 black new-line"><span>Will</span><label>(Wisdom)</label></div>
+			<div class="w70"><input type="text" name="will-save" /><label>Total =</label></div>
+			<div class="w70 small"><input type="text" name="will-save-base" /><label>Base Save</label></div>
+			<div class="w70 small"><input type="text" name="will-save-ability-modifier" class="ability-modifier-wis auto-calc" /><label>+ Ability Modifier</label></div>
+			<div class="w70 small"><input type="text" name="will-save-magic-modifier" /><label>+ Magic Modifier</label></div>
+			<div class="w70 small"><input type="text" name="will-save-misc-modifier" /><label>+ Misc Modifier</label></div>
+			<div class="w70 small"><input type="text" name="will-save-temp-modifier" /><label>+ Temp Modifier</label></div>
+			<div class="w380"><input type="text" name="will-save-modifiers" class="left" /><label>Other Modifiers</label></div>
+
+			<div class="w140 black new-line"><span>CMD</span><label>Combat Maneuver Defense</label></div>
+			<div class="w70"><input type="text" name="cmd" /><label>Total =</label></div>
+			<div class="w50 stand-alone"><label>10+</label></div>
+			<div class="w70 small"><input type="text" name="cmd-bab" class="bab-value auto-calc" /><label>Base Attack Bonus</label></div>
+			<div class="w70 small"><input type="text" name="cmd-str-modifier" class="ability-modifier-str auto-calc" /><label>+ Str Modifier</label></div>
+			<div class="w70 small"><input type="text" name="cmd-dex-modifier" class="ability-modifier-dex auto-calc" /><label>+ Dex Modifier</label></div>
+			<div class="w70 small"><input type="text" name="cmd-size-modifier" /><label>+ Size Modifier</label></div>
+			<div class="w190"><input type="text" name="cmd-misc-modifiers" class="left" /><label>+ Misc Modifiers</label></div>
+			<div class="w180"><input type="text" name="cmd-temp-modifiers" class="left" /><label>Temp Modifiers</label></div>
+		</section>
+	</article>
+
+	<article>
+		<h1><a name="offense"></a>Offense<span><a href="" class="expand-collapse"></a></span></h1>
 			<section>
-				<div class="w60 black"><span>Str</span><label>Strength</label></div>
-				<div class="w50 small"><input type="text" name="str" ng-model="character.abilities.str.score" class="ability-score" /><label>Ability Score</label></div>
-				<div class="w60 small"><input type="text" name="str-modifier" ng-model="character.abilities.str.modifier" class="ability-modifier-str-original auto-calc"><label>Ability Modifier</label></div>
-				<div class="w50 small"><input type="text" name="str-temp-score" ng-model="character.abilities.str.tempScore" class="temp-ability-score-str"><label>Temp Score</label></div>
-				<div class="w60 small"><input type="text" name="str-temp-modifier" ng-model="character.abilities.str.tempModifier" class="temp-ability-modifier-str auto-calc"><label>Temp Modifier</label></div>
-				<div class="w60 black"><span>Dex</span><label>Dexterity</label></div>
-				<div class="w50 small"><input type="text" name="dex" class="ability-score"><label>Ability Score</label></div>
-				<div class="w60 small"><input type="text" name="dex-modifier" class="ability-modifier-dex-original auto-calc"><label>Ability Modifier</label></div>
-				<div class="w50 small"><input type="text" name="dex-temp-score" class="temp-ability-score-dex"><label>Temp Score</label></div>
-				<div class="w60 small"><input type="text" name="dex-temp-modifier" class="temp-ability-modifier-dex auto-calc"><label>Temp Modifier</label></div>
-				<div class="w70 black"><span>Con</span><label>Constitution</label></div>
-				<div class="w50 small"><input type="text" name="con" class="ability-score"><label>Ability Score</label></div>
-				<div class="w60 small"><input type="text" name="con-modifier" class="ability-modifier-con-original auto-calc"><label>Ability Modifier</label></div>
-				<div class="w50 small"><input type="text" name="con-temp-score" class="temp-ability-score-con"><label>Temp Score</label></div>
-				<div class="w60 small"><input type="text" name="con-temp-modifier" class="temp-ability-modifier-con auto-calc"><label>Temp Modifier</label></div>
+			<div class="w120 black"><span>Initiative</span><label>Modifier</label></div>
+			<div class="w70"><input type="text" name="initiative" /><label>Total =</label></div>
+			<div class="w70 small"><input type="text" name="initiative-dex-modifier" class="ability-modifier-dex auto-calc" /><label>Dex Modifier</label></div>
+			<div class="w70 small"><input type="text" name="initiative-misc-modifier" /><label>+ Misc Modifier</label></div>
+			<div class="w100 black"><span>BAB</span><label>Base Attack Bonus</label></div>
+			<div class="w70"><input type="text" name="bab" class="bab-score" /><label>&nbsp;</label></div>
+			<div class="w150 black"><span>Conditional</span><label>Modifiers</label></div>
+			<div class="w270"><input type="text" name="offense-conditional-modifiers" class="left" /><label>Modifiers &amp; Notes</label></div>
 
-				<div class="w60 black new-line"><span>Int</span><label>Intelligence</label></div>
-				<div class="w50 small"><input type="text" name="int" class="ability-score"><label>Ability Score</label></div>
-				<div class="w60 small"><input type="text" name="int-modifier" class="ability-modifier-int-original auto-calc"><label>Ability Modifier</label></div>
-				<div class="w50 small"><input type="text" name="int-temp-score" class="temp-ability-score-int"><label>Temp Score</label></div>
-				<div class="w60 small"><input type="text" name="int-temp-modifier" class="temp-ability-modifier-int auto-calc"><label>Temp Modifier</label></div>
-				<div class="w60 black"><span>Wis</span><label>Wisdom</label></div>
-				<div class="w50 small"><input type="text" name="wis" class="ability-score"><label>Ability Score</label></div>
-				<div class="w60 small"><input type="text" name="wis-modifier" class="ability-modifier-wis-original auto-calc"><label>Ability Modifier</label></div>
-				<div class="w50 small"><input type="text" name="wis-temp-score" class="temp-ability-score-wis"><label>Temp Score</label></div>
-				<div class="w60 small"><input type="text" name="wis-temp-modifier" class="temp-ability-modifier-wis auto-calc"><label>Temp Modifier</label></div>
-				<div class="w70 black"><span>Cha</span><label>Charisma</label></div>
-				<div class="w50 small"><input type="text" name="cha" class="ability-score"><label>Ability Score</label></div>
-				<div class="w60 small"><input type="text" name="cha-modifier" class="ability-modifier-cha-original auto-calc"><label>Ability Modifier</label></div>
-				<div class="w50 small"><input type="text" name="cha-temp-score" class="temp-ability-score-cha"><label>Temp Score</label></div>
-				<div class="w60 small"><input type="text" name="cha-temp-modifier" class="temp-ability-modifier-cha auto-calc"><label>Temp Modifier</label></div>
+			<div class="w80 black new-line"><span>Speed</span><label>Land</label></div>
+			<div class="w100"><input type="text" name="base-speed" /><label>Base Speed</label></div>
+			<div class="w100"><input type="text" name="speed-with-armor" /><label>With Armor</label></div>
+			<div class="w140"><input type="text" name="fly-speed" /><label>Fly/Maneuverability</label></div>
+			<div class="w100"><input type="text" name="swim-speed" /><label>Swim</label></div>
+			<div class="w100"><input type="text" name="climb-speed" /><label>Climb</label></div>
+			<div class="w100"><input type="text" name="burrow-speed" /><label>Burrow</label></div>
+			<div class="w200"><input type="text" name="temp-speed-modifiers" class="left" /><label>Temp Modifiers</label></div>
+
+			<div class="w130 black new-line"><span>CMB</span><label>Combat Maneuver Bonus</label></div>
+			<div class="w70"><input type="text" name="cmb" /><label>Total =</label></div>
+			<div class="w70 small"><input type="text" name="cmb-bab" class="bab-value auto-calc" /><label>Base Attack Bonus</label></div>
+			<div class="w70 small"><input type="text" name="cmb-str-modifier" class="ability-modifier-str auto-calc" /><label>+ Str Modifier</label></div>
+			<div class="w70 small"><input type="text" name="cmb-size-modifier" /><label>+ Size Modifier</label></div>
+			<div class="w260"><input type="text" name="cmb-misc-modifiers" class="left" /><label>+ Misc Modifiers</label></div>
+			<div class="w260"><input type="text" name="cmb-temp-modifiers" class="left" /><label>Temp Modifiers</label></div>
+
+			<div class="w100 black new-line"><span>Melee</span><label>Melee Attack</label></div>
+			<div class="w220"><input type="text" name="melee-1-weapon" class="left" /><label>Weapon</label></div>
+			<div class="w140"><input type="text" name="melee-1-attack-bonus" /><label>Attack Bonus</label></div>
+			<div class="w140"><input type="text" name="melee-1-damage" /><label>Damage</label></div>
+			<div class="w100"><input type="text" name="melee-1-critical" /><label>Critical</label></div>
+			<div class="w60"><input type="text" name="melee-1-type" /><label>Type</label></div>
+			<div class="w170"><input type="text" name="melee-1-notes" /><label>Notes</label></div>
+
+			<div class="w100 black new-line"><span>Melee</span><label>Melee Attack</label></div>
+			<div class="w220"><input type="text" name="melee-2-weapon" class="left" /><label>Weapon</label></div>
+			<div class="w140"><input type="text" name="melee-2-attack-bonus" /><label>Attack Bonus</label></div>
+			<div class="w140"><input type="text" name="melee-2-damage" /><label>Damage</label></div>
+			<div class="w100"><input type="text" name="melee-2-critical" /><label>Critical</label></div>
+			<div class="w60"><input type="text" name="melee-2-type" /><label>Type</label></div>
+			<div class="w170"><input type="text" name="melee-2-notes" /><label>Notes</label></div>
+
+			<div class="w100 black new-line"><span>Melee</span><label>Melee Attack</label></div>
+			<div class="w220"><input type="text" name="melee-3-weapon" class="left" /><label>Weapon</label></div>
+			<div class="w140"><input type="text" name="melee-3-attack-bonus" /><label>Attack Bonus</label></div>
+			<div class="w140"><input type="text" name="melee-3-damage" /><label>Damage</label></div>
+			<div class="w100"><input type="text" name="melee-3-critical" /><label>Critical</label></div>
+			<div class="w60"><input type="text" name="melee-3-type" /><label>Type</label></div>
+			<div class="w170"><input type="text" name="melee-3-notes" /><label>Notes</label></div>
+
+			<div class="w100 black new-line"><span>Ranged</span><label>Ranged Attack</label></div>
+			<div class="w220"><input type="text" name="ranged-1-weapon" class="left" /><label>Weapon</label></div>
+			<div class="w140"><input type="text" name="ranged-1-attack-bonus" /><label>Attack Bonus</label></div>
+			<div class="w140"><input type="text" name="ranged-1-damage" /><label>Damage</label></div>
+			<div class="w100"><input type="text" name="ranged-1-critical" /><label>Critical</label></div>
+			<div class="w60"><input type="text" name="ranged-1-type" /><label>Type</label></div>
+			<div class="w170"><input type="text" name="ranged-1-ammunition" /><label>Ammunition</label></div>
+
+			<div class="w100 black new-line"><span>Ranged</span><label>Ranged Attack</label></div>
+			<div class="w220"><input type="text" name="ranged-2-weapon" class="left" /><label>Weapon</label></div>
+			<div class="w140"><input type="text" name="ranged-2-attack-bonus" /><label>Attack Bonus</label></div>
+			<div class="w140"><input type="text" name="ranged-2-damage" /><label>Damage</label></div>
+			<div class="w100"><input type="text" name="ranged-2-critical" /><label>Critical</label></div>
+			<div class="w60"><input type="text" name="ranged-2-type" /><label>Type</label></div>
+			<div class="w170"><input type="text" name="ranged-2-ammunition" /><label>Ammunition</label></div>
+
+			<div class="w100 black new-line"><span>Ranged</span><label>Ranged Attack</label></div>
+			<div class="w220"><input type="text" name="ranged-3-weapon" class="left" /><label>Weapon</label></div>
+			<div class="w140"><input type="text" name="ranged-3-attack-bonus" /><label>Attack Bonus</label></div>
+			<div class="w140"><input type="text" name="ranged-3-damage" /><label>Damage</label></div>
+			<div class="w100"><input type="text" name="ranged-3-critical" /><label>Critical</label></div>
+			<div class="w60"><input type="text" name="ranged-3-type" /><label>Type</label></div>
+			<div class="w170"><input type="text" name="ranged-3-ammunition" /><label>Ammunition</label></div>
+		</section>
+	</article>
+
+	<article class="article-skills">
+		<h1><a name="skills"></a>Skills<span><a href="" class="expand-collapse"></a></span></h1>
+			<section>
+				<div class="w30 small"><label>Class Skill</label></div>
+				<div class="w240"><label>Skill Name</label></div>
+				<div class="w80"><label>Total</label></div>
+				<div class="w120"><label>Ability Modifier</label></div>
+				<div class="w70"><label>Ranks</label></div>
+				<div class="w70"><label>Class</label></div>
+				<div class="w70"><label>Racial</label></div>
+				<div class="w70"><label>Trait</label></div>
+				<div class="w160"><label>Misc</label></div>
+
+							<div class="w30 new-line tick"><input type="checkbox" name="skill-acrobatics-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Acrobatics</label></div>
+				<div class="w80"><input type="text" name="skill-acrobatics" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Dex</label></div>
+				<div class="w70"><input type="text" name="skill-acrobatics-ability-modifier" class="ability-modifier-dex auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-acrobatics-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-acrobatics-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-acrobatics-racial" /></div>
+				<div class="w70"><input type="text" name="skill-acrobatics-trait" /></div>
+				<div class="w160"><input type="text" name="skill-acrobatics-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-appraise-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Appraise</label></div>
+				<div class="w80"><input type="text" name="skill-appraise" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Int</label></div>
+				<div class="w70"><input type="text" name="skill-appraise-ability-modifier" class="ability-modifier-int auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-appraise-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-appraise-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-appraise-racial" /></div>
+				<div class="w70"><input type="text" name="skill-appraise-trait" /></div>
+				<div class="w160"><input type="text" name="skill-appraise-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-bluff-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Bluff</label></div>
+				<div class="w80"><input type="text" name="skill-bluff" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Cha</label></div>
+				<div class="w70"><input type="text" name="skill-bluff-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-bluff-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-bluff-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-bluff-racial" /></div>
+				<div class="w70"><input type="text" name="skill-bluff-trait" /></div>
+				<div class="w160"><input type="text" name="skill-bluff-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-climb-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Climb</label></div>
+				<div class="w80"><input type="text" name="skill-climb" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Str</label></div>
+				<div class="w70"><input type="text" name="skill-climb-ability-modifier" class="ability-modifier-str auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-climb-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-climb-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-climb-racial" /></div>
+				<div class="w70"><input type="text" name="skill-climb-trait" /></div>
+				<div class="w160"><input type="text" name="skill-climb-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-craft1-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Craft</label><input type="text" name="skill-craft1-name" class="skill-name left" /></div>
+				<div class="w80"><input type="text" name="skill-craft1" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Int</label></div>
+				<div class="w70"><input type="text" name="skill-craft1-ability-modifier" class="ability-modifier-int auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-craft1-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-craft1-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-craft1-racial" /></div>
+				<div class="w70"><input type="text" name="skill-craft1-trait" /></div>
+				<div class="w160"><input type="text" name="skill-craft1-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-craft2-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Craft</label><input type="text" name="skill-craft2-name" class="skill-name left" /></div>
+				<div class="w80"><input type="text" name="skill-craft2" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Int</label></div>
+				<div class="w70"><input type="text" name="skill-craft2-ability-modifier" class="ability-modifier-int auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-craft2-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-craft2-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-craft2-racial" /></div>
+				<div class="w70"><input type="text" name="skill-craft2-trait" /></div>
+				<div class="w160"><input type="text" name="skill-craft2-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-craft3-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Craft</label><input type="text" name="skill-craft3-name" class="skill-name left" /></div>
+				<div class="w80"><input type="text" name="skill-craft3" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Int</label></div>
+				<div class="w70"><input type="text" name="skill-craft3-ability-modifier" class="ability-modifier-int auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-craft3-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-craft3-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-craft3-racial" /></div>
+				<div class="w70"><input type="text" name="skill-craft3-trait" /></div>
+				<div class="w160"><input type="text" name="skill-craft3-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-diplomacy-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Diplomacy</label></div>
+				<div class="w80"><input type="text" name="skill-diplomacy" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Cha</label></div>
+				<div class="w70"><input type="text" name="skill-diplomacy-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-diplomacy-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-diplomacy-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-diplomacy-racial" /></div>
+				<div class="w70"><input type="text" name="skill-diplomacy-trait" /></div>
+				<div class="w160"><input type="text" name="skill-diplomacy-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-disabledevice-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Disable Device*</label></div>
+				<div class="w80"><input type="text" name="skill-disabledevice" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Dex</label></div>
+				<div class="w70"><input type="text" name="skill-disabledevice-ability-modifier" class="ability-modifier-dex auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-disabledevice-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-disabledevice-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-disabledevice-racial" /></div>
+				<div class="w70"><input type="text" name="skill-disabledevice-trait" /></div>
+				<div class="w160"><input type="text" name="skill-disabledevice-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-disguise-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Disguise</label></div>
+				<div class="w80"><input type="text" name="skill-disguise" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Cha</label></div>
+				<div class="w70"><input type="text" name="skill-disguise-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-disguise-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-disguise-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-disguise-racial" /></div>
+				<div class="w70"><input type="text" name="skill-disguise-trait" /></div>
+				<div class="w160"><input type="text" name="skill-disguise-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-escapeartist-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Escape Artist</label></div>
+				<div class="w80"><input type="text" name="skill-escapeartist" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Dex</label></div>
+				<div class="w70"><input type="text" name="skill-escapeartist-ability-modifier" class="ability-modifier-dex auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-escapeartist-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-escapeartist-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-escapeartist-racial" /></div>
+				<div class="w70"><input type="text" name="skill-escapeartist-trait" /></div>
+				<div class="w160"><input type="text" name="skill-escapeartist-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-fly-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Fly</label></div>
+				<div class="w80"><input type="text" name="skill-fly" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Dex</label></div>
+				<div class="w70"><input type="text" name="skill-fly-ability-modifier" class="ability-modifier-dex auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-fly-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-fly-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-fly-racial" /></div>
+				<div class="w70"><input type="text" name="skill-fly-trait" /></div>
+				<div class="w160"><input type="text" name="skill-fly-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-handleanimal-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Handle Animal*</label></div>
+				<div class="w80"><input type="text" name="skill-handleanimal" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Cha</label></div>
+				<div class="w70"><input type="text" name="skill-handleanimal-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-handleanimal-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-handleanimal-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-handleanimal-racial" /></div>
+				<div class="w70"><input type="text" name="skill-handleanimal-trait" /></div>
+				<div class="w160"><input type="text" name="skill-handleanimal-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-heal-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Heal</label></div>
+				<div class="w80"><input type="text" name="skill-heal" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Wis</label></div>
+				<div class="w70"><input type="text" name="skill-heal-ability-modifier" class="ability-modifier-wis auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-heal-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-heal-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-heal-racial" /></div>
+				<div class="w70"><input type="text" name="skill-heal-trait" /></div>
+				<div class="w160"><input type="text" name="skill-heal-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-intimidate-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Intimidate</label></div>
+				<div class="w80"><input type="text" name="skill-intimidate" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Cha</label></div>
+				<div class="w70"><input type="text" name="skill-intimidate-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-intimidate-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-intimidate-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-intimidate-racial" /></div>
+				<div class="w70"><input type="text" name="skill-intimidate-trait" /></div>
+				<div class="w160"><input type="text" name="skill-intimidate-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-knowarcana-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Knowledge (Arcana)*</label></div>
+				<div class="w80"><input type="text" name="skill-knowarcana" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Int</label></div>
+				<div class="w70"><input type="text" name="skill-knowarcana-ability-modifier" class="ability-modifier-int auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knowarcana-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-knowarcana-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knowarcana-racial" /></div>
+				<div class="w70"><input type="text" name="skill-knowarcana-trait" /></div>
+				<div class="w160"><input type="text" name="skill-knowarcana-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-knowdungeoneering-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Knowledge (Dungeoneering)*</label></div>
+				<div class="w80"><input type="text" name="skill-knowdungeoneering" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Int</label></div>
+				<div class="w70"><input type="text" name="skill-knowdungeoneering-ability-modifier" class="ability-modifier-int auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knowdungeoneering-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-knowdungeoneering-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knowdungeoneering-racial" /></div>
+				<div class="w70"><input type="text" name="skill-knowdungeoneering-trait" /></div>
+				<div class="w160"><input type="text" name="skill-knowdungeoneering-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-knowengineering-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Knowledge (Engineering)*</label></div>
+				<div class="w80"><input type="text" name="skill-knowengineering" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Int</label></div>
+				<div class="w70"><input type="text" name="skill-knowengineering-ability-modifier" class="ability-modifier-int auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knowengineering-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-knowengineering-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knowengineering-racial" /></div>
+				<div class="w70"><input type="text" name="skill-knowengineering-trait" /></div>
+				<div class="w160"><input type="text" name="skill-knowengineering-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-knowgeography-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Knowledge (Geography)*</label></div>
+				<div class="w80"><input type="text" name="skill-knowgeography" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Int</label></div>
+				<div class="w70"><input type="text" name="skill-knowgeography-ability-modifier" class="ability-modifier-int auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knowgeography-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-knowgeography-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knowgeography-racial" /></div>
+				<div class="w70"><input type="text" name="skill-knowgeography-trait" /></div>
+				<div class="w160"><input type="text" name="skill-knowgeography-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-knowhistory-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Knowledge (History)*</label></div>
+				<div class="w80"><input type="text" name="skill-knowhistory" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Int</label></div>
+				<div class="w70"><input type="text" name="skill-knowhistory-ability-modifier" class="ability-modifier-int auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knowhistory-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-knowhistory-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knowhistory-racial" /></div>
+				<div class="w70"><input type="text" name="skill-knowhistory-trait" /></div>
+				<div class="w160"><input type="text" name="skill-knowhistory-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-knowlocal-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Knowledge (Local)*</label></div>
+				<div class="w80"><input type="text" name="skill-knowlocal" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Int</label></div>
+				<div class="w70"><input type="text" name="skill-knowlocal-ability-modifier" class="ability-modifier-int auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knowlocal-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-knowlocal-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knowlocal-racial" /></div>
+				<div class="w70"><input type="text" name="skill-knowlocal-trait" /></div>
+				<div class="w160"><input type="text" name="skill-knowlocal-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-knownature-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Knowledge (Nature)*</label></div>
+				<div class="w80"><input type="text" name="skill-knownature" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Int</label></div>
+				<div class="w70"><input type="text" name="skill-knownature-ability-modifier" class="ability-modifier-int auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knownature-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-knownature-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knownature-racial" /></div>
+				<div class="w70"><input type="text" name="skill-knownature-trait" /></div>
+				<div class="w160"><input type="text" name="skill-knownature-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-knownobility-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Knowledge (Nobility)*</label></div>
+				<div class="w80"><input type="text" name="skill-knownobility" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Int</label></div>
+				<div class="w70"><input type="text" name="skill-knownobility-ability-modifier" class="ability-modifier-int auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knownobility-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-knownobility-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knownobility-racial" /></div>
+				<div class="w70"><input type="text" name="skill-knownobility-trait" /></div>
+				<div class="w160"><input type="text" name="skill-knownobility-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-knowplanes-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Knowledge (Planes)*</label></div>
+				<div class="w80"><input type="text" name="skill-knowplanes" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Int</label></div>
+				<div class="w70"><input type="text" name="skill-knowplanes-ability-modifier" class="ability-modifier-int auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knowplanes-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-knowplanes-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knowplanes-racial" /></div>
+				<div class="w70"><input type="text" name="skill-knowplanes-trait" /></div>
+				<div class="w160"><input type="text" name="skill-knowplanes-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-knowreligion-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Knowledge (Religion)*</label></div>
+				<div class="w80"><input type="text" name="skill-knowreligion" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Int</label></div>
+				<div class="w70"><input type="text" name="skill-knowreligion-ability-modifier" class="ability-modifier-int auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knowreligion-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-knowreligion-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-knowreligion-racial" /></div>
+				<div class="w70"><input type="text" name="skill-knowreligion-trait" /></div>
+				<div class="w160"><input type="text" name="skill-knowreligion-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-linguistics-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Linguistics*</label></div>
+				<div class="w80"><input type="text" name="skill-linguistics" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Int</label></div>
+				<div class="w70"><input type="text" name="skill-linguistics-ability-modifier" class="ability-modifier-int auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-linguistics-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-linguistics-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-linguistics-racial" /></div>
+				<div class="w70"><input type="text" name="skill-linguistics-trait" /></div>
+				<div class="w160"><input type="text" name="skill-linguistics-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-perception-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Perception</label></div>
+				<div class="w80"><input type="text" name="skill-perception" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Wis</label></div>
+				<div class="w70"><input type="text" name="skill-perception-ability-modifier" class="ability-modifier-wis auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-perception-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-perception-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-perception-racial" /></div>
+				<div class="w70"><input type="text" name="skill-perception-trait" /></div>
+				<div class="w160"><input type="text" name="skill-perception-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-perform1-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Perform</label><input type="text" name="skill-perform1-name" class="skill-name left" /></div>
+				<div class="w80"><input type="text" name="skill-perform1" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Cha</label></div>
+				<div class="w70"><input type="text" name="skill-perform1-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-perform1-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-perform1-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-perform1-racial" /></div>
+				<div class="w70"><input type="text" name="skill-perform1-trait" /></div>
+				<div class="w160"><input type="text" name="skill-perform1-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-perform2-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Perform</label><input type="text" name="skill-perform2-name" class="skill-name left" /></div>
+				<div class="w80"><input type="text" name="skill-perform2" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Cha</label></div>
+				<div class="w70"><input type="text" name="skill-perform2-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-perform2-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-perform2-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-perform2-racial" /></div>
+				<div class="w70"><input type="text" name="skill-perform2-trait" /></div>
+				<div class="w160"><input type="text" name="skill-perform2-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-profession1-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Profession*</label><input type="text" name="skill-profession1-name" class="skill-name left" /></div>
+				<div class="w80"><input type="text" name="skill-profession1" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Wis</label></div>
+				<div class="w70"><input type="text" name="skill-profession1-ability-modifier" class="ability-modifier-wis auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-profession1-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-profession1-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-profession1-racial" /></div>
+				<div class="w70"><input type="text" name="skill-profession1-trait" /></div>
+				<div class="w160"><input type="text" name="skill-profession1-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-profession2-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Profession*</label><input type="text" name="skill-profession2-name" class="skill-name left" /></div>
+				<div class="w80"><input type="text" name="skill-profession2" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Wis</label></div>
+				<div class="w70"><input type="text" name="skill-profession2-ability-modifier" class="ability-modifier-wis auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-profession2-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-profession2-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-profession2-racial" /></div>
+				<div class="w70"><input type="text" name="skill-profession2-trait" /></div>
+				<div class="w160"><input type="text" name="skill-profession2-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-ride-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Ride</label></div>
+				<div class="w80"><input type="text" name="skill-ride" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Dex</label></div>
+				<div class="w70"><input type="text" name="skill-ride-ability-modifier" class="ability-modifier-dex auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-ride-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-ride-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-ride-racial" /></div>
+				<div class="w70"><input type="text" name="skill-ride-trait" /></div>
+				<div class="w160"><input type="text" name="skill-ride-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-sensemotive-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Sense Motive</label></div>
+				<div class="w80"><input type="text" name="skill-sensemotive" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Wis</label></div>
+				<div class="w70"><input type="text" name="skill-sensemotive-ability-modifier" class="ability-modifier-wis auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-sensemotive-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-sensemotive-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-sensemotive-racial" /></div>
+				<div class="w70"><input type="text" name="skill-sensemotive-trait" /></div>
+				<div class="w160"><input type="text" name="skill-sensemotive-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-sleightofhand-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Sleight of Hand*</label></div>
+				<div class="w80"><input type="text" name="skill-sleightofhand" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Dex</label></div>
+				<div class="w70"><input type="text" name="skill-sleightofhand-ability-modifier" class="ability-modifier-dex auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-sleightofhand-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-sleightofhand-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-sleightofhand-racial" /></div>
+				<div class="w70"><input type="text" name="skill-sleightofhand-trait" /></div>
+				<div class="w160"><input type="text" name="skill-sleightofhand-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-spellcraft-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Spellcraft*</label></div>
+				<div class="w80"><input type="text" name="skill-spellcraft" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Int</label></div>
+				<div class="w70"><input type="text" name="skill-spellcraft-ability-modifier" class="ability-modifier-int auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-spellcraft-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-spellcraft-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-spellcraft-racial" /></div>
+				<div class="w70"><input type="text" name="skill-spellcraft-trait" /></div>
+				<div class="w160"><input type="text" name="skill-spellcraft-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-stealth-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Stealth</label></div>
+				<div class="w80"><input type="text" name="skill-stealth" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Dex</label></div>
+				<div class="w70"><input type="text" name="skill-stealth-ability-modifier" class="ability-modifier-dex auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-stealth-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-stealth-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-stealth-racial" /></div>
+				<div class="w70"><input type="text" name="skill-stealth-trait" /></div>
+				<div class="w160"><input type="text" name="skill-stealth-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-survival-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Survival</label></div>
+				<div class="w80"><input type="text" name="skill-survival" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Wis</label></div>
+				<div class="w70"><input type="text" name="skill-survival-ability-modifier" class="ability-modifier-wis auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-survival-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-survival-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-survival-racial" /></div>
+				<div class="w70"><input type="text" name="skill-survival-trait" /></div>
+				<div class="w160"><input type="text" name="skill-survival-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-swim-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Swim</label></div>
+				<div class="w80"><input type="text" name="skill-swim" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Str</label></div>
+				<div class="w70"><input type="text" name="skill-swim-ability-modifier" class="ability-modifier-str auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-swim-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-swim-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-swim-racial" /></div>
+				<div class="w70"><input type="text" name="skill-swim-trait" /></div>
+				<div class="w160"><input type="text" name="skill-swim-misc" class="left" /></div>
+
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-usemagicdevice-class-skill" value="1" /></div>
+				<div class="w240"><label class="skill">Use Magic Device*</label></div>
+				<div class="w80"><input type="text" name="skill-usemagicdevice" class="skill-total" /></div>
+							<div class="w40"><label class="skill-ability">Cha</label></div>
+				<div class="w70"><input type="text" name="skill-usemagicdevice-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-usemagicdevice-ranks" /></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-usemagicdevice-class" class="auto-calc" /></div>
+				<div class="w70"><input type="text" name="skill-usemagicdevice-racial" /></div>
+				<div class="w70"><input type="text" name="skill-usemagicdevice-trait" /></div>
+				<div class="w160"><input type="text" name="skill-usemagicdevice-misc" class="left" /></div>
+
+				<div class="w110 new-line"><label>* Trained Only</label></div>
+				<div class="w160 black"><span>Conditional</span><label>Modifiers</label></div>
+				<div class="w700"><input type="text" name="skills-conditional-modifiers" class="left" /><label>&amp; Other Notes</label></div>
+
+			<div class="w140 black new-line"><span>Languages</span><label>Known</label></div>
+			<div class="w510"><input type="text" name="languages" class="left" /><label>Spoken/Written</label></div>
+			<div class="w100 black"><span>XP</span><label>Experience Points</label></div>
+			<div class="w100"><input type="text" name="xp-total" /><label>Total</label></div>
+			<div class="w100"><input type="text" name="xp-to-next-level" /><label>Next Level</label></div>
 			</section>
 		</article>
 
-		<article>
-			<h1><a name="defense"></a>Defense<span><a href="" class="expand-collapse"></a></span></h1>
-				<section>
-				<div class="w70 black"><span>AC</span><label>Armor Class</label></div>
-				<div class="w70"><input type="text" name="ac" /><label>Total =</label></div>
-				<div class="w50 stand-alone"><label>10+</label></div>
-				<div class="w70 small"><input type="text" name="ac-armor-bonus" /><label>Armor Bonus</label></div>
-				<div class="w70 small"><input type="text" name="ac-shield-bonus" /><label>Shield Bonus</label></div>
-				<div class="w70 small"><input type="text" name="ac-dex-modifier" class="ability-modifier-dex auto-calc" /><label>Dex Modifier</label></div>
-				<div class="w70 small"><input type="text" name="ac-size-modifier" /><label>Size Modifier</label></div>
-				<div class="w70 small"><input type="text" name="ac-natural-armor" /><label>Natural Armor</label></div>
-				<div class="w70 small"><input type="text" name="ac-deflection-modifier" /><label>Deflection</label></div>
-				<div class="w290 small"><input type="text" name="ac-misc-modifier" class="left" /><label>Misc Modifier</label></div>
-
-				<div class="w100 black new-line"><span>Touch</span><label>Armor Class</label></div>
-				<div class="w70"><input type="text" name="ac-touch" /><label>&nbsp;</label></div>
-				<div class="w140 black"><span>Flat-Footed</span><label>Armor Class</label></div>
-				<div class="w70"><input type="text" name="ac-flat-footed" /><label>&nbsp;</label></div>
-				<div class="w570"><input type="text" name="ac-modifiers" class="left" /><label>Other AC Modifiers</label></div>
-
-				<div class="w70 black new-line"><span>HP</span><label>Hit Points</label></div>
-				<div class="w80"><input type="text" name="hp-total" /><label>Total</label></div>
-				<div class="w180"><input type="text" name="hp-wounds" /><label>Wounds/Current</label></div>
-				<div class="w180"><input type="text" name="hp-non-lethal" /><label>Non-Lethal Damage</label></div>
-				<div class="w100 black"><span>DR</span><label>Damage Reduction</label></div>
-				<div class="w150"><input type="text" name="dr" /><label>&nbsp;</label></div>
-				<div class="w90 black"><span>SR</span><label>Spell Resistance</label></div>
-				<div class="w70"><input type="text" name="sr" /><label>&nbsp;</label></div>
-
-				<div class="w120 black new-line"><span>Fortitude</span><label>(Constitution)</label></div>
-				<div class="w70"><input type="text" name="fort-save" /><label>Total =</label></div>
-				<div class="w70 small"><input type="text" name="fort-save-base" /><label>Base Save</label></div>
-				<div class="w70 small"><input type="text" name="fort-save-ability-modifier" class="ability-modifier-con auto-calc" /><label>+ Ability Modifier</label></div>
-				<div class="w70 small"><input type="text" name="fort-save-magic-modifier" /><label>+ Magic Modifier</label></div>
-				<div class="w70 small"><input type="text" name="fort-save-misc-modifier" /><label>+ Misc Modifier</label></div>
-				<div class="w70 small"><input type="text" name="fort-save-temp-modifier" /><label>+ Temp Modifier</label></div>
-				<div class="w380"><input type="text" name="fort-save-modifiers" class="left" /><label>Other Modifiers</label></div>
-
-				<div class="w120 black new-line"><span>Reflex</span><label>(Dexterity)</label></div>
-				<div class="w70"><input type="text" name="dex-save" /><label>Total =</label></div>
-				<div class="w70 small"><input type="text" name="dex-save-base" /><label>Base Save</label></div>
-				<div class="w70 small"><input type="text" name="dex-save-ability-modifier" class="ability-modifier-dex auto-calc" /><label>+ Ability Modifier</label></div>
-				<div class="w70 small"><input type="text" name="dex-save-magic-modifier" /><label>+ Magic Modifier</label></div>
-				<div class="w70 small"><input type="text" name="dex-save-misc-modifier" /><label>+ Misc Modifier</label></div>
-				<div class="w70 small"><input type="text" name="dex-save-temp-modifier" /><label>+ Temp Modifier</label></div>
-				<div class="w380"><input type="text" name="dex-save-modifiers" class="left" /><label>Other Modifiers</label></div>
-
-				<div class="w120 black new-line"><span>Will</span><label>(Wisdom)</label></div>
-				<div class="w70"><input type="text" name="will-save" /><label>Total =</label></div>
-				<div class="w70 small"><input type="text" name="will-save-base" /><label>Base Save</label></div>
-				<div class="w70 small"><input type="text" name="will-save-ability-modifier" class="ability-modifier-wis auto-calc" /><label>+ Ability Modifier</label></div>
-				<div class="w70 small"><input type="text" name="will-save-magic-modifier" /><label>+ Magic Modifier</label></div>
-				<div class="w70 small"><input type="text" name="will-save-misc-modifier" /><label>+ Misc Modifier</label></div>
-				<div class="w70 small"><input type="text" name="will-save-temp-modifier" /><label>+ Temp Modifier</label></div>
-				<div class="w380"><input type="text" name="will-save-modifiers" class="left" /><label>Other Modifiers</label></div>
-
-				<div class="w140 black new-line"><span>CMD</span><label>Combat Maneuver Defense</label></div>
-				<div class="w70"><input type="text" name="cmd" /><label>Total =</label></div>
-				<div class="w50 stand-alone"><label>10+</label></div>
-				<div class="w70 small"><input type="text" name="cmd-bab" class="bab-value auto-calc" /><label>Base Attack Bonus</label></div>
-				<div class="w70 small"><input type="text" name="cmd-str-modifier" class="ability-modifier-str auto-calc" /><label>+ Str Modifier</label></div>
-				<div class="w70 small"><input type="text" name="cmd-dex-modifier" class="ability-modifier-dex auto-calc" /><label>+ Dex Modifier</label></div>
-				<div class="w70 small"><input type="text" name="cmd-size-modifier" /><label>+ Size Modifier</label></div>
-				<div class="w190"><input type="text" name="cmd-misc-modifiers" class="left" /><label>+ Misc Modifiers</label></div>
-				<div class="w180"><input type="text" name="cmd-temp-modifiers" class="left" /><label>Temp Modifiers</label></div>
+	<article>
+		<h1><a name="feats"></a>Feats &amp; Special Abilities<span><a href="" class="expand-collapse"></a></span></h1>
+			<section>
+			<div class="w100 black"><span>Feats</span><label>Comma Separated</label></div>
+			<div class="w880"><input type="text" name="feats" class="left" /><label>&nbsp;</label></div>
+			<div class="w990"><input type="text" name="feats-2" class="left" /><label>&nbsp;</label></div>
+			<div class="w990"><input type="text" name="feats-3" class="left" /><label>&nbsp;</label></div>
+			<div class="w220 black"><span>Special Abilities</span><label>Racial, Class &amp; Other</label></div>
+			<div class="w760"><input type="text" name="special-abilities" class="left" /><label>&nbsp;</label></div>
+			<div class="w990"><input type="text" name="special-abilities-2" class="left" /><label>&nbsp;</label></div>
+			<div class="w990"><input type="text" name="special-abilities-3" class="left" /><label>&nbsp;</label></div>
+			<div class="w100 black new-line"><span>Traits</span><label>Comma Separated</label></div>
+			<div class="w880"><input type="text" name="traits" class="left" /><label>&nbsp;</label></div>
 			</section>
 		</article>
 
-		<article>
-			<h1><a name="offense"></a>Offense<span><a href="" class="expand-collapse"></a></span></h1>
-				<section>
-				<div class="w120 black"><span>Initiative</span><label>Modifier</label></div>
-				<div class="w70"><input type="text" name="initiative" /><label>Total =</label></div>
-				<div class="w70 small"><input type="text" name="initiative-dex-modifier" class="ability-modifier-dex auto-calc" /><label>Dex Modifier</label></div>
-				<div class="w70 small"><input type="text" name="initiative-misc-modifier" /><label>+ Misc Modifier</label></div>
-				<div class="w100 black"><span>BAB</span><label>Base Attack Bonus</label></div>
-				<div class="w70"><input type="text" name="bab" class="bab-score" /><label>&nbsp;</label></div>
-				<div class="w150 black"><span>Conditional</span><label>Modifiers</label></div>
-				<div class="w270"><input type="text" name="offense-conditional-modifiers" class="left" /><label>Modifiers &amp; Notes</label></div>
+	<article>
+		<h1><a name="equipment"></a>Equipment &amp; Money<span><a href="" class="expand-collapse"></a></span></h1>
+			<section>
+				<div class="w70 black"><span>PP</span><label>Platinum</label></div>
+				<div class="w80"><input type="text" name="money-pp" /><label>Pieces</label></div>
+				<div class="w70 black"><span>GP</span><label>Gold</label></div>
+				<div class="w80"><input type="text" name="money-gp" /><label>Pieces</label></div>
+				<div class="w70 black"><span>SP</span><label>Silver</label></div>
+				<div class="w80"><input type="text" name="money-sp" /><label>Pieces</label></div>
+				<div class="w70 black"><span>CP</span><label>Copper</label></div>
+				<div class="w80"><input type="text" name="money-cp" /><label>Pieces</label></div>
+				<div class="w80 black"><span>Gems</span><label>&amp; Art</label></div>
+				<div class="w220"><input type="text" name="money-gems" class="left" /><label>&nbsp;</label></div>
 
-				<div class="w80 black new-line"><span>Speed</span><label>Land</label></div>
-				<div class="w100"><input type="text" name="base-speed" /><label>Base Speed</label></div>
-				<div class="w100"><input type="text" name="speed-with-armor" /><label>With Armor</label></div>
-				<div class="w140"><input type="text" name="fly-speed" /><label>Fly/Maneuverability</label></div>
-				<div class="w100"><input type="text" name="swim-speed" /><label>Swim</label></div>
-				<div class="w100"><input type="text" name="climb-speed" /><label>Climb</label></div>
-				<div class="w100"><input type="text" name="burrow-speed" /><label>Burrow</label></div>
-				<div class="w200"><input type="text" name="temp-speed-modifiers" class="left" /><label>Temp Modifiers</label></div>
+				<div class="w90 black new-line"><span>Other</span><label>Treasure</label></div>
+				<div class="w890"><input type="text" name="money-other" class="left" /><label>&nbsp;</label></div>
 
-				<div class="w130 black new-line"><span>CMB</span><label>Combat Maneuver Bonus</label></div>
-				<div class="w70"><input type="text" name="cmb" /><label>Total =</label></div>
-				<div class="w70 small"><input type="text" name="cmb-bab" class="bab-value auto-calc" /><label>Base Attack Bonus</label></div>
-				<div class="w70 small"><input type="text" name="cmb-str-modifier" class="ability-modifier-str auto-calc" /><label>+ Str Modifier</label></div>
-				<div class="w70 small"><input type="text" name="cmb-size-modifier" /><label>+ Size Modifier</label></div>
-				<div class="w260"><input type="text" name="cmb-misc-modifiers" class="left" /><label>+ Misc Modifiers</label></div>
-				<div class="w260"><input type="text" name="cmb-temp-modifiers" class="left" /><label>Temp Modifiers</label></div>
+				<div class="w120 black new-line"><span>AC Item</span><label>&nbsp;</label></div>
+				<div class="w220"><input type="text" name="ac-item-1-name" class="left" /><label>Item Name</label></div>
+				<div class="w60"><input type="text" name="ac-item-1-bonus" /><label>Bonus</label></div>
+				<div class="w100"><input type="text" name="ac-item-1-type" /><label>Type</label></div>
+				<div class="w60 small"><input type="text" name="ac-item-1-acp" /><label>Check<br />Penalty</label></div>
+				<div class="w60 small"><input type="text" name="ac-item-1-spell-failure" /><label>Spell<br />Failure</label></div>
+				<div class="w80"><input type="text" name="ac-item-1-weight" /><label>Weight</label></div>
+				<div class="w220"><input type="text" name="ac-item-1-properties" class="left" /><label>Properties</label></div>
 
-				<div class="w100 black new-line"><span>Melee</span><label>Melee Attack</label></div>
-				<div class="w220"><input type="text" name="melee-1-weapon" class="left" /><label>Weapon</label></div>
-				<div class="w140"><input type="text" name="melee-1-attack-bonus" /><label>Attack Bonus</label></div>
-				<div class="w140"><input type="text" name="melee-1-damage" /><label>Damage</label></div>
-				<div class="w100"><input type="text" name="melee-1-critical" /><label>Critical</label></div>
-				<div class="w60"><input type="text" name="melee-1-type" /><label>Type</label></div>
-				<div class="w170"><input type="text" name="melee-1-notes" /><label>Notes</label></div>
+				<div class="w120 black new-line"><span>AC Item</span><label>&nbsp;</label></div>
+				<div class="w220"><input type="text" name="ac-item-2-name" class="left" /><label>Item Name</label></div>
+				<div class="w60"><input type="text" name="ac-item-2-bonus" /><label>Bonus</label></div>
+				<div class="w100"><input type="text" name="ac-item-2-type" /><label>Type</label></div>
+				<div class="w60 small"><input type="text" name="ac-item-2-acp" /><label>Check<br />Penalty</label></div>
+				<div class="w60 small"><input type="text" name="ac-item-2-spell-failure" /><label>Spell<br />Failure</label></div>
+				<div class="w80"><input type="text" name="ac-item-2-weight" /><label>Weight</label></div>
+				<div class="w220"><input type="text" name="ac-item-2-properties" class="left" /><label>Properties</label></div>
 
-				<div class="w100 black new-line"><span>Melee</span><label>Melee Attack</label></div>
-				<div class="w220"><input type="text" name="melee-2-weapon" class="left" /><label>Weapon</label></div>
-				<div class="w140"><input type="text" name="melee-2-attack-bonus" /><label>Attack Bonus</label></div>
-				<div class="w140"><input type="text" name="melee-2-damage" /><label>Damage</label></div>
-				<div class="w100"><input type="text" name="melee-2-critical" /><label>Critical</label></div>
-				<div class="w60"><input type="text" name="melee-2-type" /><label>Type</label></div>
-				<div class="w170"><input type="text" name="melee-2-notes" /><label>Notes</label></div>
+				<div class="w120 black new-line"><span>AC Item</span><label>&nbsp;</label></div>
+				<div class="w220"><input type="text" name="ac-item-3-name" class="left" /><label>Item Name</label></div>
+				<div class="w60"><input type="text" name="ac-item-3-bonus" /><label>Bonus</label></div>
+				<div class="w100"><input type="text" name="ac-item-3-type" /><label>Type</label></div>
+				<div class="w60 small"><input type="text" name="ac-item-3-acp" /><label>Check<br />Penalty</label></div>
+				<div class="w60 small"><input type="text" name="ac-item-3-spell-failure" /><label>Spell<br />Failure</label></div>
+				<div class="w80"><input type="text" name="ac-item-3-weight" /><label>Weight</label></div>
+				<div class="w220"><input type="text" name="ac-item-3-properties" class="left" /><label>Properties</label></div>
 
-				<div class="w100 black new-line"><span>Melee</span><label>Melee Attack</label></div>
-				<div class="w220"><input type="text" name="melee-3-weapon" class="left" /><label>Weapon</label></div>
-				<div class="w140"><input type="text" name="melee-3-attack-bonus" /><label>Attack Bonus</label></div>
-				<div class="w140"><input type="text" name="melee-3-damage" /><label>Damage</label></div>
-				<div class="w100"><input type="text" name="melee-3-critical" /><label>Critical</label></div>
-				<div class="w60"><input type="text" name="melee-3-type" /><label>Type</label></div>
-				<div class="w170"><input type="text" name="melee-3-notes" /><label>Notes</label></div>
+				<div class="w120 black new-line"><span>AC Item</span><label>&nbsp;</label></div>
+				<div class="w220"><input type="text" name="ac-item-4-name" class="left" /><label>Item Name</label></div>
+				<div class="w60"><input type="text" name="ac-item-4-bonus" /><label>Bonus</label></div>
+				<div class="w100"><input type="text" name="ac-item-4-type" /><label>Type</label></div>
+				<div class="w60 small"><input type="text" name="ac-item-4-acp" /><label>Check<br />Penalty</label></div>
+				<div class="w60 small"><input type="text" name="ac-item-4-spell-failure" /><label>Spell<br />Failure</label></div>
+				<div class="w80"><input type="text" name="ac-item-4-weight" /><label>Weight</label></div>
+				<div class="w220"><input type="text" name="ac-item-4-properties" class="left" /><label>Properties</label></div>
 
-				<div class="w100 black new-line"><span>Ranged</span><label>Ranged Attack</label></div>
-				<div class="w220"><input type="text" name="ranged-1-weapon" class="left" /><label>Weapon</label></div>
-				<div class="w140"><input type="text" name="ranged-1-attack-bonus" /><label>Attack Bonus</label></div>
-				<div class="w140"><input type="text" name="ranged-1-damage" /><label>Damage</label></div>
-				<div class="w100"><input type="text" name="ranged-1-critical" /><label>Critical</label></div>
-				<div class="w60"><input type="text" name="ranged-1-type" /><label>Type</label></div>
-				<div class="w170"><input type="text" name="ranged-1-ammunition" /><label>Ammunition</label></div>
+				<div class="w120 black new-line"><span>AC Item</span><label>&nbsp;</label></div>
+				<div class="w220"><input type="text" name="ac-item-5-name" class="left" /><label>Item Name</label></div>
+				<div class="w60"><input type="text" name="ac-item-5-bonus" /><label>Bonus</label></div>
+				<div class="w100"><input type="text" name="ac-item-5-type" /><label>Type</label></div>
+				<div class="w60 small"><input type="text" name="ac-item-5-acp" /><label>Check<br />Penalty</label></div>
+				<div class="w60 small"><input type="text" name="ac-item-5-spell-failure" /><label>Spell<br />Failure</label></div>
+				<div class="w80"><input type="text" name="ac-item-5-weight" /><label>Weight</label></div>
+				<div class="w220"><input type="text" name="ac-item-5-properties" class="left" /><label>Properties</label></div>
 
-				<div class="w100 black new-line"><span>Ranged</span><label>Ranged Attack</label></div>
-				<div class="w220"><input type="text" name="ranged-2-weapon" class="left" /><label>Weapon</label></div>
-				<div class="w140"><input type="text" name="ranged-2-attack-bonus" /><label>Attack Bonus</label></div>
-				<div class="w140"><input type="text" name="ranged-2-damage" /><label>Damage</label></div>
-				<div class="w100"><input type="text" name="ranged-2-critical" /><label>Critical</label></div>
-				<div class="w60"><input type="text" name="ranged-2-type" /><label>Type</label></div>
-				<div class="w170"><input type="text" name="ranged-2-ammunition" /><label>Ammunition</label></div>
+				<div class="w350 new-line"><label class="totals">Totals</label></div>
+				<div class="w60"><input type="text" name="ac-item-total-bonus" /><label>Bonus</label></div>
+				<div class="w100"><label>&nbsp;</label></div>
+				<div class="w60 small"><input type="text" name="ac-item-total-acp" /><label>Check<br />Penalty</label></div>
+				<div class="w60 small"><input type="text" name="ac-item-total-spell-failure" /><label>Spell<br />Failure</label></div>
+				<div class="w80"><input type="text" name="ac-item-total-weight" /><label>Weight</label></div>
 
-				<div class="w100 black new-line"><span>Ranged</span><label>Ranged Attack</label></div>
-				<div class="w220"><input type="text" name="ranged-3-weapon" class="left" /><label>Weapon</label></div>
-				<div class="w140"><input type="text" name="ranged-3-attack-bonus" /><label>Attack Bonus</label></div>
-				<div class="w140"><input type="text" name="ranged-3-damage" /><label>Damage</label></div>
-				<div class="w100"><input type="text" name="ranged-3-critical" /><label>Critical</label></div>
-				<div class="w60"><input type="text" name="ranged-3-type" /><label>Type</label></div>
-				<div class="w170"><input type="text" name="ranged-3-ammunition" /><label>Ammunition</label></div>
+				<div class="w90 black new-line h620 legacy"><span>Gear</span></div>
+				<div class="w200 legacy"><label>Item</label><textarea name="gear"></textarea></div>
+				<div class="w140 legacy"><label>Location</label><textarea name="gear-location" class="location"></textarea></div>
+				<div class="w80 legacy"><label>Weight</label><textarea name="gear-weight" class="weight"></textarea></div>
+				<div class="w200 legacy"><label>Item</label><textarea name="gear-2"></textarea></div>
+				<div class="w140 legacy"><label>Location</label><textarea name="gear-2-location" class="location"></textarea></div>
+				<div class="w80 legacy"><label>Weight</label><textarea name="gear-2-weight" class="weight"></textarea></div>
+
+				<div class="w120 black new-line"><span>Gear</span><label>&nbsp;</label></div>
+				<div class="w850">
+					<div class="gear" id="gear"><div class="gear-item-add static-token token-add">+</div></div>
+				</div>
+		</section>
+	</article>
+
+	<article>
+		<h1><a name="spells"></a>Spells<span><a href="" class="expand-collapse"></a></span></h1>
+			<section>
+				<div class="w90 black"><label>Spell Level</label></div>
+				<div class="w80"><label>0th</label></div>
+				<div class="w80"><label>1st</label></div>
+				<div class="w80"><label>2nd</label></div>
+				<div class="w80"><label>3rd</label></div>
+				<div class="w80"><label>4th</label></div>
+				<div class="w80"><label>5th</label></div>
+				<div class="w80"><label>6th</label></div>
+				<div class="w80"><label>7th</label></div>
+				<div class="w80"><label>8th</label></div>
+				<div class="w80"><label>9th</label></div>
+
+				<div class="w90 black new-line h40"><label class="lh40">Spells Known</label></div>
+				<div class="w80"><input type="text" name="spells-known-0" /></div>
+				<div class="w80"><input type="text" name="spells-known-1" /></div>
+				<div class="w80"><input type="text" name="spells-known-2" /></div>
+				<div class="w80"><input type="text" name="spells-known-3" /></div>
+				<div class="w80"><input type="text" name="spells-known-4" /></div>
+				<div class="w80"><input type="text" name="spells-known-5" /></div>
+				<div class="w80"><input type="text" name="spells-known-6" /></div>
+				<div class="w80"><input type="text" name="spells-known-7" /></div>
+				<div class="w80"><input type="text" name="spells-known-8" /></div>
+				<div class="w80"><input type="text" name="spells-known-9" /></div>
+
+				<div class="w90 black new-line h40"><label class="lh40">Spell DC</label></div>
+				<div class="w80"><input type="text" name="spell-dc-0" /></div>
+				<div class="w80"><input type="text" name="spell-dc-1" /></div>
+				<div class="w80"><input type="text" name="spell-dc-2" /></div>
+				<div class="w80"><input type="text" name="spell-dc-3" /></div>
+				<div class="w80"><input type="text" name="spell-dc-4" /></div>
+				<div class="w80"><input type="text" name="spell-dc-5" /></div>
+				<div class="w80"><input type="text" name="spell-dc-6" /></div>
+				<div class="w80"><input type="text" name="spell-dc-7" /></div>
+				<div class="w80"><input type="text" name="spell-dc-8" /></div>
+				<div class="w80"><input type="text" name="spell-dc-9" /></div>
+
+				<div class="w90 black new-line h40"><label class="lh40">Spells per Day</label></div>
+				<div class="w80"><input type="text" name="spells-perday-0" /></div>
+				<div class="w80"><input type="text" name="spells-perday-1" /></div>
+				<div class="w80"><input type="text" name="spells-perday-2" /></div>
+				<div class="w80"><input type="text" name="spells-perday-3" /></div>
+				<div class="w80"><input type="text" name="spells-perday-4" /></div>
+				<div class="w80"><input type="text" name="spells-perday-5" /></div>
+				<div class="w80"><input type="text" name="spells-perday-6" /></div>
+				<div class="w80"><input type="text" name="spells-perday-7" /></div>
+				<div class="w80"><input type="text" name="spells-perday-8" /></div>
+				<div class="w80"><input type="text" name="spells-perday-9" /></div>
+
+				<div class="w90 black new-line h40"><label class="lh40">Bonus Spells</label></div>
+				<div class="w80 h40"><label class="lh40">&mdash;</label></div>
+				<div class="w80"><input type="text" name="bonus-spells-1" /></div>
+				<div class="w80"><input type="text" name="bonus-spells-2" /></div>
+				<div class="w80"><input type="text" name="bonus-spells-3" /></div>
+				<div class="w80"><input type="text" name="bonus-spells-4" /></div>
+				<div class="w80"><input type="text" name="bonus-spells-5" /></div>
+				<div class="w80"><input type="text" name="bonus-spells-6" /></div>
+				<div class="w80"><input type="text" name="bonus-spells-7" /></div>
+				<div class="w80"><input type="text" name="bonus-spells-8" /></div>
+				<div class="w80"><input type="text" name="bonus-spells-9" /></div>
+
+				<div class="w150 black new-line"><span>Conditional</span><label>Modifiers</label></div>
+				<div class="w290"><input type="text" name="spells-conditional-modifiers" class="left" /><label>&nbsp;</label></div>
+			<div class="w150 black"><span>Specialty</span><label>Schools/Domains/Bloodline</label></div>
+			<div class="w370"><input type="text" name="spells-speciality" class="left" /><label>Specialised &amp; Opposed Schools, Bloodline, Domains</label></div>
+
+			<div class="w130 black new-line"><span>0th Level</span><label>Spells</label></div>
+			<div class="w850">
+				<input type="text" name="spells-0th-level" class="left legacy" />
+				<label class="spells-cast-slots legacy">
+					<input type="checkbox" name="spells-0th-level-cast-1" />
+					<input type="checkbox" name="spells-0th-level-cast-2" />
+					<input type="checkbox" name="spells-0th-level-cast-3" />
+					<input type="checkbox" name="spells-0th-level-cast-4" />
+					<input type="checkbox" name="spells-0th-level-cast-5" />
+					<input type="checkbox" name="spells-0th-level-cast-6" />
+					<input type="checkbox" name="spells-0th-level-cast-7" />
+					<input type="checkbox" name="spells-0th-level-cast-8" />
+					<input type="checkbox" name="spells-0th-level-cast-9" />
+					<input type="checkbox" name="spells-0th-level-cast-10" />
+				</label>
+				<div class="spells-0 spell-container">
+					<div class="spell-add token-add static-token" data-level="0">+</div>
+				</div>
+			</div>
+
+			<div class="w130 black new-line"><span>1st Level</span><label>Spells</label></div>
+			<div class="w850">
+				<input type="text" name="spells-1st-level" class="left legacy" />
+				<label class="spells-cast-slots legacy">
+					<input type="checkbox" name="spells-1st-level-cast-1" />
+					<input type="checkbox" name="spells-1st-level-cast-2" />
+					<input type="checkbox" name="spells-1st-level-cast-3" />
+					<input type="checkbox" name="spells-1st-level-cast-4" />
+					<input type="checkbox" name="spells-1st-level-cast-5" />
+					<input type="checkbox" name="spells-1st-level-cast-6" />
+					<input type="checkbox" name="spells-1st-level-cast-7" />
+					<input type="checkbox" name="spells-1st-level-cast-8" />
+					<input type="checkbox" name="spells-1st-level-cast-9" />
+					<input type="checkbox" name="spells-1st-level-cast-10" />
+				</label>
+				<div class="spells-1 spell-container">
+					<div class="spell-add token-add static-token" data-level="1">+</div>
+				</div>
+			</div>
+
+			<div class="w130 black new-line"><span>2nd Level</span><label>Spells</label></div>
+			<div class="w850">
+				<input type="text" name="spells-2nd-level" class="left legacy" />
+				<label class="spells-cast-slots legacy">
+					<input type="checkbox" name="spells-2nd-level-cast-1" />
+					<input type="checkbox" name="spells-2nd-level-cast-2" />
+					<input type="checkbox" name="spells-2nd-level-cast-3" />
+					<input type="checkbox" name="spells-2nd-level-cast-4" />
+					<input type="checkbox" name="spells-2nd-level-cast-5" />
+					<input type="checkbox" name="spells-2nd-level-cast-6" />
+					<input type="checkbox" name="spells-2nd-level-cast-7" />
+					<input type="checkbox" name="spells-2nd-level-cast-8" />
+					<input type="checkbox" name="spells-2nd-level-cast-9" />
+					<input type="checkbox" name="spells-2nd-level-cast-10" />
+				</label>
+				<div class="spells-2 spell-container">
+					<div class="spell-add token-add static-token" data-level="2">+</div>
+				</div>
+			</div>
+
+			<div class="w130 black new-line"><span>3rd Level</span><label>Spells</label></div>
+			<div class="w850">
+				<input type="text" name="spells-3rd-level" class="left legacy" />
+				<label class="spells-cast-slots legacy">
+					<input type="checkbox" name="spells-3rd-level-cast-1" />
+					<input type="checkbox" name="spells-3rd-level-cast-2" />
+					<input type="checkbox" name="spells-3rd-level-cast-3" />
+					<input type="checkbox" name="spells-3rd-level-cast-4" />
+					<input type="checkbox" name="spells-3rd-level-cast-5" />
+					<input type="checkbox" name="spells-3rd-level-cast-6" />
+					<input type="checkbox" name="spells-3rd-level-cast-7" />
+					<input type="checkbox" name="spells-3rd-level-cast-8" />
+					<input type="checkbox" name="spells-3rd-level-cast-9" />
+					<input type="checkbox" name="spells-3rd-level-cast-10" />
+				</label>
+				<div class="spells-3 spell-container">
+					<div class="spell-add token-add static-token" data-level="3">+</div>
+				</div>
+			</div>
+
+			<div class="w130 black new-line"><span>4th Level</span><label>Spells</label></div>
+			<div class="w850">
+				<input type="text" name="spells-4th-level" class="left legacy" />
+				<label class="spells-cast-slots legacy">
+					<input type="checkbox" name="spells-4th-level-cast-1" />
+					<input type="checkbox" name="spells-4th-level-cast-2" />
+					<input type="checkbox" name="spells-4th-level-cast-3" />
+					<input type="checkbox" name="spells-4th-level-cast-4" />
+					<input type="checkbox" name="spells-4th-level-cast-5" />
+					<input type="checkbox" name="spells-4th-level-cast-6" />
+					<input type="checkbox" name="spells-4th-level-cast-7" />
+					<input type="checkbox" name="spells-4th-level-cast-8" />
+					<input type="checkbox" name="spells-4th-level-cast-9" />
+					<input type="checkbox" name="spells-4th-level-cast-10" />
+				</label>
+				<div class="spells-4 spell-container">
+					<div class="spell-add token-add static-token" data-level="4">+</div>
+				</div>
+			</div>
+
+			<div class="w130 black new-line"><span>5th Level</span><label>Spells</label></div>
+			<div class="w850">
+				<input type="text" name="spells-5th-level" class="left legacy" />
+				<label class="spells-cast-slots legacy">
+					<input type="checkbox" name="spells-5th-level-cast-1" />
+					<input type="checkbox" name="spells-5th-level-cast-2" />
+					<input type="checkbox" name="spells-5th-level-cast-3" />
+					<input type="checkbox" name="spells-5th-level-cast-4" />
+					<input type="checkbox" name="spells-5th-level-cast-5" />
+					<input type="checkbox" name="spells-5th-level-cast-6" />
+					<input type="checkbox" name="spells-5th-level-cast-7" />
+					<input type="checkbox" name="spells-5th-level-cast-8" />
+					<input type="checkbox" name="spells-5th-level-cast-9" />
+					<input type="checkbox" name="spells-5th-level-cast-10" />
+				</label>
+				<div class="spells-5 spell-container">
+					<div class="spell-add token-add static-token" data-level="5">+</div>
+				</div>
+			</div>
+
+			<div class="w130 black new-line"><span>6th Level</span><label>Spells</label></div>
+			<div class="w850">
+				<input type="text" name="spells-6th-level" class="left legacy" />
+				<label class="spells-cast-slots legacy">
+					<input type="checkbox" name="spells-6th-level-cast-1" />
+					<input type="checkbox" name="spells-6th-level-cast-2" />
+					<input type="checkbox" name="spells-6th-level-cast-3" />
+					<input type="checkbox" name="spells-6th-level-cast-4" />
+					<input type="checkbox" name="spells-6th-level-cast-5" />
+					<input type="checkbox" name="spells-6th-level-cast-6" />
+					<input type="checkbox" name="spells-6th-level-cast-7" />
+					<input type="checkbox" name="spells-6th-level-cast-8" />
+					<input type="checkbox" name="spells-6th-level-cast-9" />
+					<input type="checkbox" name="spells-6th-level-cast-10" />
+				</label>
+				<div class="spells-6 spell-container">
+					<div class="spell-add token-add static-token" data-level="6">+</div>
+				</div>
+			</div>
+
+			<div class="w130 black new-line"><span>7th Level</span><label>Spells</label></div>
+			<div class="w850">
+				<input type="text" name="spells-7th-level" class="left legacy" />
+				<label class="spells-cast-slots legacy">
+					<input type="checkbox" name="spells-7th-level-cast-1" />
+					<input type="checkbox" name="spells-7th-level-cast-2" />
+					<input type="checkbox" name="spells-7th-level-cast-3" />
+					<input type="checkbox" name="spells-7th-level-cast-4" />
+					<input type="checkbox" name="spells-7th-level-cast-5" />
+					<input type="checkbox" name="spells-7th-level-cast-6" />
+					<input type="checkbox" name="spells-7th-level-cast-7" />
+					<input type="checkbox" name="spells-7th-level-cast-8" />
+					<input type="checkbox" name="spells-7th-level-cast-9" />
+					<input type="checkbox" name="spells-7th-level-cast-10" />
+				</label>
+				<div class="spells-7 spell-container">
+					<div class="spell-add token-add static-token" data-level="7">+</div>
+				</div>
+			</div>
+
+			<div class="w130 black new-line"><span>8th Level</span><label>Spells</label></div>
+			<div class="w850">
+				<input type="text" name="spells-8th-level" class="left legacy" />
+				<label class="spells-cast-slots legacy">
+					<input type="checkbox" name="spells-8th-level-cast-1" />
+					<input type="checkbox" name="spells-8th-level-cast-2" />
+					<input type="checkbox" name="spells-8th-level-cast-3" />
+					<input type="checkbox" name="spells-8th-level-cast-4" />
+					<input type="checkbox" name="spells-8th-level-cast-5" />
+					<input type="checkbox" name="spells-8th-level-cast-6" />
+					<input type="checkbox" name="spells-8th-level-cast-7" />
+					<input type="checkbox" name="spells-8th-level-cast-8" />
+					<input type="checkbox" name="spells-8th-level-cast-9" />
+					<input type="checkbox" name="spells-8th-level-cast-10" />
+				</label>
+				<div class="spells-8 spell-container">
+					<div class="spell-add token-add static-token" data-level="8">+</div>
+				</div>
+			</div>
+
+			<div class="w130 black new-line"><span>9th Level</span><label>Spells</label></div>
+			<div class="w850">
+				<input type="text" name="spells-9th-level" class="left legacy" />
+				<label class="spells-cast-slots legacy">
+					<input type="checkbox" name="spells-9th-level-cast-1" />
+					<input type="checkbox" name="spells-9th-level-cast-2" />
+					<input type="checkbox" name="spells-9th-level-cast-3" />
+					<input type="checkbox" name="spells-9th-level-cast-4" />
+					<input type="checkbox" name="spells-9th-level-cast-5" />
+					<input type="checkbox" name="spells-9th-level-cast-6" />
+					<input type="checkbox" name="spells-9th-level-cast-7" />
+					<input type="checkbox" name="spells-9th-level-cast-8" />
+					<input type="checkbox" name="spells-9th-level-cast-9" />
+					<input type="checkbox" name="spells-9th-level-cast-10" />
+				</label>
+				<div class="spells-9 spell-container">
+					<div class="spell-add token-add static-token" data-level="9">+</div>
+				</div>
+			</div>
 			</section>
 		</article>
 
-		<article class="article-skills">
-			<h1><a name="skills"></a>Skills<span><a href="" class="expand-collapse"></a></span></h1>
-				<section>
-					<div class="w30 small"><label>Class Skill</label></div>
-					<div class="w240"><label>Skill Name</label></div>
-					<div class="w80"><label>Total</label></div>
-					<div class="w120"><label>Ability Modifier</label></div>
-					<div class="w70"><label>Ranks</label></div>
-					<div class="w70"><label>Class</label></div>
-					<div class="w70"><label>Racial</label></div>
-					<div class="w70"><label>Trait</label></div>
-					<div class="w160"><label>Misc</label></div>
-
-								<div class="w30 new-line tick"><input type="checkbox" name="skill-acrobatics-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Acrobatics</label></div>
-					<div class="w80"><input type="text" name="skill-acrobatics" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Dex</label></div>
-					<div class="w70"><input type="text" name="skill-acrobatics-ability-modifier" class="ability-modifier-dex auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-acrobatics-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-acrobatics-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-acrobatics-racial" /></div>
-					<div class="w70"><input type="text" name="skill-acrobatics-trait" /></div>
-					<div class="w160"><input type="text" name="skill-acrobatics-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-appraise-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Appraise</label></div>
-					<div class="w80"><input type="text" name="skill-appraise" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Int</label></div>
-					<div class="w70"><input type="text" name="skill-appraise-ability-modifier" class="ability-modifier-int auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-appraise-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-appraise-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-appraise-racial" /></div>
-					<div class="w70"><input type="text" name="skill-appraise-trait" /></div>
-					<div class="w160"><input type="text" name="skill-appraise-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-bluff-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Bluff</label></div>
-					<div class="w80"><input type="text" name="skill-bluff" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Cha</label></div>
-					<div class="w70"><input type="text" name="skill-bluff-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-bluff-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-bluff-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-bluff-racial" /></div>
-					<div class="w70"><input type="text" name="skill-bluff-trait" /></div>
-					<div class="w160"><input type="text" name="skill-bluff-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-climb-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Climb</label></div>
-					<div class="w80"><input type="text" name="skill-climb" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Str</label></div>
-					<div class="w70"><input type="text" name="skill-climb-ability-modifier" class="ability-modifier-str auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-climb-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-climb-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-climb-racial" /></div>
-					<div class="w70"><input type="text" name="skill-climb-trait" /></div>
-					<div class="w160"><input type="text" name="skill-climb-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-craft1-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Craft</label><input type="text" name="skill-craft1-name" class="skill-name left" /></div>
-					<div class="w80"><input type="text" name="skill-craft1" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Int</label></div>
-					<div class="w70"><input type="text" name="skill-craft1-ability-modifier" class="ability-modifier-int auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-craft1-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-craft1-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-craft1-racial" /></div>
-					<div class="w70"><input type="text" name="skill-craft1-trait" /></div>
-					<div class="w160"><input type="text" name="skill-craft1-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-craft2-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Craft</label><input type="text" name="skill-craft2-name" class="skill-name left" /></div>
-					<div class="w80"><input type="text" name="skill-craft2" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Int</label></div>
-					<div class="w70"><input type="text" name="skill-craft2-ability-modifier" class="ability-modifier-int auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-craft2-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-craft2-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-craft2-racial" /></div>
-					<div class="w70"><input type="text" name="skill-craft2-trait" /></div>
-					<div class="w160"><input type="text" name="skill-craft2-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-craft3-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Craft</label><input type="text" name="skill-craft3-name" class="skill-name left" /></div>
-					<div class="w80"><input type="text" name="skill-craft3" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Int</label></div>
-					<div class="w70"><input type="text" name="skill-craft3-ability-modifier" class="ability-modifier-int auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-craft3-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-craft3-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-craft3-racial" /></div>
-					<div class="w70"><input type="text" name="skill-craft3-trait" /></div>
-					<div class="w160"><input type="text" name="skill-craft3-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-diplomacy-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Diplomacy</label></div>
-					<div class="w80"><input type="text" name="skill-diplomacy" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Cha</label></div>
-					<div class="w70"><input type="text" name="skill-diplomacy-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-diplomacy-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-diplomacy-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-diplomacy-racial" /></div>
-					<div class="w70"><input type="text" name="skill-diplomacy-trait" /></div>
-					<div class="w160"><input type="text" name="skill-diplomacy-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-disabledevice-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Disable Device*</label></div>
-					<div class="w80"><input type="text" name="skill-disabledevice" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Dex</label></div>
-					<div class="w70"><input type="text" name="skill-disabledevice-ability-modifier" class="ability-modifier-dex auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-disabledevice-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-disabledevice-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-disabledevice-racial" /></div>
-					<div class="w70"><input type="text" name="skill-disabledevice-trait" /></div>
-					<div class="w160"><input type="text" name="skill-disabledevice-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-disguise-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Disguise</label></div>
-					<div class="w80"><input type="text" name="skill-disguise" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Cha</label></div>
-					<div class="w70"><input type="text" name="skill-disguise-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-disguise-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-disguise-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-disguise-racial" /></div>
-					<div class="w70"><input type="text" name="skill-disguise-trait" /></div>
-					<div class="w160"><input type="text" name="skill-disguise-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-escapeartist-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Escape Artist</label></div>
-					<div class="w80"><input type="text" name="skill-escapeartist" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Dex</label></div>
-					<div class="w70"><input type="text" name="skill-escapeartist-ability-modifier" class="ability-modifier-dex auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-escapeartist-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-escapeartist-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-escapeartist-racial" /></div>
-					<div class="w70"><input type="text" name="skill-escapeartist-trait" /></div>
-					<div class="w160"><input type="text" name="skill-escapeartist-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-fly-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Fly</label></div>
-					<div class="w80"><input type="text" name="skill-fly" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Dex</label></div>
-					<div class="w70"><input type="text" name="skill-fly-ability-modifier" class="ability-modifier-dex auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-fly-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-fly-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-fly-racial" /></div>
-					<div class="w70"><input type="text" name="skill-fly-trait" /></div>
-					<div class="w160"><input type="text" name="skill-fly-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-handleanimal-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Handle Animal*</label></div>
-					<div class="w80"><input type="text" name="skill-handleanimal" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Cha</label></div>
-					<div class="w70"><input type="text" name="skill-handleanimal-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-handleanimal-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-handleanimal-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-handleanimal-racial" /></div>
-					<div class="w70"><input type="text" name="skill-handleanimal-trait" /></div>
-					<div class="w160"><input type="text" name="skill-handleanimal-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-heal-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Heal</label></div>
-					<div class="w80"><input type="text" name="skill-heal" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Wis</label></div>
-					<div class="w70"><input type="text" name="skill-heal-ability-modifier" class="ability-modifier-wis auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-heal-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-heal-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-heal-racial" /></div>
-					<div class="w70"><input type="text" name="skill-heal-trait" /></div>
-					<div class="w160"><input type="text" name="skill-heal-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-intimidate-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Intimidate</label></div>
-					<div class="w80"><input type="text" name="skill-intimidate" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Cha</label></div>
-					<div class="w70"><input type="text" name="skill-intimidate-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-intimidate-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-intimidate-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-intimidate-racial" /></div>
-					<div class="w70"><input type="text" name="skill-intimidate-trait" /></div>
-					<div class="w160"><input type="text" name="skill-intimidate-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-knowarcana-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Knowledge (Arcana)*</label></div>
-					<div class="w80"><input type="text" name="skill-knowarcana" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Int</label></div>
-					<div class="w70"><input type="text" name="skill-knowarcana-ability-modifier" class="ability-modifier-int auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knowarcana-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-knowarcana-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knowarcana-racial" /></div>
-					<div class="w70"><input type="text" name="skill-knowarcana-trait" /></div>
-					<div class="w160"><input type="text" name="skill-knowarcana-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-knowdungeoneering-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Knowledge (Dungeoneering)*</label></div>
-					<div class="w80"><input type="text" name="skill-knowdungeoneering" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Int</label></div>
-					<div class="w70"><input type="text" name="skill-knowdungeoneering-ability-modifier" class="ability-modifier-int auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knowdungeoneering-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-knowdungeoneering-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knowdungeoneering-racial" /></div>
-					<div class="w70"><input type="text" name="skill-knowdungeoneering-trait" /></div>
-					<div class="w160"><input type="text" name="skill-knowdungeoneering-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-knowengineering-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Knowledge (Engineering)*</label></div>
-					<div class="w80"><input type="text" name="skill-knowengineering" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Int</label></div>
-					<div class="w70"><input type="text" name="skill-knowengineering-ability-modifier" class="ability-modifier-int auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knowengineering-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-knowengineering-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knowengineering-racial" /></div>
-					<div class="w70"><input type="text" name="skill-knowengineering-trait" /></div>
-					<div class="w160"><input type="text" name="skill-knowengineering-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-knowgeography-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Knowledge (Geography)*</label></div>
-					<div class="w80"><input type="text" name="skill-knowgeography" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Int</label></div>
-					<div class="w70"><input type="text" name="skill-knowgeography-ability-modifier" class="ability-modifier-int auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knowgeography-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-knowgeography-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knowgeography-racial" /></div>
-					<div class="w70"><input type="text" name="skill-knowgeography-trait" /></div>
-					<div class="w160"><input type="text" name="skill-knowgeography-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-knowhistory-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Knowledge (History)*</label></div>
-					<div class="w80"><input type="text" name="skill-knowhistory" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Int</label></div>
-					<div class="w70"><input type="text" name="skill-knowhistory-ability-modifier" class="ability-modifier-int auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knowhistory-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-knowhistory-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knowhistory-racial" /></div>
-					<div class="w70"><input type="text" name="skill-knowhistory-trait" /></div>
-					<div class="w160"><input type="text" name="skill-knowhistory-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-knowlocal-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Knowledge (Local)*</label></div>
-					<div class="w80"><input type="text" name="skill-knowlocal" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Int</label></div>
-					<div class="w70"><input type="text" name="skill-knowlocal-ability-modifier" class="ability-modifier-int auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knowlocal-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-knowlocal-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knowlocal-racial" /></div>
-					<div class="w70"><input type="text" name="skill-knowlocal-trait" /></div>
-					<div class="w160"><input type="text" name="skill-knowlocal-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-knownature-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Knowledge (Nature)*</label></div>
-					<div class="w80"><input type="text" name="skill-knownature" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Int</label></div>
-					<div class="w70"><input type="text" name="skill-knownature-ability-modifier" class="ability-modifier-int auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knownature-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-knownature-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knownature-racial" /></div>
-					<div class="w70"><input type="text" name="skill-knownature-trait" /></div>
-					<div class="w160"><input type="text" name="skill-knownature-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-knownobility-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Knowledge (Nobility)*</label></div>
-					<div class="w80"><input type="text" name="skill-knownobility" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Int</label></div>
-					<div class="w70"><input type="text" name="skill-knownobility-ability-modifier" class="ability-modifier-int auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knownobility-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-knownobility-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knownobility-racial" /></div>
-					<div class="w70"><input type="text" name="skill-knownobility-trait" /></div>
-					<div class="w160"><input type="text" name="skill-knownobility-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-knowplanes-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Knowledge (Planes)*</label></div>
-					<div class="w80"><input type="text" name="skill-knowplanes" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Int</label></div>
-					<div class="w70"><input type="text" name="skill-knowplanes-ability-modifier" class="ability-modifier-int auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knowplanes-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-knowplanes-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knowplanes-racial" /></div>
-					<div class="w70"><input type="text" name="skill-knowplanes-trait" /></div>
-					<div class="w160"><input type="text" name="skill-knowplanes-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-knowreligion-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Knowledge (Religion)*</label></div>
-					<div class="w80"><input type="text" name="skill-knowreligion" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Int</label></div>
-					<div class="w70"><input type="text" name="skill-knowreligion-ability-modifier" class="ability-modifier-int auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knowreligion-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-knowreligion-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-knowreligion-racial" /></div>
-					<div class="w70"><input type="text" name="skill-knowreligion-trait" /></div>
-					<div class="w160"><input type="text" name="skill-knowreligion-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-linguistics-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Linguistics*</label></div>
-					<div class="w80"><input type="text" name="skill-linguistics" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Int</label></div>
-					<div class="w70"><input type="text" name="skill-linguistics-ability-modifier" class="ability-modifier-int auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-linguistics-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-linguistics-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-linguistics-racial" /></div>
-					<div class="w70"><input type="text" name="skill-linguistics-trait" /></div>
-					<div class="w160"><input type="text" name="skill-linguistics-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-perception-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Perception</label></div>
-					<div class="w80"><input type="text" name="skill-perception" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Wis</label></div>
-					<div class="w70"><input type="text" name="skill-perception-ability-modifier" class="ability-modifier-wis auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-perception-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-perception-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-perception-racial" /></div>
-					<div class="w70"><input type="text" name="skill-perception-trait" /></div>
-					<div class="w160"><input type="text" name="skill-perception-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-perform1-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Perform</label><input type="text" name="skill-perform1-name" class="skill-name left" /></div>
-					<div class="w80"><input type="text" name="skill-perform1" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Cha</label></div>
-					<div class="w70"><input type="text" name="skill-perform1-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-perform1-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-perform1-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-perform1-racial" /></div>
-					<div class="w70"><input type="text" name="skill-perform1-trait" /></div>
-					<div class="w160"><input type="text" name="skill-perform1-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-perform2-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Perform</label><input type="text" name="skill-perform2-name" class="skill-name left" /></div>
-					<div class="w80"><input type="text" name="skill-perform2" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Cha</label></div>
-					<div class="w70"><input type="text" name="skill-perform2-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-perform2-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-perform2-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-perform2-racial" /></div>
-					<div class="w70"><input type="text" name="skill-perform2-trait" /></div>
-					<div class="w160"><input type="text" name="skill-perform2-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-profession1-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Profession*</label><input type="text" name="skill-profession1-name" class="skill-name left" /></div>
-					<div class="w80"><input type="text" name="skill-profession1" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Wis</label></div>
-					<div class="w70"><input type="text" name="skill-profession1-ability-modifier" class="ability-modifier-wis auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-profession1-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-profession1-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-profession1-racial" /></div>
-					<div class="w70"><input type="text" name="skill-profession1-trait" /></div>
-					<div class="w160"><input type="text" name="skill-profession1-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-profession2-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Profession*</label><input type="text" name="skill-profession2-name" class="skill-name left" /></div>
-					<div class="w80"><input type="text" name="skill-profession2" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Wis</label></div>
-					<div class="w70"><input type="text" name="skill-profession2-ability-modifier" class="ability-modifier-wis auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-profession2-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-profession2-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-profession2-racial" /></div>
-					<div class="w70"><input type="text" name="skill-profession2-trait" /></div>
-					<div class="w160"><input type="text" name="skill-profession2-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-ride-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Ride</label></div>
-					<div class="w80"><input type="text" name="skill-ride" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Dex</label></div>
-					<div class="w70"><input type="text" name="skill-ride-ability-modifier" class="ability-modifier-dex auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-ride-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-ride-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-ride-racial" /></div>
-					<div class="w70"><input type="text" name="skill-ride-trait" /></div>
-					<div class="w160"><input type="text" name="skill-ride-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-sensemotive-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Sense Motive</label></div>
-					<div class="w80"><input type="text" name="skill-sensemotive" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Wis</label></div>
-					<div class="w70"><input type="text" name="skill-sensemotive-ability-modifier" class="ability-modifier-wis auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-sensemotive-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-sensemotive-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-sensemotive-racial" /></div>
-					<div class="w70"><input type="text" name="skill-sensemotive-trait" /></div>
-					<div class="w160"><input type="text" name="skill-sensemotive-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-sleightofhand-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Sleight of Hand*</label></div>
-					<div class="w80"><input type="text" name="skill-sleightofhand" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Dex</label></div>
-					<div class="w70"><input type="text" name="skill-sleightofhand-ability-modifier" class="ability-modifier-dex auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-sleightofhand-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-sleightofhand-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-sleightofhand-racial" /></div>
-					<div class="w70"><input type="text" name="skill-sleightofhand-trait" /></div>
-					<div class="w160"><input type="text" name="skill-sleightofhand-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-spellcraft-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Spellcraft*</label></div>
-					<div class="w80"><input type="text" name="skill-spellcraft" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Int</label></div>
-					<div class="w70"><input type="text" name="skill-spellcraft-ability-modifier" class="ability-modifier-int auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-spellcraft-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-spellcraft-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-spellcraft-racial" /></div>
-					<div class="w70"><input type="text" name="skill-spellcraft-trait" /></div>
-					<div class="w160"><input type="text" name="skill-spellcraft-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-stealth-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Stealth</label></div>
-					<div class="w80"><input type="text" name="skill-stealth" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Dex</label></div>
-					<div class="w70"><input type="text" name="skill-stealth-ability-modifier" class="ability-modifier-dex auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-stealth-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-stealth-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-stealth-racial" /></div>
-					<div class="w70"><input type="text" name="skill-stealth-trait" /></div>
-					<div class="w160"><input type="text" name="skill-stealth-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-survival-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Survival</label></div>
-					<div class="w80"><input type="text" name="skill-survival" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Wis</label></div>
-					<div class="w70"><input type="text" name="skill-survival-ability-modifier" class="ability-modifier-wis auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-survival-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-survival-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-survival-racial" /></div>
-					<div class="w70"><input type="text" name="skill-survival-trait" /></div>
-					<div class="w160"><input type="text" name="skill-survival-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-swim-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Swim</label></div>
-					<div class="w80"><input type="text" name="skill-swim" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Str</label></div>
-					<div class="w70"><input type="text" name="skill-swim-ability-modifier" class="ability-modifier-str auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-swim-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-swim-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-swim-racial" /></div>
-					<div class="w70"><input type="text" name="skill-swim-trait" /></div>
-					<div class="w160"><input type="text" name="skill-swim-misc" class="left" /></div>
-
-					<div class="w30 new-line tick"><input type="checkbox" name="skill-usemagicdevice-class-skill" value="1" /></div>
-					<div class="w240"><label class="skill">Use Magic Device*</label></div>
-					<div class="w80"><input type="text" name="skill-usemagicdevice" class="skill-total" /></div>
-								<div class="w40"><label class="skill-ability">Cha</label></div>
-					<div class="w70"><input type="text" name="skill-usemagicdevice-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-usemagicdevice-ranks" /></div>
-					<div class="w70 class-bonus"><input type="text" name="skill-usemagicdevice-class" class="auto-calc" /></div>
-					<div class="w70"><input type="text" name="skill-usemagicdevice-racial" /></div>
-					<div class="w70"><input type="text" name="skill-usemagicdevice-trait" /></div>
-					<div class="w160"><input type="text" name="skill-usemagicdevice-misc" class="left" /></div>
-
-					<div class="w110 new-line"><label>* Trained Only</label></div>
-					<div class="w160 black"><span>Conditional</span><label>Modifiers</label></div>
-					<div class="w700"><input type="text" name="skills-conditional-modifiers" class="left" /><label>&amp; Other Notes</label></div>
-
-				<div class="w140 black new-line"><span>Languages</span><label>Known</label></div>
-				<div class="w510"><input type="text" name="languages" class="left" /><label>Spoken/Written</label></div>
-				<div class="w100 black"><span>XP</span><label>Experience Points</label></div>
-				<div class="w100"><input type="text" name="xp-total" /><label>Total</label></div>
-				<div class="w100"><input type="text" name="xp-to-next-level" /><label>Next Level</label></div>
-				</section>
-			</article>
-
-		<article>
-			<h1><a name="feats"></a>Feats &amp; Special Abilities<span><a href="" class="expand-collapse"></a></span></h1>
-				<section>
-				<div class="w100 black"><span>Feats</span><label>Comma Separated</label></div>
-				<div class="w880"><input type="text" name="feats" class="left" /><label>&nbsp;</label></div>
-				<div class="w990"><input type="text" name="feats-2" class="left" /><label>&nbsp;</label></div>
-				<div class="w990"><input type="text" name="feats-3" class="left" /><label>&nbsp;</label></div>
-				<div class="w220 black"><span>Special Abilities</span><label>Racial, Class &amp; Other</label></div>
-				<div class="w760"><input type="text" name="special-abilities" class="left" /><label>&nbsp;</label></div>
-				<div class="w990"><input type="text" name="special-abilities-2" class="left" /><label>&nbsp;</label></div>
-				<div class="w990"><input type="text" name="special-abilities-3" class="left" /><label>&nbsp;</label></div>
-				<div class="w100 black new-line"><span>Traits</span><label>Comma Separated</label></div>
-				<div class="w880"><input type="text" name="traits" class="left" /><label>&nbsp;</label></div>
-				</section>
-			</article>
-
-		<article>
-			<h1><a name="equipment"></a>Equipment &amp; Money<span><a href="" class="expand-collapse"></a></span></h1>
-				<section>
-					<div class="w70 black"><span>PP</span><label>Platinum</label></div>
-					<div class="w80"><input type="text" name="money-pp" /><label>Pieces</label></div>
-					<div class="w70 black"><span>GP</span><label>Gold</label></div>
-					<div class="w80"><input type="text" name="money-gp" /><label>Pieces</label></div>
-					<div class="w70 black"><span>SP</span><label>Silver</label></div>
-					<div class="w80"><input type="text" name="money-sp" /><label>Pieces</label></div>
-					<div class="w70 black"><span>CP</span><label>Copper</label></div>
-					<div class="w80"><input type="text" name="money-cp" /><label>Pieces</label></div>
-					<div class="w80 black"><span>Gems</span><label>&amp; Art</label></div>
-					<div class="w220"><input type="text" name="money-gems" class="left" /><label>&nbsp;</label></div>
-
-					<div class="w90 black new-line"><span>Other</span><label>Treasure</label></div>
-					<div class="w890"><input type="text" name="money-other" class="left" /><label>&nbsp;</label></div>
-
-					<div class="w120 black new-line"><span>AC Item</span><label>&nbsp;</label></div>
-					<div class="w220"><input type="text" name="ac-item-1-name" class="left" /><label>Item Name</label></div>
-					<div class="w60"><input type="text" name="ac-item-1-bonus" /><label>Bonus</label></div>
-					<div class="w100"><input type="text" name="ac-item-1-type" /><label>Type</label></div>
-					<div class="w60 small"><input type="text" name="ac-item-1-acp" /><label>Check<br />Penalty</label></div>
-					<div class="w60 small"><input type="text" name="ac-item-1-spell-failure" /><label>Spell<br />Failure</label></div>
-					<div class="w80"><input type="text" name="ac-item-1-weight" /><label>Weight</label></div>
-					<div class="w220"><input type="text" name="ac-item-1-properties" class="left" /><label>Properties</label></div>
-
-					<div class="w120 black new-line"><span>AC Item</span><label>&nbsp;</label></div>
-					<div class="w220"><input type="text" name="ac-item-2-name" class="left" /><label>Item Name</label></div>
-					<div class="w60"><input type="text" name="ac-item-2-bonus" /><label>Bonus</label></div>
-					<div class="w100"><input type="text" name="ac-item-2-type" /><label>Type</label></div>
-					<div class="w60 small"><input type="text" name="ac-item-2-acp" /><label>Check<br />Penalty</label></div>
-					<div class="w60 small"><input type="text" name="ac-item-2-spell-failure" /><label>Spell<br />Failure</label></div>
-					<div class="w80"><input type="text" name="ac-item-2-weight" /><label>Weight</label></div>
-					<div class="w220"><input type="text" name="ac-item-2-properties" class="left" /><label>Properties</label></div>
-
-					<div class="w120 black new-line"><span>AC Item</span><label>&nbsp;</label></div>
-					<div class="w220"><input type="text" name="ac-item-3-name" class="left" /><label>Item Name</label></div>
-					<div class="w60"><input type="text" name="ac-item-3-bonus" /><label>Bonus</label></div>
-					<div class="w100"><input type="text" name="ac-item-3-type" /><label>Type</label></div>
-					<div class="w60 small"><input type="text" name="ac-item-3-acp" /><label>Check<br />Penalty</label></div>
-					<div class="w60 small"><input type="text" name="ac-item-3-spell-failure" /><label>Spell<br />Failure</label></div>
-					<div class="w80"><input type="text" name="ac-item-3-weight" /><label>Weight</label></div>
-					<div class="w220"><input type="text" name="ac-item-3-properties" class="left" /><label>Properties</label></div>
-
-					<div class="w120 black new-line"><span>AC Item</span><label>&nbsp;</label></div>
-					<div class="w220"><input type="text" name="ac-item-4-name" class="left" /><label>Item Name</label></div>
-					<div class="w60"><input type="text" name="ac-item-4-bonus" /><label>Bonus</label></div>
-					<div class="w100"><input type="text" name="ac-item-4-type" /><label>Type</label></div>
-					<div class="w60 small"><input type="text" name="ac-item-4-acp" /><label>Check<br />Penalty</label></div>
-					<div class="w60 small"><input type="text" name="ac-item-4-spell-failure" /><label>Spell<br />Failure</label></div>
-					<div class="w80"><input type="text" name="ac-item-4-weight" /><label>Weight</label></div>
-					<div class="w220"><input type="text" name="ac-item-4-properties" class="left" /><label>Properties</label></div>
-
-					<div class="w120 black new-line"><span>AC Item</span><label>&nbsp;</label></div>
-					<div class="w220"><input type="text" name="ac-item-5-name" class="left" /><label>Item Name</label></div>
-					<div class="w60"><input type="text" name="ac-item-5-bonus" /><label>Bonus</label></div>
-					<div class="w100"><input type="text" name="ac-item-5-type" /><label>Type</label></div>
-					<div class="w60 small"><input type="text" name="ac-item-5-acp" /><label>Check<br />Penalty</label></div>
-					<div class="w60 small"><input type="text" name="ac-item-5-spell-failure" /><label>Spell<br />Failure</label></div>
-					<div class="w80"><input type="text" name="ac-item-5-weight" /><label>Weight</label></div>
-					<div class="w220"><input type="text" name="ac-item-5-properties" class="left" /><label>Properties</label></div>
-
-					<div class="w350 new-line"><label class="totals">Totals</label></div>
-					<div class="w60"><input type="text" name="ac-item-total-bonus" /><label>Bonus</label></div>
-					<div class="w100"><label>&nbsp;</label></div>
-					<div class="w60 small"><input type="text" name="ac-item-total-acp" /><label>Check<br />Penalty</label></div>
-					<div class="w60 small"><input type="text" name="ac-item-total-spell-failure" /><label>Spell<br />Failure</label></div>
-					<div class="w80"><input type="text" name="ac-item-total-weight" /><label>Weight</label></div>
-
-					<div class="w90 black new-line h620 legacy"><span>Gear</span></div>
-					<div class="w200 legacy"><label>Item</label><textarea name="gear"></textarea></div>
-					<div class="w140 legacy"><label>Location</label><textarea name="gear-location" class="location"></textarea></div>
-					<div class="w80 legacy"><label>Weight</label><textarea name="gear-weight" class="weight"></textarea></div>
-					<div class="w200 legacy"><label>Item</label><textarea name="gear-2"></textarea></div>
-					<div class="w140 legacy"><label>Location</label><textarea name="gear-2-location" class="location"></textarea></div>
-					<div class="w80 legacy"><label>Weight</label><textarea name="gear-2-weight" class="weight"></textarea></div>
-
-					<div class="w120 black new-line"><span>Gear</span><label>&nbsp;</label></div>
-					<div class="w850">
-						<div class="gear" id="gear"><div class="gear-item-add static-token token-add">+</div></div>
-					</div>
+	<article>
+		<h1><a name="notes"></a>Notes<span><a href="" class="expand-collapse"></a></span></h1>
+			<section>
+				<div class="w990"><textarea name="general-notes"></textarea></div>
 			</section>
 		</article>
 
-		<article>
-			<h1><a name="spells"></a>Spells<span><a href="" class="expand-collapse"></a></span></h1>
-				<section>
-					<div class="w90 black"><label>Spell Level</label></div>
-					<div class="w80"><label>0th</label></div>
-					<div class="w80"><label>1st</label></div>
-					<div class="w80"><label>2nd</label></div>
-					<div class="w80"><label>3rd</label></div>
-					<div class="w80"><label>4th</label></div>
-					<div class="w80"><label>5th</label></div>
-					<div class="w80"><label>6th</label></div>
-					<div class="w80"><label>7th</label></div>
-					<div class="w80"><label>8th</label></div>
-					<div class="w80"><label>9th</label></div>
+</form>
+<footer>
+	<nav>
+		<p><img src="images/footer-divider.png" width="2" height="40" /></p>
+		<p id="status">
+			<button ng-click="saveCharacter()">Save<span ng-show="unsavedChanges">*</span></button>
+			<button ng-click="showCharacterResource()">D</button>
+		</p>
+		<a href="#">Load</a>
+		<a href="#">New</a>
+		<a href="#general">General</a>
+		<a href="#abilities">Abilites</a>
+		<a href="#defense"><img src="images/icon-defense.png" width="40" height="40" alt="Defense" title="Defense" /></a>
+		<a href="#offense"><img src="images/icon-offense.png" width="40" height="40" alt="Offense" title="Offense" /></a>
+		<a href="#skills">Skills</a>
+		<a href="#feats">Feats</a>
+		<a href="#equipment">Equipment</a>
+		<a href="#spells"><img src="images/icon-spells.png" width="40" height="40" alt="Spells" title="Spells" /></a>
+		<a href="#notes">Notes</a>
+	</nav>
+</footer>
 
-					<div class="w90 black new-line h40"><label class="lh40">Spells Known</label></div>
-					<div class="w80"><input type="text" name="spells-known-0" /></div>
-					<div class="w80"><input type="text" name="spells-known-1" /></div>
-					<div class="w80"><input type="text" name="spells-known-2" /></div>
-					<div class="w80"><input type="text" name="spells-known-3" /></div>
-					<div class="w80"><input type="text" name="spells-known-4" /></div>
-					<div class="w80"><input type="text" name="spells-known-5" /></div>
-					<div class="w80"><input type="text" name="spells-known-6" /></div>
-					<div class="w80"><input type="text" name="spells-known-7" /></div>
-					<div class="w80"><input type="text" name="spells-known-8" /></div>
-					<div class="w80"><input type="text" name="spells-known-9" /></div>
-
-					<div class="w90 black new-line h40"><label class="lh40">Spell DC</label></div>
-					<div class="w80"><input type="text" name="spell-dc-0" /></div>
-					<div class="w80"><input type="text" name="spell-dc-1" /></div>
-					<div class="w80"><input type="text" name="spell-dc-2" /></div>
-					<div class="w80"><input type="text" name="spell-dc-3" /></div>
-					<div class="w80"><input type="text" name="spell-dc-4" /></div>
-					<div class="w80"><input type="text" name="spell-dc-5" /></div>
-					<div class="w80"><input type="text" name="spell-dc-6" /></div>
-					<div class="w80"><input type="text" name="spell-dc-7" /></div>
-					<div class="w80"><input type="text" name="spell-dc-8" /></div>
-					<div class="w80"><input type="text" name="spell-dc-9" /></div>
-
-					<div class="w90 black new-line h40"><label class="lh40">Spells per Day</label></div>
-					<div class="w80"><input type="text" name="spells-perday-0" /></div>
-					<div class="w80"><input type="text" name="spells-perday-1" /></div>
-					<div class="w80"><input type="text" name="spells-perday-2" /></div>
-					<div class="w80"><input type="text" name="spells-perday-3" /></div>
-					<div class="w80"><input type="text" name="spells-perday-4" /></div>
-					<div class="w80"><input type="text" name="spells-perday-5" /></div>
-					<div class="w80"><input type="text" name="spells-perday-6" /></div>
-					<div class="w80"><input type="text" name="spells-perday-7" /></div>
-					<div class="w80"><input type="text" name="spells-perday-8" /></div>
-					<div class="w80"><input type="text" name="spells-perday-9" /></div>
-
-					<div class="w90 black new-line h40"><label class="lh40">Bonus Spells</label></div>
-					<div class="w80 h40"><label class="lh40">&mdash;</label></div>
-					<div class="w80"><input type="text" name="bonus-spells-1" /></div>
-					<div class="w80"><input type="text" name="bonus-spells-2" /></div>
-					<div class="w80"><input type="text" name="bonus-spells-3" /></div>
-					<div class="w80"><input type="text" name="bonus-spells-4" /></div>
-					<div class="w80"><input type="text" name="bonus-spells-5" /></div>
-					<div class="w80"><input type="text" name="bonus-spells-6" /></div>
-					<div class="w80"><input type="text" name="bonus-spells-7" /></div>
-					<div class="w80"><input type="text" name="bonus-spells-8" /></div>
-					<div class="w80"><input type="text" name="bonus-spells-9" /></div>
-
-					<div class="w150 black new-line"><span>Conditional</span><label>Modifiers</label></div>
-					<div class="w290"><input type="text" name="spells-conditional-modifiers" class="left" /><label>&nbsp;</label></div>
-				<div class="w150 black"><span>Specialty</span><label>Schools/Domains/Bloodline</label></div>
-				<div class="w370"><input type="text" name="spells-speciality" class="left" /><label>Specialised &amp; Opposed Schools, Bloodline, Domains</label></div>
-
-				<div class="w130 black new-line"><span>0th Level</span><label>Spells</label></div>
-				<div class="w850">
-					<input type="text" name="spells-0th-level" class="left legacy" />
-					<label class="spells-cast-slots legacy">
-						<input type="checkbox" name="spells-0th-level-cast-1" />
-						<input type="checkbox" name="spells-0th-level-cast-2" />
-						<input type="checkbox" name="spells-0th-level-cast-3" />
-						<input type="checkbox" name="spells-0th-level-cast-4" />
-						<input type="checkbox" name="spells-0th-level-cast-5" />
-						<input type="checkbox" name="spells-0th-level-cast-6" />
-						<input type="checkbox" name="spells-0th-level-cast-7" />
-						<input type="checkbox" name="spells-0th-level-cast-8" />
-						<input type="checkbox" name="spells-0th-level-cast-9" />
-						<input type="checkbox" name="spells-0th-level-cast-10" />
-					</label>
-					<div class="spells-0 spell-container">
-						<div class="spell-add token-add static-token" data-level="0">+</div>
-					</div>
-				</div>
-
-				<div class="w130 black new-line"><span>1st Level</span><label>Spells</label></div>
-				<div class="w850">
-					<input type="text" name="spells-1st-level" class="left legacy" />
-					<label class="spells-cast-slots legacy">
-						<input type="checkbox" name="spells-1st-level-cast-1" />
-						<input type="checkbox" name="spells-1st-level-cast-2" />
-						<input type="checkbox" name="spells-1st-level-cast-3" />
-						<input type="checkbox" name="spells-1st-level-cast-4" />
-						<input type="checkbox" name="spells-1st-level-cast-5" />
-						<input type="checkbox" name="spells-1st-level-cast-6" />
-						<input type="checkbox" name="spells-1st-level-cast-7" />
-						<input type="checkbox" name="spells-1st-level-cast-8" />
-						<input type="checkbox" name="spells-1st-level-cast-9" />
-						<input type="checkbox" name="spells-1st-level-cast-10" />
-					</label>
-					<div class="spells-1 spell-container">
-						<div class="spell-add token-add static-token" data-level="1">+</div>
-					</div>
-				</div>
-
-				<div class="w130 black new-line"><span>2nd Level</span><label>Spells</label></div>
-				<div class="w850">
-					<input type="text" name="spells-2nd-level" class="left legacy" />
-					<label class="spells-cast-slots legacy">
-						<input type="checkbox" name="spells-2nd-level-cast-1" />
-						<input type="checkbox" name="spells-2nd-level-cast-2" />
-						<input type="checkbox" name="spells-2nd-level-cast-3" />
-						<input type="checkbox" name="spells-2nd-level-cast-4" />
-						<input type="checkbox" name="spells-2nd-level-cast-5" />
-						<input type="checkbox" name="spells-2nd-level-cast-6" />
-						<input type="checkbox" name="spells-2nd-level-cast-7" />
-						<input type="checkbox" name="spells-2nd-level-cast-8" />
-						<input type="checkbox" name="spells-2nd-level-cast-9" />
-						<input type="checkbox" name="spells-2nd-level-cast-10" />
-					</label>
-					<div class="spells-2 spell-container">
-						<div class="spell-add token-add static-token" data-level="2">+</div>
-					</div>
-				</div>
-
-				<div class="w130 black new-line"><span>3rd Level</span><label>Spells</label></div>
-				<div class="w850">
-					<input type="text" name="spells-3rd-level" class="left legacy" />
-					<label class="spells-cast-slots legacy">
-						<input type="checkbox" name="spells-3rd-level-cast-1" />
-						<input type="checkbox" name="spells-3rd-level-cast-2" />
-						<input type="checkbox" name="spells-3rd-level-cast-3" />
-						<input type="checkbox" name="spells-3rd-level-cast-4" />
-						<input type="checkbox" name="spells-3rd-level-cast-5" />
-						<input type="checkbox" name="spells-3rd-level-cast-6" />
-						<input type="checkbox" name="spells-3rd-level-cast-7" />
-						<input type="checkbox" name="spells-3rd-level-cast-8" />
-						<input type="checkbox" name="spells-3rd-level-cast-9" />
-						<input type="checkbox" name="spells-3rd-level-cast-10" />
-					</label>
-					<div class="spells-3 spell-container">
-						<div class="spell-add token-add static-token" data-level="3">+</div>
-					</div>
-				</div>
-
-				<div class="w130 black new-line"><span>4th Level</span><label>Spells</label></div>
-				<div class="w850">
-					<input type="text" name="spells-4th-level" class="left legacy" />
-					<label class="spells-cast-slots legacy">
-						<input type="checkbox" name="spells-4th-level-cast-1" />
-						<input type="checkbox" name="spells-4th-level-cast-2" />
-						<input type="checkbox" name="spells-4th-level-cast-3" />
-						<input type="checkbox" name="spells-4th-level-cast-4" />
-						<input type="checkbox" name="spells-4th-level-cast-5" />
-						<input type="checkbox" name="spells-4th-level-cast-6" />
-						<input type="checkbox" name="spells-4th-level-cast-7" />
-						<input type="checkbox" name="spells-4th-level-cast-8" />
-						<input type="checkbox" name="spells-4th-level-cast-9" />
-						<input type="checkbox" name="spells-4th-level-cast-10" />
-					</label>
-					<div class="spells-4 spell-container">
-						<div class="spell-add token-add static-token" data-level="4">+</div>
-					</div>
-				</div>
-
-				<div class="w130 black new-line"><span>5th Level</span><label>Spells</label></div>
-				<div class="w850">
-					<input type="text" name="spells-5th-level" class="left legacy" />
-					<label class="spells-cast-slots legacy">
-						<input type="checkbox" name="spells-5th-level-cast-1" />
-						<input type="checkbox" name="spells-5th-level-cast-2" />
-						<input type="checkbox" name="spells-5th-level-cast-3" />
-						<input type="checkbox" name="spells-5th-level-cast-4" />
-						<input type="checkbox" name="spells-5th-level-cast-5" />
-						<input type="checkbox" name="spells-5th-level-cast-6" />
-						<input type="checkbox" name="spells-5th-level-cast-7" />
-						<input type="checkbox" name="spells-5th-level-cast-8" />
-						<input type="checkbox" name="spells-5th-level-cast-9" />
-						<input type="checkbox" name="spells-5th-level-cast-10" />
-					</label>
-					<div class="spells-5 spell-container">
-						<div class="spell-add token-add static-token" data-level="5">+</div>
-					</div>
-				</div>
-
-				<div class="w130 black new-line"><span>6th Level</span><label>Spells</label></div>
-				<div class="w850">
-					<input type="text" name="spells-6th-level" class="left legacy" />
-					<label class="spells-cast-slots legacy">
-						<input type="checkbox" name="spells-6th-level-cast-1" />
-						<input type="checkbox" name="spells-6th-level-cast-2" />
-						<input type="checkbox" name="spells-6th-level-cast-3" />
-						<input type="checkbox" name="spells-6th-level-cast-4" />
-						<input type="checkbox" name="spells-6th-level-cast-5" />
-						<input type="checkbox" name="spells-6th-level-cast-6" />
-						<input type="checkbox" name="spells-6th-level-cast-7" />
-						<input type="checkbox" name="spells-6th-level-cast-8" />
-						<input type="checkbox" name="spells-6th-level-cast-9" />
-						<input type="checkbox" name="spells-6th-level-cast-10" />
-					</label>
-					<div class="spells-6 spell-container">
-						<div class="spell-add token-add static-token" data-level="6">+</div>
-					</div>
-				</div>
-
-				<div class="w130 black new-line"><span>7th Level</span><label>Spells</label></div>
-				<div class="w850">
-					<input type="text" name="spells-7th-level" class="left legacy" />
-					<label class="spells-cast-slots legacy">
-						<input type="checkbox" name="spells-7th-level-cast-1" />
-						<input type="checkbox" name="spells-7th-level-cast-2" />
-						<input type="checkbox" name="spells-7th-level-cast-3" />
-						<input type="checkbox" name="spells-7th-level-cast-4" />
-						<input type="checkbox" name="spells-7th-level-cast-5" />
-						<input type="checkbox" name="spells-7th-level-cast-6" />
-						<input type="checkbox" name="spells-7th-level-cast-7" />
-						<input type="checkbox" name="spells-7th-level-cast-8" />
-						<input type="checkbox" name="spells-7th-level-cast-9" />
-						<input type="checkbox" name="spells-7th-level-cast-10" />
-					</label>
-					<div class="spells-7 spell-container">
-						<div class="spell-add token-add static-token" data-level="7">+</div>
-					</div>
-				</div>
-
-				<div class="w130 black new-line"><span>8th Level</span><label>Spells</label></div>
-				<div class="w850">
-					<input type="text" name="spells-8th-level" class="left legacy" />
-					<label class="spells-cast-slots legacy">
-						<input type="checkbox" name="spells-8th-level-cast-1" />
-						<input type="checkbox" name="spells-8th-level-cast-2" />
-						<input type="checkbox" name="spells-8th-level-cast-3" />
-						<input type="checkbox" name="spells-8th-level-cast-4" />
-						<input type="checkbox" name="spells-8th-level-cast-5" />
-						<input type="checkbox" name="spells-8th-level-cast-6" />
-						<input type="checkbox" name="spells-8th-level-cast-7" />
-						<input type="checkbox" name="spells-8th-level-cast-8" />
-						<input type="checkbox" name="spells-8th-level-cast-9" />
-						<input type="checkbox" name="spells-8th-level-cast-10" />
-					</label>
-					<div class="spells-8 spell-container">
-						<div class="spell-add token-add static-token" data-level="8">+</div>
-					</div>
-				</div>
-
-				<div class="w130 black new-line"><span>9th Level</span><label>Spells</label></div>
-				<div class="w850">
-					<input type="text" name="spells-9th-level" class="left legacy" />
-					<label class="spells-cast-slots legacy">
-						<input type="checkbox" name="spells-9th-level-cast-1" />
-						<input type="checkbox" name="spells-9th-level-cast-2" />
-						<input type="checkbox" name="spells-9th-level-cast-3" />
-						<input type="checkbox" name="spells-9th-level-cast-4" />
-						<input type="checkbox" name="spells-9th-level-cast-5" />
-						<input type="checkbox" name="spells-9th-level-cast-6" />
-						<input type="checkbox" name="spells-9th-level-cast-7" />
-						<input type="checkbox" name="spells-9th-level-cast-8" />
-						<input type="checkbox" name="spells-9th-level-cast-9" />
-						<input type="checkbox" name="spells-9th-level-cast-10" />
-					</label>
-					<div class="spells-9 spell-container">
-						<div class="spell-add token-add static-token" data-level="9">+</div>
-					</div>
-				</div>
-				</section>
-			</article>
-
-		<article>
-			<h1><a name="notes"></a>Notes<span><a href="" class="expand-collapse"></a></span></h1>
-				<section>
-					<div class="w990"><textarea name="general-notes"></textarea></div>
-				</section>
-			</article>
-
-	</form>
-	<footer>
-		<nav>
-			<p><img src="images/footer-divider.png" width="2" height="40" /></p>
-			<p id="status">
-				<button ng-click="saveCharacter()">Save<span ng-show="unsavedChanges">*</span></button>
-				<button ng-click="showCharacterResource()">D</button>
-			</p>
-			<a href="#">Load</a>
-			<a href="#">New</a>
-			<a href="#general">General</a>
-			<a href="#abilities">Abilites</a>
-			<a href="#defense"><img src="images/icon-defense.png" width="40" height="40" alt="Defense" title="Defense" /></a>
-			<a href="#offense"><img src="images/icon-offense.png" width="40" height="40" alt="Offense" title="Offense" /></a>
-			<a href="#skills">Skills</a>
-			<a href="#feats">Feats</a>
-			<a href="#equipment">Equipment</a>
-			<a href="#spells"><img src="images/icon-spells.png" width="40" height="40" alt="Spells" title="Spells" /></a>
-			<a href="#notes">Notes</a>
-		</nav>
-	</footer>
-</div>
 <div id="login-dialog" title="Login" class="modal-dialog">
 	<p>Choose Login Provider:</p>
 	<ul>

@@ -1,26 +1,21 @@
-<div id="wrapper">
-	<header>
-		<p class="logo"><a href="#/"><img src="images/Pathfinder_Roleplaying_Game.png" width="480" height="160" alt="Pathfinder Roleplaying Game" /></a></p>
-		<h1>Character Sheet</h1>
-	</header>
-	<nav class="main space-top">
-		<ul>
-			<li>
-				<button>Load Character</button>
-				<div ng-repeat="c in characters" class="character-slip">
-					<div class="title">
-						<h1>{{c.name}}</h1>
-						<p>{{c.level}}</p>
-					</div>
-					<div class="actions">
-						<button title="Download" class="download icon-arrow-down"></button>
-						<button title="Delete" class="delete icon-remove"></button>
-						<a href="#/sheet/{{c.id}}" role="button">Load</a>
-					</div>
+<nav class="main space-top">
+	<ul class="character-list">
+		<li>
+			<button>Load Character</button>
+			<div ng-repeat="c in characters | orderBy:'modified':true" class="character-slip">
+				<div class="title">
+					<h1>{{c.name}}</h1>
+					<p>{{c.level}}</p>
 				</div>
-			</li>
-			<li><a href="#/sheet" role="button">New Character</a></li>
-		</ul>
-	</nav>
-	<pre>{{characters|json}}</pre>
-</div>
+				<div class="actions">
+					<button title="Download" class="download icon-arrow-down"></button>
+					<button title="Delete" class="delete icon-remove"></button>
+					<a href="#/sheet/{{c.id}}" role="button">Load</a>
+				</div>
+				<time datetime="{{c.modified}}">Last Modified {{c.modified|date:'EEE, d MMM yyyy, HH:mm'}}</time>
+			</div>
+		</li>
+		<li><a href="#/sheet" role="button">New Character</a></li>
+	</ul>
+</nav>
+<pre>{{characters|json}}</pre>

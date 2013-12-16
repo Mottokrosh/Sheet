@@ -21,8 +21,13 @@
 			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
 
-		<!-- Add your site or application content here -->
-		<div class="container" ng-view=""></div>
+		<div id="wrapper">
+			<header>
+				<p class="logo"><a href="#/"><img src="images/Pathfinder_Roleplaying_Game.png" width="480" height="160" alt="Pathfinder Roleplaying Game" /></a></p>
+				<h1>Character Sheet</h1>
+			</header>
+			<div class="container" ng-view=""></div>
+		</div>
 
 		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 		<script>
