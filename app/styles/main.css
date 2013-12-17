@@ -3,6 +3,9 @@ body { font-family: 'Goudy Bookletter 1911', times, serif; font-size: 16px; }
 header { text-align: center; }
 #wrapper { float: none; width: 1000px; margin: 0 auto; padding: 10px 0 30px 10px; }
 article { margin-bottom: 10px; overflow: auto; }
+.container {
+	width: 100%;
+}
 .container div { float: left; overflow: hidden; margin-right: 10px; margin-bottom: 10px; }
 #wrapper div.gear { margin: 0; }
 #wrapper div.gear input:not([type="checkbox"]) { border-right: none; border-bottom: none; }
@@ -58,18 +61,23 @@ button, [role='button'] {
 	text-shadow: 0 1px 0 #4d3534;
 	text-align: center;
 	box-sizing: border-box;
+	line-height: 1.33;
 }
 button:hover, [role='button']:hover {
 	background: linear-gradient(to bottom, #382d20 5%, #473827 100%);
 	background-color: #382d20;
+	color: #ddd;
+	text-decoration: none;
 }
 button:active, [role='button']:active {
 	position: relative;
 	top: 3px;
 	box-shadow: none;
+	color: #ddd;
 }
 nav ul {
 	list-style: none;
+	margin: 0;
 }
 nav.main {
 	width: 400px;
@@ -115,7 +123,6 @@ nav.main li > button, nav.main li > [role='button'] {
 	margin: 0;
 }
 #wrapper .download, #wrapper .delete {
-	line-height: 1.33;
 	vertical-align: bottom;
 }
 @font-face {
@@ -129,24 +136,23 @@ nav.main li > button, nav.main li > [role='button'] {
 	font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="ico-"], [class*=" ico-"] {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
 	text-transform: none;
-	line-height: 1;
 
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-arrow-down:before {
+.ico-arrow-down:before {
 	content: "\e600";
 }
-.icon-remove:before {
+.ico-remove:before {
 	content: "\e601";
 }
 

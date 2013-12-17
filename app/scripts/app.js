@@ -5,7 +5,8 @@ angular.module('sheetApp', [
 	'ngResource',
 	'ngSanitize',
 	'ngRoute',
-	'mongolabResource'
+	'mongolabResource',
+	'ui.bootstrap'
 ])
 	.config(function ($routeProvider) {
 		$routeProvider
