@@ -13,4 +13,8 @@ angular.module('sheetApp')
 				}
 			});
 		});
+
+		$scope.deleteCharacter = function () {
+
+		};
 	});

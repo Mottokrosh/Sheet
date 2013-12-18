@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sheetApp')
-	.controller('SheetCtrl', function ($scope, $routeParams, user, Character) {
+	.controller('SheetCtrl', function ($scope, $routeParams, $modal, user, Character) {
 		$scope.user = user;
 
 		if ( $routeParams.characterId ) {
@@ -34,6 +34,9 @@ angular.module('sheetApp')
 
 		$scope.showCharacterResource = function () {
 			console.log($scope.character);
+			$modal.open({
+				templateUrl: 'views/dialog.html'
+			});
 		};
 
 	});
