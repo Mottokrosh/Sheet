@@ -25,34 +25,34 @@
 		<h1><a name="abilities"></a>Abilities<span><a href="" class="expand-collapse"></a></span></h1>
 		<section>
 			<div class="w60 black"><span>Str</span><label>Strength</label></div>
-			<div class="w50 small"><input type="text" name="str" ng-model="character.abilities.str.score" class="ability-score" /><label>Ability Score</label></div>
-			<div class="w60 small"><input type="text" name="str-modifier" ng-model="character.abilities.str.modifier" class="ability-modifier-str-original auto-calc"><label>Ability Modifier</label></div>
-			<div class="w50 small"><input type="text" name="str-temp-score" ng-model="character.abilities.str.tempScore" class="temp-ability-score-str"><label>Temp Score</label></div>
-			<div class="w60 small"><input type="text" name="str-temp-modifier" ng-model="character.abilities.str.tempModifier" class="temp-ability-modifier-str auto-calc"><label>Temp Modifier</label></div>
+			<div class="w50 small"><input type="text" name="str" ng-model="character.abilities.str" class="ability-score"><label>Ability Score</label></div>
+			<div class="w60 small"><input type="text" name="str-modifier" class="ability-modifier-str-original auto-calc"><label>Ability Modifier</label></div>
+			<div class="w50 small"><input type="text" name="str-temp-score" ng-model="character.abilities.tempStr" class="temp-ability-score-str"><label>Temp Score</label></div>
+			<div class="w60 small"><input type="text" name="str-temp-modifier" class="temp-ability-modifier-str auto-calc"><label>Temp Modifier</label></div>
 			<div class="w60 black"><span>Dex</span><label>Dexterity</label></div>
-			<div class="w50 small"><input type="text" name="dex" class="ability-score"><label>Ability Score</label></div>
+			<div class="w50 small"><input type="text" name="dex" ng-model="character.abilities.dex" class="ability-score"><label>Ability Score</label></div>
 			<div class="w60 small"><input type="text" name="dex-modifier" class="ability-modifier-dex-original auto-calc"><label>Ability Modifier</label></div>
-			<div class="w50 small"><input type="text" name="dex-temp-score" class="temp-ability-score-dex"><label>Temp Score</label></div>
+			<div class="w50 small"><input type="text" name="dex-temp-score" ng-model="character.abilities.tempDex" class="temp-ability-score-dex"><label>Temp Score</label></div>
 			<div class="w60 small"><input type="text" name="dex-temp-modifier" class="temp-ability-modifier-dex auto-calc"><label>Temp Modifier</label></div>
 			<div class="w70 black"><span>Con</span><label>Constitution</label></div>
-			<div class="w50 small"><input type="text" name="con" class="ability-score"><label>Ability Score</label></div>
+			<div class="w50 small"><input type="text" name="con" ng-model="character.abilities.con" class="ability-score"><label>Ability Score</label></div>
 			<div class="w60 small"><input type="text" name="con-modifier" class="ability-modifier-con-original auto-calc"><label>Ability Modifier</label></div>
-			<div class="w50 small"><input type="text" name="con-temp-score" class="temp-ability-score-con"><label>Temp Score</label></div>
+			<div class="w50 small"><input type="text" name="con-temp-score" ng-model="character.abilities.tempCon" class="temp-ability-score-con"><label>Temp Score</label></div>
 			<div class="w60 small"><input type="text" name="con-temp-modifier" class="temp-ability-modifier-con auto-calc"><label>Temp Modifier</label></div>
 
 			<div class="w60 black new-line"><span>Int</span><label>Intelligence</label></div>
-			<div class="w50 small"><input type="text" name="int" class="ability-score"><label>Ability Score</label></div>
+			<div class="w50 small"><input type="text" name="int" ng-model="character.abilities.int" class="ability-score"><label>Ability Score</label></div>
 			<div class="w60 small"><input type="text" name="int-modifier" class="ability-modifier-int-original auto-calc"><label>Ability Modifier</label></div>
-			<div class="w50 small"><input type="text" name="int-temp-score" class="temp-ability-score-int"><label>Temp Score</label></div>
+			<div class="w50 small"><input type="text" name="int-temp-score" ng-model="character.abilities.tempInt" class="temp-ability-score-int"><label>Temp Score</label></div>
 			<div class="w60 small"><input type="text" name="int-temp-modifier" class="temp-ability-modifier-int auto-calc"><label>Temp Modifier</label></div>
 			<div class="w60 black"><span>Wis</span><label>Wisdom</label></div>
-			<div class="w50 small"><input type="text" name="wis" class="ability-score"><label>Ability Score</label></div>
+			<div class="w50 small"><input type="text" name="wis" ng-model="character.abilities.wis" class="ability-score"><label>Ability Score</label></div>
 			<div class="w60 small"><input type="text" name="wis-modifier" class="ability-modifier-wis-original auto-calc"><label>Ability Modifier</label></div>
-			<div class="w50 small"><input type="text" name="wis-temp-score" class="temp-ability-score-wis"><label>Temp Score</label></div>
+			<div class="w50 small"><input type="text" name="wis-temp-score" ng-model="character.abilities.tempWis" class="temp-ability-score-wis"><label>Temp Score</label></div>
 			<div class="w60 small"><input type="text" name="wis-temp-modifier" class="temp-ability-modifier-wis auto-calc"><label>Temp Modifier</label></div>
 			<div class="w70 black"><span>Cha</span><label>Charisma</label></div>
-			<div class="w50 small"><input type="text" name="cha" class="ability-score"><label>Ability Score</label></div>
-			<div class="w60 small"><input type="text" name="cha-modifier" class="ability-modifier-cha-original auto-calc"><label>Ability Modifier</label></div>
+			<div class="w50 small"><input type="text" name="cha" ng-model="character.abilities.cha" class="ability-score"><label>Ability Score</label></div>
+			<div class="w60 small"><input type="text" name="cha-modifier" ng-model="character.abilities.tempCha" class="ability-modifier-cha-original auto-calc"><label>Ability Modifier</label></div>
 			<div class="w50 small"><input type="text" name="cha-temp-score" class="temp-ability-score-cha"><label>Temp Score</label></div>
 			<div class="w60 small"><input type="text" name="cha-temp-modifier" class="temp-ability-modifier-cha auto-calc"><label>Temp Modifier</label></div>
 		</section>
