@@ -213,33 +213,91 @@
 			</div>
 
 			<div class="w120 black new-line"><span>Fortitude</span><label>(Constitution)</label></div>
-			<div class="w70"><input type="text" name="fort-save" ng-model="character.saves.fort"><label>Total =</label></div>
-			<div class="w70 small"><input type="text" name="fort-save-base" ng-model="character.saves.fortBase"><label>Base Save</label></div>
+			<div class="w70">
+				<input type="text" name="fort-save" ng-model="character.saves.fort.total">
+				<label>Total =</label>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="fort-save-base" ng-model="character.saves.fort.base">
+				<label>Base Save</label>
+			</div>
 			<div class="w70 small">
 				<ability-modifier ability="con" score="character.abilities.con" temp-score="character.abilities.tempCon" label="+ Ability Modifier"></ability-modifier>
 			</div>
-			<div class="w70 small"><input type="text" name="fort-save-magic-modifier" ng-model="character.saves.fortMagicModifier"><label>+ Magic Modifier</label></div>
-			<div class="w70 small"><input type="text" name="fort-save-misc-modifier" ng-model="character.saves.fortMiscModifier"><label>+ Misc Modifier</label></div>
-			<div class="w70 small"><input type="text" name="fort-save-temp-modifier" ng-model="character.saves.fortTempModifier"><label>+ Temp Modifier</label></div>
-			<div class="w380"><input type="text" name="fort-save-modifiers" class="left" ng-model="character.saves.fortOtherModifiers"><label>Other Modifiers</label></div>
+			<div class="w70 small">
+				<input type="text" name="fort-save-magic-modifier" ng-model="character.saves.fort.magicModifier">
+				<label>+ Magic Modifier</label>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="fort-save-misc-modifier" ng-model="character.saves.fort.miscModifier">
+				<label>+ Misc Modifier</label>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="fort-save-temp-modifier" ng-model="character.saves.fort.tempModifier">
+				<label>+ Temp Modifier</label>
+			</div>
+			<div class="w380">
+				<input type="text" name="fort-save-modifiers" class="left" ng-model="character.saves.fort.otherModifiers">
+				<label>Other Modifiers</label>
+			</div>
 
 			<div class="w120 black new-line"><span>Reflex</span><label>(Dexterity)</label></div>
-			<div class="w70"><input type="text" name="dex-save" /><label>Total =</label></div>
-			<div class="w70 small"><input type="text" name="dex-save-base" /><label>Base Save</label></div>
-			<div class="w70 small"><input type="text" name="dex-save-ability-modifier" class="ability-modifier-dex auto-calc" /><label>+ Ability Modifier</label></div>
-			<div class="w70 small"><input type="text" name="dex-save-magic-modifier" /><label>+ Magic Modifier</label></div>
-			<div class="w70 small"><input type="text" name="dex-save-misc-modifier" /><label>+ Misc Modifier</label></div>
-			<div class="w70 small"><input type="text" name="dex-save-temp-modifier" /><label>+ Temp Modifier</label></div>
-			<div class="w380"><input type="text" name="dex-save-modifiers" class="left" /><label>Other Modifiers</label></div>
+			<div class="w70">
+				<input type="text" name="dex-save" ng-model="character.saves.reflex.total">
+				<label>Total =</label>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="dex-save-base" ng-model="character.saves.reflex.base">
+				<label>Base Save</label>
+			</div>
+			<div class="w70 small">
+				<ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" label="+ Ability Modifier"></ability-modifier>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="dex-save-magic-modifier" ng-model="character.saves.reflex.magicModifier">
+				<label>+ Magic Modifier</label>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="dex-save-misc-modifier" ng-model="character.saves.reflex.miscModifier">
+				<label>+ Misc Modifier</label>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="dex-save-temp-modifier" ng-model="character.saves.reflex.tempModifier">
+				<label>+ Temp Modifier</label>
+			</div>
+			<div class="w380">
+				<input type="text" name="dex-save-modifiers" class="left" ng-model="character.saves.reflex.otherModifiers">
+				<label>Other Modifiers</label>
+			</div>
 
 			<div class="w120 black new-line"><span>Will</span><label>(Wisdom)</label></div>
-			<div class="w70"><input type="text" name="will-save" /><label>Total =</label></div>
-			<div class="w70 small"><input type="text" name="will-save-base" /><label>Base Save</label></div>
-			<div class="w70 small"><input type="text" name="will-save-ability-modifier" class="ability-modifier-wis auto-calc" /><label>+ Ability Modifier</label></div>
-			<div class="w70 small"><input type="text" name="will-save-magic-modifier" /><label>+ Magic Modifier</label></div>
-			<div class="w70 small"><input type="text" name="will-save-misc-modifier" /><label>+ Misc Modifier</label></div>
-			<div class="w70 small"><input type="text" name="will-save-temp-modifier" /><label>+ Temp Modifier</label></div>
-			<div class="w380"><input type="text" name="will-save-modifiers" class="left" /><label>Other Modifiers</label></div>
+			<div class="w70">
+				<input type="text" name="will-save" ng-model="character.saves.will.total">
+				<label>Total =</label>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="will-save-base" ng-model="character.saves.will.base">
+				<label>Base Save</label>
+			</div>
+			<div class="w70 small">
+				<ability-modifier ability="wis" score="character.abilities.wis" temp-score="character.abilities.tempWis" label="+ Ability Modifier"></ability-modifier>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="will-save-magic-modifier" ng-model="character.saves.will.magicModifier">
+				<label>+ Magic Modifier</label>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="will-save-misc-modifier" ng-model="character.saves.will.miscModifier">
+				<label>+ Misc Modifier</label>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="will-save-temp-modifier" ng-model="character.saves.will.tempModifier">
+				<label>+ Temp Modifier</label>
+			</div>
+			<div class="w380">
+				<input type="text" name="will-save-modifiers" class="left" ng-model="character.saves.will.otherModifiers">
+				<label>Other Modifiers</label>
+			</div>
 
 			<div class="w140 black new-line"><span>CMD</span><label>Combat Maneuver Defense</label></div>
 			<div class="w70"><input type="text" name="cmd" /><label>Total =</label></div>
