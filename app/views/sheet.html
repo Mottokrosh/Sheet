@@ -411,53 +411,71 @@
 				<label>Temp Modifiers</label>
 			</div>
 
-			<div class="w100 black new-line"><span>Melee</span><label>Melee Attack</label></div>
-			<div class="w220"><input type="text" name="melee-1-weapon" class="left" /><label>Weapon</label></div>
-			<div class="w140"><input type="text" name="melee-1-attack-bonus" /><label>Attack Bonus</label></div>
-			<div class="w140"><input type="text" name="melee-1-damage" /><label>Damage</label></div>
-			<div class="w100"><input type="text" name="melee-1-critical" /><label>Critical</label></div>
-			<div class="w60"><input type="text" name="melee-1-type" /><label>Type</label></div>
-			<div class="w170"><input type="text" name="melee-1-notes" /><label>Notes</label></div>
+			<span ng-repeat="melee in character.melee">
+				<div class="w100 black new-line removeable" ng-click="remove(character.melee, $index)">
+					<span>Melee</span><label>Melee Attack</label>
+				</div>
+				<div class="w220">
+					<input type="text" name="melee-weapon" class="left" ng-model="melee.weapon">
+					<label>Weapon</label>
+				</div>
+				<div class="w140">
+					<input type="text" name="melee-attack-bonus" ng-model="melee.attackBonus">
+					<label>Attack Bonus</label>
+				</div>
+				<div class="w140">
+					<input type="text" name="melee-damage" ng-model="melee.damage">
+					<label>Damage</label>
+				</div>
+				<div class="w100">
+					<input type="text" name="melee-critical" ng-model="melee.critical">
+					<label>Critical</label>
+				</div>
+				<div class="w60">
+					<input type="text" name="melee-type" ng-model="melee.type">
+					<label>Type</label>
+				</div>
+				<div class="w170">
+					<input type="text" name="melee-notes" ng-model="melee.notes">
+					<label>Notes</label>
+				</div>
+			</span>
 
-			<div class="w100 black new-line"><span>Melee</span><label>Melee Attack</label></div>
-			<div class="w220"><input type="text" name="melee-2-weapon" class="left" /><label>Weapon</label></div>
-			<div class="w140"><input type="text" name="melee-2-attack-bonus" /><label>Attack Bonus</label></div>
-			<div class="w140"><input type="text" name="melee-2-damage" /><label>Damage</label></div>
-			<div class="w100"><input type="text" name="melee-2-critical" /><label>Critical</label></div>
-			<div class="w60"><input type="text" name="melee-2-type" /><label>Type</label></div>
-			<div class="w170"><input type="text" name="melee-2-notes" /><label>Notes</label></div>
+			<span ng-repeat="ranged in character.ranged">
+				<div class="w100 black new-line removeable" ng-click="remove(character.ranged, $index)">
+					<span>Ranged</span><label>Ranged Attack</label>
+				</div>
+				<div class="w220">
+					<input type="text" name="ranged-weapon" class="left" ng-model="ranged.weapon">
+					<label>Weapon</label>
+				</div>
+				<div class="w140">
+					<input type="text" name="ranged-attack-bonus" ng-model="ranged.attackBonus">
+					<label>Attack Bonus</label>
+				</div>
+				<div class="w140">
+					<input type="text" name="ranged-damage" ng-model="ranged.damage">
+					<label>Damage</label>
+				</div>
+				<div class="w100">
+					<input type="text" name="ranged-critical" ng-model="ranged.critical">
+					<label>Critical</label>
+				</div>
+				<div class="w60">
+					<input type="text" name="ranged-type" ng-model="ranged.type">
+					<label>Type</label>
+				</div>
+				<div class="w170">
+					<input type="text" name="ranged-ammunition" ng-model="ranged.ammunition">
+					<label>Ammunition</label>
+				</div>
+			</span>
 
-			<div class="w100 black new-line"><span>Melee</span><label>Melee Attack</label></div>
-			<div class="w220"><input type="text" name="melee-3-weapon" class="left" /><label>Weapon</label></div>
-			<div class="w140"><input type="text" name="melee-3-attack-bonus" /><label>Attack Bonus</label></div>
-			<div class="w140"><input type="text" name="melee-3-damage" /><label>Damage</label></div>
-			<div class="w100"><input type="text" name="melee-3-critical" /><label>Critical</label></div>
-			<div class="w60"><input type="text" name="melee-3-type" /><label>Type</label></div>
-			<div class="w170"><input type="text" name="melee-3-notes" /><label>Notes</label></div>
+			<div class="w990 new-line action-buttons">
+				<button class="add" ng-click="addMelee()">+ Melee Attack</button>
+				<button class="add" ng-click="addRanged()">+ Ranged Attack</button>
+			</div>
 
-			<div class="w100 black new-line"><span>Ranged</span><label>Ranged Attack</label></div>
-			<div class="w220"><input type="text" name="ranged-1-weapon" class="left" /><label>Weapon</label></div>
-			<div class="w140"><input type="text" name="ranged-1-attack-bonus" /><label>Attack Bonus</label></div>
-			<div class="w140"><input type="text" name="ranged-1-damage" /><label>Damage</label></div>
-			<div class="w100"><input type="text" name="ranged-1-critical" /><label>Critical</label></div>
-			<div class="w60"><input type="text" name="ranged-1-type" /><label>Type</label></div>
-			<div class="w170"><input type="text" name="ranged-1-ammunition" /><label>Ammunition</label></div>
-
-			<div class="w100 black new-line"><span>Ranged</span><label>Ranged Attack</label></div>
-			<div class="w220"><input type="text" name="ranged-2-weapon" class="left" /><label>Weapon</label></div>
-			<div class="w140"><input type="text" name="ranged-2-attack-bonus" /><label>Attack Bonus</label></div>
-			<div class="w140"><input type="text" name="ranged-2-damage" /><label>Damage</label></div>
-			<div class="w100"><input type="text" name="ranged-2-critical" /><label>Critical</label></div>
-			<div class="w60"><input type="text" name="ranged-2-type" /><label>Type</label></div>
-			<div class="w170"><input type="text" name="ranged-2-ammunition" /><label>Ammunition</label></div>
-
-			<div class="w100 black new-line"><span>Ranged</span><label>Ranged Attack</label></div>
-			<div class="w220"><input type="text" name="ranged-3-weapon" class="left" /><label>Weapon</label></div>
-			<div class="w140"><input type="text" name="ranged-3-attack-bonus" /><label>Attack Bonus</label></div>
-			<div class="w140"><input type="text" name="ranged-3-damage" /><label>Damage</label></div>
-			<div class="w100"><input type="text" name="ranged-3-critical" /><label>Critical</label></div>
-			<div class="w60"><input type="text" name="ranged-3-type" /><label>Type</label></div>
-			<div class="w170"><input type="text" name="ranged-3-ammunition" /><label>Ammunition</label></div>
 		</section>
 	</article>
 

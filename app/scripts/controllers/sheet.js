@@ -5,12 +5,10 @@ angular.module('sheetApp')
 		$scope.user = user;
 
 		if ( $routeParams.characterId ) {
-			//$scope.character = Character.getById('52a20005e4b0d6f148055e45');
 			$scope.character = Character.getById($routeParams.characterId);
 		} else {
 			$scope.character = new Character();
 			$scope.character.user = user;
-			console.log($scope.character);
 		}
 
 		function saveOrUpdateSuccess() {
@@ -30,6 +28,28 @@ angular.module('sheetApp')
 
 			// save character resource
 			$scope.character.saveOrUpdate(saveOrUpdateSuccess, saveOrUpdateSuccess, saveOrUpdateError, saveOrUpdateError);
+		};
+
+		$scope.addMelee = function () {
+			if (!angular.isArray($scope.character.melee)) {
+				$scope.character.melee = [];
+			}
+			$scope.character.melee.push({});
+		};
+
+		$scope.addRanged = function () {
+			if (!angular.isArray($scope.character.ranged)) {
+				$scope.character.ranged = [];
+			}
+			$scope.character.ranged.push({});
+		};
+
+		$scope.remove = function (array, index) {
+			$modal.open({
+				templateUrl: 'views/dialog/confirmation.html'
+			}).result.then(function () {
+				array.splice(index, 1);
+			});
 		};
 
 		$scope.showCharacterResource = function () {

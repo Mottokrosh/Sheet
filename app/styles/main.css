@@ -1,5 +1,5 @@
 * { margin: 0; border: none; padding: 0; }
-body { font-family: 'Goudy Bookletter 1911', times, serif; font-size: 16px; }
+body { font-family: 'Goudy Bookletter 1911', times, serif; font-size: 16px; color: #111; }
 header { text-align: center; }
 #wrapper { float: none; width: 1000px; margin: 0 auto; padding: 10px 0 30px 10px; }
 article { margin-bottom: 10px; overflow: auto; }
@@ -9,7 +9,7 @@ article { margin-bottom: 10px; overflow: auto; }
 .container div { float: left; overflow: hidden; margin-right: 10px; margin-bottom: 10px; }
 #wrapper div.gear { margin: 0; }
 #wrapper div.gear input:not([type="checkbox"]) { border-right: none; border-bottom: none; }
-#wrapper div label { display: block; font-size: 16px; line-height: 20px; height: 20px; text-align: center; }
+#wrapper div label { display: block; font-size: 16px; line-height: 20px; height: 20px; text-align: center; margin: 0; cursor: default; }
 #wrapper div input:not([type="checkbox"]) {
 	height: 28px;
 	padding: 5px;
@@ -18,6 +18,7 @@ article { margin-bottom: 10px; overflow: auto; }
 	font-size: 20px;
 	text-align: center;
 	color: #111;
+	margin: 0;
 }
 #wrapper div textarea { height: 588px; width: 188px; padding: 5px; border: 1px solid rgba(84,75,49,0.7); font-family: 'Goudy Bookletter 1911', times, serif; font-size: 18px; }
 #wrapper div.black { background: #000; color: #fff; text-align: center; }
@@ -43,6 +44,9 @@ article { margin-bottom: 10px; overflow: auto; }
 .with-delete button:last-of-type { background: url(../images/gradient-red-dark.png) repeat-x 50% 50%; border: 1px solid #721a1a; color: #e6b0b0; }
 .with-delete button:last-of-type:hover { background: url(../images/gradient-red.png) repeat-x 50% 50%; border: 1px solid #a52727; color: #ffc4c4; }
 #wrapper div.spell-container { margin-right: 0; }
+.action-buttons {
+	text-align: center;
+}
 header h1 { text-transform: uppercase; margin: 0 0 20px 0; font-size: 35px; background: none; padding: 0 !important; }
 header h1:hover { cursor: auto; }
 footer { position: fixed; width: 100%; height: 40px; left: 0; bottom: 0; background: #000; line-height: 40px; }
@@ -83,6 +87,11 @@ button:active, [role='button']:active {
 	box-shadow: none;
 	color: #ddd;
 }
+button.add {
+	font-size: 20px;
+	height: 50px;
+	margin: 0 3px;
+}
 nav ul {
 	list-style: none;
 	margin: 0;
@@ -96,6 +105,26 @@ nav.main li > button, nav.main li > [role='button'] {
 	font-size: 22px;
 	padding: 20px;
 	margin-bottom: 10px;
+}
+.removeable {
+	cursor: pointer;
+	position: relative;
+	transition: all 0.2s ease;
+}
+.removeable:hover {
+	opacity: 0.5;
+	color: #333 !important;
+}
+.removeable:hover:after {
+	content: 'X';
+	position: absolute;
+	top: 22px;
+	left: 30px;
+	opacity: 0.8;
+	font-size: 60px;
+	text-align: center;
+	font-weight: bold;
+	color: #fff !important;
 }
 .space-top {
 	margin-top: 20px !important;
