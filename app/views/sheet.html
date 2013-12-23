@@ -387,12 +387,29 @@
 			</div>
 
 			<div class="w130 black new-line"><span>CMB</span><label>Combat Maneuver Bonus</label></div>
-			<div class="w70"><input type="text" name="cmb" /><label>Total =</label></div>
-			<div class="w70 small"><input type="text" name="cmb-bab" class="bab-value auto-calc" /><label>Base Attack Bonus</label></div>
-			<div class="w70 small"><input type="text" name="cmb-str-modifier" class="ability-modifier-str auto-calc" /><label>+ Str Modifier</label></div>
-			<div class="w70 small"><input type="text" name="cmb-size-modifier" /><label>+ Size Modifier</label></div>
-			<div class="w260"><input type="text" name="cmb-misc-modifiers" class="left" /><label>+ Misc Modifiers</label></div>
-			<div class="w260"><input type="text" name="cmb-temp-modifiers" class="left" /><label>Temp Modifiers</label></div>
+			<div class="w70">
+				<input type="text" name="cmb" ng-model="character.cmb.total">
+				<label>Total =</label>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="cmb-bab" class="bab-value auto-calc" ng-value="character.bab" readonly="readonly">
+				<label>Base Attack Bonus</label>
+			</div>
+			<div class="w70 small">
+				<ability-modifier ability="str" score="character.abilities.str" temp-score="character.abilities.tempStr" label="+ Str Modifier"></ability-modifier>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="cmb-size-modifier" ng-model="character.cmb.sizeModifier">
+				<label>+ Size Modifier</label>
+			</div>
+			<div class="w260">
+				<input type="text" name="cmb-misc-modifiers" class="left" ng-model="character.cmb.miscModifiers">
+				<label>+ Misc Modifiers</label>
+			</div>
+			<div class="w260">
+				<input type="text" name="cmb-temp-modifiers" class="left" ng-model="character.cmb.tempModifiers">
+				<label>Temp Modifiers</label>
+			</div>
 
 			<div class="w100 black new-line"><span>Melee</span><label>Melee Attack</label></div>
 			<div class="w220"><input type="text" name="melee-1-weapon" class="left" /><label>Weapon</label></div>
