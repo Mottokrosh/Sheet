@@ -9,7 +9,8 @@ angular.module('sheetApp')
 				score: '=',
 				tempScore: '=',
 				show: '@',
-				label: '@'
+				label: '@',
+				nolabel: '@'
 			},
 			restrict: 'E',
 			link: function link(scope, element, attrs) {
@@ -33,7 +34,7 @@ angular.module('sheetApp')
 						value = value[1] ? value[1] : value[0];
 					}
 					var mod = Math.floor((parseInt(value, 10) - 10) / 2);
-					if (mod > 0) {
+					if (mod >= 0) {
 						mod = '+' + mod;
 					}
 					scope.modifier = mod || '';
