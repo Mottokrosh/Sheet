@@ -210,22 +210,37 @@ input[type='checkbox'] {
 .left { text-align: left !important; }
 .lh40 { line-height: 40px !important; }
 .spells-cast-slots { text-align: left !important; }
-.modal-dialog { display: none; }
-#login-dialog ul { list-style-type: none; margin-top: 10px; }
-#login-dialog ul li img { border: none; }
-.legacy, .legacy input { display: none !important; }
-.ui-dialog-titlebar-close { display: none; }
-.ui-widget { font-family: 'Goudy Bookletter 1911', times, serif !important; font-size: 16px !important; }
-.ui-widget .full-row { width: 100%; margin-top: 10px; }
-.ui-widget label { display: inline-block; width: 70px; text-align: right; padding-right: 10px; }
-.modal-dialog input { width: 350px; height: 28px; padding: 5px; border: 1px solid rgba(84,75,49,0.7); font-family: 'Caudex', times, serif; font-size: 20px; }
+
+.modal-header {
+	background: url(../images/bg-paper-1.jpg);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+}
+.modal-body {
+	background: url(../images/bg-paper-1.jpg);
+}
+.modal-body input, .modal-body textarea {
+	border: 1px solid rgba(84,75,49,0.7);
+	font-family: 'Caudex', times, serif;
+	padding: 5px;
+	color: #111;
+}
+.modal-footer {
+	background: url(../images/bg-paper-2.jpg);
+	box-shadow: none;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/*.modal-dialog input { width: 350px; height: 28px; padding: 5px; border: 1px solid rgba(84,75,49,0.7); font-family: 'Caudex', times, serif; font-size: 20px; }
 .modal-dialog textarea { height: 120px; width: 350px; padding: 5px; border: 1px solid rgba(84,75,49,0.7); font-family: 'Goudy Bookletter 1911', times, serif; font-size: 18px; }
 .modal-dialog p { margin-bottom: 10px; } .modal-dialog p:last-of-type { margin-bottom: 0; }
 .modal-dialog .spell-description { padding: 5px; border: 1px solid rgba(84,75,49,0.7); font-family: 'Caudex', times, serif; font-size: 18px; color: #000; width: 470px; height: 370px; position: absolute; top: 8px; right: 10px; overflow: scroll; }
 .modal-dialog .spell-description .heading { background: #000; color: #fff; padding: 0 5px; }
 .modal-dialog .spell-description h5, .modal-dialog .spell-description h4 { font-size: 16px; font-weight: normal; }
 .modal-dialog .spell-description b { font-weight: bold; }
-.modal-dialog .spell-description hr { height: 1px; background: #000; }
+.modal-dialog .spell-description hr { height: 1px; background: #000; }*/
+
 .w30 { width: 30px; } .w30 input:not([type="checkbox"]) { width: 18px; }
 .w40 { width: 40px; } .w40 input:not([type="checkbox"]) { width: 28px; }
 .w50 { width: 50px; } .w50 input:not([type="checkbox"]) { width: 38px; }

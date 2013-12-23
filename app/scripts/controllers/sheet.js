@@ -52,6 +52,17 @@ angular.module('sheetApp')
 			});
 		};
 
+		$scope.addFeat = function () {
+			$modal.open({
+				templateUrl: 'views/dialog/feat.html'
+			}).result.then(function (feat) {
+				if (!angular.isArray($scope.character.feats)) {
+					$scope.character.feats = [];
+				}
+				$scope.character.feats.push(feat);
+			});
+		};
+
 		$scope.showCharacterResource = function () {
 			console.log($scope.character);
 			$modal.open({

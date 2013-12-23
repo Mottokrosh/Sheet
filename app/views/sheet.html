@@ -984,24 +984,42 @@
 
 				<div class="w110 new-line"><label>* Trained Only</label></div>
 				<div class="w160 black"><span>Conditional</span><label>Modifiers</label></div>
-				<div class="w700"><input type="text" name="skills-conditional-modifiers" class="left" /><label>&amp; Other Notes</label></div>
+				<div class="w700">
+					<input type="text" name="skills-conditional-modifiers" class="left" ng-model="character.skills.conditionalModifiers">
+					<label>&amp; Other Notes</label>
+				</div>
 
 			<div class="w140 black new-line"><span>Languages</span><label>Known</label></div>
-			<div class="w510"><input type="text" name="languages" class="left" /><label>Spoken/Written</label></div>
+			<div class="w510">
+				<input type="text" name="languages" class="left" ng-model="character.languages">
+				<label>Spoken/Written</label>
+			</div>
 			<div class="w100 black"><span>XP</span><label>Experience Points</label></div>
-			<div class="w100"><input type="text" name="xp-total" /><label>Total</label></div>
-			<div class="w100"><input type="text" name="xp-to-next-level" /><label>Next Level</label></div>
-			</section>
-		</article>
+			<div class="w100">
+				<input type="text" name="xp-total" ng-model="character.xp.total">
+				<label>Total</label>
+			</div>
+			<div class="w100">
+				<input type="text" name="xp-to-next-level" ng-model="character.xp.toNextLevel">
+				<label>Next Level</label>
+			</div>
+		</section>
+	</article>
 
-	<article>
-		<h1><a name="feats"></a>Feats &amp; Special Abilities<span><a href="" class="expand-collapse"></a></span></h1>
-			<section>
-			<div class="w100 black"><span>Feats</span><label>Comma Separated</label></div>
-			<div class="w880"><input type="text" name="feats" class="left" /><label>&nbsp;</label></div>
-			<div class="w990"><input type="text" name="feats-2" class="left" /><label>&nbsp;</label></div>
-			<div class="w990"><input type="text" name="feats-3" class="left" /><label>&nbsp;</label></div>
-			<div class="w220 black"><span>Special Abilities</span><label>Racial, Class &amp; Other</label></div>
+	<article id="feats">
+		<h1>Feats &amp; Special Abilities</h1>
+		<section>
+			<div class="w100 black new-line"><span>Feats</span><label>&nbsp;</label></div>
+			<div class="w820 feat-container">
+				<div class="feat-add token-add static-token" ng-click="addFeat()">+</div>
+				<span ng-repeat="feat in character.feats">
+					<div class="token feat">
+						<span ng-show="feat.type">{{feat.type}}<em>|</em>{{feat.name}}
+					</div>
+				</span>
+			</div>
+
+			<div class="w220 black new-line"><span>Special Abilities</span><label>Racial, Class &amp; Other</label></div>
 			<div class="w760"><input type="text" name="special-abilities" class="left" /><label>&nbsp;</label></div>
 			<div class="w990"><input type="text" name="special-abilities-2" class="left" /><label>&nbsp;</label></div>
 			<div class="w990"><input type="text" name="special-abilities-3" class="left" /><label>&nbsp;</label></div>
@@ -1393,12 +1411,6 @@
 	</nav>
 </footer>
 
-<div id="login-dialog" title="Login" class="modal-dialog">
-	<p>Choose Login Provider:</p>
-	<ul>
-		<li><a href="login.php"><img src="images/login-providers/googleB.png" width="120" height="32" /></a></li>
-	</ul>
-</div>
 <div id="gear-dialog" title="Item" class="modal-dialog">
 	<p><label>Type</label><input name="gear-item-type" type="text" tabindex="-1" /></p>
 	<p><label>Item</label><input name="gear-item-name" type="text" tabindex="-1" /></p>
