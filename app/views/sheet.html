@@ -618,49 +618,49 @@
 				<div class="w70"><input type="text" name="skill-craft3-trait" ng-model="character.skills.craft3.trait"></div>
 				<div class="w160"><input type="text" name="skill-craft3-misc" class="left" ng-model="character.skills.craft3.misc"></div>
 
-				<div class="w30 new-line tick"><input type="checkbox" name="skill-diplomacy-class-skill" value="1" /></div>
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-diplomacy-class-skill" ng-model="character.skills.diplomacy.classSkill"></div>
 				<div class="w240"><label class="skill">Diplomacy</label></div>
-				<div class="w80"><input type="text" name="skill-diplomacy" class="skill-total" /></div>
-							<div class="w40"><label class="skill-ability">Cha</label></div>
-				<div class="w70"><input type="text" name="skill-diplomacy-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
-				<div class="w70"><input type="text" name="skill-diplomacy-ranks" /></div>
-				<div class="w70 class-bonus"><input type="text" name="skill-diplomacy-class" class="auto-calc" /></div>
-				<div class="w70"><input type="text" name="skill-diplomacy-racial" /></div>
-				<div class="w70"><input type="text" name="skill-diplomacy-trait" /></div>
-				<div class="w160"><input type="text" name="skill-diplomacy-misc" class="left" /></div>
+				<div class="w80"><input type="text" name="skill-diplomacy" class="skill-total" ng-model="character.skills.diplomacy.total"></div>
+				<div class="w40"><label class="skill-ability">Cha</label></div>
+				<div class="w70"><ability-modifier ability="cha" score="character.abilities.cha" temp-score="character.abilities.tempCha" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="skill-diplomacy-ranks" ng-model="character.skills.diplomacy.ranks"></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-diplomacy-class" class="auto-calc" ng-value="character.skills.diplomacy.classSkill ? '3' : '0'" readonly="readonly"></div>
+				<div class="w70"><input type="text" name="skill-diplomacy-racial" ng-model="character.skills.diplomacy.racial"></div>
+				<div class="w70"><input type="text" name="skill-diplomacy-trait" ng-model="character.skills.diplomacy.trait"></div>
+				<div class="w160"><input type="text" name="skill-diplomacy-misc" class="left" ng-model="character.skills.diplomacy.misc"></div>
 
-				<div class="w30 new-line tick"><input type="checkbox" name="skill-disabledevice-class-skill" value="1" /></div>
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-disabledevice-class-skill" ng-model="character.skills.disableDevice.classSkill"></div>
 				<div class="w240"><label class="skill">Disable Device*</label></div>
-				<div class="w80"><input type="text" name="skill-disabledevice" class="skill-total" /></div>
-							<div class="w40"><label class="skill-ability">Dex</label></div>
-				<div class="w70"><input type="text" name="skill-disabledevice-ability-modifier" class="ability-modifier-dex auto-calc" /></div>
-				<div class="w70"><input type="text" name="skill-disabledevice-ranks" /></div>
-				<div class="w70 class-bonus"><input type="text" name="skill-disabledevice-class" class="auto-calc" /></div>
-				<div class="w70"><input type="text" name="skill-disabledevice-racial" /></div>
-				<div class="w70"><input type="text" name="skill-disabledevice-trait" /></div>
-				<div class="w160"><input type="text" name="skill-disabledevice-misc" class="left" /></div>
+				<div class="w80"><input type="text" name="skill-disabledevice" class="skill-total" ng-model="character.skills.disableDevice.total"></div>
+				<div class="w40"><label class="skill-ability">Dex</label></div>
+				<div class="w70"><ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="skill-disabledevice-ranks" ng-model="character.skills.disableDevice.ranks"></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-disabledevice-class" class="auto-calc" ng-value="character.skills.disableDevice.classSkill ? '3' : '0'" readonly="readonly"></div>
+				<div class="w70"><input type="text" name="skill-disabledevice-racial" ng-model="character.skills.disableDevice.racial"></div>
+				<div class="w70"><input type="text" name="skill-disabledevice-trait" ng-model="character.skills.disableDevice.trait"></div>
+				<div class="w160"><input type="text" name="skill-disabledevice-misc" class="left" ng-model="character.skills.disableDevice.misc"></div>
 
-				<div class="w30 new-line tick"><input type="checkbox" name="skill-disguise-class-skill" value="1" /></div>
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-disguise-class-skill" ng-model="character.skills.disguise.classSkill"></div>
 				<div class="w240"><label class="skill">Disguise</label></div>
-				<div class="w80"><input type="text" name="skill-disguise" class="skill-total" /></div>
-							<div class="w40"><label class="skill-ability">Cha</label></div>
-				<div class="w70"><input type="text" name="skill-disguise-ability-modifier" class="ability-modifier-cha auto-calc" /></div>
-				<div class="w70"><input type="text" name="skill-disguise-ranks" /></div>
-				<div class="w70 class-bonus"><input type="text" name="skill-disguise-class" class="auto-calc" /></div>
-				<div class="w70"><input type="text" name="skill-disguise-racial" /></div>
-				<div class="w70"><input type="text" name="skill-disguise-trait" /></div>
-				<div class="w160"><input type="text" name="skill-disguise-misc" class="left" /></div>
+				<div class="w80"><input type="text" name="skill-disguise" class="skill-total" ng-model="character.skills.disguise.total"></div>
+				<div class="w40"><label class="skill-ability">Cha</label></div>
+				<div class="w70"><ability-modifier ability="cha" score="character.abilities.cha" temp-score="character.abilities.tempCha" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="skill-disguise-ranks" ng-model="character.skills.disguise.ranks"></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-disguise-class" class="auto-calc" ng-value="character.skills.disguise.classSkill ? '3' : '0'" readonly="readonly"></div>
+				<div class="w70"><input type="text" name="skill-disguise-racial" ng-model="character.skills.disguise.racial"></div>
+				<div class="w70"><input type="text" name="skill-disguise-trait" ng-model="character.skills.disguise.trait"></div>
+				<div class="w160"><input type="text" name="skill-disguise-misc" class="left" ng-model="character.skills.disguise.misc"></div>
 
-				<div class="w30 new-line tick"><input type="checkbox" name="skill-escapeartist-class-skill" value="1" /></div>
+				<div class="w30 new-line tick"><input type="checkbox" name="skill-escapeartist-class-skill" ng-model="character.skills.escapeArtist.classSkill"></div>
 				<div class="w240"><label class="skill">Escape Artist</label></div>
-				<div class="w80"><input type="text" name="skill-escapeartist" class="skill-total" /></div>
-							<div class="w40"><label class="skill-ability">Dex</label></div>
-				<div class="w70"><input type="text" name="skill-escapeartist-ability-modifier" class="ability-modifier-dex auto-calc" /></div>
-				<div class="w70"><input type="text" name="skill-escapeartist-ranks" /></div>
-				<div class="w70 class-bonus"><input type="text" name="skill-escapeartist-class" class="auto-calc" /></div>
-				<div class="w70"><input type="text" name="skill-escapeartist-racial" /></div>
-				<div class="w70"><input type="text" name="skill-escapeartist-trait" /></div>
-				<div class="w160"><input type="text" name="skill-escapeartist-misc" class="left" /></div>
+				<div class="w80"><input type="text" name="skill-escapeartist" class="skill-total" ng-model="character.skills.escapeArtist.total"></div>
+				<div class="w40"><label class="skill-ability">Dex</label></div>
+				<div class="w70"><ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="skill-escapeartist-ranks" ng-model="character.skills.escapeArtist.ranks"></div>
+				<div class="w70 class-bonus"><input type="text" name="skill-escapeartist-class" class="auto-calc" ng-value="character.skills.escapeArtist.classSkill ? '3' : '0'" readonly="readonly"></div>
+				<div class="w70"><input type="text" name="skill-escapeartist-racial" ng-model="character.skills.escapeArtist.racial"></div>
+				<div class="w70"><input type="text" name="skill-escapeartist-trait" ng-model="character.skills.escapeArtist.trait"></div>
+				<div class="w160"><input type="text" name="skill-escapeartist-misc" class="left" ng-model="character.skills.escapeArtist.misc"></div>
 
 				<div class="w30 new-line tick"><input type="checkbox" name="skill-fly-class-skill" value="1" /></div>
 				<div class="w240"><label class="skill">Fly</label></div>
