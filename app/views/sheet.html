@@ -300,37 +300,91 @@
 			</div>
 
 			<div class="w140 black new-line"><span>CMD</span><label>Combat Maneuver Defense</label></div>
-			<div class="w70"><input type="text" name="cmd" /><label>Total =</label></div>
+			<div class="w70">
+				<input type="text" name="cmd" ng-model="character.cmd.total">
+				<label>Total =</label>
+			</div>
 			<div class="w50 stand-alone"><label>10+</label></div>
-			<div class="w70 small"><input type="text" name="cmd-bab" class="bab-value auto-calc" /><label>Base Attack Bonus</label></div>
-			<div class="w70 small"><input type="text" name="cmd-str-modifier" class="ability-modifier-str auto-calc" /><label>+ Str Modifier</label></div>
-			<div class="w70 small"><input type="text" name="cmd-dex-modifier" class="ability-modifier-dex auto-calc" /><label>+ Dex Modifier</label></div>
-			<div class="w70 small"><input type="text" name="cmd-size-modifier" /><label>+ Size Modifier</label></div>
-			<div class="w190"><input type="text" name="cmd-misc-modifiers" class="left" /><label>+ Misc Modifiers</label></div>
-			<div class="w180"><input type="text" name="cmd-temp-modifiers" class="left" /><label>Temp Modifiers</label></div>
+			<div class="w70 small">
+				<input type="text" name="cmd-bab" class="bab-value auto-calc" ng-value="character.bab" readonly="readonly">
+				<label>Base Attack Bonus</label>
+			</div>
+			<div class="w70 small">
+				<ability-modifier ability="str" score="character.abilities.str" temp-score="character.abilities.tempStr" label="+ Str Modifier"></ability-modifier>
+			</div>
+			<div class="w70 small">
+				<ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" label="+ Dex Modifier"></ability-modifier>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="cmd-size-modifier" ng-model="character.cmd.sizeModifier">
+				<label>+ Size Modifier</label>
+			</div>
+			<div class="w190">
+				<input type="text" name="cmd-misc-modifiers" class="left" ng-model="character.cmd.miscModifiers">
+				<label>+ Misc Modifiers</label>
+			</div>
+			<div class="w180">
+				<input type="text" name="cmd-temp-modifiers" class="left" ng-model="character.cmd.tempModifiers">
+				<label>Temp Modifiers</label>
+			</div>
 		</section>
 	</article>
 
-	<article>
-		<h1><a name="offense"></a>Offense<span><a href="" class="expand-collapse"></a></span></h1>
-			<section>
+	<article id="offense">
+		<h1>Offense</h1>
+		<section>
 			<div class="w120 black"><span>Initiative</span><label>Modifier</label></div>
-			<div class="w70"><input type="text" name="initiative" /><label>Total =</label></div>
-			<div class="w70 small"><input type="text" name="initiative-dex-modifier" class="ability-modifier-dex auto-calc" /><label>Dex Modifier</label></div>
-			<div class="w70 small"><input type="text" name="initiative-misc-modifier" /><label>+ Misc Modifier</label></div>
+			<div class="w70">
+				<input type="text" name="initiative" ng-model="character.initiative.total">
+				<label>Total =</label>
+			</div>
+			<div class="w70 small">
+				<ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" label="Dex Modifier"></ability-modifier>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="initiative-misc-modifier" ng-model="character.initiative.miscModifier">
+				<label>+ Misc Modifier</label>
+			</div>
 			<div class="w100 black"><span>BAB</span><label>Base Attack Bonus</label></div>
-			<div class="w70"><input type="text" name="bab" class="bab-score" /><label>&nbsp;</label></div>
+			<div class="w70">
+				<input type="text" name="bab" class="bab-score" ng-model="character.bab">
+				<label>&nbsp;</label>
+			</div>
 			<div class="w150 black"><span>Conditional</span><label>Modifiers</label></div>
-			<div class="w270"><input type="text" name="offense-conditional-modifiers" class="left" /><label>Modifiers &amp; Notes</label></div>
+			<div class="w270">
+				<input type="text" name="offense-conditional-modifiers" class="left" ng-model="character.conditionalOffenseModifiers">
+				<label>Modifiers &amp; Notes</label>
+			</div>
 
 			<div class="w80 black new-line"><span>Speed</span><label>Land</label></div>
-			<div class="w100"><input type="text" name="base-speed" /><label>Base Speed</label></div>
-			<div class="w100"><input type="text" name="speed-with-armor" /><label>With Armor</label></div>
-			<div class="w140"><input type="text" name="fly-speed" /><label>Fly/Maneuverability</label></div>
-			<div class="w100"><input type="text" name="swim-speed" /><label>Swim</label></div>
-			<div class="w100"><input type="text" name="climb-speed" /><label>Climb</label></div>
-			<div class="w100"><input type="text" name="burrow-speed" /><label>Burrow</label></div>
-			<div class="w200"><input type="text" name="temp-speed-modifiers" class="left" /><label>Temp Modifiers</label></div>
+			<div class="w100">
+				<input type="text" name="base-speed" ng-model="character.speed.base">
+				<label>Base Speed</label>
+			</div>
+			<div class="w100">
+				<input type="text" name="speed-with-armor" ng-model="character.speed.withArmor">
+				<label>With Armor</label>
+			</div>
+			<div class="w140">
+				<input type="text" name="fly-speed" ng-model="character.speed.fly">
+				<label>Fly/Maneuverability</label>
+			</div>
+			<div class="w100">
+				<input type="text" name="swim-speed" ng-model="character.speed.swim">
+				<label>Swim</label>
+			</div>
+			<div class="w100">
+				<input type="text" name="climb-speed" ng-model="character.speed.climb">
+				<label>Climb</label>
+			</div>
+			<div class="w100">
+				<input type="text" name="burrow-speed" ng-model="character.speed.burrow">
+				<label>Burrow</label>
+			</div>
+			<div class="w200">
+				<input type="text" name="temp-speed-modifiers" class="left" ng-model="character.speed.tempModifiers">
+				<label>Temp Modifiers</label>
+			</div>
 
 			<div class="w130 black new-line"><span>CMB</span><label>Combat Maneuver Bonus</label></div>
 			<div class="w70"><input type="text" name="cmb" /><label>Total =</label></div>
