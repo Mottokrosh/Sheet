@@ -1,6 +1,6 @@
 <form ng-model="sheet">
-	<article>
-		<h1><a name="general"></a>General<span><a href="" class="expand-collapse"></a></span></h1>
+	<article id="general">
+		<h1>General</h1>
 		<section>
 			<div class="w400"><label>Character Name</label><input type="text" name="characterName" ng-model="character.name" class="left"></div>
 			<div class="w170"><label>Alignment</label><input type="text" name="alignment" ng-model="character.alignment"></div>
@@ -21,80 +21,207 @@
 		</section>
 	</article>
 
-	<article>
-		<h1><a name="abilities"></a>Abilities<span><a href="" class="expand-collapse"></a></span></h1>
+	<article id="abilities">
+		<h1>Abilities</h1>
 		<section>
-			<div class="w60 black"><span>Str</span><label>Strength</label></div>
-			<div class="w50 small"><input type="text" name="str" ng-model="character.abilities.str" class="ability-score"><label>Ability Score</label></div>
-			<div class="w60 small"><input type="text" name="str-modifier" class="ability-modifier-str-original auto-calc"><label>Ability Modifier</label></div>
-			<div class="w50 small"><input type="text" name="str-temp-score" ng-model="character.abilities.tempStr" class="temp-ability-score-str"><label>Temp Score</label></div>
-			<div class="w60 small"><input type="text" name="str-temp-modifier" class="temp-ability-modifier-str auto-calc"><label>Temp Modifier</label></div>
-			<div class="w60 black"><span>Dex</span><label>Dexterity</label></div>
-			<div class="w50 small"><input type="text" name="dex" ng-model="character.abilities.dex" class="ability-score"><label>Ability Score</label></div>
-			<div class="w60 small"><input type="text" name="dex-modifier" class="ability-modifier-dex-original auto-calc"><label>Ability Modifier</label></div>
-			<div class="w50 small"><input type="text" name="dex-temp-score" ng-model="character.abilities.tempDex" class="temp-ability-score-dex"><label>Temp Score</label></div>
-			<div class="w60 small"><input type="text" name="dex-temp-modifier" class="temp-ability-modifier-dex auto-calc"><label>Temp Modifier</label></div>
-			<div class="w70 black"><span>Con</span><label>Constitution</label></div>
-			<div class="w50 small"><input type="text" name="con" ng-model="character.abilities.con" class="ability-score"><label>Ability Score</label></div>
-			<div class="w60 small"><input type="text" name="con-modifier" class="ability-modifier-con-original auto-calc"><label>Ability Modifier</label></div>
-			<div class="w50 small"><input type="text" name="con-temp-score" ng-model="character.abilities.tempCon" class="temp-ability-score-con"><label>Temp Score</label></div>
-			<div class="w60 small"><input type="text" name="con-temp-modifier" class="temp-ability-modifier-con auto-calc"><label>Temp Modifier</label></div>
+			<div class="w60 black">
+				<span>Str</span>
+				<label>Strength</label>
+			</div>
+			<div class="w50 small">
+				<input type="text" name="str" ng-model="character.abilities.str" class="ability-score">
+				<label>Ability Score</label>
+			</div>
+			<div class="w60 small">
+				<ability-modifier ability="str" score="character.abilities.str" show="score"></ability-modifier>
+			</div>
+			<div class="w50 small">
+				<input type="text" name="str-temp-score" ng-model="character.abilities.tempStr" class="temp-ability-score-str">
+				<label>Temp Score</label>
+			</div>
+			<div class="w60 small">
+				<ability-modifier ability="str" temp-score="character.abilities.tempStr" show="temp"></ability-modifier>
+			</div>
 
-			<div class="w60 black new-line"><span>Int</span><label>Intelligence</label></div>
-			<div class="w50 small"><input type="text" name="int" ng-model="character.abilities.int" class="ability-score"><label>Ability Score</label></div>
-			<div class="w60 small"><input type="text" name="int-modifier" class="ability-modifier-int-original auto-calc"><label>Ability Modifier</label></div>
-			<div class="w50 small"><input type="text" name="int-temp-score" ng-model="character.abilities.tempInt" class="temp-ability-score-int"><label>Temp Score</label></div>
-			<div class="w60 small"><input type="text" name="int-temp-modifier" class="temp-ability-modifier-int auto-calc"><label>Temp Modifier</label></div>
-			<div class="w60 black"><span>Wis</span><label>Wisdom</label></div>
-			<div class="w50 small"><input type="text" name="wis" ng-model="character.abilities.wis" class="ability-score"><label>Ability Score</label></div>
-			<div class="w60 small"><input type="text" name="wis-modifier" class="ability-modifier-wis-original auto-calc"><label>Ability Modifier</label></div>
-			<div class="w50 small"><input type="text" name="wis-temp-score" ng-model="character.abilities.tempWis" class="temp-ability-score-wis"><label>Temp Score</label></div>
-			<div class="w60 small"><input type="text" name="wis-temp-modifier" class="temp-ability-modifier-wis auto-calc"><label>Temp Modifier</label></div>
-			<div class="w70 black"><span>Cha</span><label>Charisma</label></div>
-			<div class="w50 small"><input type="text" name="cha" ng-model="character.abilities.cha" class="ability-score"><label>Ability Score</label></div>
-			<div class="w60 small"><input type="text" name="cha-modifier" ng-model="character.abilities.tempCha" class="ability-modifier-cha-original auto-calc"><label>Ability Modifier</label></div>
-			<div class="w50 small"><input type="text" name="cha-temp-score" class="temp-ability-score-cha"><label>Temp Score</label></div>
-			<div class="w60 small"><input type="text" name="cha-temp-modifier" class="temp-ability-modifier-cha auto-calc"><label>Temp Modifier</label></div>
+			<div class="w60 black">
+				<span>Dex</span>
+				<label>Dexterity</label>
+			</div>
+			<div class="w50 small">
+				<input type="text" name="dex" ng-model="character.abilities.dex" class="ability-score">
+				<label>Ability Score</label>
+			</div>
+			<div class="w60 small">
+				<ability-modifier ability="dex" score="character.abilities.dex" show="score"></ability-modifier>
+			</div>
+			<div class="w50 small">
+				<input type="text" name="dex-temp-score" ng-model="character.abilities.tempDex" class="temp-ability-score-dex">
+				<label>Temp Score</label>
+			</div>
+			<div class="w60 small">
+				<ability-modifier ability="dex" temp-score="character.abilities.tempDex" show="temp"></ability-modifier>
+			</div>
+
+			<div class="w70 black">
+				<span>Con</span>
+				<label>Constitution</label>
+			</div>
+			<div class="w50 small">
+				<input type="text" name="con" ng-model="character.abilities.con" class="ability-score">
+				<label>Ability Score</label>
+			</div>
+			<div class="w60 small">
+				<ability-modifier ability="con" score="character.abilities.con" show="score"></ability-modifier>
+			</div>
+			<div class="w50 small">
+				<input type="text" name="con-temp-score" ng-model="character.abilities.tempCon" class="temp-ability-score-con">
+				<label>Temp Score</label>
+			</div>
+			<div class="w60 small">
+				<ability-modifier ability="con" temp-score="character.abilities.tempCon" show="temp"></ability-modifier>
+			</div>
+
+			<div class="w60 black new-line">
+				<span>Int</span>
+				<label>Intelligence</label>
+			</div>
+			<div class="w50 small">
+				<input type="text" name="int" ng-model="character.abilities.int" class="ability-score">
+				<label>Ability Score</label>
+			</div>
+			<div class="w60 small">
+				<ability-modifier ability="int" score="character.abilities.int" show="score"></ability-modifier>
+			</div>
+			<div class="w50 small">
+				<input type="text" name="int-temp-score" ng-model="character.abilities.tempInt" class="temp-ability-score-int">
+				<label>Temp Score</label>
+			</div>
+			<div class="w60 small">
+				<ability-modifier ability="int" temp-score="character.abilities.tempInt" show="temp"></ability-modifier>
+			</div>
+
+			<div class="w60 black">
+				<span>Wis</span>
+				<label>Wisdom</label>
+			</div>
+			<div class="w50 small">
+				<input type="text" name="wis" ng-model="character.abilities.wis" class="ability-score">
+				<label>Ability Score</label>
+			</div>
+			<div class="w60 small">
+				<ability-modifier ability="wis" score="character.abilities.wis" show="score"></ability-modifier>
+			</div>
+			<div class="w50 small">
+				<input type="text" name="wis-temp-score" ng-model="character.abilities.tempWis" class="temp-ability-score-wis">
+				<label>Temp Score</label>
+			</div>
+			<div class="w60 small">
+				<ability-modifier ability="wis" temp-score="character.abilities.tempWis" show="temp"></ability-modifier>
+			</div>
+
+			<div class="w70 black">
+				<span>Cha</span>
+				<label>Charisma</label></div>
+			<div class="w50 small">
+				<input type="text" name="cha" ng-model="character.abilities.cha" class="ability-score">
+				<label>Ability Score</label>
+			</div>
+			<div class="w60 small">
+				<ability-modifier ability="cha" score="character.abilities.cha" show="score"></ability-modifier>
+			</div>
+			<div class="w50 small">
+				<input type="text" name="cha-temp-score" class="temp-ability-score-cha" ng-model="character.abilities.tempCha">
+				<label>Temp Score</label>
+			</div>
+			<div class="w60 small">
+				<ability-modifier ability="cha" temp-score="character.abilities.tempCha" show="temp"></ability-modifier>
+			</div>
 		</section>
 	</article>
 
-	<article>
-		<h1><a name="defense"></a>Defense<span><a href="" class="expand-collapse"></a></span></h1>
-			<section>
+	<article id="defense">
+		<h1>Defense</h1>
+		<section>
 			<div class="w70 black"><span>AC</span><label>Armor Class</label></div>
-			<div class="w70"><input type="text" name="ac" /><label>Total =</label></div>
+			<div class="w70"><input type="text" name="ac" ng-model="character.ac.total"><label>Total =</label></div>
 			<div class="w50 stand-alone"><label>10+</label></div>
-			<div class="w70 small"><input type="text" name="ac-armor-bonus" /><label>Armor Bonus</label></div>
-			<div class="w70 small"><input type="text" name="ac-shield-bonus" /><label>Shield Bonus</label></div>
-			<div class="w70 small"><input type="text" name="ac-dex-modifier" class="ability-modifier-dex auto-calc" /><label>Dex Modifier</label></div>
-			<div class="w70 small"><input type="text" name="ac-size-modifier" /><label>Size Modifier</label></div>
-			<div class="w70 small"><input type="text" name="ac-natural-armor" /><label>Natural Armor</label></div>
-			<div class="w70 small"><input type="text" name="ac-deflection-modifier" /><label>Deflection</label></div>
-			<div class="w290 small"><input type="text" name="ac-misc-modifier" class="left" /><label>Misc Modifier</label></div>
+			<div class="w70 small">
+				<input type="text" name="ac-armor-bonus" ng-model="character.ac.armorBonus">
+				<label>Armor Bonus</label>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="ac-shield-bonus" ng-model="character.ac.shieldBonus">
+				<label>Shield Bonus</label>
+			</div>
+			<div class="w70 small">
+				<ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" label="Dex Modifier"></ability-modifier>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="ac-size-modifier" ng-model="character.ac.sizeModifier">
+				<label>Size Modifier</label>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="ac-natural-armor" ng-model="character.ac.naturalArmor">
+				<label>Natural Armor</label>
+			</div>
+			<div class="w70 small">
+				<input type="text" name="ac-deflection-modifier" ng-model="character.ac.deflectionModifier">
+				<label>Deflection</label>
+			</div>
+			<div class="w290 small">
+				<input type="text" name="ac-misc-modifier" class="left" ng-model="character.ac.miscModifier">
+				<label>Misc Modifier</label>
+			</div>
 
 			<div class="w100 black new-line"><span>Touch</span><label>Armor Class</label></div>
-			<div class="w70"><input type="text" name="ac-touch" /><label>&nbsp;</label></div>
+			<div class="w70">
+				<input type="text" name="ac-touch" ng-model="character.ac.touch">
+				<label>&nbsp;</label>
+			</div>
 			<div class="w140 black"><span>Flat-Footed</span><label>Armor Class</label></div>
-			<div class="w70"><input type="text" name="ac-flat-footed" /><label>&nbsp;</label></div>
-			<div class="w570"><input type="text" name="ac-modifiers" class="left" /><label>Other AC Modifiers</label></div>
+			<div class="w70">
+				<input type="text" name="ac-flat-footed" ng-model="character.ac.flatFooted">
+				<label>&nbsp;</label>
+			</div>
+			<div class="w570">
+				<input type="text" name="ac-modifiers" class="left" ng-model="character.ac.otherModifiers">
+				<label>Other AC Modifiers</label>
+			</div>
 
 			<div class="w70 black new-line"><span>HP</span><label>Hit Points</label></div>
-			<div class="w80"><input type="text" name="hp-total" /><label>Total</label></div>
-			<div class="w180"><input type="text" name="hp-wounds" /><label>Wounds/Current</label></div>
-			<div class="w180"><input type="text" name="hp-non-lethal" /><label>Non-Lethal Damage</label></div>
+			<div class="w80">
+				<input type="text" name="hp-total" ng-model="character.hp.total">
+				<label>Total</label>
+			</div>
+			<div class="w180">
+				<input type="text" name="hp-wounds" ng-model="character.hp.wounds">
+				<label>Wounds/Current</label>
+			</div>
+			<div class="w180">
+				<input type="text" name="hp-non-lethal" ng-model="character.hp.nonLethal">
+				<label>Non-Lethal Damage</label>
+			</div>
 			<div class="w100 black"><span>DR</span><label>Damage Reduction</label></div>
-			<div class="w150"><input type="text" name="dr" /><label>&nbsp;</label></div>
+			<div class="w150">
+				<input type="text" name="dr" ng-model="character.damageReduction">
+				<label>&nbsp;</label>
+			</div>
 			<div class="w90 black"><span>SR</span><label>Spell Resistance</label></div>
-			<div class="w70"><input type="text" name="sr" /><label>&nbsp;</label></div>
+			<div class="w70">
+				<input type="text" name="sr" ng-model="character.spellResistance">
+				<label>&nbsp;</label>
+			</div>
 
 			<div class="w120 black new-line"><span>Fortitude</span><label>(Constitution)</label></div>
-			<div class="w70"><input type="text" name="fort-save" /><label>Total =</label></div>
-			<div class="w70 small"><input type="text" name="fort-save-base" /><label>Base Save</label></div>
-			<div class="w70 small"><input type="text" name="fort-save-ability-modifier" class="ability-modifier-con auto-calc" /><label>+ Ability Modifier</label></div>
-			<div class="w70 small"><input type="text" name="fort-save-magic-modifier" /><label>+ Magic Modifier</label></div>
-			<div class="w70 small"><input type="text" name="fort-save-misc-modifier" /><label>+ Misc Modifier</label></div>
-			<div class="w70 small"><input type="text" name="fort-save-temp-modifier" /><label>+ Temp Modifier</label></div>
-			<div class="w380"><input type="text" name="fort-save-modifiers" class="left" /><label>Other Modifiers</label></div>
+			<div class="w70"><input type="text" name="fort-save" ng-model="character.saves.fort"><label>Total =</label></div>
+			<div class="w70 small"><input type="text" name="fort-save-base" ng-model="character.saves.fortBase"><label>Base Save</label></div>
+			<div class="w70 small">
+				<ability-modifier ability="con" score="character.abilities.con" temp-score="character.abilities.tempCon" label="+ Ability Modifier"></ability-modifier>
+			</div>
+			<div class="w70 small"><input type="text" name="fort-save-magic-modifier" ng-model="character.saves.fortMagicModifier"><label>+ Magic Modifier</label></div>
+			<div class="w70 small"><input type="text" name="fort-save-misc-modifier" ng-model="character.saves.fortMiscModifier"><label>+ Misc Modifier</label></div>
+			<div class="w70 small"><input type="text" name="fort-save-temp-modifier" ng-model="character.saves.fortTempModifier"><label>+ Temp Modifier</label></div>
+			<div class="w380"><input type="text" name="fort-save-modifiers" class="left" ng-model="character.saves.fortOtherModifiers"><label>Other Modifiers</label></div>
 
 			<div class="w120 black new-line"><span>Reflex</span><label>(Dexterity)</label></div>
 			<div class="w70"><input type="text" name="dex-save" /><label>Total =</label></div>
