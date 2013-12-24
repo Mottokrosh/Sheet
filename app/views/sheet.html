@@ -479,8 +479,8 @@
 		</section>
 	</article>
 
-	<article class="article-skills">
-		<h1><a name="skills"></a>Skills<span><a href="" class="expand-collapse"></a></span></h1>
+	<article id="skills" class="article-skills">
+		<h1>Skills</h1>
 			<section>
 				<div class="w30 small"><label>Class Skill</label></div>
 				<div class="w240"><label>Skill Name</label></div>
@@ -1134,152 +1134,238 @@
 		</section>
 	</article>
 
-	<article>
-		<h1><a name="spells"></a>Spells<span><a href="" class="expand-collapse"></a></span></h1>
-			<section>
-				<div class="w90 black"><label>Spell Level</label></div>
-				<div class="w80"><label>0th</label></div>
-				<div class="w80"><label>1st</label></div>
-				<div class="w80"><label>2nd</label></div>
-				<div class="w80"><label>3rd</label></div>
-				<div class="w80"><label>4th</label></div>
-				<div class="w80"><label>5th</label></div>
-				<div class="w80"><label>6th</label></div>
-				<div class="w80"><label>7th</label></div>
-				<div class="w80"><label>8th</label></div>
-				<div class="w80"><label>9th</label></div>
+	<article id="spells">
+		<h1>Spells</h1>
+		<section>
+			<div class="w90 black"><label>Spell Level</label></div>
+			<div class="w80"><label>0th</label></div>
+			<div class="w80"><label>1st</label></div>
+			<div class="w80"><label>2nd</label></div>
+			<div class="w80"><label>3rd</label></div>
+			<div class="w80"><label>4th</label></div>
+			<div class="w80"><label>5th</label></div>
+			<div class="w80"><label>6th</label></div>
+			<div class="w80"><label>7th</label></div>
+			<div class="w80"><label>8th</label></div>
+			<div class="w80"><label>9th</label></div>
 
-				<div class="w90 black new-line h40"><label class="lh40">Spells Known</label></div>
-				<div class="w80"><input type="text" name="spells-known-0" /></div>
-				<div class="w80"><input type="text" name="spells-known-1" /></div>
-				<div class="w80"><input type="text" name="spells-known-2" /></div>
-				<div class="w80"><input type="text" name="spells-known-3" /></div>
-				<div class="w80"><input type="text" name="spells-known-4" /></div>
-				<div class="w80"><input type="text" name="spells-known-5" /></div>
-				<div class="w80"><input type="text" name="spells-known-6" /></div>
-				<div class="w80"><input type="text" name="spells-known-7" /></div>
-				<div class="w80"><input type="text" name="spells-known-8" /></div>
-				<div class="w80"><input type="text" name="spells-known-9" /></div>
+			<div class="w90 black new-line h40"><label class="lh40">Spells Known</label></div>
+			<div class="w80"><input type="text" name="spells-known-0" ng-model="character.spells.level0.totalKnown"></div>
+			<div class="w80"><input type="text" name="spells-known-1" ng-model="character.spells.level1.totalKnown"></div>
+			<div class="w80"><input type="text" name="spells-known-2" ng-model="character.spells.level2.totalKnown"></div>
+			<div class="w80"><input type="text" name="spells-known-3" ng-model="character.spells.level3.totalKnown"></div>
+			<div class="w80"><input type="text" name="spells-known-4" ng-model="character.spells.level4.totalKnown"></div>
+			<div class="w80"><input type="text" name="spells-known-5" ng-model="character.spells.level5.totalKnown"></div>
+			<div class="w80"><input type="text" name="spells-known-6" ng-model="character.spells.level6.totalKnown"></div>
+			<div class="w80"><input type="text" name="spells-known-7" ng-model="character.spells.level7.totalKnown"></div>
+			<div class="w80"><input type="text" name="spells-known-8" ng-model="character.spells.level8.totalKnown"></div>
+			<div class="w80"><input type="text" name="spells-known-9" ng-model="character.spells.level9.totalKnown"></div>
 
-				<div class="w90 black new-line h40"><label class="lh40">Spell DC</label></div>
-				<div class="w80"><input type="text" name="spell-dc-0" /></div>
-				<div class="w80"><input type="text" name="spell-dc-1" /></div>
-				<div class="w80"><input type="text" name="spell-dc-2" /></div>
-				<div class="w80"><input type="text" name="spell-dc-3" /></div>
-				<div class="w80"><input type="text" name="spell-dc-4" /></div>
-				<div class="w80"><input type="text" name="spell-dc-5" /></div>
-				<div class="w80"><input type="text" name="spell-dc-6" /></div>
-				<div class="w80"><input type="text" name="spell-dc-7" /></div>
-				<div class="w80"><input type="text" name="spell-dc-8" /></div>
-				<div class="w80"><input type="text" name="spell-dc-9" /></div>
+			<div class="w90 black new-line h40"><label class="lh40">Spell DC</label></div>
+			<div class="w80"><input type="text" name="spell-dc-0" ng-model="character.spells.level0.dc"></div>
+			<div class="w80"><input type="text" name="spell-dc-1" ng-model="character.spells.level1.dc"></div>
+			<div class="w80"><input type="text" name="spell-dc-2" ng-model="character.spells.level2.dc"></div>
+			<div class="w80"><input type="text" name="spell-dc-3" ng-model="character.spells.level3.dc"></div>
+			<div class="w80"><input type="text" name="spell-dc-4" ng-model="character.spells.level4.dc"></div>
+			<div class="w80"><input type="text" name="spell-dc-5" ng-model="character.spells.level5.dc"></div>
+			<div class="w80"><input type="text" name="spell-dc-6" ng-model="character.spells.level6.dc"></div>
+			<div class="w80"><input type="text" name="spell-dc-7" ng-model="character.spells.level7.dc"></div>
+			<div class="w80"><input type="text" name="spell-dc-8" ng-model="character.spells.level8.dc"></div>
+			<div class="w80"><input type="text" name="spell-dc-9" ng-model="character.spells.level9.dc"></div>
 
-				<div class="w90 black new-line h40"><label class="lh40">Spells per Day</label></div>
-				<div class="w80"><input type="text" name="spells-perday-0" /></div>
-				<div class="w80"><input type="text" name="spells-perday-1" /></div>
-				<div class="w80"><input type="text" name="spells-perday-2" /></div>
-				<div class="w80"><input type="text" name="spells-perday-3" /></div>
-				<div class="w80"><input type="text" name="spells-perday-4" /></div>
-				<div class="w80"><input type="text" name="spells-perday-5" /></div>
-				<div class="w80"><input type="text" name="spells-perday-6" /></div>
-				<div class="w80"><input type="text" name="spells-perday-7" /></div>
-				<div class="w80"><input type="text" name="spells-perday-8" /></div>
-				<div class="w80"><input type="text" name="spells-perday-9" /></div>
+			<div class="w90 black new-line h40"><label class="lh40">Spells per Day</label></div>
+			<div class="w80"><input type="text" name="spells-perday-0" ng-model="character.spells.level0.totalPerDay"></div>
+			<div class="w80"><input type="text" name="spells-perday-1" ng-model="character.spells.level1.totalPerDay"></div>
+			<div class="w80"><input type="text" name="spells-perday-2" ng-model="character.spells.level2.totalPerDay"></div>
+			<div class="w80"><input type="text" name="spells-perday-3" ng-model="character.spells.level3.totalPerDay"></div>
+			<div class="w80"><input type="text" name="spells-perday-4" ng-model="character.spells.level4.totalPerDay"></div>
+			<div class="w80"><input type="text" name="spells-perday-5" ng-model="character.spells.level5.totalPerDay"></div>
+			<div class="w80"><input type="text" name="spells-perday-6" ng-model="character.spells.level6.totalPerDay"></div>
+			<div class="w80"><input type="text" name="spells-perday-7" ng-model="character.spells.level7.totalPerDay"></div>
+			<div class="w80"><input type="text" name="spells-perday-8" ng-model="character.spells.level8.totalPerDay"></div>
+			<div class="w80"><input type="text" name="spells-perday-9" ng-model="character.spells.level9.totalPerDay"></div>
 
-				<div class="w90 black new-line h40"><label class="lh40">Bonus Spells</label></div>
-				<div class="w80 h40"><label class="lh40">&mdash;</label></div>
-				<div class="w80"><input type="text" name="bonus-spells-1" /></div>
-				<div class="w80"><input type="text" name="bonus-spells-2" /></div>
-				<div class="w80"><input type="text" name="bonus-spells-3" /></div>
-				<div class="w80"><input type="text" name="bonus-spells-4" /></div>
-				<div class="w80"><input type="text" name="bonus-spells-5" /></div>
-				<div class="w80"><input type="text" name="bonus-spells-6" /></div>
-				<div class="w80"><input type="text" name="bonus-spells-7" /></div>
-				<div class="w80"><input type="text" name="bonus-spells-8" /></div>
-				<div class="w80"><input type="text" name="bonus-spells-9" /></div>
+			<div class="w90 black new-line h40"><label class="lh40">Bonus Spells</label></div>
+			<div class="w80 h40"><label class="lh40">&mdash;</label></div>
+			<div class="w80"><input type="text" name="bonus-spells-1" ng-model="character.spells.level1.bonusSpells"></div>
+			<div class="w80"><input type="text" name="bonus-spells-2" ng-model="character.spells.level2.bonusSpells"></div>
+			<div class="w80"><input type="text" name="bonus-spells-3" ng-model="character.spells.level3.bonusSpells"></div>
+			<div class="w80"><input type="text" name="bonus-spells-4" ng-model="character.spells.level4.bonusSpells"></div>
+			<div class="w80"><input type="text" name="bonus-spells-5" ng-model="character.spells.level5.bonusSpells"></div>
+			<div class="w80"><input type="text" name="bonus-spells-6" ng-model="character.spells.level6.bonusSpells"></div>
+			<div class="w80"><input type="text" name="bonus-spells-7" ng-model="character.spells.level7.bonusSpells"></div>
+			<div class="w80"><input type="text" name="bonus-spells-8" ng-model="character.spells.level8.bonusSpells"></div>
+			<div class="w80"><input type="text" name="bonus-spells-9" ng-model="character.spells.level9.bonusSpells"></div>
 
-				<div class="w150 black new-line"><span>Conditional</span><label>Modifiers</label></div>
-				<div class="w290"><input type="text" name="spells-conditional-modifiers" class="left" /><label>&nbsp;</label></div>
+			<div class="w150 black new-line"><span>Conditional</span><label>Modifiers</label></div>
+			<div class="w290">
+				<input type="text" name="spells-conditional-modifiers" class="left" ng-model="character.spells.conditionalModifiers">
+				<label>&nbsp;</label>
+			</div>
 			<div class="w150 black"><span>Specialty</span><label>Schools/Domains/Bloodline</label></div>
-			<div class="w370"><input type="text" name="spells-speciality" class="left" /><label>Specialised &amp; Opposed Schools, Bloodline, Domains</label></div>
+			<div class="w370">
+				<input type="text" name="spells-speciality" class="left" ng-model="character.spells.speciality">
+				<label>Specialised &amp; Opposed Schools, Bloodline, Domains</label>
+			</div>
 
 			<div class="w130 black new-line"><span>0th Level</span><label>Spells</label></div>
-			<div class="w850">
-				<div class="spells-0 spell-container">
-					<div class="spell-add token-add static-token" data-level="0">+</div>
-				</div>
+			<div class="w850 spell-container spells-0">
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level0')">+</div>
+				<span ng-repeat="spell in character.spells.level0.prepared | orderBy:'name'">
+					<div class="token spell" ng-click="spellDialog('level0', 'edit', spell)">
+						{{spell.name}}
+						<span ng-show="spell.school" class="school">{{spell.school}}</span>
+						<div class="counts">
+							<span ng-show="spell.cast > 0" ng-bind-html="notches(spell.cast, 'cast')"></span>
+							<span ng-show="prepLeft(spell) > 0" ng-bind-html="notches(prepLeft(spell), 'prepared')"></span>
+						</div>
+					</div>
+				</span>
 			</div>
 
 			<div class="w130 black new-line"><span>1st Level</span><label>Spells</label></div>
-			<div class="w850">
-				<div class="spells-1 spell-container">
-					<div class="spell-add token-add static-token" data-level="1">+</div>
-				</div>
+			<div class="w850 spell-container spells-1">
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level1')">+</div>
+				<span ng-repeat="spell in character.spells.level1.prepared | orderBy:'name'">
+					<div class="token spell" ng-click="spellDialog('level1', 'edit', spell)">
+						{{spell.name}}
+						<span ng-show="spell.school" class="school">{{spell.school}}</span>
+						<div class="counts">
+							<span ng-show="spell.cast > 0" ng-bind-html="notches(spell.cast, 'cast')"></span>
+							<span ng-show="prepLeft(spell) > 0" ng-bind-html="notches(prepLeft(spell), 'prepared')"></span>
+						</div>
+					</div>
+				</span>
 			</div>
 
 			<div class="w130 black new-line"><span>2nd Level</span><label>Spells</label></div>
-			<div class="w850">
-				<div class="spells-2 spell-container">
-					<div class="spell-add token-add static-token" data-level="2">+</div>
-				</div>
+			<div class="w850 spell-container spells-2">
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level2')">+</div>
+				<span ng-repeat="spell in character.spells.level2.prepared | orderBy:'name'">
+					<div class="token spell" ng-click="spellDialog('level2', 'edit', spell)">
+						{{spell.name}}
+						<span ng-show="spell.school" class="school">{{spell.school}}</span>
+						<div class="counts">
+							<span ng-show="spell.cast > 0" ng-bind-html="notches(spell.cast, 'cast')"></span>
+							<span ng-show="prepLeft(spell) > 0" ng-bind-html="notches(prepLeft(spell), 'prepared')"></span>
+						</div>
+					</div>
+				</span>
 			</div>
 
 			<div class="w130 black new-line"><span>3rd Level</span><label>Spells</label></div>
-			<div class="w850">
-				<div class="spells-3 spell-container">
-					<div class="spell-add token-add static-token" data-level="3">+</div>
-				</div>
+			<div class="w850 spell-container spells-3">
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level3')">+</div>
+				<span ng-repeat="spell in character.spells.level3.prepared | orderBy:'name'">
+					<div class="token spell" ng-click="spellDialog('level3', 'edit', spell)">
+						{{spell.name}}
+						<span ng-show="spell.school" class="school">{{spell.school}}</span>
+						<div class="counts">
+							<span ng-show="spell.cast > 0" ng-bind-html="notches(spell.cast, 'cast')"></span>
+							<span ng-show="prepLeft(spell) > 0" ng-bind-html="notches(prepLeft(spell), 'prepared')"></span>
+						</div>
+					</div>
+				</span>
 			</div>
 
 			<div class="w130 black new-line"><span>4th Level</span><label>Spells</label></div>
-			<div class="w850">
-				<div class="spells-4 spell-container">
-					<div class="spell-add token-add static-token" data-level="4">+</div>
-				</div>
+			<div class="w850 spell-container spells-4">
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level4')">+</div>
+				<span ng-repeat="spell in character.spells.level4.prepared | orderBy:'name'">
+					<div class="token spell" ng-click="spellDialog('level4', 'edit', spell)">
+						{{spell.name}}
+						<span ng-show="spell.school" class="school">{{spell.school}}</span>
+						<div class="counts">
+							<span ng-show="spell.cast > 0" ng-bind-html="notches(spell.cast, 'cast')"></span>
+							<span ng-show="prepLeft(spell) > 0" ng-bind-html="notches(prepLeft(spell), 'prepared')"></span>
+						</div>
+					</div>
+				</span>
 			</div>
 
 			<div class="w130 black new-line"><span>5th Level</span><label>Spells</label></div>
-			<div class="w850">
-				<div class="spells-5 spell-container">
-					<div class="spell-add token-add static-token" data-level="5">+</div>
-				</div>
+			<div class="w850 spell-container spells-5">
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level5')">+</div>
+				<span ng-repeat="spell in character.spells.level5.prepared | orderBy:'name'">
+					<div class="token spell" ng-click="spellDialog('level5', 'edit', spell)">
+						{{spell.name}}
+						<span ng-show="spell.school" class="school">{{spell.school}}</span>
+						<div class="counts">
+							<span ng-show="spell.cast > 0" ng-bind-html="notches(spell.cast, 'cast')"></span>
+							<span ng-show="prepLeft(spell) > 0" ng-bind-html="notches(prepLeft(spell), 'prepared')"></span>
+						</div>
+					</div>
+				</span>
 			</div>
 
 			<div class="w130 black new-line"><span>6th Level</span><label>Spells</label></div>
-			<div class="w850">
-				<div class="spells-6 spell-container">
-					<div class="spell-add token-add static-token" data-level="6">+</div>
-				</div>
+			<div class="w850 spell-container spells-6">
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level6')">+</div>
+				<span ng-repeat="spell in character.spells.level6.prepared | orderBy:'name'">
+					<div class="token spell" ng-click="spellDialog('level6', 'edit', spell)">
+						{{spell.name}}
+						<span ng-show="spell.school" class="school">{{spell.school}}</span>
+						<div class="counts">
+							<span ng-show="spell.cast > 0" ng-bind-html="notches(spell.cast, 'cast')"></span>
+							<span ng-show="prepLeft(spell) > 0" ng-bind-html="notches(prepLeft(spell), 'prepared')"></span>
+						</div>
+					</div>
+				</span>
 			</div>
 
 			<div class="w130 black new-line"><span>7th Level</span><label>Spells</label></div>
-			<div class="w850">
-				<div class="spells-7 spell-container">
-					<div class="spell-add token-add static-token" data-level="7">+</div>
-				</div>
+			<div class="w850 spell-container spells-7">
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level7')">+</div>
+				<span ng-repeat="spell in character.spells.level7.prepared | orderBy:'name'">
+					<div class="token spell" ng-click="spellDialog('level7', 'edit', spell)">
+						{{spell.name}}
+						<span ng-show="spell.school" class="school">{{spell.school}}</span>
+						<div class="counts">
+							<span ng-show="spell.cast > 0" ng-bind-html="notches(spell.cast, 'cast')"></span>
+							<span ng-show="prepLeft(spell) > 0" ng-bind-html="notches(prepLeft(spell), 'prepared')"></span>
+						</div>
+					</div>
+				</span>
 			</div>
 
 			<div class="w130 black new-line"><span>8th Level</span><label>Spells</label></div>
-			<div class="w850">
-				<div class="spells-8 spell-container">
-					<div class="spell-add token-add static-token" data-level="8">+</div>
-				</div>
+			<div class="w850 spell-container spells-8">
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level8')">+</div>
+				<span ng-repeat="spell in character.spells.level8.prepared | orderBy:'name'">
+					<div class="token spell" ng-click="spellDialog('level8', 'edit', spell)">
+						{{spell.name}}
+						<span ng-show="spell.school" class="school">{{spell.school}}</span>
+						<div class="counts">
+							<span ng-show="spell.cast > 0" ng-bind-html="notches(spell.cast, 'cast')"></span>
+							<span ng-show="prepLeft(spell) > 0" ng-bind-html="notches(prepLeft(spell), 'prepared')"></span>
+						</div>
+					</div>
+				</span>
 			</div>
 
 			<div class="w130 black new-line"><span>9th Level</span><label>Spells</label></div>
-			<div class="w850">
-				<div class="spells-9 spell-container">
-					<div class="spell-add token-add static-token" data-level="9">+</div>
-				</div>
+			<div class="w850 spell-container spells-9">
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level9')">+</div>
+				<span ng-repeat="spell in character.spells.level9.prepared | orderBy:'name'">
+					<div class="token spell" ng-click="spellDialog('level9', 'edit', spell)">
+						{{spell.name}}
+						<span ng-show="spell.school" class="school">{{spell.school}}</span>
+						<div class="counts">
+							<span ng-show="spell.cast > 0" ng-bind-html="notches(spell.cast, 'cast')"></span>
+							<span ng-show="prepLeft(spell) > 0" ng-bind-html="notches(prepLeft(spell), 'prepared')"></span>
+						</div>
+					</div>
+				</span>
 			</div>
-			</section>
-		</article>
+		</section>
+	</article>
 
-	<article>
-		<h1><a name="notes"></a>Notes<span><a href="" class="expand-collapse"></a></span></h1>
-			<section>
-				<div class="w990"><textarea name="general-notes"></textarea></div>
-			</section>
-		</article>
+	<article id="notes">
+		<h1>Notes</h1>
+		<section>
+			<div class="w990"><textarea name="general-notes" ng-model="character.notes"></textarea></div>
+		</section>
+	</article>
 
 </form>
 <footer>
@@ -1302,15 +1388,3 @@
 		<a href="#notes">Notes</a>
 	</nav>
 </footer>
-
-<div id="spell-dialog" title="Spell" class="modal-dialog">
-	<p><label>Name</label><input name="spell-name" type="text" tabindex="-1" /></p>
-	<p><label>Level</label><input name="spell-level" type="text" class="i60" tabindex="-1" /></p>
-	<p><label>School</label><input name="spell-school" type="text" tabindex="-1" /></p>
-	<p><label>Subschool</label><input name="spell-subschool" type="text" tabindex="-1" /></p>
-	<p><label>Prepared</label><input name="spell-prepared" type="text" class="i60" tabindex="-1" />
-		<label>Cast</label><input name="spell-cast" type="text" class="i60" tabindex="-1" /></p>
-	<p><label>Notes</label><textarea name="spell-notes" tabindex="-1"></textarea></p>
-	<div class="spell-description"></div>
-</div>
-<div id="dialog"></div>

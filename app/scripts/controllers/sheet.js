@@ -112,6 +112,37 @@ angular.module('sheetApp')
 			itemDialog(mode, gear, $scope.character.gear, 'views/dialog/gear.html');
 		};
 
+		$scope.spellDialog = function (spellLevel, mode, spell) {
+			if (!$scope.character.spells) {
+				$scope.character.spells = {};
+			}
+			if (!$scope.character.spells[spellLevel]) {
+				$scope.character.spells[spellLevel] = {};
+			}
+			if (!angular.isArray($scope.character.spells[spellLevel].prepared)) {
+				$scope.character.spells[spellLevel].prepared = [];
+			}
+			itemDialog(mode, spell, $scope.character.spells[spellLevel].prepared, 'views/dialog/spell.html');
+		};
+
+		$scope.prepLeft = function (spell) {
+			if (!spell.prepared) {
+				spell.prepared = 0;
+			}
+			if (!spell.cast) {
+				spell.cast = 0;
+			}
+			return spell.prepared - spell.cast;
+		};
+
+		$scope.notches = function (num, type) {
+			var notches = '';
+			for (var i = 0; i < num; i++) {
+				notches += '<span class="' + type + '"></span>';
+			}
+			return notches;
+		};
+
 		$scope.showCharacterResource = function () {
 			console.log($scope.character);
 			$modal.open({

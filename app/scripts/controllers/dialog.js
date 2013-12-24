@@ -15,4 +15,21 @@ angular.module('sheetApp')
 				$modalInstance.close();
 			}
 		};
+
+		// Spell Related
+
+		$scope.prepare = function () {
+			$scope.item.prepared++;
+		};
+
+		$scope.cast = function () {
+			if ($scope.item.cast < $scope.item.prepared) {
+				$scope.item.cast++;
+			}
+		};
+
+		$scope.clearCounts = function () {
+			$scope.item.prepared = 0;
+			$scope.item.cast = 0;
+		};
 	});

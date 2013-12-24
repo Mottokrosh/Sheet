@@ -20,7 +20,15 @@ article { margin-bottom: 10px; overflow: auto; }
 	color: #111;
 	margin: 0;
 }
-#wrapper div textarea { height: 588px; width: 188px; padding: 5px; border: 1px solid rgba(84,75,49,0.7); font-family: 'Goudy Bookletter 1911', times, serif; font-size: 18px; }
+#wrapper div textarea {
+	height: 588px;
+	width: 188px;
+	padding: 5px;
+	border: 1px solid rgba(84,75,49,0.7);
+	font-family: 'Goudy Bookletter 1911', times, serif;
+	font-size: 18px;
+	color: #111;
+}
 #wrapper div.black { background: #000; color: #fff; text-align: center; }
 #wrapper div.black span { font-size: 30px; line-height: 40px; }
 #wrapper div.black label { font-size: 12px; }
@@ -39,8 +47,33 @@ article { margin-bottom: 10px; overflow: auto; }
 #wrapper div.token em { font-style: normal; padding: 0 5px; color: #555; }
 #wrapper div.token-add { height: 40px; width: 40px; margin: 0; line-height: 38px; text-align: center; font-size: 28px; font-weight: bold; background: #000; border-radius: 3px; color: #fff; cursor: pointer; margin-right: 10px; }
 #wrapper div.token span.school, #wrapper div.token span.location { color: rgba(0, 0, 0, 0.5); font-size: 13px; vertical-align: top; }
-#wrapper div.token span.cast { display: block; background: rgba(0, 0, 0, 0.3); float: right; height: 10px; margin: 14px 0 0 5px; width: 10px; border-radius: 3px; }
-#wrapper div.token span.prepared { display: block; background: rgba(0, 0, 0, 1); float: right; height: 10px; margin: 14px 0 0 5px; width: 10px; border-radius: 3px; }
+
+#wrapper div.token .counts {
+	margin: 0;
+	display: inline-block;
+	float: none;
+}
+
+#wrapper div.token span.cast {
+	display: block;
+	background: rgba(0, 0, 0, 0.3);
+	float: right;
+	height: 10px;
+	margin: 14px 0 0 5px;
+	width: 10px;
+	border-radius: 3px;
+}
+
+#wrapper div.token span.prepared {
+	display: block;
+	background: rgba(0, 0, 0, 1);
+	float: right;
+	height: 10px;
+	margin: 14px 0 0 5px;
+	width: 10px;
+	border-radius: 3px;
+}
+
 .with-delete button:last-of-type { background: url(../images/gradient-red-dark.png) repeat-x 50% 50%; border: 1px solid #721a1a; color: #e6b0b0; }
 .with-delete button:last-of-type:hover { background: url(../images/gradient-red.png) repeat-x 50% 50%; border: 1px solid #a52727; color: #ffc4c4; }
 #wrapper div.spell-container { margin-right: 0; }
