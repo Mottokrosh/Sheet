@@ -85,7 +85,14 @@ angular.module('sheetApp')
 			if (!angular.isArray($scope.character.specialAbilities)) {
 				$scope.character.specialAbilities = [];
 			}
-			itemDialog(mode, sa, $scope.character.specialAbilities, 'views/dialog/specialAbilities.html');
+			itemDialog(mode, sa, $scope.character.specialAbilities, 'views/dialog/specialAbility.html');
+		};
+
+		$scope.traitDialog = function (mode, trait) {
+			if (!angular.isArray($scope.character.traits)) {
+				$scope.character.traits = [];
+			}
+			itemDialog(mode, trait, $scope.character.traits, 'views/dialog/trait.html');
 		};
 
 		$scope.showCharacterResource = function () {

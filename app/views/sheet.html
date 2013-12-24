@@ -1009,7 +1009,7 @@
 	<article id="feats">
 		<h1>Feats &amp; Special Abilities</h1>
 		<section>
-			<div class="w100 black new-line"><span>Feats</span><label>All Feats</label></div>
+			<div class="w100 black new-line"><span>Feats</span><label>Mastered</label></div>
 			<div class="w820 feat-container">
 				<div class="feat-add token-add static-token" ng-click="featDialog()">+</div>
 				<span ng-repeat="feat in character.feats | orderBy:['type', 'name']">
@@ -1020,7 +1020,7 @@
 			</div>
 
 			<div class="w220 black new-line"><span>Special Abilities</span><label>Racial, Class &amp; Other</label></div>
-			<div class="w820 sa-container">
+			<div class="w700 sa-container">
 				<div class="sa-add token-add static-token" ng-click="saDialog()">+</div>
 				<span ng-repeat="sa in character.specialAbilities | orderBy:['name', 'type']">
 					<div class="token sa" ng-click="saDialog('edit', sa)">
@@ -1029,8 +1029,15 @@
 				</span>
 			</div>
 
-			<div class="w100 black new-line"><span>Traits</span><label>Comma Separated</label></div>
-			<div class="w880"><input type="text" name="traits" class="left" /><label>&nbsp;</label></div>
+			<div class="w100 black new-line"><span>Traits</span><label>Possessed</label></div>
+			<div class="w820 trait-container">
+				<div class="trait-add token-add static-token" ng-click="traitDialog()">+</div>
+				<span ng-repeat="trait in character.traits | orderBy:['type', 'name']">
+					<div class="token trait" ng-click="traitDialog('edit', trait)">
+						<span ng-show="trait.type">{{trait.type}}<em>|</em></span>{{trait.name}}
+					</div>
+				</span>
+			</div>
 		</section>
 	</article>
 
