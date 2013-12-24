@@ -1011,9 +1011,9 @@
 		<section>
 			<div class="w100 black new-line"><span>Feats</span><label>&nbsp;</label></div>
 			<div class="w820 feat-container">
-				<div class="feat-add token-add static-token" ng-click="addFeat()">+</div>
-				<span ng-repeat="feat in character.feats">
-					<div class="token feat">
+				<div class="feat-add token-add static-token" ng-click="featDialog()">+</div>
+				<span ng-repeat="feat in character.feats | orderBy:['type', 'name']">
+					<div class="token feat" ng-click="featDialog('edit', feat)">
 						<span ng-show="feat.type">{{feat.type}}<em>|</em>{{feat.name}}
 					</div>
 				</span>

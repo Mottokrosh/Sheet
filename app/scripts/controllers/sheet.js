@@ -52,14 +52,28 @@ angular.module('sheetApp')
 			});
 		};
 
-		$scope.addFeat = function () {
+		$scope.featDialog = function (mode, feat) {
 			$modal.open({
-				templateUrl: 'views/dialog/feat.html'
-			}).result.then(function (feat) {
-				if (!angular.isArray($scope.character.feats)) {
-					$scope.character.feats = [];
+				templateUrl: 'views/dialog/feat.html',
+				controller: 'DialogCtrl',
+				resolve: {
+					items: function () {
+						return $scope.character.feats;
+					},
+					item: function () {
+						return feat;
+					},
+					mode: function () {
+						return mode;
+					}
 				}
-				$scope.character.feats.push(feat);
+			}).result.then(function (feat) {
+				if (mode !== 'edit') {
+					if (!angular.isArray($scope.character.feats)) {
+						$scope.character.feats = [];
+					}
+					$scope.character.feats.push(feat);
+				}
 			});
 		};
 
