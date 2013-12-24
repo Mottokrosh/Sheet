@@ -1041,74 +1041,84 @@
 		</section>
 	</article>
 
-	<article>
-		<h1><a name="equipment"></a>Equipment &amp; Money<span><a href="" class="expand-collapse"></a></span></h1>
+	<article id ="equipment">
+		<h1>Equipment &amp; Money</h1>
 			<section>
 				<div class="w70 black"><span>PP</span><label>Platinum</label></div>
-				<div class="w80"><input type="text" name="money-pp" /><label>Pieces</label></div>
+				<div class="w80"><input type="text" name="money-pp" ng-model="character.money.pp"><label>Pieces</label></div>
 				<div class="w70 black"><span>GP</span><label>Gold</label></div>
-				<div class="w80"><input type="text" name="money-gp" /><label>Pieces</label></div>
+				<div class="w80"><input type="text" name="money-gp" ng-model="character.money.gp"><label>Pieces</label></div>
 				<div class="w70 black"><span>SP</span><label>Silver</label></div>
-				<div class="w80"><input type="text" name="money-sp" /><label>Pieces</label></div>
+				<div class="w80"><input type="text" name="money-sp" ng-model="character.money.sp"><label>Pieces</label></div>
 				<div class="w70 black"><span>CP</span><label>Copper</label></div>
-				<div class="w80"><input type="text" name="money-cp" /><label>Pieces</label></div>
+				<div class="w80"><input type="text" name="money-cp" ng-model="character.money.cp"><label>Pieces</label></div>
 				<div class="w80 black"><span>Gems</span><label>&amp; Art</label></div>
-				<div class="w220"><input type="text" name="money-gems" class="left" /><label>&nbsp;</label></div>
+				<div class="w220">
+					<input type="text" name="money-gems" class="left" ng-model="character.money.gems">
+					<label>&nbsp;</label>
+				</div>
 
 				<div class="w90 black new-line"><span>Other</span><label>Treasure</label></div>
-				<div class="w890"><input type="text" name="money-other" class="left" /><label>&nbsp;</label></div>
+				<div class="w890">
+					<input type="text" name="money-other" class="left" ng-model="character.money.other">
+					<label>&nbsp;</label>
+				</div>
 
-				<div class="w120 black new-line"><span>AC Item</span><label>&nbsp;</label></div>
-				<div class="w220"><input type="text" name="ac-item-1-name" class="left" /><label>Item Name</label></div>
-				<div class="w60"><input type="text" name="ac-item-1-bonus" /><label>Bonus</label></div>
-				<div class="w100"><input type="text" name="ac-item-1-type" /><label>Type</label></div>
-				<div class="w60 small"><input type="text" name="ac-item-1-acp" /><label>Check<br />Penalty</label></div>
-				<div class="w60 small"><input type="text" name="ac-item-1-spell-failure" /><label>Spell<br />Failure</label></div>
-				<div class="w80"><input type="text" name="ac-item-1-weight" /><label>Weight</label></div>
-				<div class="w220"><input type="text" name="ac-item-1-properties" class="left" /><label>Properties</label></div>
+				<span ng-repeat="item in character.ac.items">
+					<div class="w120 black new-line removeable" ng-click="remove(character.ac.items, $index)">
+						<span>AC Item</span><label>&nbsp;</label>
+					</div>
+					<div class="w220">
+						<input type="text" name="ac-item-name" class="left" ng-model="item.name">
+						<label>Item Name</label>
+					</div>
+					<div class="w60">
+						<input type="text" name="ac-item-bonus" ng-model="item.bonus">
+						<label>Bonus</label>
+					</div>
+					<div class="w100">
+						<input type="text" name="ac-item-type" ng-model="item.type">
+						<label>Type</label>
+					</div>
+					<div class="w60 small">
+						<input type="text" name="ac-item-acp" ng-model="item.armorCheckPenalty">
+						<label>Check<br />Penalty</label>
+					</div>
+					<div class="w60 small">
+						<input type="text" name="ac-item-spell-failure" ng-model="item.spellFailure">
+						<label>Spell<br />Failure</label>
+					</div>
+					<div class="w80">
+						<input type="text" name="ac-item-weight" ng-model="item.weight">
+						<label>Weight</label>
+					</div>
+					<div class="w220">
+						<input type="text" name="ac-item-properties" class="left" ng-model="item.properties">
+						<label>Properties</label>
+					</div>
+				</span>
 
-				<div class="w120 black new-line"><span>AC Item</span><label>&nbsp;</label></div>
-				<div class="w220"><input type="text" name="ac-item-2-name" class="left" /><label>Item Name</label></div>
-				<div class="w60"><input type="text" name="ac-item-2-bonus" /><label>Bonus</label></div>
-				<div class="w100"><input type="text" name="ac-item-2-type" /><label>Type</label></div>
-				<div class="w60 small"><input type="text" name="ac-item-2-acp" /><label>Check<br />Penalty</label></div>
-				<div class="w60 small"><input type="text" name="ac-item-2-spell-failure" /><label>Spell<br />Failure</label></div>
-				<div class="w80"><input type="text" name="ac-item-2-weight" /><label>Weight</label></div>
-				<div class="w220"><input type="text" name="ac-item-2-properties" class="left" /><label>Properties</label></div>
-
-				<div class="w120 black new-line"><span>AC Item</span><label>&nbsp;</label></div>
-				<div class="w220"><input type="text" name="ac-item-3-name" class="left" /><label>Item Name</label></div>
-				<div class="w60"><input type="text" name="ac-item-3-bonus" /><label>Bonus</label></div>
-				<div class="w100"><input type="text" name="ac-item-3-type" /><label>Type</label></div>
-				<div class="w60 small"><input type="text" name="ac-item-3-acp" /><label>Check<br />Penalty</label></div>
-				<div class="w60 small"><input type="text" name="ac-item-3-spell-failure" /><label>Spell<br />Failure</label></div>
-				<div class="w80"><input type="text" name="ac-item-3-weight" /><label>Weight</label></div>
-				<div class="w220"><input type="text" name="ac-item-3-properties" class="left" /><label>Properties</label></div>
-
-				<div class="w120 black new-line"><span>AC Item</span><label>&nbsp;</label></div>
-				<div class="w220"><input type="text" name="ac-item-4-name" class="left" /><label>Item Name</label></div>
-				<div class="w60"><input type="text" name="ac-item-4-bonus" /><label>Bonus</label></div>
-				<div class="w100"><input type="text" name="ac-item-4-type" /><label>Type</label></div>
-				<div class="w60 small"><input type="text" name="ac-item-4-acp" /><label>Check<br />Penalty</label></div>
-				<div class="w60 small"><input type="text" name="ac-item-4-spell-failure" /><label>Spell<br />Failure</label></div>
-				<div class="w80"><input type="text" name="ac-item-4-weight" /><label>Weight</label></div>
-				<div class="w220"><input type="text" name="ac-item-4-properties" class="left" /><label>Properties</label></div>
-
-				<div class="w120 black new-line"><span>AC Item</span><label>&nbsp;</label></div>
-				<div class="w220"><input type="text" name="ac-item-5-name" class="left" /><label>Item Name</label></div>
-				<div class="w60"><input type="text" name="ac-item-5-bonus" /><label>Bonus</label></div>
-				<div class="w100"><input type="text" name="ac-item-5-type" /><label>Type</label></div>
-				<div class="w60 small"><input type="text" name="ac-item-5-acp" /><label>Check<br />Penalty</label></div>
-				<div class="w60 small"><input type="text" name="ac-item-5-spell-failure" /><label>Spell<br />Failure</label></div>
-				<div class="w80"><input type="text" name="ac-item-5-weight" /><label>Weight</label></div>
-				<div class="w220"><input type="text" name="ac-item-5-properties" class="left" /><label>Properties</label></div>
-
-				<div class="w350 new-line"><label class="totals">Totals</label></div>
-				<div class="w60"><input type="text" name="ac-item-total-bonus" /><label>Bonus</label></div>
+				<div class="w350 new-line">
+					<button class="add add-ac-item" ng-click="addAcItem()">+ AC Item</button>
+					<label class="totals">Totals</label>
+				</div>
+				<div class="w60">
+					<input type="text" name="ac-item-total-bonus" ng-model="character.ac.itemTotals.bonus">
+					<label>Bonus</label>
+				</div>
 				<div class="w100"><label>&nbsp;</label></div>
-				<div class="w60 small"><input type="text" name="ac-item-total-acp" /><label>Check<br />Penalty</label></div>
-				<div class="w60 small"><input type="text" name="ac-item-total-spell-failure" /><label>Spell<br />Failure</label></div>
-				<div class="w80"><input type="text" name="ac-item-total-weight" /><label>Weight</label></div>
+				<div class="w60 small">
+					<input type="text" name="ac-item-total-acp" ng-model="character.ac.itemTotals.armorCheckPenalty">
+					<label>Check<br />Penalty</label>
+				</div>
+				<div class="w60 small">
+					<input type="text" name="ac-item-total-spell-failure" ng-model="character.ac.itemTotals.spellFailure">
+					<label>Spell<br />Failure</label>
+				</div>
+				<div class="w80">
+					<input type="text" name="ac-item-total-weight" ng-model="character.ac.itemTotals.weight">
+					<label>Weight</label>
+				</div>
 
 				<div class="w120 black new-line"><span>Gear</span><label>&nbsp;</label></div>
 				<div class="w850">

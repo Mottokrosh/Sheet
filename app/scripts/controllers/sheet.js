@@ -44,9 +44,19 @@ angular.module('sheetApp')
 			$scope.character.ranged.push({});
 		};
 
+		$scope.addAcItem = function () {
+			if (!$scope.character.ac) {
+				$scope.character.ac = {};
+			}
+			if (!angular.isArray($scope.character.ac.items)) {
+				$scope.character.ac.items = [];
+			}
+			$scope.character.ac.items.push({});
+		};
+
 		$scope.remove = function (array, index) {
 			$modal.open({
-				templateUrl: 'views/dialog/confirmation.html'
+				templateUrl: 'views/dialog/removeItem.html'
 			}).result.then(function () {
 				array.splice(index, 1);
 			});
