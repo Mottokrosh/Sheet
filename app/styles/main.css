@@ -38,7 +38,7 @@ article { margin-bottom: 10px; overflow: auto; }
 #wrapper div.token:hover { cursor: pointer; }
 #wrapper div.token em { font-style: normal; padding: 0 5px; color: #555; }
 #wrapper div.token-add { height: 40px; width: 40px; margin: 0; line-height: 38px; text-align: center; font-size: 28px; font-weight: bold; background: #000; border-radius: 3px; color: #fff; cursor: pointer; margin-right: 10px; }
-#wrapper div.token span.school, #wrapper div.token span.location { color: rgba(0, 0, 0, 0.5); font-size: 13px; padding-left: 5px; vertical-align: top; }
+#wrapper div.token span.school, #wrapper div.token span.location { color: rgba(0, 0, 0, 0.5); font-size: 13px; vertical-align: top; }
 #wrapper div.token span.cast { display: block; background: rgba(0, 0, 0, 0.3); float: right; height: 10px; margin: 14px 0 0 5px; width: 10px; border-radius: 3px; }
 #wrapper div.token span.prepared { display: block; background: rgba(0, 0, 0, 1); float: right; height: 10px; margin: 14px 0 0 5px; width: 10px; border-radius: 3px; }
 .with-delete button:last-of-type { background: url(../images/gradient-red-dark.png) repeat-x 50% 50%; border: 1px solid #721a1a; color: #e6b0b0; }
@@ -216,6 +216,10 @@ input[type='checkbox'] {
 .lh40 { line-height: 40px !important; }
 .spells-cast-slots { text-align: left !important; }
 
+.modal {
+	width: 840px;
+	margin-left: -420px;
+}
 .modal-header {
 	background: url(../images/bg-paper-1.jpg);
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -231,9 +235,21 @@ input[type='checkbox'] {
 	padding: 5px;
 	color: #111;
 	font-size: 16px;
+	margin: 0;
+	width: 380px;
 }
 .modal-body label {
 	font-size: 16px;
+	cursor: text;
+}
+.modal-body .first-half,
+.modal-body .second-half {
+	width: 50%;
+	float: left;
+}
+.modal-body .second-half input,
+.modal-body .second-half textarea {
+	width: 390px;
 }
 .modal-footer {
 	background: url(../images/bg-paper-2.jpg);
@@ -242,6 +258,11 @@ input[type='checkbox'] {
 }
 .modal-footer button {
 	font-size: 20px;
+}
+
+.float-left {
+	float: left;
+	margin-right: 10px;
 }
 
 /*.modal-dialog input { width: 350px; height: 28px; padding: 5px; border: 1px solid rgba(84,75,49,0.7); font-family: 'Caudex', times, serif; font-size: 20px; }
@@ -303,6 +324,8 @@ input[type='checkbox'] {
 .h420 { height: 420px; }
 .h620 { height: 620px; }
 .i60 { width: 60px !important; }
+.i80 { width: 80px !important; }
+.i100 { width: 100px !important; }
 
 /* --- Default Theme --- */
 

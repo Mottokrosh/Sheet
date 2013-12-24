@@ -1121,8 +1121,15 @@
 				</div>
 
 				<div class="w120 black new-line"><span>Gear</span><label>&nbsp;</label></div>
-				<div class="w850">
-					<div class="gear" id="gear"><div class="gear-item-add static-token token-add">+</div></div>
+				<div class="w850 gear-container">
+					<div class="gear-add token-add static-token" ng-click="gearDialog()">+</div>
+					<span ng-repeat="gear in character.gear | orderBy:['type', 'name']">
+						<div class="token gear" ng-click="gearDialog('edit', gear)">
+							<span ng-show="gear.type">{{gear.type}}<em>|</em></span>{{gear.name}}
+							<span ng-show="gear.quantity > 1">({{gear.quantity}})</span>
+							<span ng-show="gear.location" class="location">{{gear.location}}</span>
+						</div>
+					</span>
 				</div>
 		</section>
 	</article>
@@ -1296,14 +1303,6 @@
 	</nav>
 </footer>
 
-<div id="gear-dialog" title="Item" class="modal-dialog">
-	<p><label>Type</label><input name="gear-item-type" type="text" tabindex="-1" /></p>
-	<p><label>Item</label><input name="gear-item-name" type="text" tabindex="-1" /></p>
-	<p><label>Location</label><input name="gear-item-location" type="text" tabindex="-1" /></p>
-	<p><label>Quantity</label><input name="gear-item-quantity" type="text" tabindex="-1" class="i60" />
-		<label>Weight</label><input name="gear-item-weight" type="text" tabindex="-1" class="i60" /> lb. per Item</p>
-	<p><label>Notes</label><textarea name="gear-item-notes" tabindex="-1"></textarea></p>
-</div>
 <div id="spell-dialog" title="Spell" class="modal-dialog">
 	<p><label>Name</label><input name="spell-name" type="text" tabindex="-1" /></p>
 	<p><label>Level</label><input name="spell-level" type="text" class="i60" tabindex="-1" /></p>

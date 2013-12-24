@@ -105,6 +105,13 @@ angular.module('sheetApp')
 			itemDialog(mode, trait, $scope.character.traits, 'views/dialog/trait.html');
 		};
 
+		$scope.gearDialog = function (mode, gear) {
+			if (!angular.isArray($scope.character.gear)) {
+				$scope.character.gear = [];
+			}
+			itemDialog(mode, gear, $scope.character.gear, 'views/dialog/gear.html');
+		};
+
 		$scope.showCharacterResource = function () {
 			console.log($scope.character);
 			$modal.open({
