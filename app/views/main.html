@@ -8,7 +8,7 @@
 					<p>{{c.level}}</p>
 				</div>
 				<div class="actions">
-					<!-- <button title="Download" class="download ico-arrow-down"></button> -->
+					<a href="{{c.resourceUrl}}" role="button" class="download ico-arrow-down" download="{{c.name}}.json"></a>
 					<button title="Delete" class="delete ico-remove" ng-click="deleteCharacter()"></button>
 					<a href="#/sheet/{{c.id}}" role="button">Load</a>
 				</div>

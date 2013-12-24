@@ -119,10 +119,10 @@ angular.module('sheetApp')
 			if (!$scope.character.spells[spellLevel]) {
 				$scope.character.spells[spellLevel] = {};
 			}
-			if (!angular.isArray($scope.character.spells[spellLevel].prepared)) {
-				$scope.character.spells[spellLevel].prepared = [];
+			if (!angular.isArray($scope.character.spells[spellLevel].slotted)) {
+				$scope.character.spells[spellLevel].slotted = [];
 			}
-			itemDialog(mode, spell, $scope.character.spells[spellLevel].prepared, 'views/dialog/spell.html');
+			itemDialog(mode, spell, $scope.character.spells[spellLevel].slotted, 'views/dialog/spell.html');
 		};
 
 		$scope.prepLeft = function (spell) {
