@@ -1,4 +1,4 @@
-<form ng-model="sheet">
+<form name="sheet">
 	<article id="general">
 		<h1>General</h1>
 		<section>
@@ -1372,7 +1372,7 @@
 	<nav>
 		<p><img src="images/footer-divider.png" width="2" height="40" /></p>
 		<p id="status">
-			<button ng-click="saveCharacter()">Save<span ng-show="unsavedChanges">*</span></button>
+			<button ng-click="saveCharacter()">Save<span ng-show="sheet.$dirty">*</span></button>
 			<button ng-click="showCharacterResource()">D</button>
 		</p>
 		<a href="#">Load</a>

@@ -12,7 +12,7 @@ angular.module('sheetApp')
 		}
 
 		function saveOrUpdateSuccess() {
-			$scope.unsavedChanges = false;
+			$scope.sheet.$setPristine();
 		}
 
 		function saveOrUpdateError() {}
