@@ -52,29 +52,40 @@ angular.module('sheetApp')
 			});
 		};
 
-		$scope.featDialog = function (mode, feat) {
+		function itemDialog(mode, item, items, templateUrl) {
 			$modal.open({
-				templateUrl: 'views/dialog/feat.html',
+				templateUrl: templateUrl,
 				controller: 'DialogCtrl',
 				resolve: {
 					items: function () {
-						return $scope.character.feats;
+						return items;
 					},
 					item: function () {
-						return feat;
+						return item;
 					},
 					mode: function () {
 						return mode;
 					}
 				}
-			}).result.then(function (feat) {
+			}).result.then(function (item) {
 				if (mode !== 'edit') {
-					if (!angular.isArray($scope.character.feats)) {
-						$scope.character.feats = [];
-					}
-					$scope.character.feats.push(feat);
+					items.push(item);
 				}
 			});
+		}
+
+		$scope.featDialog = function (mode, feat) {
+			if (!angular.isArray($scope.character.feats)) {
+				$scope.character.feats = [];
+			}
+			itemDialog(mode, feat, $scope.character.feats, 'views/dialog/feat.html');
+		};
+
+		$scope.saDialog = function (mode, sa) {
+			if (!angular.isArray($scope.character.specialAbilities)) {
+				$scope.character.specialAbilities = [];
+			}
+			itemDialog(mode, sa, $scope.character.specialAbilities, 'views/dialog/specialAbilities.html');
 		};
 
 		$scope.showCharacterResource = function () {
