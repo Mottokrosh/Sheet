@@ -138,10 +138,6 @@ module.exports = function (grunt) {
 			}
 		},
 
-
-
-
-
 		// Renames files for browser caching purposes
 		rev: {
 			dist: {
@@ -171,7 +167,7 @@ module.exports = function (grunt) {
 			html: ['<%= yeoman.dist %>/{,*/}*.html'],
 			css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
 			options: {
-				assetsDirs: ['<%= yeoman.dist %>']
+				assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/images', '<%= yeoman.dist %>/styles']
 			}
 		},
 
@@ -211,7 +207,7 @@ module.exports = function (grunt) {
 				files: [{
 					expand: true,
 					cwd: '<%= yeoman.app %>',
-					src: ['*.html', 'views/*.html'],
+					src: ['*.html', 'views/{,*/}*.html'],
 					dest: '<%= yeoman.dist %>'
 				}]
 			}
@@ -250,7 +246,7 @@ module.exports = function (grunt) {
 						'.htaccess',
 						'bower_components/**/*',
 						'images/{,*/}*.{webp}',
-						'fonts/*'
+						'styles/fonts/*'
 					]
 				}, {
 					expand: true,

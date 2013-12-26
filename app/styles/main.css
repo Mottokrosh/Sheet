@@ -298,15 +298,6 @@ input[type='checkbox'] {
 	margin-right: 10px;
 }
 
-/*.modal-dialog input { width: 350px; height: 28px; padding: 5px; border: 1px solid rgba(84,75,49,0.7); font-family: 'Caudex', times, serif; font-size: 20px; }
-.modal-dialog textarea { height: 120px; width: 350px; padding: 5px; border: 1px solid rgba(84,75,49,0.7); font-family: 'Goudy Bookletter 1911', times, serif; font-size: 18px; }
-.modal-dialog p { margin-bottom: 10px; } .modal-dialog p:last-of-type { margin-bottom: 0; }
-.modal-dialog .spell-description { padding: 5px; border: 1px solid rgba(84,75,49,0.7); font-family: 'Caudex', times, serif; font-size: 18px; color: #000; width: 470px; height: 370px; position: absolute; top: 8px; right: 10px; overflow: scroll; }
-.modal-dialog .spell-description .heading { background: #000; color: #fff; padding: 0 5px; }
-.modal-dialog .spell-description h5, .modal-dialog .spell-description h4 { font-size: 16px; font-weight: normal; }
-.modal-dialog .spell-description b { font-weight: bold; }
-.modal-dialog .spell-description hr { height: 1px; background: #000; }*/
-
 .w30 { width: 30px; } .w30 input:not([type="checkbox"]) { width: 18px; }
 .w40 { width: 40px; } .w40 input:not([type="checkbox"]) { width: 28px; }
 .w50 { width: 50px; } .w50 input:not([type="checkbox"]) { width: 38px; }
