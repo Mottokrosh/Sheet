@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('sheetApp')
-	.controller('SheetCtrl', function ($scope, $routeParams, $modal, user, Character) {
+	.controller('SheetCtrl', function ($scope, $routeParams, $timeout, $modal, user, Character) {
 		$scope.user = user;
+		$scope.saveText = 'Save';
 
 		if ( $routeParams.characterId ) {
 			$scope.character = Character.getById($routeParams.characterId);
@@ -13,11 +14,17 @@ angular.module('sheetApp')
 
 		function saveOrUpdateSuccess() {
 			$scope.sheet.$setPristine();
+			$scope.saveText = 'Saved';
+			$timeout(function () {
+				$scope.saveText = 'Save';
+			}, 2500);
 		}
 
 		function saveOrUpdateError() {}
 
 		$scope.saveCharacter = function () {
+			$scope.saveText = 'Saving...';
+
 			// ensure we have a character name at least
 			if (!$scope.character.name) {
 				$scope.character.name = 'Unnamed Character';
@@ -28,6 +35,10 @@ angular.module('sheetApp')
 
 			// save character resource
 			$scope.character.saveOrUpdate(saveOrUpdateSuccess, saveOrUpdateSuccess, saveOrUpdateError, saveOrUpdateError);
+		};
+
+		$scope.scrollTo = function (id) {
+			window.scrollTo(0, document.getElementById(id).offsetTop);
 		};
 
 		$scope.addMelee = function () {

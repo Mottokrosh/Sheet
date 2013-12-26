@@ -1372,19 +1372,17 @@
 	<nav>
 		<p><img src="images/footer-divider.png" width="2" height="40" /></p>
 		<p id="status">
-			<button ng-click="saveCharacter()">Save<span ng-show="sheet.$dirty">*</span></button>
+			<button ng-click="saveCharacter()">{{saveText}}<span ng-show="sheet.$dirty">*</span></button>
 			<!-- <button ng-click="showCharacterResource()">D</button> -->
 		</p>
-		<a href="#">Load</a>
-		<a href="#">New</a>
-		<a href="#general">General</a>
-		<a href="#abilities">Abilites</a>
-		<a href="#defense"><img src="images/icon-defense.png" width="40" height="40" alt="Defense" title="Defense" /></a>
-		<a href="#offense"><img src="images/icon-offense.png" width="40" height="40" alt="Offense" title="Offense" /></a>
-		<a href="#skills">Skills</a>
-		<a href="#feats">Feats</a>
-		<a href="#equipment">Equipment</a>
-		<a href="#spells"><img src="images/icon-spells.png" width="40" height="40" alt="Spells" title="Spells" /></a>
-		<a href="#notes">Notes</a>
+		<a ng-click="scrollTo('general')">General</a>
+		<a ng-click="scrollTo('abilities')">Abilites</a>
+		<a ng-click="scrollTo('defense')"><img src="images/icon-defense.png" width="40" height="40" alt="Defense" title="Defense" /></a>
+		<a ng-click="scrollTo('offense')"><img src="images/icon-offense.png" width="40" height="40" alt="Offense" title="Offense" /></a>
+		<a ng-click="scrollTo('skills')">Skills</a>
+		<a ng-click="scrollTo('feats')">Feats</a>
+		<a ng-click="scrollTo('equipment')">Equipment</a>
+		<a ng-click="scrollTo('spells')"><img src="images/icon-spells.png" width="40" height="40" alt="Spells" title="Spells" /></a>
+		<a ng-click="scrollTo('notes')">Notes</a>
 	</nav>
 </footer>
