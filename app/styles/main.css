@@ -7,7 +7,6 @@ article { margin-bottom: 10px; overflow: auto; }
 	width: 100%;
 }
 .container div { float: left; overflow: hidden; margin-right: 10px; margin-bottom: 10px; }
-#wrapper div.gear { margin: 0; }
 #wrapper div.gear input:not([type="checkbox"]) { border-right: none; border-bottom: none; }
 #wrapper div label { display: block; font-size: 16px; line-height: 20px; height: 20px; text-align: center; margin: 0; cursor: default; }
 #wrapper div input:not([type="checkbox"]) {
@@ -341,6 +340,7 @@ input[type='checkbox'] {
 .w700 { width: 700px; } .w700 input:not([type="checkbox"]) { width: 688px; }
 .w760 { width: 760px; } .w760 input:not([type="checkbox"]) { width: 748px; }
 .w800 { width: 800px; } .w800 input:not([type="checkbox"]) { width: 788px; }
+.w820 { width: 820px; } .w800 input:not([type="checkbox"]) { width: 808px; }
 .w840 { width: 840px; } .w840 input:not([type="checkbox"]) { width: 828px; }
 .w850 { width: 850px; } .w850 input:not([type="checkbox"]) { width: 838px; }
 .w880 { width: 880px; } .w880 input:not([type="checkbox"]) { width: 868px; }
