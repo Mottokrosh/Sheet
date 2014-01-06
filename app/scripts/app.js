@@ -33,6 +33,15 @@ angular.module('sheetApp', [
 	.constant('API_KEY', '4fd0a186e4b00ba3dc958235')
 	.constant('DB_NAME', 'pathfinder_sheet')
 	.value('cache', {})
+	.filter('range', function() {
+		return function (input, total) {
+			total = parseInt(total);
+			for (var i = 0; i < total; i++) {
+				input.push(i);
+			}
+			return input;
+		};
+	})
 	.run(function ($rootScope, $location, user, cache) {
 		// http://arthur.gonigberg.com/2013/06/29/angularjs-role-based-auth/
 		var routesThatDontRequireAuth = ['/login', '/logout'];

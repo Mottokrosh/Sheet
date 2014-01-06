@@ -45,7 +45,14 @@ article { margin-bottom: 10px; overflow: auto; }
 #wrapper div.token:hover { cursor: pointer; }
 #wrapper div.token em { font-style: normal; padding: 0 5px; color: #555; }
 #wrapper div.token-add { height: 40px; width: 40px; margin: 0; line-height: 38px; text-align: center; font-size: 28px; font-weight: bold; background: #000; border-radius: 3px; color: #fff; cursor: pointer; margin-right: 10px; }
-#wrapper div.token span.school, #wrapper div.token span.location { color: rgba(0, 0, 0, 0.5); font-size: 13px; vertical-align: top; }
+#wrapper div.token span.location { color: rgba(0, 0, 0, 0.5); font-size: 13px; vertical-align: top; }
+
+#wrapper div.token span.school {
+	color: rgba(0, 0, 0, 0.5);
+	font-size: 13px;
+	vertical-align: top;
+	padding-left: 5px;
+}
 
 #wrapper div.token .counts {
 	margin: 0;
