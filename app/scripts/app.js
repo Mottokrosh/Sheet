@@ -6,7 +6,8 @@ angular.module('sheetApp', [
 	'ngSanitize',
 	'ngRoute',
 	'mongolabResource',
-	'ui.bootstrap'
+	'ui.bootstrap',
+	'chieffancypants.loadingBar'
 ])
 	.config(function ($routeProvider) {
 		$routeProvider

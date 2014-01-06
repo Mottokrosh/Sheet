@@ -304,6 +304,17 @@ input[type='checkbox'] {
 	margin-right: 10px;
 }
 
+#loading-bar .bar {
+	background: #000;
+}
+#loading-bar .peg {
+	box-shadow: 0 0 10px #000, 0 0 5px #000;
+}
+#loading-bar-spinner .spinner-icon {
+	border-top-color: #000;
+	border-left-color: #000;
+}
+
 .w30 { width: 30px; } .w30 input:not([type="checkbox"]) { width: 18px; }
 .w40 { width: 40px; } .w40 input:not([type="checkbox"]) { width: 28px; }
 .w50 { width: 50px; } .w50 input:not([type="checkbox"]) { width: 38px; }
