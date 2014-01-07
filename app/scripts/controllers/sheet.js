@@ -5,6 +5,8 @@ angular.module('sheetApp')
 		$scope.user = user;
 		$scope.saveText = 'Save';
 
+		var saveInProgress = false;
+
 		if ( $routeParams.characterId ) {
 			$scope.character = Character.getById($routeParams.characterId);
 		} else {
@@ -17,10 +19,18 @@ angular.module('sheetApp')
 			$scope.saveText = 'Saved';
 			$timeout(function () {
 				$scope.saveText = 'Save';
+				saveInProgress = false;
 			}, 2500);
 		}
 
-		function saveOrUpdateError() {}
+		function saveOrUpdateError() {
+			saveInProgress = false;
+		}
+
+		// Watch tokenised elements since they don't inherently dirty the form
+		/*$scope.character.$watch('[feats, specialAbilities, traits, gear, spells]', function (newValue, oldValue) {
+			console.log(newValue, oldValue);
+		}, true);*/
 
 		$scope.saveCharacter = function () {
 			$scope.saveText = 'Saving...';
@@ -36,6 +46,21 @@ angular.module('sheetApp')
 			// save character resource
 			$scope.character.saveOrUpdate(saveOrUpdateSuccess, saveOrUpdateSuccess, saveOrUpdateError, saveOrUpdateError);
 		};
+
+		var autoSave = function(newVal, oldVal) {
+			console.log('Considering autosave...', newVal, oldVal, angular.equals(newVal, oldVal), $scope.sheet.$valid, saveInProgress);
+			if (!angular.equals(newVal, oldVal) && $scope.sheet.$valid && !saveInProgress) {
+				saveInProgress = true;
+				console.log('Autosaving...');
+				$scope.saveCharacter();
+			}
+		};
+
+		$scope.debugStuff = function () {
+			console.log($scope.sheet.$valid);
+		};
+
+		$scope.$watch('character', _.debounce(autoSave, 2500), true);
 
 		$scope.scrollTo = function (id) {
 			window.scrollTo(0, document.getElementById(id).offsetTop);
@@ -144,14 +169,6 @@ angular.module('sheetApp')
 				spell.cast = 0;
 			}
 			return spell.prepared - spell.cast;
-		};
-
-		$scope.notches = function (num, type) {
-			var notches = '';
-			for (var i = 0; i < num; i++) {
-				notches += '<span class="' + type + '"></span>';
-			}
-			return notches;
 		};
 
 		$scope.showCharacterResource = function () {
