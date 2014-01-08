@@ -7,12 +7,25 @@ angular.module('sheetApp')
 
 		var saveInProgress = false;
 
+		//
+		// Loading
+		//
+
 		if ( $routeParams.characterId ) {
 			$scope.character = Character.getById($routeParams.characterId);
 		} else {
 			$scope.character = new Character();
 			$scope.character.user = user;
 		}
+
+		// Watch tokenised elements since they don't inherently dirty the form
+		/*$scope.character.$watch('[feats, specialAbilities, traits, gear, spells]', function (newValue, oldValue) {
+			console.log(newValue, oldValue);
+		}, true);*/
+
+		//
+		// Saving
+		//
 
 		function saveOrUpdateSuccess() {
 			$scope.sheet.$setPristine();
@@ -26,11 +39,6 @@ angular.module('sheetApp')
 		function saveOrUpdateError() {
 			saveInProgress = false;
 		}
-
-		// Watch tokenised elements since they don't inherently dirty the form
-		/*$scope.character.$watch('[feats, specialAbilities, traits, gear, spells]', function (newValue, oldValue) {
-			console.log(newValue, oldValue);
-		}, true);*/
 
 		$scope.saveCharacter = function () {
 			$scope.saveText = 'Saving...';
@@ -48,19 +56,19 @@ angular.module('sheetApp')
 		};
 
 		var autoSave = function(newVal, oldVal) {
-			console.log('Considering autosave...', newVal, oldVal, angular.equals(newVal, oldVal), $scope.sheet.$valid, saveInProgress);
-			if (!angular.equals(newVal, oldVal) && $scope.sheet.$valid && !saveInProgress) {
+			//console.log('Considering autosave...', newVal, oldVal, oldVal.$resolved, $scope.sheet.$valid, saveInProgress);
+			if (oldVal.$resolved && $scope.sheet.$valid && !saveInProgress) {
 				saveInProgress = true;
-				console.log('Autosaving...');
+				//console.log('Autosaving...');
 				$scope.saveCharacter();
 			}
 		};
 
-		$scope.debugStuff = function () {
-			console.log($scope.sheet.$valid);
-		};
-
 		$scope.$watch('character', _.debounce(autoSave, 2500), true);
+
+		//
+		// Functions
+		//
 
 		$scope.scrollTo = function (id) {
 			window.scrollTo(0, document.getElementById(id).offsetTop);
@@ -171,11 +179,16 @@ angular.module('sheetApp')
 			return spell.prepared - spell.cast;
 		};
 
+		//
+		// Debug
+		//
+
+		$scope.debugStuff = function () {
+			console.log($scope.sheet.$valid);
+		};
+
 		$scope.showCharacterResource = function () {
 			console.log($scope.character);
-			$modal.open({
-				templateUrl: 'views/dialog.html'
-			});
 		};
 
 	});
