@@ -310,7 +310,7 @@ module.exports = function (grunt) {
 		gss_pull: {
 			your_target: {
 				files: {
-					'<%= yeoman.app %>/spells.json' : ['0AhwDI9kFz9SddG5GNlY5bGNoS2VKVC11YXhMLTlDLUE']
+					'<%= yeoman.app %>/data/spells_raw.json' : ['0AhwDI9kFz9SddG5GNlY5bGNoS2VKVC11YXhMLTlDLUE']
 				},
 			},
 		},
@@ -365,6 +365,28 @@ module.exports = function (grunt) {
 		'rev',
 		'usemin'
 	]);
+
+	grunt.registerTask('prepare_spells', function () {
+		var spellsRaw = grunt.file.readJSON('app/data/spells_raw.json'),
+			spells,
+			spellNames = [];
+
+		for (var k in spellsRaw.spell_full) {
+			if (k.match(/^Updated/)) {
+				spells = spellsRaw.spell_full[k];
+			}
+		}
+
+		for (var i = 0; i < spells.length; i++) {
+			spells[i].fulltext = spells[i].fulltext.replace(/<link[^>]+>/, '');
+			spellNames.push(spells[i].name);
+		}
+
+		grunt.file.write('app/data/spells.json', JSON.stringify(spells, null, '\t'));
+		grunt.file.write('app/data/spell_names.json', JSON.stringify(spellNames, null, '\t'));
+
+		grunt.log.ok('Spell data prepared.');
+	});
 
 	grunt.registerTask('default', [
 		'newer:jshint',
