@@ -23,6 +23,10 @@ angular.module('sheetApp', [
 				templateUrl: 'views/login.html',
 				controller: 'LoginCtrl'
 			})
+			.when('/sandbox', {
+				templateUrl: 'views/sandbox.html',
+				controller: 'SandboxCtrl'
+			})
 			.otherwise({
 				redirectTo: '/'
 			});

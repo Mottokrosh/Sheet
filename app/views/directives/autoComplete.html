@@ -1,0 +1,8 @@
+<div class="autocomplete">
+	<input name="output" type="text" ng-model="model">
+	<ul ng-show="model">
+		<li ng-repeat="v in values">
+			<label><input type="radio" name="group1" value="{{v}}" ng-model="$parent.model">{{v}}</label>
+		</li>
+	</ul>
+</div>

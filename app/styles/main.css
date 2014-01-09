@@ -7,9 +7,9 @@ article { margin-bottom: 10px; overflow: auto; }
 	width: 100%;
 }
 .container div { float: left; overflow: hidden; margin-right: 10px; margin-bottom: 10px; }
-#wrapper div.gear input:not([type="checkbox"]) { border-right: none; border-bottom: none; }
-#wrapper div label { display: block; font-size: 16px; line-height: 20px; height: 20px; text-align: center; margin: 0; cursor: default; }
-#wrapper div input:not([type="checkbox"]) {
+div.gear input:not([type="checkbox"]) { border-right: none; border-bottom: none; }
+label { display: block; font-size: 16px; line-height: 20px; height: 20px; text-align: center; margin: 0; cursor: default; }
+input:not([type="checkbox"]) {
 	height: 28px;
 	padding: 5px;
 	border: 1px solid rgba(84,75,49,0.7);
@@ -37,9 +37,9 @@ article { margin-bottom: 10px; overflow: auto; }
 #wrapper div label.skill-ability { font-size: 18px; line-height: 40px; height: 40px; text-align: right; }
 #wrapper div label.totals { font-size: 30px; line-height: 40px; height: 40px; text-align: right; }
 #wrapper div.tick { text-align: center; line-height: 40px; height: 40px; }
-#wrapper div input.skill-name { float: right; width: 120px !important; }
-#wrapper div textarea.location { width: 128px; }
-#wrapper div textarea.weight { width: 68px; }
+input.skill-name { float: right; width: 120px !important; }
+textarea.location { width: 128px; }
+textarea.weight { width: 68px; }
 #wrapper div.gear { min-height: 40px; }
 #wrapper div.token { display: inline-block; padding: 0 8px; height: 38px; line-height: 38px; border: 1px solid rgba(84,75,49,0.7); border-radius: 3px; margin-right: 10px; font-size: 18px; }
 #wrapper div.token:hover { cursor: pointer; }
@@ -320,6 +320,41 @@ input[type='checkbox'] {
 #loading-bar-spinner .spinner-icon {
 	border-top-color: #000;
 	border-left-color: #000;
+}
+
+.autocomplete {
+	position: relative;
+	overflow: visible !important;
+}
+.autocomplete input,
+.autocomplete label {
+	text-align: left;
+}
+.autocomplete ul {
+	padding: 10px;
+	margin: 0;
+	list-style: none;
+	background: rgba(0, 0, 0, 0.8);
+	border-radius: 3px;
+	color: #eee;
+	position: absolute;
+	top: 45px;
+	left: 0;
+	box-sizing: border-box;
+	width: 100%;
+	overflow: hidden;
+}
+.autocomplete li input {
+	/*visibility: hidden;*/
+	vertical-align: middle;
+	margin-right: 5px;
+	opacity: 0;
+}
+
+.autocomplete label:hover,
+.autocomplete label:focus {
+	background: #333;
+	color: #fff;
 }
 
 .w30 { width: 30px; } .w30 input:not([type="checkbox"]) { width: 18px; }
