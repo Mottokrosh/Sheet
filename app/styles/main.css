@@ -344,17 +344,11 @@ input[type='checkbox'] {
 	width: 100%;
 	overflow: hidden;
 }
-.autocomplete li input {
-	/*visibility: hidden;*/
-	vertical-align: middle;
-	margin-right: 5px;
-	opacity: 0;
-}
-
-.autocomplete label:hover,
-.autocomplete label:focus {
+.autocomplete li:hover,
+.autocomplete li:focus {
 	background: #333;
 	color: #fff;
+	cursor: pointer;
 }
 
 .w30 { width: 30px; } .w30 input:not([type="checkbox"]) { width: 18px; }
