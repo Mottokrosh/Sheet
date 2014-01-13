@@ -252,6 +252,8 @@ input[type='checkbox'] {
 	text-align: center;
 }
 
+.clearfix{*zoom:1}.clearfix:after,.clearfix:before{display:table;content:"";line-height:0}.clearfix:after{clear:both}
+
 #wrapper h1 { font-size: 30px; line-height: 40px; text-align: center; margin: 0 10px 10px 0; font-weight: bold; padding-left: 28px; }
 #wrapper h1 span { float: right; line-height: 40px; opacity: 0.2; }
 #wrapper h1 span a { display: inline-block; width: 28px; height: 28px; margin: 6px 0 0 0; }
@@ -262,40 +264,50 @@ input[type='checkbox'] {
 .lh40 { line-height: 40px !important; }
 .spells-cast-slots { text-align: left !important; }
 
-.ngdialog.ngdialog-theme-default {
+.ngdialog-close {
+	display: none;
+}
+.ngdialog {
 	padding-top: 80px;
-	padding-bottom: 0;
+	padding-bottom: 20px;
 }
-
-.ngdialog.ngdialog-theme-default .ngdialog-content {
+.ngdialog-content {
 	padding: 0;
-}
-
-.modal {
 	width: 840px;
-	margin-left: -420px;
+	margin: 0 auto;
+	color: #fff;
+	background: transparent;
+	border-radius: 6px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 .modal-header {
-	background: url(../images/bg-paper-1.jpg);
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	border-top-left-radius: 6px;
 	border-top-right-radius: 6px;
+	padding: 15px;
+	background: #111;
+	border-bottom: 2px solid #333;
 }
 .modal-body {
-	background: url(../images/bg-paper-1.jpg);
+	padding: 15px;
+	background: #222;
 }
 .modal-body input, .modal-body textarea {
-	border: 1px solid rgba(84,75,49,0.7);
+	border: 1px solid rgba(84, 75, 49, 0.7);
 	font-family: 'Caudex', times, serif;
 	padding: 5px;
 	color: #111;
 	font-size: 16px;
 	margin: 0;
 	width: 380px;
+	text-align: left;
 }
 .modal-body label {
 	font-size: 16px;
 	cursor: text;
+	text-align: left;
+}
+.modal-body p {
+	margin-bottom: 10px;
 }
 .modal-body .first-half,
 .modal-body .second-half {
@@ -304,12 +316,15 @@ input[type='checkbox'] {
 }
 .modal-body .second-half input,
 .modal-body .second-half textarea {
-	width: 390px;
+	width: 405px;
 }
 .modal-footer {
-	background: url(../images/bg-paper-2.jpg);
-	box-shadow: none;
-	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	border-top: 2px solid #333;
+	background: #111;
+	padding: 15px;
+	text-align: right;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
 }
 .modal-footer button {
 	font-size: 20px;
