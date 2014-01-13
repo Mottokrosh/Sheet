@@ -7,7 +7,7 @@
 	<p><label>Notes</label><textarea name="feat-notes" ng-model="item.notes"></textarea></p>
 </div>
 <div class="modal-footer">
-	<button ng-click="$close(item)">Ok</button>
-	<button ng-click="$dismiss()" ng-hide="mode == 'edit'">Cancel</button>
+	<button ng-click="close()">Ok</button>
+	<button ng-click="dismiss()" ng-hide="mode == 'edit'">Cancel</button>
 	<button ng-click="remove()" ng-show="mode =='edit'">{{deleteText}}</button>
 </div>

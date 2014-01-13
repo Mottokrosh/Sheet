@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sheetApp')
-	.controller('SheetCtrl', function ($scope, $routeParams, $timeout, $modal, user, Character) {
+	.controller('SheetCtrl', function ($scope, $rootScope, $routeParams, $timeout, ngDialog, user, Character) {
 		$scope.user = user;
 		$scope.saveText = 'Save';
 
@@ -98,33 +98,30 @@ angular.module('sheetApp')
 			$scope.character.ac.items.push({});
 		};
 
-		$scope.remove = function (array, index) {
+		/*$scope.remove = function (array, index) {
 			$modal.open({
 				templateUrl: 'views/dialog/removeItem.html'
 			}).result.then(function () {
 				array.splice(index, 1);
 			});
-		};
+		};*/
 
 		function itemDialog(mode, item, items, templateUrl) {
-			$modal.open({
-				templateUrl: templateUrl,
+			if (mode !== 'edit') {
+				item = {};
+				items.push(item);
+			}
+
+			$scope.dialog = {
+				mode: mode,
+				item: item,
+				items: items
+			};
+
+			ngDialog.open({
+				template: templateUrl,
 				controller: 'DialogCtrl',
-				resolve: {
-					items: function () {
-						return items;
-					},
-					item: function () {
-						return item;
-					},
-					mode: function () {
-						return mode;
-					}
-				}
-			}).result.then(function (item) {
-				if (mode !== 'edit') {
-					items.push(item);
-				}
+				scope: $scope
 			});
 		}
 

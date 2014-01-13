@@ -262,6 +262,15 @@ input[type='checkbox'] {
 .lh40 { line-height: 40px !important; }
 .spells-cast-slots { text-align: left !important; }
 
+.ngdialog.ngdialog-theme-default {
+	padding-top: 80px;
+	padding-bottom: 0;
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+	padding: 0;
+}
+
 .modal {
 	width: 840px;
 	margin-left: -420px;
