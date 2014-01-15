@@ -21,6 +21,12 @@ angular.module('sheetApp')
 			}
 		};
 
+		$scope.confirmRemove = function () {
+			var index = $scope.items.indexOf($scope.item);
+			$scope.items.splice(index, 1);
+			ngDialog.close();
+		};
+
 		$scope.close = function () {
 			console.log('Close button');
 			ngDialog.close();

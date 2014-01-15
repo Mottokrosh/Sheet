@@ -412,7 +412,7 @@
 			</div>
 
 			<span ng-repeat="melee in character.melee">
-				<div class="w100 black new-line removeable" ng-click="remove(character.melee, $index)">
+				<div class="w100 black new-line removeable" ng-click="confirmRemoveDialog(melee, character.melee)">
 					<span>Melee</span><label>Melee Attack</label>
 				</div>
 				<div class="w220">
@@ -442,7 +442,7 @@
 			</span>
 
 			<span ng-repeat="ranged in character.ranged">
-				<div class="w100 black new-line removeable" ng-click="remove(character.ranged, $index)">
+				<div class="w100 black new-line removeable" ng-click="confirmRemoveDialog(ranged, character.ranged)">
 					<span>Ranged</span><label>Ranged Attack</label>
 				</div>
 				<div class="w220">
@@ -1011,7 +1011,7 @@
 		<section>
 			<div class="w100 black new-line"><span>Feats</span><label>Mastered</label></div>
 			<div class="w820 feat-container">
-				<div class="feat-add token-add static-token" ng-click="featDialog()">+</div>
+				<div class="feat-add token-add static-token" ng-click="featDialog('add')">+</div>
 				<span ng-repeat="feat in character.feats | orderBy:['type', 'name']">
 					<div class="token feat" ng-click="featDialog('edit', feat)">
 						<span ng-show="feat.type">{{feat.type}}<em>|</em></span>{{feat.name}}
@@ -1021,7 +1021,7 @@
 
 			<div class="w220 black new-line"><span>Special Abilities</span><label>Racial, Class &amp; Other</label></div>
 			<div class="w700 sa-container">
-				<div class="sa-add token-add static-token" ng-click="saDialog()">+</div>
+				<div class="sa-add token-add static-token" ng-click="saDialog('add')">+</div>
 				<span ng-repeat="sa in character.specialAbilities | orderBy:['name', 'type']">
 					<div class="token sa" ng-click="saDialog('edit', sa)">
 						{{sa.name}}<span ng-show="sa.type"> ({{sa.type}})</span>
@@ -1031,7 +1031,7 @@
 
 			<div class="w100 black new-line"><span>Traits</span><label>Possessed</label></div>
 			<div class="w820 trait-container">
-				<div class="trait-add token-add static-token" ng-click="traitDialog()">+</div>
+				<div class="trait-add token-add static-token" ng-click="traitDialog('add')">+</div>
 				<span ng-repeat="trait in character.traits | orderBy:['type', 'name']">
 					<div class="token trait" ng-click="traitDialog('edit', trait)">
 						<span ng-show="trait.type">{{trait.type}}<em>|</em></span>{{trait.name}}
@@ -1065,7 +1065,7 @@
 				</div>
 
 				<span ng-repeat="item in character.ac.items">
-					<div class="w120 black new-line removeable" ng-click="remove(character.ac.items, $index)">
+					<div class="w120 black new-line removeable" ng-click="confirmRemoveDialog(item, character.ac.items)">
 						<span>AC Item</span><label>&nbsp;</label>
 					</div>
 					<div class="w220">
@@ -1122,7 +1122,7 @@
 
 				<div class="w120 black new-line"><span>Gear</span><label>&nbsp;</label></div>
 				<div class="w850 gear-container">
-					<div class="gear-add token-add static-token" ng-click="gearDialog()">+</div>
+					<div class="gear-add token-add static-token" ng-click="gearDialog('add')">+</div>
 					<span ng-repeat="gear in character.gear | orderBy:['type', 'name']">
 						<div class="token gear" ng-click="gearDialog('edit', gear)">
 							<span ng-show="gear.type">{{gear.type}}<em>|</em></span>{{gear.name}}
@@ -1210,7 +1210,7 @@
 
 			<div class="w130 black new-line"><span>0th Level</span><label>Spells</label></div>
 			<div class="w850 spell-container spells-0">
-				<div class="spell-add token-add static-token" ng-click="spellDialog('level0')">+</div>
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level0', 'add')">+</div>
 				<span ng-repeat="spell in character.spells.level0.slotted | orderBy:'name'">
 					<div class="token spell" ng-click="spellDialog('level0', 'edit', spell)">{{spell.name}}<span ng-show="spell.school" class="school">{{spell.school}}</span><span ng-show="spell.cast > 0" ng-repeat="n in [] | range:spell.cast" class="cast"></span><span ng-show="prepLeft(spell) > 0" ng-repeat="n in [] | range:prepLeft(spell)" class="prepared"></span>
 					</div>
@@ -1219,7 +1219,7 @@
 
 			<div class="w130 black new-line"><span>1st Level</span><label>Spells</label></div>
 			<div class="w850 spell-container spells-1">
-				<div class="spell-add token-add static-token" ng-click="spellDialog('level1')">+</div>
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level1', 'add')">+</div>
 				<span ng-repeat="spell in character.spells.level1.slotted | orderBy:'name'">
 					<div class="token spell" ng-click="spellDialog('level1', 'edit', spell)">{{spell.name}}<span ng-show="spell.school" class="school">{{spell.school}}</span><span ng-show="spell.cast > 0" ng-repeat="n in [] | range:spell.cast" class="cast"></span><span ng-show="prepLeft(spell) > 0" ng-repeat="n in [] | range:prepLeft(spell)" class="prepared"></span>
 					</div>
@@ -1228,7 +1228,7 @@
 
 			<div class="w130 black new-line"><span>2nd Level</span><label>Spells</label></div>
 			<div class="w850 spell-container spells-2">
-				<div class="spell-add token-add static-token" ng-click="spellDialog('level2')">+</div>
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level2', 'add')">+</div>
 				<span ng-repeat="spell in character.spells.level2.slotted | orderBy:'name'">
 					<div class="token spell" ng-click="spellDialog('level2', 'edit', spell)">{{spell.name}}<span ng-show="spell.school" class="school">{{spell.school}}</span><span ng-show="spell.cast > 0" ng-repeat="n in [] | range:spell.cast" class="cast"></span><span ng-show="prepLeft(spell) > 0" ng-repeat="n in [] | range:prepLeft(spell)" class="prepared"></span>
 					</div>
@@ -1237,7 +1237,7 @@
 
 			<div class="w130 black new-line"><span>3rd Level</span><label>Spells</label></div>
 			<div class="w850 spell-container spells-3">
-				<div class="spell-add token-add static-token" ng-click="spellDialog('level3')">+</div>
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level3', 'add')">+</div>
 				<span ng-repeat="spell in character.spells.level3.slotted | orderBy:'name'">
 					<div class="token spell" ng-click="spellDialog('level3', 'edit', spell)">{{spell.name}}<span ng-show="spell.school" class="school">{{spell.school}}</span><span ng-show="spell.cast > 0" ng-repeat="n in [] | range:spell.cast" class="cast"></span><span ng-show="prepLeft(spell) > 0" ng-repeat="n in [] | range:prepLeft(spell)" class="prepared"></span>
 					</div>
@@ -1246,7 +1246,7 @@
 
 			<div class="w130 black new-line"><span>4th Level</span><label>Spells</label></div>
 			<div class="w850 spell-container spells-4">
-				<div class="spell-add token-add static-token" ng-click="spellDialog('level4')">+</div>
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level4', 'add')">+</div>
 				<span ng-repeat="spell in character.spells.level4.slotted | orderBy:'name'">
 					<div class="token spell" ng-click="spellDialog('level4', 'edit', spell)">{{spell.name}}<span ng-show="spell.school" class="school">{{spell.school}}</span><span ng-show="spell.cast > 0" ng-repeat="n in [] | range:spell.cast" class="cast"></span><span ng-show="prepLeft(spell) > 0" ng-repeat="n in [] | range:prepLeft(spell)" class="prepared"></span>
 					</div>
@@ -1255,7 +1255,7 @@
 
 			<div class="w130 black new-line"><span>5th Level</span><label>Spells</label></div>
 			<div class="w850 spell-container spells-5">
-				<div class="spell-add token-add static-token" ng-click="spellDialog('level5')">+</div>
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level5', 'add')">+</div>
 				<span ng-repeat="spell in character.spells.level5.slotted | orderBy:'name'">
 					<div class="token spell" ng-click="spellDialog('level5', 'edit', spell)">{{spell.name}}<span ng-show="spell.school" class="school">{{spell.school}}</span><span ng-show="spell.cast > 0" ng-repeat="n in [] | range:spell.cast" class="cast"></span><span ng-show="prepLeft(spell) > 0" ng-repeat="n in [] | range:prepLeft(spell)" class="prepared"></span>
 					</div>
@@ -1264,7 +1264,7 @@
 
 			<div class="w130 black new-line"><span>6th Level</span><label>Spells</label></div>
 			<div class="w850 spell-container spells-6">
-				<div class="spell-add token-add static-token" ng-click="spellDialog('level6')">+</div>
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level6', 'add')">+</div>
 				<span ng-repeat="spell in character.spells.level6.slotted | orderBy:'name'">
 					<div class="token spell" ng-click="spellDialog('level6', 'edit', spell)">{{spell.name}}<span ng-show="spell.school" class="school">{{spell.school}}</span><span ng-show="spell.cast > 0" ng-repeat="n in [] | range:spell.cast" class="cast"></span><span ng-show="prepLeft(spell) > 0" ng-repeat="n in [] | range:prepLeft(spell)" class="prepared"></span>
 					</div>
@@ -1273,7 +1273,7 @@
 
 			<div class="w130 black new-line"><span>7th Level</span><label>Spells</label></div>
 			<div class="w850 spell-container spells-7">
-				<div class="spell-add token-add static-token" ng-click="spellDialog('level7')">+</div>
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level7', 'add')">+</div>
 				<span ng-repeat="spell in character.spells.level7.slotted | orderBy:'name'">
 					<div class="token spell" ng-click="spellDialog('level7', 'edit', spell)">{{spell.name}}<span ng-show="spell.school" class="school">{{spell.school}}</span><span ng-show="spell.cast > 0" ng-repeat="n in [] | range:spell.cast" class="cast"></span><span ng-show="prepLeft(spell) > 0" ng-repeat="n in [] | range:prepLeft(spell)" class="prepared"></span>
 					</div>
@@ -1282,7 +1282,7 @@
 
 			<div class="w130 black new-line"><span>8th Level</span><label>Spells</label></div>
 			<div class="w850 spell-container spells-8">
-				<div class="spell-add token-add static-token" ng-click="spellDialog('level8')">+</div>
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level8', 'add')">+</div>
 				<span ng-repeat="spell in character.spells.level8.slotted | orderBy:'name'">
 					<div class="token spell" ng-click="spellDialog('level8', 'edit', spell)">{{spell.name}}<span ng-show="spell.school" class="school">{{spell.school}}</span><span ng-show="spell.cast > 0" ng-repeat="n in [] | range:spell.cast" class="cast"></span><span ng-show="prepLeft(spell) > 0" ng-repeat="n in [] | range:prepLeft(spell)" class="prepared"></span>
 					</div>
@@ -1291,7 +1291,7 @@
 
 			<div class="w130 black new-line"><span>9th Level</span><label>Spells</label></div>
 			<div class="w850 spell-container spells-9">
-				<div class="spell-add token-add static-token" ng-click="spellDialog('level9')">+</div>
+				<div class="spell-add token-add static-token" ng-click="spellDialog('level9', 'add')">+</div>
 				<span ng-repeat="spell in character.spells.level9.slotted | orderBy:'name'">
 					<div class="token spell" ng-click="spellDialog('level9', 'edit', spell)">{{spell.name}}<span ng-show="spell.school" class="school">{{spell.school}}</span><span ng-show="spell.cast > 0" ng-repeat="n in [] | range:spell.cast" class="cast"></span><span ng-show="prepLeft(spell) > 0" ng-repeat="n in [] | range:prepLeft(spell)" class="prepared"></span>
 					</div>

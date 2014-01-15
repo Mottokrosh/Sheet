@@ -163,13 +163,16 @@ nav.main li > button, nav.main li > [role='button'] {
 .removeable:hover:after {
 	content: 'X';
 	position: absolute;
-	top: 22px;
-	left: 30px;
+	top: 0;
+	left: 0;
 	opacity: 0.8;
 	font-size: 60px;
 	text-align: center;
 	font-weight: bold;
 	color: #fff !important;
+	width: 100%;
+	height: 100%;
+	line-height: 100%;
 }
 .space-top {
 	margin-top: 20px !important;

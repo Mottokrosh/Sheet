@@ -98,16 +98,8 @@ angular.module('sheetApp')
 			$scope.character.ac.items.push({});
 		};
 
-		/*$scope.remove = function (array, index) {
-			$modal.open({
-				templateUrl: 'views/dialog/removeItem.html'
-			}).result.then(function () {
-				array.splice(index, 1);
-			});
-		};*/
-
 		function itemDialog(mode, item, items, templateUrl) {
-			if (mode !== 'edit') {
+			if (mode === 'add') {
 				item = {};
 				items.push(item);
 			}
@@ -124,6 +116,10 @@ angular.module('sheetApp')
 				scope: $scope
 			});
 		}
+
+		$scope.confirmRemoveDialog = function (item, items) {
+			itemDialog('remove', item, items, 'views/dialog/removeItem.html');
+		};
 
 		$scope.featDialog = function (mode, feat) {
 			if (!angular.isArray($scope.character.feats)) {
