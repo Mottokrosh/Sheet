@@ -98,6 +98,10 @@ angular.module('sheetApp')
 			$scope.character.ac.items.push({});
 		};
 
+		//
+		// Dialogs
+		//
+
 		function itemDialog(mode, item, items, templateUrl) {
 			if (mode === 'add') {
 				item = {};
@@ -162,6 +166,10 @@ angular.module('sheetApp')
 			itemDialog(mode, spell, $scope.character.spells[spellLevel].slotted, 'views/dialog/spell.html');
 		};
 
+		//
+		// Counters & Values
+		//
+
 		$scope.prepLeft = function (spell) {
 			if (!spell.prepared) {
 				spell.prepared = 0;
@@ -170,6 +178,23 @@ angular.module('sheetApp')
 				spell.cast = 0;
 			}
 			return spell.prepared - spell.cast;
+		};
+
+		$scope.modifier = function (stat) {
+			var tempStatKey = 'temp' + stat.charAt(0).toUpperCase() + stat.slice(1),
+				statValue,
+				modifier;
+
+			if ($scope.character && $scope.character.$resolved) {
+				statValue = $scope.character.abilities[tempStatKey] ? $scope.character.abilities[tempStatKey] : $scope.character.abilities[stat];
+				modifier = Math.floor((parseInt(statValue, 10) - 10) / 2);
+
+				if (modifier >= 0) {
+					modifier = '+' + modifier;
+				}
+			}
+
+			return modifier;
 		};
 
 		//

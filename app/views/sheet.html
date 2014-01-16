@@ -154,7 +154,7 @@
 				<label>Shield Bonus</label>
 			</div>
 			<div class="w70 small">
-				<ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" label="Dex Modifier"></ability-modifier>
+				<input type="text" name="dex-modifier" class="auto-calc" ng-value="modifier('dex')" readonly="readonly"><label>Dex Modifier</label>
 			</div>
 			<div class="w70 small">
 				<input type="text" name="ac-size-modifier" ng-model="character.ac.sizeModifier">
@@ -222,7 +222,7 @@
 				<label>Base Save</label>
 			</div>
 			<div class="w70 small">
-				<ability-modifier ability="con" score="character.abilities.con" temp-score="character.abilities.tempCon" label="+ Ability Modifier"></ability-modifier>
+				<input type="text" name="con-modifier" class="auto-calc" ng-value="modifier('con')" readonly="readonly"><label>+ Ability Modifier</label>
 			</div>
 			<div class="w70 small">
 				<input type="text" name="fort-save-magic-modifier" ng-model="character.saves.fort.magicModifier">
@@ -251,7 +251,7 @@
 				<label>Base Save</label>
 			</div>
 			<div class="w70 small">
-				<ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" label="+ Ability Modifier"></ability-modifier>
+				<input type="text" name="dex-modifier" class="auto-calc" ng-value="modifier('dex')" readonly="readonly"><label>+ Ability Modifier</label>
 			</div>
 			<div class="w70 small">
 				<input type="text" name="dex-save-magic-modifier" ng-model="character.saves.reflex.magicModifier">
@@ -280,7 +280,7 @@
 				<label>Base Save</label>
 			</div>
 			<div class="w70 small">
-				<ability-modifier ability="wis" score="character.abilities.wis" temp-score="character.abilities.tempWis" label="+ Ability Modifier"></ability-modifier>
+				<input type="text" name="wis-modifier" class="auto-calc" ng-value="modifier('wis')" readonly="readonly"><label>+ Ability Modifier</label>
 			</div>
 			<div class="w70 small">
 				<input type="text" name="will-save-magic-modifier" ng-model="character.saves.will.magicModifier">
@@ -310,10 +310,11 @@
 				<label>Base Attack Bonus</label>
 			</div>
 			<div class="w70 small">
-				<ability-modifier ability="str" score="character.abilities.str" temp-score="character.abilities.tempStr" label="+ Str Modifier"></ability-modifier>
+				<input type="text" name="str-modifier" class="auto-calc" ng-value="modifier('str')" readonly="readonly"><label>+ Str Modifier</label>
+
 			</div>
 			<div class="w70 small">
-				<ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" label="+ Dex Modifier"></ability-modifier>
+				<input type="text" name="dex-modifier" class="auto-calc" ng-value="modifier('dex')" readonly="readonly"><label>+ Dex Modifier</label>
 			</div>
 			<div class="w70 small">
 				<input type="text" name="cmd-size-modifier" ng-model="character.cmd.sizeModifier">
@@ -339,7 +340,7 @@
 				<label>Total =</label>
 			</div>
 			<div class="w70 small">
-				<ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" label="Dex Modifier"></ability-modifier>
+				<input type="text" name="dex-modifier" class="auto-calc" ng-value="modifier('dex')" readonly="readonly"><label>Dex Modifier</label>
 			</div>
 			<div class="w70 small">
 				<input type="text" name="initiative-misc-modifier" ng-model="character.initiative.miscModifier">
@@ -396,7 +397,7 @@
 				<label>Base Attack Bonus</label>
 			</div>
 			<div class="w70 small">
-				<ability-modifier ability="str" score="character.abilities.str" temp-score="character.abilities.tempStr" label="+ Str Modifier"></ability-modifier>
+				<input type="text" name="str-modifier" class="auto-calc" ng-value="modifier('str')" readonly="readonly"><label>+ Str Modifier</label>
 			</div>
 			<div class="w70 small">
 				<input type="text" name="cmb-size-modifier" ng-model="character.cmb.sizeModifier">
@@ -505,7 +506,7 @@
 					<label class="skill-ability">Dex</label>
 				</div>
 				<div class="w70">
-					<ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" nolabel="true"></ability-modifier>
+					<input type="text" name="dex-modifier" class="auto-calc" ng-value="modifier('dex')" readonly="readonly">
 				</div>
 				<div class="w70">
 					<input type="text" name="skill-acrobatics-ranks" ng-model="character.skills.acrobatics.ranks">
@@ -536,7 +537,7 @@
 					<label class="skill-ability">Int</label>
 				</div>
 				<div class="w70">
-					<ability-modifier ability="int" score="character.abilities.int" temp-score="character.abilities.tempInt" nolabel="true"></ability-modifier>
+					<input type="text" name="int-modifier" class="auto-calc" ng-value="modifier('int')" readonly="readonly">
 				</div>
 				<div class="w70">
 					<input type="text" name="skill-appraise-ranks" ng-model="character.skills.appraise.ranks">
@@ -558,7 +559,7 @@
 				<div class="w240"><label class="skill">Bluff</label></div>
 				<div class="w80"><input type="text" name="skill-bluff" class="skill-total" ng-model="character.skills.bluff.total"></div>
 				<div class="w40"><label class="skill-ability">Cha</label></div>
-				<div class="w70"><ability-modifier ability="cha" score="character.abilities.cha" temp-score="character.abilities.tempCha" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="cha-modifier" class="auto-calc" ng-value="modifier('cha')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-bluff-ranks" ng-model="character.skills.bluff.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-bluff-class" class="auto-calc" ng-value="character.skills.bluff.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-bluff-racial" ng-model="character.skills.bluff.racial"></div>
@@ -569,7 +570,7 @@
 				<div class="w240"><label class="skill">Climb</label></div>
 				<div class="w80"><input type="text" name="skill-climb" class="skill-total" ng-model="character.skills.climb.total"></div>
 				<div class="w40"><label class="skill-ability">Str</label></div>
-				<div class="w70"><ability-modifier ability="str" score="character.abilities.str" temp-score="character.abilities.tempStr" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="str-modifier" class="auto-calc" ng-value="modifier('str')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-climb-ranks" ng-model="character.skills.climb.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-climb-class" class="auto-calc" ng-value="character.skills.climb.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-climb-racial" ng-model="character.skills.climb.racial"></div>
@@ -583,7 +584,7 @@
 				</div>
 				<div class="w80"><input type="text" name="skill-craft1" class="skill-total" ng-model="character.skills.craft1.total"></div>
 				<div class="w40"><label class="skill-ability">Int</label></div>
-				<div class="w70"><ability-modifier ability="int" score="character.abilities.int" temp-score="character.abilities.tempInt" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="int-modifier" class="auto-calc" ng-value="modifier('int')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-craft1-ranks" ng-model="character.skills.craft1.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-craft1-class" class="auto-calc" ng-value="character.skills.craft1.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-craft1-racial" ng-model="character.skills.craft1.racial"></div>
@@ -597,7 +598,7 @@
 				</div>
 				<div class="w80"><input type="text" name="skill-craft2" class="skill-total" ng-model="character.skills.craft2.total"></div>
 				<div class="w40"><label class="skill-ability">Int</label></div>
-				<div class="w70"><ability-modifier ability="int" score="character.abilities.int" temp-score="character.abilities.tempInt" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="int-modifier" class="auto-calc" ng-value="modifier('int')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-craft2-ranks" ng-model="character.skills.craft2.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-craft2-class" class="auto-calc" ng-value="character.skills.craft2.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-craft2-racial" ng-model="character.skills.craft2.racial"></div>
@@ -611,7 +612,7 @@
 				</div>
 				<div class="w80"><input type="text" name="skill-craft3" class="skill-total" ng-model="character.skills.craft3.total"></div>
 				<div class="w40"><label class="skill-ability">Int</label></div>
-				<div class="w70"><ability-modifier ability="int" score="character.abilities.int" temp-score="character.abilities.tempInt" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="int-modifier" class="auto-calc" ng-value="modifier('int')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-craft3-ranks" ng-model="character.skills.craft3.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-craft3-class" class="auto-calc" ng-value="character.skills.craft3.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-craft3-racial" ng-model="character.skills.craft3.racial"></div>
@@ -622,7 +623,7 @@
 				<div class="w240"><label class="skill">Diplomacy</label></div>
 				<div class="w80"><input type="text" name="skill-diplomacy" class="skill-total" ng-model="character.skills.diplomacy.total"></div>
 				<div class="w40"><label class="skill-ability">Cha</label></div>
-				<div class="w70"><ability-modifier ability="cha" score="character.abilities.cha" temp-score="character.abilities.tempCha" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="cha-modifier" class="auto-calc" ng-value="modifier('cha')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-diplomacy-ranks" ng-model="character.skills.diplomacy.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-diplomacy-class" class="auto-calc" ng-value="character.skills.diplomacy.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-diplomacy-racial" ng-model="character.skills.diplomacy.racial"></div>
@@ -633,7 +634,7 @@
 				<div class="w240"><label class="skill">Disable Device*</label></div>
 				<div class="w80"><input type="text" name="skill-disabledevice" class="skill-total" ng-model="character.skills.disableDevice.total"></div>
 				<div class="w40"><label class="skill-ability">Dex</label></div>
-				<div class="w70"><ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="dex-modifier" class="auto-calc" ng-value="modifier('dex')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-disabledevice-ranks" ng-model="character.skills.disableDevice.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-disabledevice-class" class="auto-calc" ng-value="character.skills.disableDevice.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-disabledevice-racial" ng-model="character.skills.disableDevice.racial"></div>
@@ -644,7 +645,7 @@
 				<div class="w240"><label class="skill">Disguise</label></div>
 				<div class="w80"><input type="text" name="skill-disguise" class="skill-total" ng-model="character.skills.disguise.total"></div>
 				<div class="w40"><label class="skill-ability">Cha</label></div>
-				<div class="w70"><ability-modifier ability="cha" score="character.abilities.cha" temp-score="character.abilities.tempCha" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="cha-modifier" class="auto-calc" ng-value="modifier('cha')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-disguise-ranks" ng-model="character.skills.disguise.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-disguise-class" class="auto-calc" ng-value="character.skills.disguise.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-disguise-racial" ng-model="character.skills.disguise.racial"></div>
@@ -655,7 +656,7 @@
 				<div class="w240"><label class="skill">Escape Artist</label></div>
 				<div class="w80"><input type="text" name="skill-escapeartist" class="skill-total" ng-model="character.skills.escapeArtist.total"></div>
 				<div class="w40"><label class="skill-ability">Dex</label></div>
-				<div class="w70"><ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="dex-modifier" class="auto-calc" ng-value="modifier('dex')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-escapeartist-ranks" ng-model="character.skills.escapeArtist.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-escapeartist-class" class="auto-calc" ng-value="character.skills.escapeArtist.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-escapeartist-racial" ng-model="character.skills.escapeArtist.racial"></div>
@@ -666,7 +667,7 @@
 				<div class="w240"><label class="skill">Fly</label></div>
 				<div class="w80"><input type="text" name="skill-fly" class="skill-total" ng-model="character.skills.fly.total"></div>
 				<div class="w40"><label class="skill-ability">Dex</label></div>
-				<div class="w70"><ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="dex-modifier" class="auto-calc" ng-value="modifier('dex')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-fly-ranks" ng-model="character.skills.fly.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-fly-class" class="auto-calc" ng-value="character.skills.fly.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-fly-racial" ng-model="character.skills.fly.racial"></div>
@@ -677,7 +678,7 @@
 				<div class="w240"><label class="skill">Handle Animal*</label></div>
 				<div class="w80"><input type="text" name="skill-handleanimal" class="skill-total" ng-model="character.skills.handleAnimal.total"></div>
 				<div class="w40"><label class="skill-ability">Cha</label></div>
-				<div class="w70"><ability-modifier ability="cha" score="character.abilities.cha" temp-score="character.abilities.tempCha" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="cha-modifier" class="auto-calc" ng-value="modifier('cha')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-handleanimal-ranks" ng-model="character.skills.handleAnimal.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-handleanimal-class" class="auto-calc" ng-value="character.skills.handleAnimal.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-handleanimal-racial" ng-model="character.skills.handleAnimal.racial"></div>
@@ -688,7 +689,7 @@
 				<div class="w240"><label class="skill">Heal</label></div>
 				<div class="w80"><input type="text" name="skill-heal" class="skill-total" ng-model="character.skills.heal.total"></div>
 				<div class="w40"><label class="skill-ability">Wis</label></div>
-				<div class="w70"><ability-modifier ability="wis" score="character.abilities.wis" temp-score="character.abilities.tempWis" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="wis-modifier" class="auto-calc" ng-value="modifier('wis')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-heal-ranks" ng-model="character.skills.heal.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-heal-class" class="auto-calc" ng-value="character.skills.heal.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-heal-racial" ng-model="character.skills.heal.racial"></div>
@@ -699,7 +700,7 @@
 				<div class="w240"><label class="skill">Intimidate</label></div>
 				<div class="w80"><input type="text" name="skill-intimidate" class="skill-total" ng-model="character.skills.intimidate.total"></div>
 				<div class="w40"><label class="skill-ability">Cha</label></div>
-				<div class="w70"><ability-modifier ability="cha" score="character.abilities.cha" temp-score="character.abilities.tempCha" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="cha-modifier" class="auto-calc" ng-value="modifier('cha')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-intimidate-ranks" ng-model="character.skills.intimidate.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-intimidate-class" class="auto-calc" ng-value="character.skills.intimidate.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-intimidate-racial" ng-model="character.skills.intimidate.racial"></div>
@@ -710,7 +711,7 @@
 				<div class="w240"><label class="skill">Knowledge (Arcana)*</label></div>
 				<div class="w80"><input type="text" name="skill-knowarcana" class="skill-total" ng-model="character.skills.knowledgeArcana.total"></div>
 				<div class="w40"><label class="skill-ability">Int</label></div>
-				<div class="w70"><ability-modifier ability="int" score="character.abilities.int" temp-score="character.abilities.tempInt" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="int-modifier" class="auto-calc" ng-value="modifier('int')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knowarcana-ranks" ng-model="character.skills.knowledgeArcana.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-knowarcana-class" class="auto-calc" ng-value="character.skills.knowledgeArcana.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knowarcana-racial" ng-model="character.skills.knowledgeArcana.racial"></div>
@@ -721,7 +722,7 @@
 				<div class="w240"><label class="skill">Knowledge (Dungeoneering)*</label></div>
 				<div class="w80"><input type="text" name="skill-knowdungeoneering" class="skill-total" ng-model="character.skills.knowledgeDungeoneering.total"></div>
 				<div class="w40"><label class="skill-ability">Int</label></div>
-				<div class="w70"><ability-modifier ability="int" score="character.abilities.int" temp-score="character.abilities.tempInt" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="int-modifier" class="auto-calc" ng-value="modifier('int')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knowdungeoneering-ranks" ng-model="character.skills.knowledgeDungeoneering.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-knowdungeoneering-class" class="auto-calc" ng-value="character.skills.knowledgeDungeoneering.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knowdungeoneering-racial" ng-model="character.skills.knowledgeDungeoneering.racial"></div>
@@ -732,7 +733,7 @@
 				<div class="w240"><label class="skill">Knowledge (Engineering)*</label></div>
 				<div class="w80"><input type="text" name="skill-knowengineering" class="skill-total" ng-model="character.skills.knowledgeEngineering.total"></div>
 				<div class="w40"><label class="skill-ability">Int</label></div>
-				<div class="w70"><ability-modifier ability="int" score="character.abilities.int" temp-score="character.abilities.tempInt" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="int-modifier" class="auto-calc" ng-value="modifier('int')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knowengineering-ranks" ng-model="character.skills.knowledgeEngineering.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-knowengineering-class" class="auto-calc" ng-value="character.skills.knowledgeEngineering.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knowengineering-racial" ng-model="character.skills.knowledgeEngineering.racial"></div>
@@ -743,7 +744,7 @@
 				<div class="w240"><label class="skill">Knowledge (Geography)*</label></div>
 				<div class="w80"><input type="text" name="skill-knowgeography" class="skill-total" ng-model="character.skills.knowledgeGeography.total"></div>
 				<div class="w40"><label class="skill-ability">Int</label></div>
-				<div class="w70"><ability-modifier ability="int" score="character.abilities.int" temp-score="character.abilities.tempInt" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="int-modifier" class="auto-calc" ng-value="modifier('int')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knowgeography-ranks" ng-model="character.skills.knowledgeGeography.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-knowgeography-class" class="auto-calc" ng-value="character.skills.knowledgeGeography.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knowgeography-racial" ng-model="character.skills.knowledgeGeography.racial"></div>
@@ -754,7 +755,7 @@
 				<div class="w240"><label class="skill">Knowledge (History)*</label></div>
 				<div class="w80"><input type="text" name="skill-knowhistory" class="skill-total" ng-model="character.skills.knowledgeHistory.total"></div>
 				<div class="w40"><label class="skill-ability">Int</label></div>
-				<div class="w70"><ability-modifier ability="int" score="character.abilities.int" temp-score="character.abilities.tempInt" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="int-modifier" class="auto-calc" ng-value="modifier('int')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knowhistory-ranks" ng-model="character.skills.knowledgeHistory.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-knowhistory-class" class="auto-calc" ng-value="character.skills.knowledgeHistory.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knowhistory-racial" ng-model="character.skills.knowledgeHistory.racial"></div>
@@ -765,7 +766,7 @@
 				<div class="w240"><label class="skill">Knowledge (Local)*</label></div>
 				<div class="w80"><input type="text" name="skill-knowlocal" class="skill-total" ng-model="character.skills.knowledgeLocal.total"></div>
 				<div class="w40"><label class="skill-ability">Int</label></div>
-				<div class="w70"><ability-modifier ability="int" score="character.abilities.int" temp-score="character.abilities.tempInt" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="int-modifier" class="auto-calc" ng-value="modifier('int')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knowlocal-ranks" ng-model="character.skills.knowledgeLocal.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-knowlocal-class" class="auto-calc" ng-value="character.skills.knowledgeLocal.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knowlocal-racial" ng-model="character.skills.knowledgeLocal.racial"></div>
@@ -776,7 +777,7 @@
 				<div class="w240"><label class="skill">Knowledge (Nature)*</label></div>
 				<div class="w80"><input type="text" name="skill-knownature" class="skill-total" ng-model="character.skills.knowledgeNature.total"></div>
 				<div class="w40"><label class="skill-ability">Int</label></div>
-				<div class="w70"><ability-modifier ability="int" score="character.abilities.int" temp-score="character.abilities.tempInt" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="int-modifier" class="auto-calc" ng-value="modifier('int')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knownature-ranks" ng-model="character.skills.knowledgeNature.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-knownature-class" class="auto-calc" ng-value="character.skills.knowledgeNature.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knownature-racial" ng-model="character.skills.knowledgeNature.racial"></div>
@@ -787,7 +788,7 @@
 				<div class="w240"><label class="skill">Knowledge (Nobility)*</label></div>
 				<div class="w80"><input type="text" name="skill-knownobility" class="skill-total" ng-model="character.skills.knowledgeNobility.total"></div>
 				<div class="w40"><label class="skill-ability">Int</label></div>
-				<div class="w70"><ability-modifier ability="int" score="character.abilities.int" temp-score="character.abilities.tempInt" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="int-modifier" class="auto-calc" ng-value="modifier('int')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knownobility-ranks" ng-model="character.skills.knowledgeNobility.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-knownobility-class" class="auto-calc" ng-value="character.skills.knowledgeNobility.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knownobility-racial" ng-model="character.skills.knowledgeNobility.racial"></div>
@@ -798,7 +799,7 @@
 				<div class="w240"><label class="skill">Knowledge (Planes)*</label></div>
 				<div class="w80"><input type="text" name="skill-knowplanes" class="skill-total" ng-model="character.skills.knowledgePlanes.total"></div>
 				<div class="w40"><label class="skill-ability">Int</label></div>
-				<div class="w70"><ability-modifier ability="int" score="character.abilities.int" temp-score="character.abilities.tempInt" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="int-modifier" class="auto-calc" ng-value="modifier('int')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knowplanes-ranks" ng-model="character.skills.knowledgePlanes.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-knowplanes-class" class="auto-calc" ng-value="character.skills.knowledgePlanes.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knowplanes-racial" ng-model="character.skills.knowledgePlanes.racial"></div>
@@ -809,7 +810,7 @@
 				<div class="w240"><label class="skill">Knowledge (Religion)*</label></div>
 				<div class="w80"><input type="text" name="skill-knowreligion" class="skill-total" ng-model="character.skills.knowledgeReligion.total"></div>
 				<div class="w40"><label class="skill-ability">Int</label></div>
-				<div class="w70"><ability-modifier ability="int" score="character.abilities.int" temp-score="character.abilities.tempInt" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="int-modifier" class="auto-calc" ng-value="modifier('int')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knowreligion-ranks" ng-model="character.skills.knowledgeReligion.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-knowreligion-class" class="auto-calc" ng-value="character.skills.knowledgeReligion.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-knowreligion-racial" ng-model="character.skills.knowledgeReligion.racial"></div>
@@ -820,7 +821,7 @@
 				<div class="w240"><label class="skill">Linguistics*</label></div>
 				<div class="w80"><input type="text" name="skill-linguistics" class="skill-total" ng-model="character.skills.linguistics.total"></div>
 				<div class="w40"><label class="skill-ability">Int</label></div>
-				<div class="w70"><ability-modifier ability="int" score="character.abilities.int" temp-score="character.abilities.tempInt" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="int-modifier" class="auto-calc" ng-value="modifier('int')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-linguistics-ranks" ng-model="character.skills.linguistics.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-linguistics-class" class="auto-calc" ng-value="character.skills.linguistics.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-linguistics-racial" ng-model="character.skills.linguistics.racial"></div>
@@ -831,7 +832,7 @@
 				<div class="w240"><label class="skill">Perception</label></div>
 				<div class="w80"><input type="text" name="skill-perception" class="skill-total" ng-model="character.skills.perception.total"></div>
 				<div class="w40"><label class="skill-ability">Wis</label></div>
-				<div class="w70"><ability-modifier ability="wis" score="character.abilities.wis" temp-score="character.abilities.tempWis" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="wis-modifier" class="auto-calc" ng-value="modifier('wis')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-perception-ranks" ng-model="character.skills.perception.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-perception-class" class="auto-calc" ng-value="character.skills.perception.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-perception-racial" ng-model="character.skills.perception.racial"></div>
@@ -845,7 +846,7 @@
 				</div>
 				<div class="w80"><input type="text" name="skill-perform1" class="skill-total" ng-model="character.skills.perform1.total"></div>
 				<div class="w40"><label class="skill-ability">Cha</label></div>
-				<div class="w70"><ability-modifier ability="cha" score="character.abilities.cha" temp-score="character.abilities.tempCha" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="cha-modifier" class="auto-calc" ng-value="modifier('cha')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-perform1-ranks" ng-model="character.skills.perform1.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-perform1-class" class="auto-calc" ng-value="character.skills.perform1.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-perform1-racial" ng-model="character.skills.perform1.racial"></div>
@@ -859,7 +860,7 @@
 				</div>
 				<div class="w80"><input type="text" name="skill-perform2" class="skill-total" ng-model="character.skills.perform2.total"></div>
 				<div class="w40"><label class="skill-ability">Cha</label></div>
-				<div class="w70"><ability-modifier ability="cha" score="character.abilities.cha" temp-score="character.abilities.tempCha" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="cha-modifier" class="auto-calc" ng-value="modifier('cha')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-perform2-ranks" ng-model="character.skills.perform2.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-perform2-class" class="auto-calc" ng-value="character.skills.perform2.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-perform2-racial" ng-model="character.skills.perform2.racial"></div>
@@ -873,7 +874,7 @@
 				</div>
 				<div class="w80"><input type="text" name="skill-profession1" class="skill-total" ng-model="character.skills.profession1.total"></div>
 				<div class="w40"><label class="skill-ability">Wis</label></div>
-				<div class="w70"><ability-modifier ability="wis" score="character.abilities.wis" temp-score="character.abilities.tempWis" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="wis-modifier" class="auto-calc" ng-value="modifier('wis')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-profession1-ranks" ng-model="character.skills.profession1.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-profession1-class" class="auto-calc" ng-value="character.skills.profession1.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-profession1-racial" ng-model="character.skills.profession1.racial"></div>
@@ -887,7 +888,7 @@
 				</div>
 				<div class="w80"><input type="text" name="skill-profession2" class="skill-total" ng-model="character.skills.profession2.total"></div>
 				<div class="w40"><label class="skill-ability">Wis</label></div>
-				<div class="w70"><ability-modifier ability="wis" score="character.abilities.wis" temp-score="character.abilities.tempWis" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="wis-modifier" class="auto-calc" ng-value="modifier('wis')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-profession2-ranks" ng-model="character.skills.profession2.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-profession2-class" class="auto-calc" ng-value="character.skills.profession2.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-profession2-racial" ng-model="character.skills.profession2.racial"></div>
@@ -898,7 +899,7 @@
 				<div class="w240"><label class="skill">Ride</label></div>
 				<div class="w80"><input type="text" name="skill-ride" class="skill-total" ng-model="character.skills.ride.total"></div>
 				<div class="w40"><label class="skill-ability">Dex</label></div>
-				<div class="w70"><ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="dex-modifier" class="auto-calc" ng-value="modifier('dex')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-ride-ranks" ng-model="character.skills.ride.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-ride-class" class="auto-calc" ng-value="character.skills.ride.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-ride-racial" ng-model="character.skills.ride.racial"></div>
@@ -909,7 +910,7 @@
 				<div class="w240"><label class="skill">Sense Motive</label></div>
 				<div class="w80"><input type="text" name="skill-sensemotive" class="skill-total" ng-model="character.skills.senseMotive.total"></div>
 				<div class="w40"><label class="skill-ability">Wis</label></div>
-				<div class="w70"><ability-modifier ability="wis" score="character.abilities.wis" temp-score="character.abilities.tempWis" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="wis-modifier" class="auto-calc" ng-value="modifier('wis')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-sensemotive-ranks" ng-model="character.skills.senseMotive.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-sensemotive-class" class="auto-calc" ng-value="character.skills.senseMotive.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-sensemotive-racial" ng-model="character.skills.senseMotive.racial"></div>
@@ -920,7 +921,7 @@
 				<div class="w240"><label class="skill">Sleight of Hand*</label></div>
 				<div class="w80"><input type="text" name="skill-sleightofhand" class="skill-total" ng-model="character.skills.sleightOfHand.total"></div>
 				<div class="w40"><label class="skill-ability">Dex</label></div>
-				<div class="w70"><ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="dex-modifier" class="auto-calc" ng-value="modifier('dex')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-sleightofhand-ranks" ng-model="character.skills.sleightOfHand.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-sleightofhand-class" class="auto-calc" ng-value="character.skills.sleightOfHand.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-sleightofhand-racial" ng-model="character.skills.sleightOfHand.racial"></div>
@@ -931,7 +932,7 @@
 				<div class="w240"><label class="skill">Spellcraft*</label></div>
 				<div class="w80"><input type="text" name="skill-spellcraft" class="skill-total" ng-model="character.skills.spellcraft.total"></div>
 				<div class="w40"><label class="skill-ability">Int</label></div>
-				<div class="w70"><ability-modifier ability="int" score="character.abilities.int" temp-score="character.abilities.tempInt" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="int-modifier" class="auto-calc" ng-value="modifier('int')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-spellcraft-ranks" ng-model="character.skills.spellcraft.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-spellcraft-class" class="auto-calc" ng-value="character.skills.spellcraft.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-spellcraft-racial" ng-model="character.skills.spellcraft.racial"></div>
@@ -942,7 +943,7 @@
 				<div class="w240"><label class="skill">Stealth</label></div>
 				<div class="w80"><input type="text" name="skill-stealth" class="skill-total" ng-model="character.skills.stealth.total"></div>
 				<div class="w40"><label class="skill-ability">Dex</label></div>
-				<div class="w70"><ability-modifier ability="dex" score="character.abilities.dex" temp-score="character.abilities.tempDex" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="dex-modifier" class="auto-calc" ng-value="modifier('dex')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-stealth-ranks" ng-model="character.skills.stealth.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-stealth-class" class="auto-calc" ng-value="character.skills.stealth.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-stealth-racial" ng-model="character.skills.stealth.racial"></div>
@@ -953,7 +954,7 @@
 				<div class="w240"><label class="skill">Survival</label></div>
 				<div class="w80"><input type="text" name="skill-survival" class="skill-total" ng-model="character.skills.survival.total"></div>
 				<div class="w40"><label class="skill-ability">Wis</label></div>
-				<div class="w70"><ability-modifier ability="wis" score="character.abilities.wis" temp-score="character.abilities.tempWis" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="wis-modifier" class="auto-calc" ng-value="modifier('wis')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-survival-ranks" ng-model="character.skills.survival.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-survival-class" class="auto-calc" ng-value="character.skills.survival.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-survival-racial" ng-model="character.skills.survival.racial"></div>
@@ -964,7 +965,7 @@
 				<div class="w240"><label class="skill">Swim</label></div>
 				<div class="w80"><input type="text" name="skill-swim" class="skill-total" ng-model="character.skills.swim.total"></div>
 				<div class="w40"><label class="skill-ability">Str</label></div>
-				<div class="w70"><ability-modifier ability="str" score="character.abilities.str" temp-score="character.abilities.tempStr" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="str-modifier" class="auto-calc" ng-value="modifier('str')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-swim-ranks" ng-model="character.skills.swim.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-swim-class" class="auto-calc" ng-value="character.skills.swim.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-swim-racial" ng-model="character.skills.swim.racial"></div>
@@ -975,7 +976,7 @@
 				<div class="w240"><label class="skill">Use Magic Device*</label></div>
 				<div class="w80"><input type="text" name="skill-usemagicdevice" class="skill-total" ng-model="character.skills.useMagicDevice.total"></div>
 				<div class="w40"><label class="skill-ability">Cha</label></div>
-				<div class="w70"><ability-modifier ability="cha" score="character.abilities.cha" temp-score="character.abilities.tempCha" nolabel="true"></ability-modifier></div>
+				<div class="w70"><input type="text" name="cha-modifier" class="auto-calc" ng-value="modifier('cha')" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-usemagicdevice-ranks" ng-model="character.skills.useMagicDevice.ranks"></div>
 				<div class="w70 class-bonus"><input type="text" name="skill-usemagicdevice-class" class="auto-calc" ng-value="character.skills.useMagicDevice.classSkill ? '3' : '0'" readonly="readonly"></div>
 				<div class="w70"><input type="text" name="skill-usemagicdevice-racial" ng-model="character.skills.useMagicDevice.racial"></div>
