@@ -3,10 +3,8 @@
 </div>
 <div class="modal-body clearfix">
 	<div class="first-half">
-		<div class="clearfix">
-			<p class="float-left"><label>Name</label><input name="spell-name" type="text" ng-model="item.name" style="width: 310px"></p>
-			<p class="float-left"><label>Level</label><input name="spell-level" type="number" ng-model="item.level" class="i60"></p>
-		</div>
+		<p><label>Name</label><auto-complete model="item.name" values="spellNames" style="width: 310px"></auto-complete></p>
+		<p><label>Level</label><input name="spell-level" type="number" ng-model="item.level" class="i60"></p>
 		<p><label>School</label><input name="spell-school" type="text" ng-model="item.school"></p>
 		<p><label>Subschool</label><input name="spell-subschool" type="text" ng-model="item.subschool"></p>
 		<div class="clearfix">

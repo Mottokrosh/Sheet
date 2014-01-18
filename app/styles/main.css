@@ -370,12 +370,19 @@ input[type='checkbox'] {
 	box-sizing: border-box;
 	width: 100%;
 	overflow: hidden;
+	z-index: 100;
 }
 .autocomplete li:hover,
 .autocomplete li:focus {
 	background: #333;
 	color: #fff;
 	cursor: pointer;
+}
+.ngdialog-content .autocomplete {
+	width: 380px;
+}
+.ngdialog-content .autocomplete ul {
+	top: 35px;
 }
 
 .w30 { width: 30px; } .w30 input:not([type="checkbox"]) { width: 18px; }

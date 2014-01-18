@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sheetApp')
-	.controller('SheetCtrl', function ($scope, $rootScope, $routeParams, $timeout, ngDialog, user, Character) {
+	.controller('SheetCtrl', function ($scope, $rootScope, $routeParams, $timeout, $http, ngDialog, user, Character) {
 		$scope.user = user;
 		$scope.saveText = 'Save';
 
@@ -22,6 +22,10 @@ angular.module('sheetApp')
 		/*$scope.character.$watch('[feats, specialAbilities, traits, gear, spells]', function (newValue, oldValue) {
 			console.log(newValue, oldValue);
 		}, true);*/
+
+		$http.get('data/spell_names.json').success(function (names) {
+			$scope.spellNames = names;
+		});
 
 		//
 		// Saving

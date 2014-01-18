@@ -9,12 +9,13 @@ angular.module('sheetApp')
 				model: '=',
 			},
 			restrict: 'E',
-			link: function link(scope) {
+			link: function link(scope, element) {
+				var e = element.find('input');
 				scope.showSuggestions = false;
 				scope.fromSelect = false;
 
 				scope.$watch('model', function (newVal) {
-					if (newVal && !scope.fromSelect) {
+					if (newVal && !scope.fromSelect && e.hasClass('ng-dirty')) {
 						scope.showSuggestions = true;
 						scope.suggestions = $filter('filter')(scope.values, scope.model).slice(0, 25);
 					} else if (scope.fromSelect) {

@@ -2,8 +2,6 @@
 
 angular.module('sheetApp')
 	.controller('DialogCtrl', function ($scope, ngDialog) {
-		console.log($scope, ngDialog);
-
 		$scope.items = $scope.dialog.items;
 		$scope.item = $scope.dialog.item;
 		$scope.mode = $scope.dialog.mode;
@@ -28,7 +26,6 @@ angular.module('sheetApp')
 		};
 
 		$scope.close = function () {
-			console.log('Close button');
 			ngDialog.close();
 		};
 
