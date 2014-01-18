@@ -5,7 +5,7 @@
 	<div class="first-half">
 		<p><label>Name</label><auto-complete model="item.name" values="spellNames" style="width: 310px"></auto-complete></p>
 		<p><label>Level</label><input name="spell-level" type="number" ng-model="item.level" class="i60"></p>
-		<p><label>School</label><input name="spell-school" type="text" ng-model="item.school"></p>
+		<p><label>School</label><auto-complete model="item.school" values="spellSchools" style="width: 310px"></auto-complete></p>
 		<p><label>Subschool</label><input name="spell-subschool" type="text" ng-model="item.subschool"></p>
 		<div class="clearfix">
 			<div class="float-left"><label>Prepared</label><input name="spell-prepared" type="number" class="i60" ng-model="item.prepared"></div>

@@ -304,6 +304,9 @@ input[type='checkbox'] {
 	width: 380px;
 	text-align: left;
 }
+.modal-body textarea {
+	height: 120px;
+}
 .modal-body label {
 	font-size: 16px;
 	cursor: text;

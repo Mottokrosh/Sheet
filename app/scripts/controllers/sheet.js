@@ -16,6 +16,10 @@ angular.module('sheetApp')
 		} else {
 			$scope.character = new Character();
 			$scope.character.user = user;
+			$scope.character.spells = [];
+			for(var l = 0; l <= 9; l++) {
+				$scope.character.spells[l] = {};
+			}
 		}
 
 		// Watch tokenised elements since they don't inherently dirty the form
@@ -26,6 +30,8 @@ angular.module('sheetApp')
 		$http.get('data/spell_names.json').success(function (names) {
 			$scope.spellNames = names;
 		});
+
+		$scope.spellSchools = ['Abjuration', 'Conjuration', 'Divination', 'Enchantment', 'Evocation', 'Illusion', 'Necromancy', 'Transmutation', 'Universal'];
 
 		//
 		// Saving
@@ -159,7 +165,7 @@ angular.module('sheetApp')
 
 		$scope.spellDialog = function (spellLevel, mode, spell) {
 			if (!$scope.character.spells) {
-				$scope.character.spells = {};
+				$scope.character.spells = [];
 			}
 			if (!$scope.character.spells[spellLevel]) {
 				$scope.character.spells[spellLevel] = {};
@@ -191,10 +197,12 @@ angular.module('sheetApp')
 
 			if ($scope.character && $scope.character.$resolved) {
 				statValue = $scope.character.abilities[tempStatKey] ? $scope.character.abilities[tempStatKey] : $scope.character.abilities[stat];
-				modifier = Math.floor((parseInt(statValue, 10) - 10) / 2);
+				if (statValue) {
+					modifier = Math.floor((parseInt(statValue, 10) - 10) / 2);
 
-				if (modifier >= 0) {
-					modifier = '+' + modifier;
+					if (modifier >= 0) {
+						modifier = '+' + modifier;
+					}
 				}
 			}
 
