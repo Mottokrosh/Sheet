@@ -301,7 +301,7 @@ input[type='checkbox'] {
 	color: #111;
 	font-size: 16px;
 	margin: 0;
-	width: 380px;
+	width: 390px;
 	text-align: left;
 }
 .modal-body textarea {
@@ -334,6 +334,79 @@ input[type='checkbox'] {
 }
 .modal-footer button {
 	font-size: 20px;
+}
+
+.spell-description {
+	background: url(../images/bg-paper-2.jpg);
+	border: 1px solid rgba(84, 75, 49, 0.7);
+	font-family: 'Caudex', times, serif;
+	padding: 5px;
+	color: #111;
+	font-size: 16px;
+	margin: 0;
+	width: 405px;
+	height: 410px;
+	text-align: left;
+	overflow: auto;
+}
+
+.spell-description div {
+	padding: 0;
+}
+.spell-description div.heading {
+	padding: 0;
+	background-color: #222;
+	height: 22px;
+}
+.spell-description hr {
+	height: 1px;
+	background-color: #222;
+}
+.spell-description h1 {
+	font-size: 13px;
+}
+.spell-description h2 {
+	font-size: 13px;
+	text-align: left;
+}
+.spell-description h3 {
+	margin-bottom: 0;
+	margin-top: 0;
+	margin-left: -20px;
+	text-indent: 0;
+	font-size: 16;
+	font-weight: normal;
+}
+.spell-description h4 {
+	text-indent: 10px;
+	text-align: justify;
+	font-size: 13px;
+	font-weight: normal;
+}
+.spell-description p {
+	margin: 0;
+	padding: 0;
+}
+.spell-description h5 {
+	font-weight: normal;
+}
+.spell-description h6 {
+	font-size: 13px;
+	font-weight: normal;
+}
+.spell-description p.alignleft {
+	text-indent: 5px;
+	font-weight: bold;
+	color: white;
+}
+.spell-description p.alignright {
+	float: right;
+	text-align: right;
+	font-weight: bold;
+	color: white;
+}
+.spell-description li {
+	text-indent: 0;
 }
 
 .float-left {

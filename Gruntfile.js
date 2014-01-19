@@ -370,7 +370,13 @@ module.exports = function (grunt) {
 	grunt.registerTask('prepare_spells', function () {
 		var spellsRaw = grunt.file.readJSON('app/data/spells_raw.json'),
 			spells,
-			spellNames = [];
+			spellNames = [],
+			spellsOut = {};
+
+		function capitaliseFirstLetter(string)
+		{
+			return string.charAt(0).toUpperCase() + string.slice(1);
+		}
 
 		for (var k in spellsRaw.spell_full) {
 			if (k.match(/^Updated/)) {
@@ -379,11 +385,15 @@ module.exports = function (grunt) {
 		}
 
 		for (var i = 0; i < spells.length; i++) {
-			spells[i].fulltext = spells[i].fulltext.replace(/<link[^>]+>/, '');
+			spellsOut[spells[i].name] = {
+				school: capitaliseFirstLetter(spells[i].school),
+				subschool: capitaliseFirstLetter(spells[i].subschool),
+				fulltext: spells[i].fulltext.replace(/<link[^>]+>/, '')
+			};
 			spellNames.push(spells[i].name);
 		}
 
-		grunt.file.write('app/data/spells.json', JSON.stringify(spells, null, '\t'));
+		grunt.file.write('app/data/spells.json', JSON.stringify(spellsOut, null, '\t'));
 		grunt.file.write('app/data/spell_names.json', JSON.stringify(spellNames, null, '\t'));
 
 		grunt.log.ok('Spell data prepared.');

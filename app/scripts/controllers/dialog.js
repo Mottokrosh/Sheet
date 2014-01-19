@@ -5,6 +5,7 @@ angular.module('sheetApp')
 		$scope.items = $scope.dialog.items;
 		$scope.item = $scope.dialog.item;
 		$scope.mode = $scope.dialog.mode;
+		$scope.spellData = $scope.dialog.spellData || {};
 		$scope.deleteText = 'Delete';
 
 		// General
@@ -36,6 +37,16 @@ angular.module('sheetApp')
 		};
 
 		// Spell Related
+
+		if ($scope.spellData) {
+			$scope.$watch('item.name', function (newVal) {
+				if ($scope.spellData[newVal]) {
+					$scope.description = $scope.spellData[newVal].fulltext;
+					$scope.item.school = $scope.spellData[newVal].school;
+					$scope.item.subschool = $scope.spellData[newVal].subschool;
+				}
+			}, true);
+		}
 
 		$scope.prepare = function () {
 			$scope.item.prepared++;

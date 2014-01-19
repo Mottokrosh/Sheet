@@ -7,14 +7,15 @@
 		<p><label>Level</label><input name="spell-level" type="number" ng-model="item.level" class="i60"></p>
 		<p><label>School</label><auto-complete model="item.school" values="spellSchools" style="width: 310px"></auto-complete></p>
 		<p><label>Subschool</label><input name="spell-subschool" type="text" ng-model="item.subschool"></p>
-		<div class="clearfix">
+		<div class="clearfix" style="margin-bottom: 10px;">
 			<div class="float-left"><label>Prepared</label><input name="spell-prepared" type="number" class="i60" ng-model="item.prepared"></div>
 			<div class="float-left"><label>Cast</label><input name="spell-cast" type="number" class="i60" ng-model="item.cast"></div>
 		</div>
+		<p><label>Notes</label><textarea name="spell-notes" ng-model="item.notes"></textarea></p>
 	</div>
 	<div class="second-half">
-		<p><label>Description</label><textarea name="spell-description" ng-model="item.description" style="height: 154px"></textarea></p>
-		<p><label>Notes</label><textarea name="spell-notes" ng-model="item.notes"></textarea></p>
+		<p style="margin-bottom: 0"><label>Description</label></p>
+		<div class="spell-description" ng-bind-html="description"></div>
 	</div>
 </div>
 <div class="modal-footer">

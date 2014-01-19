@@ -31,6 +31,10 @@ angular.module('sheetApp')
 			$scope.spellNames = names;
 		});
 
+		$http.get('data/spells.json').success(function (spells) {
+			$scope.spellData = spells;
+		});
+
 		$scope.spellSchools = ['Abjuration', 'Conjuration', 'Divination', 'Enchantment', 'Evocation', 'Illusion', 'Necromancy', 'Transmutation', 'Universal'];
 
 		//
@@ -112,7 +116,7 @@ angular.module('sheetApp')
 		// Dialogs
 		//
 
-		function itemDialog(mode, item, items, templateUrl) {
+		function itemDialog(mode, item, items, templateUrl, spellLevel) {
 			if (mode === 'add') {
 				item = {};
 				items.push(item);
@@ -123,6 +127,11 @@ angular.module('sheetApp')
 				item: item,
 				items: items
 			};
+
+			if (spellLevel !== undefined) {
+				$scope.dialog.spellData = $scope.spellData;
+				$scope.dialog.item.level = spellLevel;
+			}
 
 			ngDialog.open({
 				template: templateUrl,
@@ -173,7 +182,7 @@ angular.module('sheetApp')
 			if (!angular.isArray($scope.character.spells[spellLevel].slotted)) {
 				$scope.character.spells[spellLevel].slotted = [];
 			}
-			itemDialog(mode, spell, $scope.character.spells[spellLevel].slotted, 'views/dialog/spell.html');
+			itemDialog(mode, spell, $scope.character.spells[spellLevel].slotted, 'views/dialog/spell.html', spellLevel);
 		};
 
 		//
