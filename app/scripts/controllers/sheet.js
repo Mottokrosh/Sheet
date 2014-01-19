@@ -20,6 +20,7 @@ angular.module('sheetApp')
 			for(var l = 0; l <= 9; l++) {
 				$scope.character.spells[l] = {};
 			}
+			$scope.character.$resolved = true; // for autoSave
 		}
 
 		// Watch tokenised elements since they don't inherently dirty the form
@@ -204,7 +205,7 @@ angular.module('sheetApp')
 				statValue,
 				modifier;
 
-			if ($scope.character && $scope.character.$resolved) {
+			if ($scope.character && $scope.character.$resolved && $scope.character.abilities) {
 				statValue = $scope.character.abilities[tempStatKey] ? $scope.character.abilities[tempStatKey] : $scope.character.abilities[stat];
 				if (statValue) {
 					modifier = Math.floor((parseInt(statValue, 10) - 10) / 2);
