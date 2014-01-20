@@ -15,7 +15,9 @@ angular.module('sheetApp')
 				$scope.deleteText = 'Confirm?';
 			} else {
 				var index = $scope.items.indexOf($scope.item);
-				$scope.items.splice(index, 1);
+				if (index > -1) {
+					$scope.items.splice(index, 1);
+				}
 				ngDialog.close();
 			}
 		};
@@ -32,7 +34,9 @@ angular.module('sheetApp')
 
 		$scope.dismiss = function () {
 			var index = $scope.items.indexOf($scope.item);
-			$scope.items.splice(index, 1);
+			if (index > -1) {
+				$scope.items.splice(index, 1);
+			}
 			ngDialog.close();
 		};
 

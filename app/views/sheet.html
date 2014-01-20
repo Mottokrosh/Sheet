@@ -1209,12 +1209,12 @@
 				<label>Specialised &amp; Opposed Schools, Bloodline, Domains</label>
 			</div>
 
-			<span ng-repeat="level in character.spells">
+			<span ng-repeat="c in character.spells track by $index">
 				<div class="w130 black new-line"><span>{{$index}}th Level</span><label>Spells</label></div>
-				<div class="w850 spell-container spells-{{level}}">
+				<div class="w850 spell-container spells-{{$index}}">
 					<div class="spell-add token-add static-token" ng-click="spellDialog($index, 'add')">+</div>
 					<span ng-repeat="spell in character.spells[$index].slotted | orderBy:'name'">
-						<div class="token spell" ng-click="spellDialog($index, 'edit', spell)">{{spell.name}}<span ng-show="spell.school" class="school">{{spell.school}}</span><span ng-show="spell.cast > 0" ng-repeat="n in [] | range:spell.cast" class="cast"></span><span ng-show="prepLeft(spell) > 0" ng-repeat="n in [] | range:prepLeft(spell)" class="prepared"></span>
+						<div class="token spell" ng-click="spellDialog($parent.$index, 'edit', spell)">{{spell.name}}<span ng-show="spell.school" class="school">{{spell.school}}</span><span ng-show="spell.cast > 0" ng-repeat="n in [] | range:spell.cast" class="cast"></span><span ng-show="prepLeft(spell) > 0" ng-repeat="n in [] | range:prepLeft(spell)" class="prepared"></span>
 						</div>
 					</span>
 				</div>
