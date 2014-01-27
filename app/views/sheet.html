@@ -1231,9 +1231,7 @@
 </form>
 <footer>
 	<nav>
-		<p id="status">
-			<button ng-click="saveCharacter()">{{saveText}}<span ng-show="sheet.$dirty">*</span></button>
-		</p>
+		<a ng-href="/"><img src="images/icon-house.svg" width="40" height="40" alt="Home"><br>Home</a>
 		<a ng-click="scrollTo('general')"><img src="images/icon-head.svg" width="40" height="40" alt="General"><br>General</a>
 		<a ng-click="scrollTo('abilities')"><img src="images/icon-boxes.svg" width="40" height="40" alt="Abilities"><br>Abilites</a>
 		<a ng-click="scrollTo('defense')"><img src="images/icon-defense.svg" width="40" height="40" alt="Defense"><br>Defense</a>
@@ -1243,5 +1241,6 @@
 		<a ng-click="scrollTo('equipment')"><img src="images/icon-bag.svg" width="40" height="40" alt="Equipment"><br>Equipment</a>
 		<a ng-click="scrollTo('spells')"><img src="images/icon-spells.svg" width="40" height="40" alt="Spells"><br>Spells</a>
 		<a ng-click="scrollTo('notes')"><img src="images/icon-quill.svg" width="40" height="40" alt="Notes"><br>Notes</a>
+		<p id="status"><span ng-show="sheet.$dirty">Unsaved Changes</span><br>{{saveText}}</p>
 	</nav>
 </footer>

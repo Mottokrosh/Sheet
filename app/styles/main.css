@@ -109,18 +109,23 @@ footer a {
 	line-height: 16px;
 	padding-top: 8px;
 }
+footer a:first-of-type {
+	border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
 footer a:hover, footer a:focus { color: #fff; cursor: pointer; }
 footer a#status { min-width: 60px; }
-footer nav img { border: none; }
-footer p:first-of-type {
-	border-left: 1px solid rgba(255, 255, 255, 0.2);
+footer nav img {
+	border: none;
 }
 footer p {
 	display: inline-block;
-	color: #fff;
+	color: #bbb;
 	font-weight: bold;
-	padding: 0 15px;
+	padding: 10px 15px 0 15px;
 	border-right: 1px solid rgba(255, 255, 255, 0.2);
+	height: 80px;
+	vertical-align: top;
+	width: 90px;
 }
 aside { height: 20px; line-height: 20px; position: fixed; left: 0; bottom: 40px; }
 p.logo { height: 130px; margin-top: -20px; }

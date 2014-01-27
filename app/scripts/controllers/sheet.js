@@ -1,15 +1,19 @@
 'use strict';
 
 angular.module('sheetApp')
-	.controller('SheetCtrl', function ($scope, $rootScope, $routeParams, $timeout, $http, ngDialog, user, Character) {
+	.controller('SheetCtrl', function ($scope, $rootScope, $routeParams, $timeout, $http, $location, ngDialog, user, Character) {
 		$scope.user = user;
-		$scope.saveText = 'Save';
+		$scope.saveText = '';
 
 		var saveInProgress = false;
 
 		//
 		// Loading
 		//
+
+		if (!user.id) {
+			$location.path('/login');
+		}
 
 		if ( $routeParams.characterId ) {
 			$scope.character = Character.getById($routeParams.characterId);
@@ -44,9 +48,9 @@ angular.module('sheetApp')
 
 		function saveOrUpdateSuccess() {
 			$scope.sheet.$setPristine();
-			$scope.saveText = 'Saved';
+			$scope.saveText = 'All Changes Saved';
 			$timeout(function () {
-				$scope.saveText = 'Save';
+				$scope.saveText = '';
 				saveInProgress = false;
 			}, 2500);
 		}
