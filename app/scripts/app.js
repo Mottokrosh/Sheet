@@ -5,6 +5,8 @@ angular.module('sheetApp', [
 	'ngResource',
 	'ngSanitize',
 	'ngRoute',
+	'ngTouch',
+	'ngAnimate',
 	'mongolabResource',
 	'ngDialog',
 	'chieffancypants.loadingBar'
