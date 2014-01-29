@@ -1219,6 +1219,17 @@
 				<label>Specialised &amp; Opposed Schools, Bloodline, Domains</label>
 			</div>
 
+			<span>
+				<div class="w130 black new-line"><span>Spell-Like</span><label>Abilities</label></div>
+				<div class="w850 spell-container spells-spell-like">
+					<div class="spell-add token-add static-token" ng-click="spellLikeDialog('add')">+</div>
+					<span ng-repeat="spell in character.spellLikes | orderBy:'name'">
+						<div class="token spell" ng-class="{ marked: spell.marked }" ng-click="spellLikeDialog('edit', spell)">{{spell.name}}<span ng-show="spell.school" class="school">{{spell.school}}</span><span ng-show="spell.cast > 0" ng-repeat="n in [] | range:spell.cast" class="cast"></span><span ng-show="prepLeft(spell) > 0" ng-repeat="n in [] | range:prepLeft(spell)" class="prepared"></span><span class="at-will" ng-show="spell.atWill">&infin;</span>
+						</div>
+					</span>
+				</div>
+			</span>
+
 			<span ng-repeat="c in character.spells track by $index">
 				<div class="w130 black new-line"><span>{{$index|ordinal}} Level</span><label>Spells</label></div>
 				<div class="w850 spell-container spells-{{$index}}">

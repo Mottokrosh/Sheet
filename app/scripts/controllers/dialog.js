@@ -70,4 +70,16 @@ angular.module('sheetApp')
 		$scope.toggleMark = function () {
 			$scope.item.marked = !$scope.item.marked;
 		};
+
+		$scope.tPrepared = function () {
+			return $scope.dialog.spellLike ? 'Per Day' : 'Prepared';
+		};
+
+		$scope.tCast = function () {
+			return $scope.dialog.spellLike ? 'Used' : 'Cast';
+		};
+
+		$scope.toggleAtWill = function () {
+			$scope.item.atWill = !$scope.item.atWill;
+		};
 	});

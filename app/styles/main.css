@@ -83,6 +83,11 @@ div.token span.prepared {
 	border-radius: 3px;
 }
 
+div.token span.at-will {
+	padding-left: 5px;
+	font-weight: bold;
+}
+
 .with-delete button:last-of-type { background: url(../images/gradient-red-dark.png) repeat-x 50% 50%; border: 1px solid #721a1a; color: #e6b0b0; }
 .with-delete button:last-of-type:hover { background: url(../images/gradient-red.png) repeat-x 50% 50%; border: 1px solid #a52727; color: #ffc4c4; }
 #wrapper div.spell-container { margin-right: 0; }

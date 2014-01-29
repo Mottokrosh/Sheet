@@ -135,7 +135,13 @@ angular.module('sheetApp')
 
 			if (spellLevel !== undefined) {
 				$scope.dialog.spellData = $scope.spellData;
-				$scope.dialog.item.level = spellLevel;
+				if (spellLevel !== 'sp') {
+					$scope.dialog.item.level = spellLevel;
+				}
+			}
+
+			if (spellLevel === 'sp') {
+				$scope.dialog.spellLike = true;
 			}
 
 			ngDialog.open({
@@ -188,6 +194,13 @@ angular.module('sheetApp')
 				$scope.character.spells[spellLevel].slotted = [];
 			}
 			itemDialog(mode, spell, $scope.character.spells[spellLevel].slotted, 'views/dialog/spell.html', spellLevel);
+		};
+
+		$scope.spellLikeDialog = function (mode, spell) {
+			if (!$scope.character.spellLikes) {
+				$scope.character.spellLikes = [];
+			}
+			itemDialog(mode, spell, $scope.character.spellLikes, 'views/dialog/spell.html', 'sp');
 		};
 
 		//
