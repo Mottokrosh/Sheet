@@ -24,5 +24,9 @@
 	<button ng-click="prepare()" ng-show="mode =='edit'">+ Prepare</button>
 	<button ng-click="cast()" ng-show="mode =='edit'">+ Cast</button>
 	<button ng-click="clearCounts()" ng-show="mode =='edit'">Clear Counts</button>
+	<button ng-click="toggleMark()" ng-show="mode =='edit'">
+		<span ng-hide="item.marked">Mark</span>
+		<span ng-show="item.marked">Unmark</span>
+	</button>
 	<button ng-click="remove()" ng-show="mode =='edit'">{{deleteText}}</button>
 </div>

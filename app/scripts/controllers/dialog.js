@@ -66,4 +66,8 @@ angular.module('sheetApp')
 			$scope.item.prepared = 0;
 			$scope.item.cast = 0;
 		};
+
+		$scope.toggleMark = function () {
+			$scope.item.marked = !$scope.item.marked;
+		};
 	});

@@ -40,27 +40,30 @@ input:not([type="checkbox"]) {
 input.skill-name { float: right; width: 120px !important; }
 textarea.location { width: 128px; }
 textarea.weight { width: 68px; }
-#wrapper div.gear { min-height: 40px; }
-#wrapper div.token { display: inline-block; padding: 0 8px; height: 38px; line-height: 38px; border: 1px solid rgba(84,75,49,0.7); border-radius: 3px; margin-right: 10px; font-size: 18px; }
-#wrapper div.token:hover { cursor: pointer; }
-#wrapper div.token em { font-style: normal; padding: 0 5px; color: #555; }
-#wrapper div.token-add { height: 40px; width: 40px; margin: 0; line-height: 38px; text-align: center; font-size: 28px; font-weight: bold; background: #000; border-radius: 3px; color: #fff; cursor: pointer; margin-right: 10px; }
-#wrapper div.token span.location { color: rgba(0, 0, 0, 0.5); font-size: 13px; vertical-align: top; }
+div.gear { min-height: 40px; }
+div.token { display: inline-block; padding: 0 8px; height: 38px; line-height: 38px; border: 1px solid rgba(84,75,49,0.7); border-radius: 3px; margin-right: 10px; font-size: 18px; }
+div.token:hover { cursor: pointer; }
+div.token em { font-style: normal; padding: 0 5px; color: #555; }
+div.token-add { height: 40px; width: 40px; margin: 0; line-height: 38px; text-align: center; font-size: 28px; font-weight: bold; background: #000; border-radius: 3px; color: #fff; cursor: pointer; margin-right: 10px; }
+div.token span.location { color: rgba(0, 0, 0, 0.5); font-size: 13px; vertical-align: top; }
+div.token.marked {
+	box-shadow: inset -1px -1px 0 1px rgba(84,75,49,0.7);
+}
 
-#wrapper div.token span.school {
+div.token span.school {
 	color: rgba(0, 0, 0, 0.5);
 	font-size: 13px;
 	vertical-align: top;
 	padding-left: 5px;
 }
 
-#wrapper div.token .counts {
+div.token .counts {
 	margin: 0;
 	display: inline-block;
 	float: none;
 }
 
-#wrapper div.token span.cast {
+div.token span.cast {
 	display: block;
 	background: rgba(0, 0, 0, 0.3);
 	float: right;
@@ -70,7 +73,7 @@ textarea.weight { width: 68px; }
 	border-radius: 3px;
 }
 
-#wrapper div.token span.prepared {
+div.token span.prepared {
 	display: block;
 	background: rgba(0, 0, 0, 1);
 	float: right;
