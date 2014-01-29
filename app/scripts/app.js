@@ -48,6 +48,17 @@ angular.module('sheetApp', [
 			return input;
 		};
 	})
+	.filter('ordinal', function () {
+		return function (number) {
+			var suffix = 'th';
+			if (number === 1) {
+				suffix = 'st';
+			} else if (number === 2) {
+				suffix = 'nd';
+			}
+			return number + suffix;
+		};
+	})
 	.run(function ($rootScope, $location, user, cache) {
 		// http://arthur.gonigberg.com/2013/06/29/angularjs-role-based-auth/
 		var routesThatDontRequireAuth = ['/login', '/logout'];

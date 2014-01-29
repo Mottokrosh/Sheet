@@ -1220,7 +1220,7 @@
 			</div>
 
 			<span ng-repeat="c in character.spells track by $index">
-				<div class="w130 black new-line"><span>{{$index}}th Level</span><label>Spells</label></div>
+				<div class="w130 black new-line"><span>{{$index|ordinal}} Level</span><label>Spells</label></div>
 				<div class="w850 spell-container spells-{{$index}}">
 					<div class="spell-add token-add static-token" ng-click="spellDialog($index, 'add')">+</div>
 					<span ng-repeat="spell in character.spells[$index].slotted | orderBy:'name'">
