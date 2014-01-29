@@ -299,6 +299,17 @@
 				<label>Other Modifiers</label>
 			</div>
 
+			<div class="w140 black new-line"><span>Resist</span><label>All Resistances</label></div>
+			<div class="w370">
+				<input type="text" name="resistances" class="left" ng-model="character.resistances">
+				<label>Elemental &amp; Other</label>
+			</div>
+			<div class="w140 black"><span>Immune</span><label>All Immunities</label></div>
+			<div class="w310">
+				<input type="text" name="immunities" class="left" ng-model="character.immunities">
+				<label>Effects &amp; Other</label>
+			</div>
+
 			<div class="w140 black new-line"><span>CMD</span><label>Combat Maneuver Defense</label></div>
 			<div class="w70">
 				<input type="text" name="cmd" ng-model="character.cmd.total">
@@ -311,7 +322,6 @@
 			</div>
 			<div class="w70 small">
 				<input type="text" name="str-modifier" class="auto-calc" ng-value="modifier('str')" readonly="readonly"><label>+ Str Modifier</label>
-
 			</div>
 			<div class="w70 small">
 				<input type="text" name="dex-modifier" class="auto-calc" ng-value="modifier('dex')" readonly="readonly"><label>+ Dex Modifier</label>

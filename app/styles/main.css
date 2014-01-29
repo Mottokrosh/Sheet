@@ -552,6 +552,7 @@ input[type='checkbox'] {
 .w270 { width: 270px; } .w270 input:not([type="checkbox"]) { width: 258px; }
 .w290 { width: 290px; } .w290 input:not([type="checkbox"]) { width: 278px; }
 .w300 { width: 300px; } .w300 input:not([type="checkbox"]) { width: 288px; }
+.w310 { width: 310px; } .w310 input:not([type="checkbox"]) { width: 298px; }
 .w350 { width: 350px; } .w350 input:not([type="checkbox"]) { width: 338px; }
 .w360 { width: 360px; } .w360 input:not([type="checkbox"]) { width: 348px; }
 .w370 { width: 370px; } .w370 input:not([type="checkbox"]) { width: 358px; }
