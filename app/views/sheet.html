@@ -1220,7 +1220,7 @@
 			</div>
 
 			<span>
-				<div class="w130 black new-line"><span>Spell-Like</span><label>Abilities</label></div>
+				<div class="w130 black new-line"><span>Spell-Like</span><label>&amp; Other Powers</label></div>
 				<div class="w850 spell-container spells-spell-like">
 					<div class="spell-add token-add static-token" ng-click="spellLikeDialog('add')">+</div>
 					<span ng-repeat="spell in character.spellLikes | orderBy:'name'">
@@ -1254,14 +1254,14 @@
 <footer>
 	<nav>
 		<a ng-href="/"><img src="images/icon-house.svg" width="40" height="40" alt="Home"><br>Home<span ng-show="sheet.$dirty">*</span></a>
-		<a ng-click="scrollTo('general')"><img src="images/icon-head.svg" width="40" height="40" alt="General"><br>General</a>
-		<a ng-click="scrollTo('abilities')"><img src="images/icon-boxes.svg" width="40" height="40" alt="Abilities"><br>Abilites</a>
-		<a ng-click="scrollTo('defense')"><img src="images/icon-defense.svg" width="40" height="40" alt="Defense"><br>Defense</a>
-		<a ng-click="scrollTo('offense')"><img src="images/icon-offense.svg" width="40" height="40" alt="Offense"><br>Offense</a>
-		<a ng-click="scrollTo('skills')"><img src="images/icon-drafting-compass.svg" width="40" height="40" alt="Skills"><br>Skills</a>
-		<a ng-click="scrollTo('feats')"><img src="images/icon-muscle.svg" width="40" height="40" alt="Feats"><br>Feats</a>
-		<a ng-click="scrollTo('equipment')"><img src="images/icon-bag.svg" width="40" height="40" alt="Equipment"><br>Equipment</a>
-		<a ng-click="scrollTo('spells')"><img src="images/icon-spells.svg" width="40" height="40" alt="Spells"><br>Spells</a>
-		<a ng-click="scrollTo('notes')"><img src="images/icon-quill.svg" width="40" height="40" alt="Notes"><br>Notes</a>
+		<a ng-click="scrollTo('general', $event)"><img src="images/icon-head.svg" width="40" height="40" alt="General"><br>General</a>
+		<a ng-click="scrollTo('abilities', $event)"><img src="images/icon-boxes.svg" width="40" height="40" alt="Abilities"><br>Abilites</a>
+		<a ng-click="scrollTo('defense', $event)"><img src="images/icon-defense.svg" width="40" height="40" alt="Defense"><br>Defense</a>
+		<a ng-click="scrollTo('offense', $event)"><img src="images/icon-offense.svg" width="40" height="40" alt="Offense"><br>Offense</a>
+		<a ng-click="scrollTo('skills', $event)"><img src="images/icon-drafting-compass.svg" width="40" height="40" alt="Skills"><br>Skills</a>
+		<a ng-click="scrollTo('feats', $event)"><img src="images/icon-muscle.svg" width="40" height="40" alt="Feats"><br>Feats</a>
+		<a ng-click="scrollTo('equipment', $event)"><img src="images/icon-bag.svg" width="40" height="40" alt="Equipment"><br>Equipment</a>
+		<a ng-click="scrollTo('spells', $event)"><img src="images/icon-spells.svg" width="40" height="40" alt="Spells"><br>Spells</a>
+		<a ng-click="scrollTo('notes', $event)"><img src="images/icon-quill.svg" width="40" height="40" alt="Notes"><br>Notes</a>
 	</nav>
 </footer>

@@ -89,7 +89,8 @@ angular.module('sheetApp')
 		// Functions
 		//
 
-		$scope.scrollTo = function (id) {
+		$scope.scrollTo = function (id, evt) {
+			evt.preventDefault();
 			window.scrollTo(0, document.getElementById(id).offsetTop);
 		};
 
