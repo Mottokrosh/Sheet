@@ -1,0 +1,44 @@
+<h2>{{character.name}}</h2>
+
+<p>{{character.gender|expandGender}} {{character.race}} {{character.level}}</p>
+<p>{{character.alignment}} {{character.size|expandSize}}</p>
+<p><strong>Init</strong> {{character.initiative.total}}; <strong>Senses</strong> ?; <strong>Perception</strong> {{character.skills.perception.total}}</p>
+
+<h3>Defense</h3>
+
+<p><strong>AC</strong> {{character.ac.total}}; <strong>Touch</strong> {{character.ac.touch}}; <strong>Flat-Footed</strong> {{character.ac.flatFooted}}<span ng-show="character.ac.otherModifiers">; </span>{{character.ac.otherModifiers}}</p>
+<p><strong>HP</strong> {{character.hp.total}}; <strong>Wounds</strong> <span ng-bind-html="character.hp.wounds|orDash"></span>; <strong>Non-Lethal</strong> <span ng-bind-html="character.hp.nonLethal|orDash"></span></p>
+<p><strong>Fort</strong> {{character.saves.fort.total}}; <strong>Ref</strong> {{character.saves.reflex.total}}; <strong>Will</strong> {{character.saves.will.total}}</p>
+<p><strong>DR</strong> <span ng-bind-html="character.damageReduction|orDash"></span> ; <strong>Immune</strong> <span ng-bind-html="character.immunities|orDash"></span>; <strong>Resist</strong> <span ng-bind-html="character.resistances|orDash"></span>; <strong>SR</strong> <span ng-bind-html="character.spellResistance|orDash"></span></p>
+
+<h3>Offense</h3>
+
+Speed
+Space ft; Reach ft
+Melee
+Ranged
+Special Attacks
+Spell-Like Abilities (CL )
+At will—
+Spells Known/Prepared (CL )
+9th  (/day, spontanious only)—
+8th  (/day, spontanious only)—
+7th (/day, spontanious only)—
+6th (/day, spontanious only)—
+5th (/day, spontanious only)—
+4th (/day, spontanious only)—
+3rd (/day, spontanious only)—
+2nd (/day, spontanious only)—
+1st (/day, spontanious only)—
+0    (at will, spontanious only)—
+
+Statistics
+
+Str , Dex , Con , Int , Wis , Cha
+Base Atk ; CMB ; CMD  ( vs. trip)
+Feats
+Skills ; Racial Modifiers
+Languages
+SQ
+Combat Gear
+Other Gear

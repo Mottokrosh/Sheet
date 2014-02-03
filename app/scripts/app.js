@@ -21,6 +21,10 @@ angular.module('sheetApp', [
 				templateUrl: 'views/sheet.html',
 				controller: 'SheetCtrl'
 			})
+			.when('/statblock/:characterId', {
+				templateUrl: 'views/statblock.html',
+				controller: 'StatBlockCtrl'
+			})
 			.when('/login', {
 				templateUrl: 'views/login.html',
 				controller: 'LoginCtrl'
@@ -57,6 +61,32 @@ angular.module('sheetApp', [
 				suffix = 'nd';
 			}
 			return number + suffix;
+		};
+	})
+	.filter('expandGender', function () {
+		return function (abbr) {
+			var map = {
+				'F': 'Female',
+				'M': 'Male'
+			};
+			return map[abbr];
+		};
+	})
+	.filter('expandSize', function () {
+		return function (abbr) {
+			var map = {
+				'T': 'Tiny',
+				'S': 'Small',
+				'M': 'Medium',
+				'L': 'Large',
+				'H': 'Huge'
+			};
+			return map[abbr];
+		};
+	})
+	.filter('orDash', function () {
+		return function (value) {
+			return value || '&mdash;';
 		};
 	})
 	.run(function ($rootScope, $location, user, cache) {
