@@ -536,6 +536,23 @@ input[type='checkbox'] {
 	top: 35px;
 }
 
+.statblock {
+	margin-right: 10px;
+}
+.statblock div {
+	float: none;
+	margin: 0 0 0 10px;
+}
+.statblock h3 {
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+.statblock .skills > span {
+	text-transform: capitalize;
+}
+
 .w30 { width: 30px; } .w30 input:not([type="checkbox"]) { width: 18px; }
 .w40 { width: 40px; } .w40 input:not([type="checkbox"]) { width: 28px; }
 .w50 { width: 50px; } .w50 input:not([type="checkbox"]) { width: 38px; }
