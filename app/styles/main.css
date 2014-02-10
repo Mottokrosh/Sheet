@@ -256,6 +256,7 @@ nav.main li > button, nav.main li > [role='button'] {
 	clear: left;
 	opacity: 0.4;
 	padding-top: 10px;
+	max-width: 320px;
 }
 .character-slip {
 	background: url(../images/bg-paper-2.jpg);
