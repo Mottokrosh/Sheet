@@ -8,9 +8,10 @@
 					<p>{{c.level}}</p>
 				</div>
 				<div class="actions">
-					<a href="{{c.resourceUrl}}" role="button" title="Download" class="download ico-arrow-down" download="{{c.name}}.json"></a>
+					<a href="#/sheet/{{c.id}}" role="button" title="Edit" class="icon-edit">Edit</a>
+					<a href="#/statblock/{{c.id}}" role="button" title="Share" class="icon-share">Share</a>
+					<a href="{{c.resourceUrl}}" role="button" title="Download" class="icon-download" download="{{c.name}}.json">Download</a>
 					<!-- <button title="Delete" class="delete ico-remove" ng-click="deleteCharacter()"></button> -->
-					<a href="#/sheet/{{c.id}}" role="button">Load</a>
 				</div>
 				<time datetime="{{c.modified}}">Last Modified {{c.modified|date:'EEE, d MMM yyyy, HH:mm'}}</time>
 			</div>

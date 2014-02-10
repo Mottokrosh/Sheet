@@ -128,4 +128,27 @@
 		<strong>Money</strong>
 		<span ng-repeat="(currency, m) in filterMoney(character.money)">{{m}} {{currency}}{{$last ? '' : ', '}}</span><span ng-show="character.money.gems">, {{character.money.gems}}</span><span ng-show="character.money.other">, {{character.money.other}}</span>
 	</p>
+
+	<hr>
+
+	<h2>Comments</h2>
+
+	<div ng-repeat="c in character.comments | orderBy:'modified' track by $id(c)" class="comment">
+		<p>{{c.body}}</p>
+		<div>
+			<small>Written by {{c.author}} on {{c.modified|date:'medium'}}</small>
+			<button ng-click="deleteComment(c)" ng-init="c.deleteButtonText = 'Delete'">{{c.deleteButtonText}}</button>
+		</div>
+	</div>
+
+	<form name="commentForm">
+		<input type="text" name="comment-author" ng-model="comment.author" placeholder="Name">
+		<textarea name="comment-body" ng-model="comment.body" placeholder="Comment"></textarea>
+		<div class="actions">
+			<button ng-click="saveComment()">Save</button>
+		</div>
+	</form>
+</section>
+<section role="navigation">
+	<p><a ng-href="/" role="button" class="icon-home">Home</a></p>
 </section>

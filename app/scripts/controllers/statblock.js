@@ -38,4 +38,36 @@ angular.module('sheetApp')
 			});
 			return result;
 		};
+
+		// Comments
+
+		$scope.saveComment = function () {
+			if (!$scope.character.comments) {
+				$scope.character.comments = [];
+			}
+			$scope.comment.modified = new Date();
+			$scope.character.comments.push($scope.comment);
+
+			// unset current comment (except author)
+			$scope.comment = { author: $scope.comment.author };
+
+			// now save character
+			$scope.character.modified = new Date();
+			$scope.character.saveOrUpdate();
+		};
+
+		$scope.deleteComment = function (c) {
+			if (c.deleteButtonText === 'Delete') {
+				c.deleteButtonText = 'Confirm?';
+			} else {
+				var index = $scope.character.comments.indexOf(c);
+				if (index > -1) {
+					$scope.character.comments.splice(index, 1);
+
+					// save character
+					$scope.character.modified = new Date();
+					$scope.character.saveOrUpdate();
+				}
+			}
+		};
 	});
