@@ -146,7 +146,7 @@ footer a {
 	font-weight: bold;
 	text-decoration: none;
 	display: inline-block;
-	padding: 0 15px;
+	padding: 0;
 	border-right: 1px solid rgba(255, 255, 255, 0.2);
 	height: 80px;
 	line-height: 16px;
