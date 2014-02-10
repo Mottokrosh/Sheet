@@ -5,13 +5,8 @@ angular.module('sheetApp')
 		$scope.items = $scope.dialog.items;
 		$scope.item = $scope.dialog.item;
 		$scope.mode = $scope.dialog.mode;
+		//$scope.spellData = $scope.dialog.spellData || {};
 		$scope.deleteText = 'Delete';
-
-		function close() {
-			$scope.items = [];
-			$scope.item = {};
-			ngDialog.close();
-		}
 
 		// General
 
@@ -23,18 +18,18 @@ angular.module('sheetApp')
 				if (index > -1) {
 					$scope.items.splice(index, 1);
 				}
-				close();
+				ngDialog.close();
 			}
 		};
 
 		$scope.confirmRemove = function () {
 			var index = $scope.items.indexOf($scope.item);
 			$scope.items.splice(index, 1);
-			close();
+			ngDialog.close();
 		};
 
 		$scope.close = function () {
-			close();
+			ngDialog.close();
 		};
 
 		$scope.dismiss = function () {
@@ -42,7 +37,7 @@ angular.module('sheetApp')
 			if (index > -1) {
 				$scope.items.splice(index, 1);
 			}
-			close();
+			ngDialog.close();
 		};
 
 		// Spell Related
@@ -50,7 +45,7 @@ angular.module('sheetApp')
 		if ($scope.spellData) {
 			$scope.$watch('item.name', function (newVal) {
 				if ($scope.spellData[newVal]) {
-					$scope.spellDescription = $scope.spellData[newVal].fulltext;
+					$scope.description = $scope.spellData[newVal].fulltext;
 					$scope.item.school = $scope.spellData[newVal].school;
 					$scope.item.subschool = $scope.spellData[newVal].subschool;
 				}
