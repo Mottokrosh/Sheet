@@ -1,7 +1,16 @@
 {
   "name": "Sheet",
   "version": "0.0.0",
-  "dependencies": {},
+  "description": "Online character sheet for the Pathfinder RPG",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mottokrosh/Sheet.git"
+  },
+  "main": "server/web.js",
+  "dependencies": {
+    "logfmt": "~0.21.0",
+    "express": "~3.4.8"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.0",
@@ -43,7 +52,7 @@
     "grunt-gss-pull": "~0.1.2"
   },
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=0.10.0"
   },
   "scripts": {
     "test": "grunt test"
