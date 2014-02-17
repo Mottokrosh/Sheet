@@ -96,7 +96,7 @@ angular.module('sheetApp', [
 	})
 	.run(function ($rootScope, $location, user, cache) {
 		// http://arthur.gonigberg.com/2013/06/29/angularjs-role-based-auth/
-		var routesThatDontRequireAuth = ['/login', '/logout', '/statblock'];
+		var routesThatDontRequireAuth = ['/login', '/logout', '/statblock', '/sandbox'];
 
 		// check if current location matches route
 		var routeClean = function (route) {

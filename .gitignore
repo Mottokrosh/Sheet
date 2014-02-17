@@ -6,3 +6,4 @@ app/bower_components
 sftp-config.json
 .ht*
 index.php
+.env
