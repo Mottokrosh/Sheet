@@ -40,5 +40,5 @@ angular.module('sheetApp')
 			return resource;
 		}
 
-		return CharacterResourceFactory();
+		return new CharacterResourceFactory();
 	});
