@@ -4,7 +4,7 @@
 		<section>
 			<div class="w400"><label>Character Name</label><input type="text" name="characterName" ng-model="character.name" class="left"></div>
 			<div class="w170"><label>Alignment</label><input type="text" name="alignment" ng-model="character.alignment"></div>
-			<div class="w400"><label>Player Name</label><input type="text" name="playerName" ng-model="user.name" class="left"></div>
+			<div class="w400"><label>Player Name</label><input type="text" name="playerName" ng-model="user.displayName" class="left"></div>
 
 			<div class="w580"><label>Character Level</label><input type="text" name="characterLevel" ng-model="character.level" class="left"></div>
 			<div class="w170"><label>Deity</label><input type="text" name="deity" ng-model="character.deity" class="left"></div>
@@ -1253,7 +1253,7 @@
 <div id="status" ng-show="saveText"><div>{{saveText}}</div></div>
 <footer>
 	<nav>
-		<a ng-href="/"><img src="images/icon-house.svg" width="40" height="40" alt="Home"><br>Home<span ng-show="sheet.$dirty">*</span></a>
+		<a ng-href="/pathfinder"><img src="images/icon-house.svg" width="40" height="40" alt="Home"><br>Home<span ng-show="sheet.$dirty">*</span></a>
 		<a ng-click="scrollTo('general', $event)"><img src="images/icon-head.svg" width="40" height="40" alt="General"><br>General</a>
 		<a ng-click="scrollTo('abilities', $event)"><img src="images/icon-boxes.svg" width="40" height="40" alt="Abilities"><br>Abilites</a>
 		<a ng-click="scrollTo('defense', $event)"><img src="images/icon-defense.svg" width="40" height="40" alt="Defense"><br>Defense</a>

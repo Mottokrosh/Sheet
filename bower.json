@@ -9,8 +9,6 @@
     "angular-cookies": "~1.2.0",
     "angular-sanitize": "~1.2.0",
     "angular-route": "~1.2.0",
-    "angularjs-mongolab": "*",
-    "oauth.io": "*",
     "underscore": "~1.5.2",
     "angular-touch": "~1.2.6",
     "angular-loading-bar": "~0.3.0",

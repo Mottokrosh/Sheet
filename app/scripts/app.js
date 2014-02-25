@@ -7,7 +7,6 @@ angular.module('sheetApp', [
 	'ngRoute',
 	'ngTouch',
 	'ngAnimate',
-	'mongolabResource',
 	'ngDialog',
 	'chieffancypants.loadingBar'
 ])
@@ -40,8 +39,6 @@ angular.module('sheetApp', [
 	.factory('user', function ($cookieStore) {
 		return $cookieStore.get('sheetuser') || {};
 	})
-	.constant('API_KEY', '4fd0a186e4b00ba3dc958235')
-	.constant('DB_NAME', 'pathfinder_sheet')
 	.value('cache', {})
 	.filter('range', function() {
 		return function (input, total) {

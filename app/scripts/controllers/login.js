@@ -1,31 +1,6 @@
 'use strict';
 
 angular.module('sheetApp')
-	.controller('LoginCtrl', function ($scope, $cookieStore, $location, user, cache) {
-		OAuth.initialize('NeqqWIumLIg8LeJjPZdSkDjXmW0');
-
+	.controller('LoginCtrl', function ($scope, user) {
 		$scope.user = user;
-
-		$scope.loginGoogle = function () {
-			OAuth.popup('google', function(err, result) {
-				$scope.googleErr = err;
-				$scope.googleResult = result;
-
-				result.get('https://www.googleapis.com/oauth2/v3/userinfo').done(function(res) {
-					angular.extend(user, res);
-					user.id = user.sub;
-					$scope.user = user;
-					$cookieStore.put('sheetuser', user);
-					$scope.$apply();
-
-					if (cache.redirect) {
-						var target = cache.redirect;
-						cache.redirect = null;
-						$location.path(target);
-					}
-				});
-
-				$scope.$apply();
-			});
-		};
 	});

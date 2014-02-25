@@ -1,6 +1,7 @@
 var express = require('express');
 var logfmt = require('logfmt');
-var mongo = require('mongodb');
+var mongoskin = require('mongoskin')
+var _ = require('underscore');
 var app = express();
 
 var mongoUri = process.env.MONGOLAB_URI,
@@ -8,12 +9,17 @@ var mongoUri = process.env.MONGOLAB_URI,
 	host = process.env.HOST,
 	appFolder = process.env.APP_FOLDER,
 	GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID,
-	GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+	GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET,
+	GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID,
+	GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
+
+var db = mongoskin.db(mongoUri, { safe: true });
 
 // --- Passport ---
 
 var passport = require('passport'),
-	GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+	GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
+	GitHubStrategy = require('passport-github').Strategy;
 
 passport.serializeUser(function (user, done) {
 	done(null, user);
@@ -22,8 +28,6 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (obj, done) {
 	done(null, obj);
 });
-
-// --- Configuration ---
 
 passport.use(new GoogleStrategy({
 		clientID: GOOGLE_CLIENT_ID,
@@ -37,13 +41,41 @@ passport.use(new GoogleStrategy({
 	}
 ));
 
+passport.use(new GitHubStrategy({
+		clientID: GITHUB_CLIENT_ID,
+		clientSecret: GITHUB_CLIENT_SECRET,
+		callbackURL: host + '/auth/github/callback'
+	},
+	function (accessToken, refreshToken, profile, done) {
+		process.nextTick(function () {
+			return done(null, profile);
+		});
+	}
+));
+
+// --- Configuration ---
+
 app.use(logfmt.requestLogger());
 app.use(express.cookieParser());
-app.use(express.bodyParser());
+app.use(express.json()); // this and urlencoded supercedes bodyParser
+app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.session({ secret: 'Sho0bd0obe3do0w4h' }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.param('collectionName', function (req, res, next, collectionName) {
+	req.collection = db.collection(collectionName);
+	return next();
+});
+
+function authCallbackHandler(req, res) {
+	// write out the user profile into a cookie for the app
+	var user = _.omit(req.user, ['_raw', '_json']);
+	res.cookie('sheetuser', JSON.stringify(user));
+	// redirect to app's home
+	res.redirect(appFolder);
+}
 
 // --- Auth Routes ---
 
@@ -56,18 +88,66 @@ app.get('/auth/google', passport.authenticate('google', {
 
 app.get('/auth/google/callback',
 	passport.authenticate('google', { failureRedirect: appFolder + '/#/login' }),
-	function (req, res) {
-		// write out the user profile into a cookie for the app
-		res.cookie('sheetuser', JSON.stringify(req.user));
-		// redirect to app's home
-		res.redirect(appFolder);
-	}
+	authCallbackHandler
+);
+
+app.get('/auth/github', passport.authenticate('github'));
+
+app.get('/auth/github/callback',
+	passport.authenticate('github', { failureRedirect: appFolder + '/#/login' }),
+	authCallbackHandler
 );
 
 // --- API Routes ---
 
-app.get('/api', ensureAuthenticated, function (req, res) {
-	res.send('This will be the API service.');
+var apiBase = '/api/v1';
+
+app.get(apiBase, ensureAuthenticated, function (req, res) {
+	res.send('This is the API service.');
+});
+
+app.get(apiBase + '/:collectionName', ensureAuthenticated, function (req, res) {
+	req.collection.find(JSON.parse(req.query.q), JSON.parse(req.query.f), { limit: 10, sort: [['_id', -1]] }).toArray(function (err, results) {
+		if (err) return next(err);
+		res.send(results);
+	});
+});
+
+app.post(apiBase + '/:collectionName', ensureAuthenticated, function (req, res) {
+	console.log('Request Body', req.body);
+	// require a user object in the body minimally
+	if ( req.body.user ) {
+		req.collection.insert(req.body, { safe: true }, function (err, results) {
+			console.log('Response', results[0]);
+			if (err) return next(err);
+			res.status(201).send(results[0]);
+		});
+	}
+});
+
+app.get(apiBase + '/:collectionName/:id', ensureAuthenticated, function (req, res) {
+	req.collection.findById(req.params.id, function (err, result) {
+		if (err) return next(err);
+		res.send(result);
+	});
+});
+
+app.put(apiBase + '/:collectionName/:id', ensureAuthenticated, function(req, res) {
+	req.collection.updateById(req.params.id, { $set: req.body }, { safe: true, multi: false }, function (err, result) {
+		if (err) return next(err);
+		// find and return updated resource (because 'update' returns a count of affected resources)
+		req.collection.findById(req.params.id, function (err, result) {
+			if (err) return next(err);
+			res.send(result);
+		});
+	});
+});
+
+app.del('/collections/:collectionName/:id', function(req, res) {
+	req.collection.removeById(req.params.id, function (err, result) {
+		if (err) return next(err);
+		res.send(204); // (No Content)
+	});
 });
 
 // --- App Routes ---
@@ -91,15 +171,11 @@ app.listen(port, function () {
 // --- Helper Functions ---
 
 function ensureAuthenticated(req, res, next) {
-	/*console.log('===========');
-	console.log(req.session);
-	console.log(req._passport);
-	console.log(req.user);
-	console.log(req.isAuthenticated());
-	console.log('===========');*/
 	if (req.isAuthenticated()) {
 		return next();
 	} else {
+		req.logout();
+		res.clearCookie('sheetuser');
 		res.redirect(appFolder + '/#/login');
 	}
 }

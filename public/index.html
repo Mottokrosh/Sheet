@@ -10,9 +10,77 @@
 		<meta name="description" content="An online character sheet for the Pathfinder Roleplaying Game, with cloud storage.">
 		<link href="http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911&v1" rel="stylesheet" type="text/css">
 		<link href="http://fonts.googleapis.com/css?family=Caudex:regular,bold&v1" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="viewport-slider-master/dist/css/viewport-slider.css">
+		<style>
+			body, html {
+				height: 100%;
+			}
+			body {
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				font-family: 'Caudex', Georgia, serif;
+				font-size: 1.3em;
+				color: #312407;
+				text-shadow: 1px 1px 0 #c2af89;
+			}
+			h1, h2, h3 {
+				font-family: 'Goudy Bookletter 1911', Georgia, serif;
+			}
+			h1 {
+				font-size: 3em;
+				text-shadow: 3px 3px 0 #c2af89;
+			}
+			.slide {
+				position: relative;
+				display: table;
+				text-align: center;
+			}
+			.slide div {
+				display: table-cell;
+				height: 100%;
+				vertical-align: middle;
+			}
+			.slide:nth-child(odd) div {
+				background-color: #dfd4ba;
+			}
+			.slide:nth-child(even) div {
+				background-color: #cdc1a7;
+			}
+		</style>
 	</head>
 	<body>
-		<h1>Mottokrosh's Eldritch Online Character Sheet</h1>
+		<div id="container" class="viewport-slider-container">
+			<section class="slide viewport-slide" data-label="Home">
+				<div>
+					<h1>Mottokrosh's Eldritch Online Character Sheet</h1>
+					<p>Coming Soon</p>
+				</div>
+			</section>
+			<section class="slide viewport-slide" data-label="Screenshot">
+				<div>
+					<p>Screenshot</p>
+				</div>
+			</section>
+			<section class="slide viewport-slide" data-label="Features">
+				<div>
+					<p>Features</p>
+				</div>
+			</section>
+			<section class="slide viewport-slide" data-label="Mailing List">
+				<div>
+					<!-- Begin MailChimp Signup Form -->
+					<form action="http://limitedaudience.us1.list-manage.com/subscribe/post?u=04990abd0ce699e275a77ef9e&amp;id=15dca54f06" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+						<p><label for="mce-EMAIL">Subscribe to our mailing list for open beta news</label></p>
+						<p><input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required></p>
+					    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+					    <div style="position: absolute; left: -5000px;"><input type="text" name="b_04990abd0ce699e275a77ef9e_15dca54f06" value=""></div>
+						<p><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" role="button"></p>
+					</form>
+					<!--End mc_embed_signup-->
+				</div>
+			</section>
+		</div>
 
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -23,5 +91,10 @@
 			ga('create', 'UA-XXXXX-X');
 			ga('send', 'pageview');
 		</script>
+
+		<script src="viewport-slider-master/lib/hammer.min.js"></script>
+		<script src="viewport-slider-master/dist/js/viewport-slider.js"></script>
+		<script>viewportSlider.init(document.getElementById('container'), '.slide');</script>
+
 	</body>
 </html>

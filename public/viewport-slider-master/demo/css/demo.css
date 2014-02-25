@@ -1,0 +1,80 @@
+body, html {
+    height: 100%;
+}
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+.slide {
+    position: relative;
+    display: table;
+    text-align: center;
+}
+
+.slide div {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.slide h1 {
+    margin: 0;
+    color: #282828;
+    font-size: 62px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.slide img {
+    max-height: 80%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 8px #000;
+}
+
+.picture {
+    background-color: #282828;
+}
+
+.picture p {
+    color: #ccc;
+    font-weight: 300;
+}
+
+.picture a, .picture a:visited {
+    color: #00fada;
+    cursor: pointer;
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity .3s ease;
+}
+
+.picture a:hover {
+    opacity: .6;
+}
+
+hr {
+    width: 50%;
+    margin: 20px auto;
+    border-bottom: 1px solid #fff;
+}
+
+.fork-me {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    border: 0;
+}
+
+.cover {
+    background-color: #00fada;
+}
+
+.credits {
+    background-color: #f2f2f2;
+}

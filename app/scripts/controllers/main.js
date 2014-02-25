@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sheetApp')
-	.controller('MainCtrl', function ($scope, user, Character, DB_NAME, API_KEY) {
+	.controller('MainCtrl', function ($scope, user, Character) {
 		$scope.user = user;
 
 		// get user's characters
@@ -10,11 +10,11 @@ angular.module('sheetApp')
 			f: { 'name': 1, 'modified': 1, 'race': 1, 'level': 1 }
 		}, function() {
 			angular.forEach($scope.characters, function (character) {
-				character.id = character._id.$oid;
+				character.id = character._id;
 				if (!character.level) {
 					character.level = 'Unspecified class/level';
 				}
-				character.resourceUrl = 'https://api.mongolab.com/api/1/databases/' + DB_NAME + '/collections/characters/' + character.id + '?apiKey=' + API_KEY;
+				character.resourceUrl = '/api/v1/characters/' + character._id;
 			});
 		});
 
