@@ -1,0 +1,21 @@
+<nav class="main space-top">
+	<ul class="character-list">
+		<li>
+			<button>My Characters</button>
+			<div ng-repeat="c in characters | orderBy:'modified':true" class="character-slip">
+				<div class="title">
+					<h1>{{c.name}}</h1>
+					<p>{{c.level}}</p>
+				</div>
+				<div class="actions">
+					<a href="#/sheet/{{c.id}}" role="button" title="Edit" class="icon-edit">Edit</a>
+					<a href="#/statblock/{{c.id}}" role="button" title="Share" class="icon-share">Share</a>
+					<a href="{{c.resourceUrl}}" role="button" title="Download" class="icon-download" download="{{c.name}}.json">Download</a>
+					<!-- <button title="Delete" class="delete ico-remove" ng-click="deleteCharacter()"></button> -->
+				</div>
+				<time datetime="{{c.modified}}">Last Modified {{c.modified|date:'EEE, d MMM yyyy, HH:mm'}}</time>
+			</div>
+		</li>
+		<li><a href="#/sheet" role="button">New Character</a></li>
+	</ul>
+</nav>

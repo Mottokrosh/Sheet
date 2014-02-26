@@ -1,0 +1,6 @@
+<div class="autocomplete">
+	<input name="output" type="text" ng-model="model" ng-focus="focused = true" ng-blur="focused = false">
+	<ul ng-show="showSuggestions">
+		<li tabindex="0" ng-repeat="v in suggestions" ng-click="$parent.select(v)" ng-keypress="$parent.select(v, $event)">{{v}}</li>
+	</ul>
+</div>

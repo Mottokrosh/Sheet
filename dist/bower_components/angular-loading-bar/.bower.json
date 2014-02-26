@@ -1,0 +1,29 @@
+{
+  "name": "angular-loading-bar",
+  "version": "0.3.0",
+  "main": [
+    "src/loading-bar.js",
+    "src/loading-bar.css"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "test",
+    "example"
+  ],
+  "devDependencies": {
+    "angular-mocks": "~1.2.9",
+    "angular-animate": "~1.2.9"
+  },
+  "homepage": "https://github.com/chieffancypants/angular-loading-bar",
+  "_release": "0.3.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.3.0",
+    "commit": "c97fec2201745e803e78da747a46db88c273e0c6"
+  },
+  "_source": "git://github.com/chieffancypants/angular-loading-bar.git",
+  "_target": "~0.3.0",
+  "_originalSource": "angular-loading-bar"
+}

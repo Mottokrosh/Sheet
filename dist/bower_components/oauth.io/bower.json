@@ -1,0 +1,10 @@
+{
+	"name": "oauth-js",
+	"version": "0.1.5",
+	"main": "oauth.min.js",
+	"description": "OAuth that just works",
+	"license": "apache2",
+	"ignore": [
+		".gitignore"
+	]
+}

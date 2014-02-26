@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular-resource.js"></script>
+
+    <script type="text/javascript" src="mongolab.js"></script>
+
+    <script type="text/javascript">
+
+        var app = angular.module('app', ['mongolabResource']);
+
+        app.constant('API_KEY', '4f847ad3e4b08a2eed5f3b54');
+        app.constant('DB_NAME', 'angularjs');
+
+        app.factory('Project', function ($mongolabResource) {
+            return $mongolabResource('projects');
+        });
+
+        app.controller('AppController', function ($scope, Project) {
+            $scope.projects = Project.query();
+        });
+
+    </script>
+</head>
+<body ng-app="app">
+
+<div ng-controller="AppController">
+    <ul>
+        <li ng-repeat="project in projects">
+            {{project.name}}
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

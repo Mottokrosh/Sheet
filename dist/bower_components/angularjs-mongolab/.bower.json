@@ -1,0 +1,14 @@
+{
+  "name": "angularjs-mongolab",
+  "homepage": "https://github.com/pkozlowski-opensource/angularjs-mongolab",
+  "_release": "24bb016a09",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "24bb016a093308300dc8ae10b6d24178996ea2ba"
+  },
+  "_source": "git://github.com/pkozlowski-opensource/angularjs-mongolab.git",
+  "_target": "*",
+  "_originalSource": "angularjs-mongolab",
+  "_direct": true
+}

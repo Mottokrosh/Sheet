@@ -1,0 +1,22 @@
+<div class="modal-header">
+	<h3><span ng-hide="mode == 'edit'">Add</span><span ng-show="mode == 'edit'">Edit</span> Gear</h3>
+</div>
+<div class="modal-body clearfix">
+	<div class="first-half">
+		<p><label>Type</label><input name="gear-type" type="text" ng-model="item.type"></p>
+		<p><label>Item</label><input name="gear-name" type="text" ng-model="item.name"></p>
+		<p><label>Location</label><input name="gear-location" type="text" ng-model="item.location"></p>
+		<p class="clearfix">
+			<div class="float-left"><label>Quantity</label><input name="gear-quantity" type="text" class="i100" ng-model="item.quantity"></div>
+			<div class="float-left"><label>Weight</label><input name="gear-weight" type="text" class="i100" ng-model="item.weight"> lb. per Item</div>
+		</p>
+	</div>
+	<div class="second-half">
+		<p><label>Notes</label><textarea name="gear-notes" ng-model="item.notes" style="height: 230px"></textarea></p>
+	</div>
+</div>
+<div class="modal-footer">
+	<button ng-click="close()">Ok</button>
+	<button ng-click="dismiss()" ng-hide="mode == 'edit'">Cancel</button>
+	<button ng-click="remove()" ng-show="mode =='edit'">{{deleteText}}</button>
+</div>

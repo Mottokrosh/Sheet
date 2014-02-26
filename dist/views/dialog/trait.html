@@ -1,0 +1,13 @@
+<div class="modal-header">
+	<h3><span ng-hide="mode == 'edit'">Add</span><span ng-show="mode == 'edit'">Edit</span> Trait</h3>
+</div>
+<div class="modal-body">
+	<p><label>Type</label><input name="trait-type" type="text" ng-model="item.type"></p>
+	<p><label>Name</label><input name="trait-name" type="text" ng-model="item.name"></p>
+	<p><label>Notes</label><textarea name="trait-notes" ng-model="item.notes"></textarea></p>
+</div>
+<div class="modal-footer">
+	<button ng-click="close()">Ok</button>
+	<button ng-click="dismiss()" ng-hide="mode == 'edit'">Cancel</button>
+	<button ng-click="remove()" ng-show="mode =='edit'">{{deleteText}}</button>
+</div>

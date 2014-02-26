@@ -1,0 +1,6 @@
+<span ng-hide="temp">
+	<input type="text" name="{{ability}}-modifier" class="ability-modifier-{{ability}}-original auto-calc" value="{{modifier}}" readonly="readonly"><label ng-hide="nolabel">{{label || 'Ability Modifier'}}</label>
+</span>
+<span ng-show="temp">
+	<input type="text" name="{{ability}}-temp-modifier" class="temp-ability-modifier-{{ability}}-original auto-calc" value="{{modifier}}" readonly="readonly"><label>Temp Modifier</label>
+</span>

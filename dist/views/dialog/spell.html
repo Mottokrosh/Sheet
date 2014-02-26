@@ -1,0 +1,33 @@
+<div class="modal-header">
+	<h3><span ng-hide="mode == 'edit'">Add</span><span ng-show="mode == 'edit'">Edit</span> Spell<span ng-show="dialog.spellLike">-Like Ability</span></h3>
+</div>
+<div class="modal-body clearfix">
+	<div class="first-half">
+		<p><label>Name</label><auto-complete model="item.name" values="spellNames" style="width: 310px"></auto-complete></p>
+		<p><label>Level</label><input name="spell-level" type="number" ng-model="item.level" class="i60"></p>
+		<p><label>School</label><auto-complete model="item.school" values="spellSchools" style="width: 310px"></auto-complete></p>
+		<p><label>Subschool</label><input name="spell-subschool" type="text" ng-model="item.subschool"></p>
+		<div class="clearfix" style="margin-bottom: 10px">
+			<div class="float-left"><label>{{tPrepared()}}</label><input name="spell-prepared" type="number" class="i60" ng-model="item.prepared" ng-hide="item.atWill"><input name="spell-at-will" type="text" class="i60" value="&infin;" readonly="true" ng-show="item.atWill"></div>
+			<div class="float-left"><label>{{tCast()}}</label><input name="spell-cast" type="number" class="i60" ng-model="item.cast"></div>
+		</div>
+		<p><label>Notes</label><textarea name="spell-notes" ng-model="item.notes"></textarea></p>
+	</div>
+	<div class="second-half">
+		<p style="margin-bottom: 0"><label>Description</label></p>
+		<div class="spell-description" ng-bind-html="description"></div>
+	</div>
+</div>
+<div class="modal-footer">
+	<button ng-click="close()">Ok</button>
+	<button ng-click="dismiss()" ng-hide="mode == 'edit'">Cancel</button>
+	<button ng-click="prepare()" ng-show="mode =='edit' || dialog.spellLike">+ {{tPrepared()}}</button>
+	<button ng-click="cast()" ng-show="mode =='edit'">+ {{tCast()}}</button>
+	<button ng-click="toggleAtWill()" ng-show="dialog.spellLike">At-Will</button>
+	<button ng-click="clearCounts()" ng-show="mode =='edit'">Clear Counts</button>
+	<button ng-click="toggleMark()" ng-show="mode =='edit'">
+		<span ng-hide="item.marked">Mark</span>
+		<span ng-show="item.marked">Unmark</span>
+	</button>
+	<button ng-click="remove()" ng-show="mode =='edit'">{{deleteText}}</button>
+</div>

@@ -1,0 +1,154 @@
+<section class="statblock">
+	<h2>{{character.name}}</h2>
+
+	<p>{{character.gender|expandGender}} {{character.race}} {{character.level}}</p>
+	<p>{{character.alignment}} {{character.size|expandSize}}</p>
+	<p><strong>Init</strong> {{character.initiative.total}}; <strong>Senses</strong> <span ng-repeat="sa in extractSenses(character.specialAbilities)">{{sa.name}}{{$last ? '' : ', '}}</span>; <strong>Perception</strong> {{character.skills.perception.total}}</p>
+
+	<h3>Defense</h3>
+
+	<p>
+		<strong>AC</strong> {{character.ac.total}};
+		<strong>Touch</strong> {{character.ac.touch}};
+		<strong>Flat-Footed</strong> {{character.ac.flatFooted}}
+		<span ng-show="character.ac.otherModifiers">; {{character.ac.otherModifiers}}</span>
+	</p>
+	<p>
+		<strong>HP</strong> {{character.hp.total}};
+		<strong>Wounds</strong> <span ng-bind-html="character.hp.wounds|orDash"></span>;
+		<strong>Non-Lethal</strong> <span ng-bind-html="character.hp.nonLethal|orDash"></span>
+	</p>
+	<p>
+		<strong>Fort</strong> {{character.saves.fort.total}}
+		<span ng-show="character.saves.fort.otherModifiers">({{character.saves.fort.otherModifiers}})</span>;
+		<strong>Ref</strong> {{character.saves.reflex.total}}
+		<span ng-show="character.saves.reflex.otherModifiers">({{character.saves.reflex.otherModifiers}})</span>;
+		<strong>Will</strong> {{character.saves.will.total}}
+		<span ng-show="character.saves.will.otherModifiers">({{character.saves.will.otherModifiers}})</span>
+	</p>
+	<p>
+		<strong>DR</strong> <span ng-bind-html="character.damageReduction|orDash"></span>;
+		<strong>Immune</strong> <span ng-bind-html="character.immunities|orDash"></span>;
+		<strong>Resist</strong> <span ng-bind-html="character.resistances|orDash"></span>;
+		<strong>SR</strong> <span ng-bind-html="character.spellResistance|orDash"></span>
+	</p>
+
+	<h3>Offense</h3>
+
+	<p>
+		<strong>Speed</strong> {{character.speed.base}};
+		<span ng-show="character.speed.withArmor"><strong>With Armor</strong> {{character.speed.withArmor}};</span>
+		<span ng-show="character.speed.fly"><strong>Fly</strong> {{character.speed.fly}};</span>
+		<span ng-show="character.speed.swim"><strong>Swim</strong> {{character.speed.swim}};</span>
+		<span ng-show="character.speed.climb"><strong>Climb</strong> {{character.speed.climb}};</span>
+		<span ng-show="character.speed.burrow"><strong>Burrow</strong> {{character.speed.burrow}};</span>
+		<span ng-show="character.speed.tempModifiers"><strong>Temp Modifiers</strong> {{character.speed.tempModifiers}}</span>
+	</p>
+	<p ng-repeat="melee in character.melee">
+		<strong>Melee</strong> {{melee.attackBonus}} {{melee.weapon}} ({{melee.damage}}, {{melee.critical}}); {{melee.type}};
+		<span ng-show="melee.notes">{{melee.notes}}</span>
+	</p>
+	<p ng-repeat="ranged in character.ranged">
+		<strong>Ranged</strong> {{ranged.attackBonus}} {{ranged.weapon}} ({{ranged.damage}}, {{ranged.critical}}); {{ranged.type}};
+		<span ng-show="ranged.ammunition">{{ranged.ammunition}}</span>
+	</p>
+	<p ng-show="character.spellLikes">
+		<strong>Spell-Like Abilities</strong>
+		<div>
+			<span ng-repeat="sp in character.spellLikes" title="{{sp.notes}}">{{sp.name}}<span ng-hide="sp.atWill"> {{sp.prepared - sp.cast}}/{{sp.prepared}}</span><span ng-show="sp.atWill"> &infin;</span>{{$last ? '' : ', '}}</span>
+		</div>
+	</p>
+	<p>
+		<strong>Spells Known/Prepared</strong>
+		<div ng-show="character.spells[9].slotted">
+			9th&mdash;<span ng-repeat="sp in character.spells[9].slotted" title="{{sp.notes}}">{{sp.name}}<span ng-show="sp.prepared"> ({{sp.prepared - sp.cast}}/{{sp.prepared}})</span>{{$last ? '' : ', '}}</span>
+		</div>
+		<div ng-show="character.spells[8].slotted">
+			8th&mdash;<span ng-repeat="sp in character.spells[8].slotted" title="{{sp.notes}}">{{sp.name}}<span ng-show="sp.prepared"> ({{sp.prepared - sp.cast}}/{{sp.prepared}})</span>{{$last ? '' : ', '}}</span>
+		</div>
+		<div ng-show="character.spells[7].slotted">
+			7th&mdash;<span ng-repeat="sp in character.spells[7].slotted" title="{{sp.notes}}">{{sp.name}}<span ng-show="sp.prepared"> ({{sp.prepared - sp.cast}}/{{sp.prepared}})</span>{{$last ? '' : ', '}}</span>
+		</div>
+		<div ng-show="character.spells[6].slotted">
+			6th&mdash;<span ng-repeat="sp in character.spells[6].slotted" title="{{sp.notes}}">{{sp.name}}<span ng-show="sp.prepared"> ({{sp.prepared - sp.cast}}/{{sp.prepared}})</span>{{$last ? '' : ', '}}</span>
+		</div>
+		<div ng-show="character.spells[5].slotted">
+			5th&mdash;<span ng-repeat="sp in character.spells[5].slotted" title="{{sp.notes}}">{{sp.name}}<span ng-show="sp.prepared"> ({{sp.prepared - sp.cast}}/{{sp.prepared}})</span>{{$last ? '' : ', '}}</span>
+		</div>
+		<div ng-show="character.spells[4].slotted">
+			4th&mdash;<span ng-repeat="sp in character.spells[4].slotted" title="{{sp.notes}}">{{sp.name}}<span ng-show="sp.prepared"> ({{sp.prepared - sp.cast}}/{{sp.prepared}})</span>{{$last ? '' : ', '}}</span>
+		</div>
+		<div ng-show="character.spells[3].slotted">
+			3rd&mdash;<span ng-repeat="sp in character.spells[3].slotted" title="{{sp.notes}}">{{sp.name}}<span ng-show="sp.prepared"> ({{sp.prepared - sp.cast}}/{{sp.prepared}})</span>{{$last ? '' : ', '}}</span>
+		</div>
+		<div ng-show="character.spells[2].slotted">
+			2nd&mdash;<span ng-repeat="sp in character.spells[2].slotted" title="{{sp.notes}}">{{sp.name}}<span ng-show="sp.prepared"> ({{sp.prepared - sp.cast}}/{{sp.prepared}})</span>{{$last ? '' : ', '}}</span>
+		</div>
+		<div ng-show="character.spells[1].slotted">
+			1st&mdash;<span ng-repeat="sp in character.spells[1].slotted" title="{{sp.notes}}">{{sp.name}}<span ng-show="sp.prepared"> ({{sp.prepared - sp.cast}}/{{sp.prepared}})</span>{{$last ? '' : ', '}}</span>
+		</div>
+		<div ng-show="character.spells[0].slotted">
+			0th&mdash;<span ng-repeat="sp in character.spells[0].slotted" title="{{sp.notes}}">{{sp.name}}<span ng-show="sp.prepared"> ({{sp.prepared - sp.cast}}/{{sp.prepared}})</span>{{$last ? '' : ', '}}</span>
+		</div>
+	</p>
+
+	<h3>Statistics</h3>
+
+	<p>
+		<strong>Str</strong> {{character.abilities.str}},
+		<strong>Dex</strong> {{character.abilities.dex}},
+		<strong>Con</strong> {{character.abilities.con}},
+		<strong>Int</strong> {{character.abilities.int}},
+		<strong>Wis</strong> {{character.abilities.wis}},
+		<strong>Cha</strong> {{character.abilities.cha}}
+	</p>
+	<p>
+		<strong>Base Atk</strong> {{character.bab}};
+		<strong>CMB</strong> {{character.cmb.total}}<span ng-show="character.cmb.miscModifiers || character.cmb.tempModifiers"> (<span ng-show="character.cmb.miscModifiers">{{character.cmb.miscModifiers}}; <span><span ng-show="character.cmb.tempModifiers">{{character.cmb.tempModifiers}}</span>)</span>;
+		<strong>CMD</strong> {{character.cmd.total}}<span ng-show="character.cmd.miscModifiers || character.cmd.tempModifiers"> (<span ng-show="character.cmd.miscModifiers">{{character.cmd.miscModifiers}}; <span><span ng-show="character.cmd.tempModifiers">{{character.cmd.tempModifiers}}</span>)</span>
+	</span></span></span></span></p>
+	<p>
+		<strong>Feats</strong>
+		<span ng-repeat="f in character.feats" title="{{f.notes}}">{{f.name}}{{$last ? '' : ', '}}</span>
+	</p>
+	<p class="skills">
+		<strong>Skills</strong>
+		<span ng-repeat="(skill, s) in filterSkills(character.skills)">{{skill|skillName}}<span ng-show="s.name">: {{s.name}}</span> {{s.total}}<span ng-show="s.misc"> ({{s.misc}})</span>{{$last ? '' : ', '}}</span><span ng-show="character.skills.conditionalModifiers">; <strong>Conditional Modifiers</strong> {{character.skills.conditionalModifiers}}</span>
+	</p>
+	<p>
+		<strong>Languages</strong> {{character.languages}}
+	</p>
+	<p>
+		<strong>SQ</strong>
+		<span ng-repeat="sa in character.specialAbilities" title="{{sa.notes}}">{{sa.name}}<span ng-show="sa.type"> ({{sa.type}})</span>{{$last ? '' : ', '}}</span>
+	</p>
+	<p>
+		<strong>Gear</strong>
+		<span ng-repeat="g in character.gear" title="{{g.notes}}"><span ng-show="g.type">{{g.type}}: </span>{{g.name}}<span ng-show="g.quantity > 1"> ({{g.quantity}})</span>{{$last ? '' : ', '}}</span>;
+		<strong>Money</strong>
+		<span ng-repeat="(currency, m) in filterMoney(character.money)">{{m}} {{currency}}{{$last ? '' : ', '}}</span><span ng-show="character.money.gems">, {{character.money.gems}}</span><span ng-show="character.money.other">, {{character.money.other}}</span>
+	</p>
+
+	<hr>
+
+	<h2>Comments</h2>
+
+	<div ng-repeat="c in character.comments | orderBy:'modified' track by $id(c)" class="comment">
+		<p>{{c.body}}</p>
+		<div>
+			<small>Written by {{c.author}} on {{c.modified|date:'medium'}}</small>
+			<button ng-click="deleteComment(c)" ng-init="c.deleteButtonText = 'Delete'">{{c.deleteButtonText}}</button>
+		</div>
+	</div>
+
+	<form name="commentForm">
+		<input type="text" name="comment-author" ng-model="comment.author" placeholder="Name">
+		<textarea name="comment-body" ng-model="comment.body" placeholder="Comment"></textarea>
+		<div class="actions">
+			<button ng-click="saveComment()">Save</button>
+		</div>
+	</form>
+</section>
+<section role="navigation">
+	<p><a ng-href="/" role="button" class="icon-home">Home</a></p>
+</section>
