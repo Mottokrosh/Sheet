@@ -1,6 +1,7 @@
 var express = require('express');
 var logfmt = require('logfmt');
-var mongoskin = require('mongoskin')
+var mongoskin = require('mongoskin');
+var grid = require('gridfs-stream');
 var _ = require('underscore');
 var app = express();
 
@@ -13,7 +14,8 @@ var mongoUri = process.env.MONGOLAB_URI,
 	GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID,
 	GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 
-var db = mongoskin.db(mongoUri, { safe: true });
+var db = mongoskin.db(mongoUri, { safe: true }),
+	gfs = grid(db, mongoskin);
 
 // --- Passport ---
 
@@ -57,8 +59,9 @@ passport.use(new GitHubStrategy({
 
 app.use(logfmt.requestLogger());
 app.use(express.cookieParser());
-app.use(express.json()); // this and urlencoded supercedes bodyParser
+app.use(express.json()); // this, urlencoded, and multipart supercede bodyParser
 app.use(express.urlencoded());
+app.use(express.multipart());
 app.use(express.methodOverride());
 app.use(express.session({ secret: 'Sho0bd0obe3do0w4h' }));
 app.use(passport.initialize());
@@ -149,6 +152,33 @@ app.del('/collections/:collectionName/:id', function(req, res) {
 		res.send(204); // (No Content)
 	});
 });
+
+// --- Uploads & Downloads ---
+
+app.post('/upload', function (req, res) {
+	var tempfile = req.files.filename.path;
+	var origname = req.files.filename.name;
+	var writestream = gfs.createWriteStream({ filename: origname });
+	// open a stream to the temporary file created by Express...
+	fs.createReadStream(tempfile)
+		.on('end', function() {
+			res.send('OK');
+		})
+		.on('error', function() {
+			res.send('ERR');
+		})
+		// and pipe it to gfs
+		.pipe(writestream);
+});
+
+app.get('/download/:filename', function (req, res) {
+	// TODO: set proper mime type + filename, handle errors, etc...
+	gfs
+		// create a read stream from gfs...
+		.createReadStream({ filename: req.param('filename') })
+		// and pipe it to Express' response
+		.pipe(res);
+})
 
 // --- App Routes ---
 

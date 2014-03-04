@@ -172,7 +172,7 @@ footer p {
 	width: 90px;
 }
 aside { height: 20px; line-height: 20px; position: fixed; left: 0; bottom: 40px; }
-p.logo { height: 130px; margin-top: -20px; }
+p.logo { height: 130px; margin-top: 30px; }
 button, [role='button'] {
 	box-shadow: inset 0 -3px 0 0 #68544a;
 	background: linear-gradient(to bottom, #473827 5%, #382d20 100%);
@@ -304,7 +304,11 @@ input[type='checkbox'] {
 	margin: 0;
 	text-align: center;
 }
-
+.attributions {
+	opacity: 0.4;
+	padding: 4em 3em 1em 3em;
+	font-style: italic;
+}
 .clearfix{*zoom:1}.clearfix:after,.clearfix:before{display:table;content:"";line-height:0}.clearfix:after{clear:both}
 
 h1 { font-size: 30px; line-height: 40px; text-align: center; margin: 0 10px 10px 0; font-weight: bold; padding-left: 28px; }

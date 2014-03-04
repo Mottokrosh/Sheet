@@ -31,6 +31,19 @@
 				font-size: 3em;
 				text-shadow: 3px 3px 0 #c2af89;
 			}
+			input[type="email"] {
+				font-family: 'Caudex', Georgia, serif;
+				font-size: 1.3em;
+				color: #312407;
+				background: url(images/bg-paper-2.jpg);
+				padding: 0.1em 0.5em;
+				border-radius: 3px;
+				border: 1px solid rgba(84,75,49,0.7);
+				margin: 0;
+			}
+			#logo {
+				max-width: 660px;
+			}
 			.slide {
 				position: relative;
 				display: table;
@@ -42,10 +55,58 @@
 				vertical-align: middle;
 			}
 			.slide:nth-child(odd) div {
-				background-color: #dfd4ba;
+				background-color: #f0ece4;
 			}
 			.slide:nth-child(even) div {
-				background-color: #cdc1a7;
+				background-color: #e7e0d0;
+			}
+			.attributions {
+				font-size: 0.75em;
+				opacity: 0.5;
+				padding: 5em;
+			}
+			button, [role='button'] {
+				box-shadow: inset 0 -3px 0 0 #68544a;
+				background: linear-gradient(to bottom, #473827 5%, #382d20 100%);
+				background-color: #473827;
+				border-radius: 3px;
+				border: 1px solid #240d00;
+				display: inline-block;
+				cursor: pointer;
+				color: #ffffff;
+				font-family: 'Goudy Bookletter 1911', times, serif; font-size: 16px;
+				font-size: 1.3em;
+				padding: 0.1em 0.5em;
+				text-decoration: none;
+				text-shadow: 0 1px 0 #4d3534;
+				text-align: center;
+				box-sizing: border-box;
+			}
+			button:hover, [role='button']:hover {
+				background-color: #382d20;
+				color: #ddd;
+				text-decoration: none;
+			}
+			button:active, [role='button']:active {
+				position: relative;
+				top: 3px;
+				box-shadow: none;
+				color: #ddd;
+			}
+			label {
+				font-size: 1.3em;
+			}
+			::-webkit-input-placeholder {
+				color: #312407;
+			}
+			:-moz-placeholder {
+				color: #312407;
+			}
+			::-moz-placeholder {
+				color: #312407;
+			}
+			:-ms-input-placeholder {
+				color: #312407;
 			}
 		</style>
 	</head>
@@ -53,8 +114,15 @@
 		<div id="container" class="viewport-slider-container">
 			<section class="slide viewport-slide" data-label="Home">
 				<div>
-					<h1>Mottokrosh's Eldritch Online Character Sheet</h1>
-					<p>Coming Soon</p>
+					<img id="logo" src="images/meocs-logo.png" alt="Mottokrosh's Eldritch Online Character Sheet">
+					<h2>&mdash; Alpha Coming Soon &mdash;</h2>
+					<!-- Begin MailChimp Signup Form -->
+					<form action="http://limitedaudience.us1.list-manage.com/subscribe/post?u=04990abd0ce699e275a77ef9e&amp;id=15dca54f06" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+						<p><label for="mce-EMAIL">For News:</label> <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required> <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" role="button"></p>
+					    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+					    <div style="position: absolute; left: -5000px;"><input type="text" name="b_04990abd0ce699e275a77ef9e_15dca54f06" value=""></div>
+					</form>
+					<!--End mc_embed_signup-->
 				</div>
 			</section>
 			<section class="slide viewport-slide" data-label="Screenshot">
@@ -67,17 +135,14 @@
 					<p>Features</p>
 				</div>
 			</section>
-			<section class="slide viewport-slide" data-label="Mailing List">
+			<section class="slide viewport-slide" data-label="Meta">
 				<div>
-					<!-- Begin MailChimp Signup Form -->
-					<form action="http://limitedaudience.us1.list-manage.com/subscribe/post?u=04990abd0ce699e275a77ef9e&amp;id=15dca54f06" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-						<p><label for="mce-EMAIL">Subscribe to our mailing list for open beta news</label></p>
-						<p><input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required></p>
-					    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-					    <div style="position: absolute; left: -5000px;"><input type="text" name="b_04990abd0ce699e275a77ef9e_15dca54f06" value=""></div>
-						<p><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" role="button"></p>
-					</form>
-					<!--End mc_embed_signup-->
+					<div class="attributions">
+						<p>This character sheet web app is created by <a href="https://github.com/Mottokrosh" target="_blank">Mottokrosh</a>, and is currently in an alpha status.</p>
+						<p>Compatibility with the Pathfinder Roleplaying Game requires the Pathfinder Roleplaying Game from Paizo Inc.. See <a href="http://paizo.com/pathfinderRPG" target="_blank">http://paizo.com/pathfinderRPG</a> for more information on the Pathfinder Roleplaying Game. Paizo Inc. does not guarantee compatibility, and does not endorse this product.</p>
+						<p>Pathfinder is a registered trademark of Paizo Inc., and the Pathfinder Roleplaying Game and the Pathfinder Roleplaying Game Compatibility Logo are trademarks of Paizo Inc., and are used under the Pathfinder Roleplaying Game Compatibility License. See <a href="http://paizo.com/pathfinderRPG/compatibility" target="_blank">http://paizo.com/pathfinderRPG/compatibility</a> for more information on the compatibility license.</p>
+						<p>Pathfinder and associated marks and logos are trademarks of Paizo Inc., and are used under license. See <a href="http://paizo.com/pathfinderRPG" target="_blank">paizo.com/pathfinderRPG</a> for more information on the Pathfinder Roleplaying Game.</p>
+					</div>
 				</div>
 			</section>
 		</div>

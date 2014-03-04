@@ -8,7 +8,8 @@ angular.module('sheetApp', [
 	'ngTouch',
 	'ngAnimate',
 	'ngDialog',
-	'chieffancypants.loadingBar'
+	'chieffancypants.loadingBar',
+	'angularFileUpload'
 ])
 	.config(function ($routeProvider) {
 		$routeProvider
