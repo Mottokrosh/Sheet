@@ -24,6 +24,9 @@
 				color: #312407;
 				text-shadow: 1px 1px 0 #c2af89;
 			}
+			* {
+				box-sizing: border-box;
+			}
 			h1, h2, h3 {
 				font-family: 'Goudy Bookletter 1911', Georgia, serif;
 			}
@@ -112,6 +115,48 @@
 				background-image: url(images/screenshot-iso-grid.jpg);
 				background-size: cover;
 			}
+			.rslides {
+				position: relative;
+				list-style: none;
+				overflow: hidden;
+				width: 100%;
+				padding: 0;
+				margin: 0;
+			}
+			.rslides li {
+				-webkit-backface-visibility: hidden;
+				position: absolute;
+				display: none;
+				width: 100%;
+				left: 0;
+				top: 0;
+			}
+			.rslides li:first-child {
+				position: relative;
+				display: block;
+				float: left;
+			}
+			.rslides img {
+				display: block;
+				height: auto;
+				float: left;
+				width: 100%;
+				border: 0;
+			}
+			figure {
+				max-width: 50%;
+				float: right;
+				margin: 0;
+				padding: 1em 3em 1em 1em;
+			}
+			ul {
+				text-align: left;
+			}
+			.left-col {
+				width: 50%;
+				float: left;
+				padding-left: 3em;
+			}
 		</style>
 	</head>
 	<body>
@@ -119,7 +164,8 @@
 			<section class="slide viewport-slide" data-label="Home">
 				<div>
 					<img id="logo" src="images/meocs-logo.png" alt="Mottokrosh's Eldritch Online Character Sheet">
-					<h2>&mdash; Alpha Coming Soon &mdash;</h2>
+					<p>Quick and useful character records on your tablet or laptop</p>
+					<h2 style="margin-top: 3em">&mdash; Alpha Coming Soon &mdash;</h2>
 					<!-- Begin MailChimp Signup Form -->
 					<form action="http://limitedaudience.us1.list-manage.com/subscribe/post?u=04990abd0ce699e275a77ef9e&amp;id=15dca54f06" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 						<p><label for="mce-EMAIL">For News:</label> <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required> <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" role="button"></p>
@@ -136,7 +182,27 @@
 			</section>
 			<section class="slide viewport-slide" data-label="Features">
 				<div>
-					<p>Features</p>
+					<section class="left-col">
+						<h2>Features</h2>
+						<ul>
+							<li>Ditigal, enhanced version of the regular paper character sheet</li>
+							<li>Cloud-based storage, access from any device</li>
+							<li>Complete with all OGL spell descriptions right at your fingertip</li>
+							<li>Track prepared and cast spells and spell-likes</li>
+							<li>Share a read-only statblock view with your GM or players</li>
+							<li>Comment on the statblock</li>
+							<li>Annotate feats, gear, and more</li>
+							<li>Records but doesn't assume, house-rules friendly</li>
+						</ul>
+					</section>
+					<figure>
+						<ul class="rslides">
+							<li><img src="images/screenshot-macbook-1.jpg" alt="App Screenshot 1"></li>
+							<li><img src="images/screenshot-macbook-2.jpg" alt="App Screenshot 2"></li>
+							<li><img src="images/screenshot-macbook-3.jpg" alt="App Screenshot 3"></li>
+							<li><img src="images/screenshot-macbook-4.jpg" alt="App Screenshot 4"></li>
+						</ul>
+					</figure>
 				</div>
 			</section>
 			<section class="slide viewport-slide" data-label="Meta">
@@ -161,9 +227,16 @@
 			ga('send', 'pageview');
 		</script>
 
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 		<script src="viewport-slider-master/lib/hammer.min.js"></script>
-		<script src="viewport-slider-master/dist/js/viewport-slider.js"></script>
+		<script src="viewport-slider-master/dist/js/viewport-slider.min.js"></script>
+		<script src="responsiveslides.min.js"></script>
 		<script>viewportSlider.init(document.getElementById('container'), '.slide');</script>
+		<script>
+			$(function () {
+				$('.rslides').responsiveSlides();
+			});
+		</script>
 
 	</body>
 </html>
