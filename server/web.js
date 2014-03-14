@@ -206,6 +206,6 @@ function ensureAuthenticated(req, res, next) {
 	} else {
 		req.logout();
 		res.clearCookie('sheetuser');
-		res.redirect(appFolder + '/#/login');
+		res.send(401);
 	}
 }

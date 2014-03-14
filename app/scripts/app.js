@@ -37,6 +37,16 @@ angular.module('sheetApp', [
 				redirectTo: '/'
 			});
 	})
+	.config(function ($httpProvider) {
+		$httpProvider.interceptors.push(['$location', function ($q, $location) {
+			return {
+				'responseError': function (rejection) {
+					// treat all errors as 401 for now
+					$location.path('/login');
+				}
+			};
+		}]);
+	})
 	.factory('user', function ($cookieStore) {
 		return $cookieStore.get('sheetuser') || {};
 	})
