@@ -128,7 +128,7 @@ app.post(apiBase + '/:collectionName', ensureAuthenticated, function (req, res) 
 	}
 });
 
-app.get(apiBase + '/:collectionName/:id', ensureAuthenticated, function (req, res) {
+app.get(apiBase + '/:collectionName/:id', function (req, res) { // this call doesn't require auth to allow for statblock sharing
 	req.collection.findById(req.params.id, function (err, result) {
 		if (err) return next(err);
 		res.send(result);

@@ -38,14 +38,18 @@ angular.module('sheetApp', [
 			});
 	})
 	.config(function ($httpProvider) {
-		$httpProvider.interceptors.push(['$location', function ($q, $location) {
+		var inci = function ($q, $location) {
 			return {
-				'responseError': function (rejection) {
+				'responseError': function () {
 					// treat all errors as 401 for now
 					$location.path('/login');
 				}
 			};
-		}]);
+		};
+
+		inci.$inject = ['$q', '$location'];
+
+		$httpProvider.interceptors.push(inci);
 	})
 	.factory('user', function ($cookieStore) {
 		return $cookieStore.get('sheetuser') || {};
