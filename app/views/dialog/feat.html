@@ -2,8 +2,8 @@
 	<h3><span ng-hide="mode == 'edit'">Add</span><span ng-show="mode == 'edit'">Edit</span> Feat</h3>
 </div>
 <div class="modal-body">
+	<p><label>Feat Name</label><input name="feat-name" type="text" ng-model="item.name"></p>
 	<p><label>Type</label><input name="feat-type" type="text" ng-model="item.type"></p>
-	<p><label>Feat</label><input name="feat-name" type="text" ng-model="item.name"></p>
 	<p><label>Notes</label><textarea name="feat-notes" ng-model="item.notes"></textarea></p>
 </div>
 <div class="modal-footer">
