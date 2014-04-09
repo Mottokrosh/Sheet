@@ -110,7 +110,9 @@ app.get(apiBase, ensureAuthenticated, function (req, res) {
 });
 
 app.get(apiBase + '/:collectionName', ensureAuthenticated, function (req, res) {
-	req.collection.find(JSON.parse(req.query.q), JSON.parse(req.query.f), { limit: 10, sort: [['_id', -1]] }).toArray(function (err, results) {
+	var q = JSON.parse(req.query.q.replace(/@\$/g, '$')),
+		f = JSON.parse(req.query.f);
+	req.collection.find(q, f, { limit: 10, sort: [['_id', -1]] }).toArray(function (err, results) {
 		if (err) return next(err);
 		res.send(results);
 	});

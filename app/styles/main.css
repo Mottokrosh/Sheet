@@ -225,6 +225,21 @@ nav.main li > button, nav.main li > [role='button'] {
 	padding: 20px;
 	margin-bottom: 10px;
 }
+nav.main h2 {
+	background-color: #7c6b53;
+	display: inline-block;
+	color: #ffffff;
+	font-family: 'Goudy Bookletter 1911', times, serif;
+	font-weight: normal;
+	text-shadow: 0 1px 0 #4d3534;
+	text-align: center;
+	box-sizing: border-box;
+	line-height: 1.33;
+	width: 100%;
+	font-size: 22px;
+	padding: 20px;
+	margin-bottom: 10px;
+}
 .removeable {
 	cursor: pointer;
 	position: relative;
@@ -250,6 +265,9 @@ nav.main li > button, nav.main li > [role='button'] {
 }
 .space-top {
 	margin-top: 20px !important;
+}
+.character-list {
+	margin-bottom: 30px;
 }
 .character-list time {
 	display: block;
@@ -288,6 +306,23 @@ nav.main li > button, nav.main li > [role='button'] {
 .character-slip div {
 	margin: 0;
 }
+.character-archive-slip {
+	box-sizing: border-box;
+	background: url(../images/bg-paper-2.jpg);
+	width: 100%;
+	padding: 10px;
+	margin: 0;
+	display: flex;
+}
+.character-archive-slip p {
+	flex: 5;
+	align-self: center;
+}
+.character-archive-slip button {
+	flex: 1;
+	padding: 1px 5px;
+	margin-left: 10px;
+}
 #wrapper .download, #wrapper .delete {
 	vertical-align: bottom;
 }
@@ -308,6 +343,7 @@ input[type='checkbox'] {
 	opacity: 0.4;
 	padding: 4em 3em 1em 3em;
 	font-style: italic;
+	clear: both;
 }
 .clearfix{*zoom:1}.clearfix:after,.clearfix:before{display:table;content:"";line-height:0}.clearfix:after{clear:both}
 
