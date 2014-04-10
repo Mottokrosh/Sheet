@@ -1,6 +1,6 @@
 {
   "name": "Sheet",
-  "version": "0.0.0",
+  "version": "0.8.1",
   "description": "Online character sheet for the Pathfinder RPG",
   "repository": {
     "type": "git",
@@ -58,7 +58,7 @@
     "grunt-gss-pull": "~0.1.2"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": "~0.10.0"
   },
   "scripts": {
     "test": "grunt test"

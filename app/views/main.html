@@ -21,7 +21,7 @@
 	<ul class="archived-characters-list">
 		<li>
 			<h2>Archived Characters</h2>
-			<div ng-repeat="c in characters | orderBy:'modified':true | filter:{status:'archived'}" class="character-archive-slip">
+			<div ng-repeat="c in characters | orderBy:'name' | filter:{status:'archived'}" class="character-archive-slip">
 				<p>{{c.name}}, {{c.level}}</p>
 				<button title="Restore" ng-click="restoreCharacter(c)">Restore</button>
 				<button title="Delete" ng-click="deleteCharacter(c, $event)">Delete</button>

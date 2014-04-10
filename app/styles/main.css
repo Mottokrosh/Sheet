@@ -269,6 +269,9 @@ nav.main h2 {
 .character-list {
 	margin-bottom: 30px;
 }
+.character-list div, .archived-characters-list div {
+	float: none;
+}
 .character-list time {
 	display: block;
 	clear: left;
@@ -302,6 +305,7 @@ nav.main h2 {
 .character-slip .actions a, .character-slip .actions button {
 	display: block;
 	margin-bottom: 10px;
+	width: 100%;
 }
 .character-slip div {
 	margin: 0;

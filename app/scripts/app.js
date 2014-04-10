@@ -40,9 +40,10 @@ angular.module('sheetApp', [
 	.config(function ($httpProvider) {
 		var inci = function ($q, $location) {
 			return {
-				'responseError': function () {
+				'responseError': function (rejection) {
 					// treat all errors as 401 for now
 					$location.path('/login');
+					return $q.reject(rejection);
 				}
 			};
 		};
