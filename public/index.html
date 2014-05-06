@@ -34,6 +34,11 @@
 				font-size: 3em;
 				text-shadow: 3px 3px 0 #c2af89;
 			}
+			a {
+				color: #312407;
+				text-decoration: underline;
+				font-weight: bold;
+			}
 			input[type="email"] {
 				font-family: 'Caudex', Georgia, serif;
 				font-size: 1.3em;
@@ -79,6 +84,7 @@
 				color: #ffffff;
 				font-family: 'Goudy Bookletter 1911', times, serif; font-size: 16px;
 				font-size: 1.3em;
+				font-weight: normal;
 				padding: 0.1em 0.5em;
 				text-decoration: none;
 				text-shadow: 0 1px 0 #4d3534;
@@ -157,6 +163,30 @@
 				float: left;
 				padding-left: 3em;
 			}
+			sup {
+				font-size: 0.5em;
+				margin-left: 0.5em;
+				text-transform: uppercase;
+				color: #DFCFA6;
+			}
+			.launch {
+				font-size: 2em;
+				padding: 0.2em 1em 0.3em 1em;
+				margin: 0.6em 0 0 0;
+			}
+			small {
+				max-width: 50%;
+				margin: 1em auto 3em auto;
+				display: block;
+				font-size: 0.75em;
+				text-shadow: none;
+				opacity: 0.5;
+			}
+			small sup {
+				color: inherit;
+				font-size: 1em;
+				margin-right: 0.2em;
+			}
 		</style>
 	</head>
 	<body>
@@ -165,10 +195,12 @@
 				<div>
 					<img id="logo" src="images/meocs-logo.png" alt="Mottokrosh's Eldritch Online Character Sheet">
 					<p>Quick and useful character records on your tablet or laptop</p>
-					<h2 style="margin-top: 3em">&mdash; Alpha Coming Soon &mdash;</h2>
+					<p><a href="/pathfinder" role="button" class="launch">Launch App<sup>Beta</sup></a></p>
+					<small><sup>*</sup>This app is in beta, which means that you might encounter a bug or two. Report them on our <a href="https://github.com/Mottokrosh/SheetIssues" target="_blank">Github issues</a> page, or <a href="#" class="maily">email Mottokrosh</a> directly.</small>
+
 					<!-- Begin MailChimp Signup Form -->
 					<form action="http://limitedaudience.us1.list-manage.com/subscribe/post?u=04990abd0ce699e275a77ef9e&amp;id=15dca54f06" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-						<p><label for="mce-EMAIL">For News:</label> <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required> <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" role="button"></p>
+						<p><label for="mce-EMAIL">Mailing List:</label> <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required> <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" role="button"></p>
 					    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
 					    <div style="position: absolute; left: -5000px;"><input type="text" name="b_04990abd0ce699e275a77ef9e_15dca54f06" value=""></div>
 					</form>
@@ -208,7 +240,7 @@
 			<section class="slide viewport-slide" data-label="Meta">
 				<div>
 					<div class="attributions">
-						<p>This character sheet web app is created by <a href="https://github.com/Mottokrosh" target="_blank">Mottokrosh</a>, and is currently in an alpha status.</p>
+						<p>This character sheet web app is created by <a href="https://github.com/Mottokrosh" target="_blank">Mottokrosh</a>, and is currently in a beta status.</p>
 						<p>Compatibility with the Pathfinder Roleplaying Game requires the Pathfinder Roleplaying Game from Paizo Inc.. See <a href="http://paizo.com/pathfinderRPG" target="_blank">http://paizo.com/pathfinderRPG</a> for more information on the Pathfinder Roleplaying Game. Paizo Inc. does not guarantee compatibility, and does not endorse this product.</p>
 						<p>Pathfinder is a registered trademark of Paizo Inc., and the Pathfinder Roleplaying Game and the Pathfinder Roleplaying Game Compatibility Logo are trademarks of Paizo Inc., and are used under the Pathfinder Roleplaying Game Compatibility License. See <a href="http://paizo.com/pathfinderRPG/compatibility" target="_blank">http://paizo.com/pathfinderRPG/compatibility</a> for more information on the compatibility license.</p>
 						<p><a href="/license.html">Open Gaming License</a></p>
@@ -236,6 +268,7 @@
 		<script>
 			$(function () {
 				$('.rslides').responsiveSlides();
+				$('.maily').attr('href', 'mailt'+'o:fra'+'nk@futurered.c'+'om');
 			});
 		</script>
 
