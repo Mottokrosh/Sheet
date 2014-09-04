@@ -90,6 +90,17 @@ ngDialog.open({
 </script>
 ```
 
+##### ``scope.closeThisDialog()``
+
+In addition ``.closeThisDialog()`` method get injected to passed ``$scope``. This allows you to close dialog straight from handler in a popup element, for example:
+
+```html
+<div class="dialog-contents">
+	<input type="text"/>
+	<input type="button" value="OK" ng-click="checkInput() && closeThisDialog()"/>
+</button>
+```
+
 ##### ``data {String}``
 
 Any data that you want to be stored in controller's ``$parent`` scope, it could be stringified JSON as well.
@@ -122,6 +133,7 @@ This will close all open modals if there several of them open at the same time.
 ##### ``closeByDocument {Boolean}``
 
 It allows to close modals by clicking on overlay background, default ``true``.
+If [Hammer.js](https://github.com/EightMedia/hammer.js) is loaded, it will listen for ``tap`` instead of ``click``.
 
 ### ``.close(id)``
 
@@ -141,10 +153,13 @@ Some imaginary button, for example, will look like:
 <button type="button"
 	ng-dialog="templateId.html"
 	ng-dialog-class="ngdialog-theme-flat"
-	ng-dialog-controller="ModalCtrl">
+	ng-dialog-controller="ModalCtrl"
+	ng-dialog-close-previous>
 	Open modal text
 </button>
 ```
+
+Directive contains one more additional but very useful option, it's an attribute named ``ng-dialog-close-previous``. It allows you to close previously opened dialogs automaticly.
 
 ## Events
 
@@ -166,15 +181,21 @@ $rootScope.$on('ngDialog.opened', function (e, $dialog) {
 
 Currently ngDialog contains two default themes that show how easily you can create your own. Check ``example`` folder for demonstration purposes.
 
-## References
+## CDN
 
-Have a nice experience and use **ngDialog** in your project? Let us know! We appreciate any kind of feedback ;)
+ngDialog is available for public on [cdnjs](http://cdnjs.com/libraries/ng-dialog). Please use following urls for version 0.1.6.
 
-## Licence
+```html
+//cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.1.6/ng-dialog.min.css
+//cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.1.6/ng-dialog-theme-plain.min.css
+//cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.1.6/ng-dialog.min.js
+```
+
+## License
 
 MIT Licensed
 
-Copyright (c) 2013, Likeastore.com <info@likeastore.com>
+Copyright (c) 2013-2014, Likeastore.com <info@likeastore.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

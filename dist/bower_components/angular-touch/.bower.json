@@ -1,16 +1,16 @@
 {
   "name": "angular-touch",
-  "version": "1.2.13-build.2242+sha.e645f7c",
+  "version": "1.2.23",
   "main": "./angular-touch.js",
   "dependencies": {
-    "angular": "1.2.13-build.2242+sha.e645f7c"
+    "angular": "1.2.23"
   },
   "homepage": "https://github.com/angular/bower-angular-touch",
-  "_release": "1.2.13-build.2242+sha.e645f7c",
+  "_release": "1.2.23",
   "_resolution": {
     "type": "version",
-    "tag": "v1.2.13-build.2242+sha.e645f7c",
-    "commit": "f89424d26c5368ada6a63e6ca52859b3931493c0"
+    "tag": "v1.2.23",
+    "commit": "a8429212379aefe4a809c32267dd2f52ed9f5240"
   },
   "_source": "git://github.com/angular/bower-angular-touch.git",
   "_target": "~1.2.6",

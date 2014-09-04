@@ -1,14 +1,17 @@
 {
   "name": "angularjs-mongolab",
+  "devDependencies": {
+    "angular-mocks": "1.2.22"
+  },
   "homepage": "https://github.com/pkozlowski-opensource/angularjs-mongolab",
-  "_release": "24bb016a09",
+  "version": "1.0.0-RC1",
+  "_release": "1.0.0-RC1",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "24bb016a093308300dc8ae10b6d24178996ea2ba"
+    "type": "version",
+    "tag": "1.0.0-RC1",
+    "commit": "92b1857047ae1df52f0501ded2bd8ef538c63a00"
   },
   "_source": "git://github.com/pkozlowski-opensource/angularjs-mongolab.git",
   "_target": "*",
-  "_originalSource": "angularjs-mongolab",
-  "_direct": true
+  "_originalSource": "angularjs-mongolab"
 }

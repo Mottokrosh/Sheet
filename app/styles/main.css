@@ -377,6 +377,9 @@ h1 span a.expand-collapse.collapsed { background: url(../images/icon-plus.png); 
 	border-radius: 6px;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
+.ngdialog-overlay {
+	z-index: -1;
+}
 .modal-header {
 	border-top-left-radius: 6px;
 	border-top-right-radius: 6px;

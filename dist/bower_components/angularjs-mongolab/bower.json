@@ -1,0 +1,6 @@
+{
+  "name": "angularjs-mongolab",
+  "devDependencies": {
+    "angular-mocks": "1.2.22"
+  }
+}
