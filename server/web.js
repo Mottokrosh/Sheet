@@ -121,12 +121,14 @@ app.get(apiBase + '/:collectionName', ensureAuthenticated, function (req, res) {
 app.post(apiBase + '/:collectionName', ensureAuthenticated, function (req, res) {
 	console.log('Request Body', req.body);
 	// require a user object in the body minimally
-	if ( req.body.user ) {
+	if (req.body.user && req.user.id) {
 		req.collection.insert(req.body, { safe: true }, function (err, results) {
 			console.log('Response', results[0]);
 			if (err) return next(err);
 			res.status(201).send(results[0]);
 		});
+	} else {
+		res.send(401);
 	}
 });
 
@@ -138,14 +140,18 @@ app.get(apiBase + '/:collectionName/:id', function (req, res) { // this call doe
 });
 
 app.put(apiBase + '/:collectionName/:id', ensureAuthenticated, function(req, res) {
-	req.collection.updateById(req.params.id, { $set: req.body }, { safe: true, multi: false }, function (err, result) {
-		if (err) return next(err);
-		// find and return updated resource (because 'update' returns a count of affected resources)
-		req.collection.findById(req.params.id, function (err, result) {
+	if (req.body.user && req.user.id) {
+		req.collection.updateById(req.params.id, { $set: req.body }, { safe: true, multi: false }, function (err, result) {
 			if (err) return next(err);
-			res.send(result);
+			// find and return updated resource (because 'update' returns a count of affected resources)
+			req.collection.findById(req.params.id, function (err, result) {
+				if (err) return next(err);
+				res.send(result);
+			});
 		});
-	});
+	} else {
+		res.send(401);
+	}
 });
 
 app.del('/collections/:collectionName/:id', function(req, res) {

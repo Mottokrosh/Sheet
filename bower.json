@@ -13,7 +13,7 @@
     "angular-touch": "~1.2.6",
     "angular-loading-bar": "~0.3.0",
     "ngDialog": "~0.1.2",
-    "angular-animate": "1.2.3",
+    "angular-animate": "~1.2.0",
     "angular-file-upload": "~0.3.1"
   },
   "devDependencies": {

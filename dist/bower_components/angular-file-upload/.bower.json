@@ -23,6 +23,5 @@
   },
   "_source": "git://github.com/nervgh/angular-file-upload.git",
   "_target": "~0.3.1",
-  "_originalSource": "angular-file-upload",
-  "_direct": true
+  "_originalSource": "angular-file-upload"
 }
