@@ -112,18 +112,16 @@ app.get(apiBase, ensureAuthenticated, function (req, res) {
 app.get(apiBase + '/:collectionName', ensureAuthenticated, function (req, res) {
 	var q = JSON.parse(req.query.q.replace(/@\$/g, '$')),
 		f = JSON.parse(req.query.f);
-	req.collection.find(q, f, { limit: 10, sort: [['_id', -1]] }).toArray(function (err, results) {
+	req.collection.find(q, f, { limit: 50, sort: [['_id', -1]] }).toArray(function (err, results) {
 		if (err) return next(err);
 		res.send(results);
 	});
 });
 
 app.post(apiBase + '/:collectionName', ensureAuthenticated, function (req, res) {
-	console.log('Request Body', req.body);
 	// require a user object in the body minimally
-	if (req.body.user && req.user.id) {
+	if (req.body.user && req.body.user.id) {
 		req.collection.insert(req.body, { safe: true }, function (err, results) {
-			console.log('Response', results[0]);
 			if (err) return next(err);
 			res.status(201).send(results[0]);
 		});
@@ -140,7 +138,7 @@ app.get(apiBase + '/:collectionName/:id', function (req, res) { // this call doe
 });
 
 app.put(apiBase + '/:collectionName/:id', ensureAuthenticated, function(req, res) {
-	if (req.body.user && req.user.id) {
+	if (req.body.user && req.body.user.id) {
 		req.collection.updateById(req.params.id, { $set: req.body }, { safe: true, multi: false }, function (err, result) {
 			if (err) return next(err);
 			// find and return updated resource (because 'update' returns a count of affected resources)
