@@ -77,7 +77,20 @@ function authCallbackHandler(req, res) {
 	var user = _.omit(req.user, ['_raw', '_json']);
 	res.cookie('sheetuser', JSON.stringify(user));
 	// redirect to app's home
-	res.redirect(appFolder);
+	//res.redirect(appFolder); MYSTERIOUS BUG
+	res.redirect('/redirect.html'); // hacky workaround
+}
+
+// --- Helper Functions ---
+
+function ensureAuthenticated(req, res, next) {
+	if (req.isAuthenticated()) {
+		return next();
+	} else {
+		req.logout();
+		res.clearCookie('sheetuser');
+		res.send(401);
+	}
 }
 
 // --- Auth Routes ---
@@ -85,7 +98,8 @@ function authCallbackHandler(req, res) {
 app.get('/auth/google', passport.authenticate('google', {
 	scope: [
 		'https://www.googleapis.com/auth/userinfo.profile',
-		'https://www.googleapis.com/auth/userinfo.email'
+		'https://www.googleapis.com/auth/userinfo.email',
+		'https://www.googleapis.com/auth/plus.login'
 	]
 }));
 
@@ -184,7 +198,7 @@ app.get('/download/:filename', function (req, res) {
 		.createReadStream({ filename: req.param('filename') })
 		// and pipe it to Express' response
 		.pipe(res);
-})
+});
 
 // --- App Routes ---
 
@@ -201,17 +215,5 @@ app.use('/', express.static('public/'));
 // --- Server Listening ---
 
 app.listen(port, function () {
-	console.log("Listening on " + port);
+	console.log('Listening on ' + port);
 });
-
-// --- Helper Functions ---
-
-function ensureAuthenticated(req, res, next) {
-	if (req.isAuthenticated()) {
-		return next();
-	} else {
-		req.logout();
-		res.clearCookie('sheetuser');
-		res.send(401);
-	}
-}

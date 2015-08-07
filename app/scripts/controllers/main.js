@@ -1,7 +1,6 @@
-'use strict';
-
 angular.module('sheetApp')
 	.controller('MainCtrl', function ($scope, user, Character) {
+		'use strict';
 		$scope.user = user;
 
 		$scope.filterActive = function (c) {
