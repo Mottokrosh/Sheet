@@ -5,7 +5,7 @@ var mongoskin = require('mongoskin');
 var _ = require('underscore');
 var app = express();
 
-var mongoUri = process.env.MONGOHQ_URL,
+var mongoUri = process.env.MONGOLAB_PAID,
 	port = Number(process.env.PORT || 5000),
 	host = process.env.HOST,
 	appFolder = process.env.APP_FOLDER,
