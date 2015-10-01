@@ -1,11 +1,11 @@
 var express = require('express');
 var logfmt = require('logfmt');
 var mongoskin = require('mongoskin');
-var grid = require('gridfs-stream');
+//var grid = require('gridfs-stream');
 var _ = require('underscore');
 var app = express();
 
-var mongoUri = process.env.MONGOLAB_URI,
+var mongoUri = process.env.MONGOHQ_URL,
 	port = Number(process.env.PORT || 5000),
 	host = process.env.HOST,
 	appFolder = process.env.APP_FOLDER,
@@ -14,8 +14,8 @@ var mongoUri = process.env.MONGOLAB_URI,
 	GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID,
 	GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 
-var db = mongoskin.db(mongoUri, { safe: true }),
-	gfs = grid(db, mongoskin);
+var db = mongoskin.db(mongoUri, { safe: true })/*,
+	gfs = grid(db, mongoskin)*/;
 
 // --- Passport ---
 
@@ -123,20 +123,20 @@ app.get(apiBase, ensureAuthenticated, function (req, res) {
 	res.send('This is the API service.');
 });
 
-app.get(apiBase + '/:collectionName', ensureAuthenticated, function (req, res) {
+app.get(apiBase + '/:collectionName', ensureAuthenticated, function (req, res, next) {
 	var q = JSON.parse(req.query.q.replace(/@\$/g, '$')),
 		f = JSON.parse(req.query.f);
 	req.collection.find(q, f, { limit: 50, sort: [['_id', -1]] }).toArray(function (err, results) {
-		if (err) return next(err);
+		if (err) { return next(err); }
 		res.send(results);
 	});
 });
 
-app.post(apiBase + '/:collectionName', ensureAuthenticated, function (req, res) {
+app.post(apiBase + '/:collectionName', ensureAuthenticated, function (req, res, next) {
 	// require a user object in the body minimally
 	if (req.body.user && req.body.user.id) {
 		req.collection.insert(req.body, { safe: true }, function (err, results) {
-			if (err) return next(err);
+			if (err) { return next(err); }
 			res.status(201).send(results[0]);
 		});
 	} else {
@@ -144,20 +144,20 @@ app.post(apiBase + '/:collectionName', ensureAuthenticated, function (req, res) 
 	}
 });
 
-app.get(apiBase + '/:collectionName/:id', function (req, res) { // this call doesn't require auth to allow for statblock sharing
+app.get(apiBase + '/:collectionName/:id', function (req, res, next) { // this call doesn't require auth to allow for statblock sharing
 	req.collection.findById(req.params.id, function (err, result) {
-		if (err) return next(err);
+		if (err) { return next(err); }
 		res.send(result);
 	});
 });
 
-app.put(apiBase + '/:collectionName/:id', ensureAuthenticated, function(req, res) {
+app.put(apiBase + '/:collectionName/:id', ensureAuthenticated, function (req, res, next) {
 	if (req.body.user && req.body.user.id) {
-		req.collection.updateById(req.params.id, { $set: req.body }, { safe: true, multi: false }, function (err, result) {
-			if (err) return next(err);
+		req.collection.updateById(req.params.id, { $set: req.body }, { safe: true, multi: false }, function (err) {
+			if (err) { return next(err); }
 			// find and return updated resource (because 'update' returns a count of affected resources)
 			req.collection.findById(req.params.id, function (err, result) {
-				if (err) return next(err);
+				if (err) { return next(err); }
 				res.send(result);
 			});
 		});
@@ -166,16 +166,16 @@ app.put(apiBase + '/:collectionName/:id', ensureAuthenticated, function(req, res
 	}
 });
 
-app.del('/collections/:collectionName/:id', function(req, res) {
-	req.collection.removeById(req.params.id, function (err, result) {
-		if (err) return next(err);
+app.del('/collections/:collectionName/:id', function(req, res, next) {
+	req.collection.removeById(req.params.id, function (err) {
+		if (err) { return next(err); }
 		res.send(204); // (No Content)
 	});
 });
 
 // --- Uploads & Downloads ---
 
-app.post('/upload', function (req, res) {
+/*app.post('/upload', function (req, res) {
 	var tempfile = req.files.filename.path;
 	var origname = req.files.filename.name;
 	var writestream = gfs.createWriteStream({ filename: origname });
@@ -198,11 +198,11 @@ app.get('/download/:filename', function (req, res) {
 		.createReadStream({ filename: req.param('filename') })
 		// and pipe it to Express' response
 		.pipe(res);
-});
+});*/
 
 // --- App Routes ---
 
-app.get('/logout', function(req, res){
+app.get('/logout', function (req, res){
 	req.logout();
 	res.clearCookie('sheetuser');
 	res.redirect(appFolder);

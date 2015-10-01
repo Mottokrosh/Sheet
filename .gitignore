@@ -7,3 +7,4 @@ sftp-config.json
 .ht*
 index.php
 .env
+tmp
