@@ -1,7 +1,5 @@
 var express = require('express');
 var logfmt = require('logfmt');
-var mongoskin = require('mongoskin');
-//var grid = require('gridfs-stream');
 var _ = require('underscore');
 var app = express();
 
@@ -14,8 +12,7 @@ var mongoUri = process.env.MONGOLAB_PAID,
 	GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID,
 	GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 
-var db = mongoskin.db(mongoUri, { safe: true })/*,
-	gfs = grid(db, mongoskin)*/;
+var db = require('monk')(mongoUri);
 
 // --- Passport ---
 
@@ -32,28 +29,26 @@ passport.deserializeUser(function (obj, done) {
 });
 
 passport.use(new GoogleStrategy({
-		clientID: GOOGLE_CLIENT_ID,
-		clientSecret: GOOGLE_CLIENT_SECRET,
-		callbackURL: host + '/auth/google/callback'
-	},
-	function (accessToken, refreshToken, profile, done) {
-		process.nextTick(function () {
-			return done(null, profile);
-		});
-	}
-));
+	clientID: GOOGLE_CLIENT_ID,
+	clientSecret: GOOGLE_CLIENT_SECRET,
+	callbackURL: host + '/auth/google/callback'
+},
+function (accessToken, refreshToken, profile, done) {
+	process.nextTick(function () {
+		return done(null, profile);
+	});
+}));
 
 passport.use(new GitHubStrategy({
-		clientID: GITHUB_CLIENT_ID,
-		clientSecret: GITHUB_CLIENT_SECRET,
-		callbackURL: host + '/auth/github/callback'
-	},
-	function (accessToken, refreshToken, profile, done) {
-		process.nextTick(function () {
-			return done(null, profile);
-		});
-	}
-));
+	clientID: GITHUB_CLIENT_ID,
+	clientSecret: GITHUB_CLIENT_SECRET,
+	callbackURL: host + '/auth/github/callback'
+},
+function (accessToken, refreshToken, profile, done) {
+	process.nextTick(function () {
+		return done(null, profile);
+	});
+}));
 
 // --- Configuration ---
 
@@ -68,7 +63,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.param('collectionName', function (req, res, next, collectionName) {
-	req.collection = db.collection(collectionName);
+	req.collection = db.get(collectionName);
 	return next();
 });
 
@@ -126,18 +121,21 @@ app.get(apiBase, ensureAuthenticated, function (req, res) {
 app.get(apiBase + '/:collectionName', ensureAuthenticated, function (req, res, next) {
 	var q = JSON.parse(req.query.q.replace(/@\$/g, '$')),
 		f = JSON.parse(req.query.f);
-	req.collection.find(q, f, { limit: 50, sort: [['_id', -1]] }).toArray(function (err, results) {
-		if (err) { return next(err); }
+	req.collection.find(q, f).then(function (results) {
+		// , { limit: 50, sort: [['_id', -1]] }
 		res.send(results);
+	}).catch(function (err) {
+		return next(err);
 	});
 });
 
 app.post(apiBase + '/:collectionName', ensureAuthenticated, function (req, res, next) {
 	// require a user object in the body minimally
 	if (req.body.user && req.body.user.id) {
-		req.collection.insert(req.body, { safe: true }, function (err, results) {
-			if (err) { return next(err); }
-			res.status(201).send(results[0]);
+		req.collection.insert(req.body).then(function (doc) {
+			res.status(201).send(doc);
+		}).catch(function (err) {
+			return next(err);
 		});
 	} else {
 		res.send(401);
@@ -145,21 +143,19 @@ app.post(apiBase + '/:collectionName', ensureAuthenticated, function (req, res, 
 });
 
 app.get(apiBase + '/:collectionName/:id', function (req, res, next) { // this call doesn't require auth to allow for statblock sharing
-	req.collection.findById(req.params.id, function (err, result) {
-		if (err) { return next(err); }
-		res.send(result);
+	req.collection.findOne({ _id: req.params.id }).then(function (doc) {
+		res.send(doc);
+	}).catch(function (err) {
+		return next(err);
 	});
 });
 
 app.put(apiBase + '/:collectionName/:id', ensureAuthenticated, function (req, res, next) {
 	if (req.body.user && req.body.user.id) {
-		req.collection.updateById(req.params.id, { $set: req.body }, { safe: true, multi: false }, function (err) {
-			if (err) { return next(err); }
-			// find and return updated resource (because 'update' returns a count of affected resources)
-			req.collection.findById(req.params.id, function (err, result) {
-				if (err) { return next(err); }
-				res.send(result);
-			});
+		req.collection.findOneAndUpdate({ _id: req.params.id }, { $set: req.body }).then(function (updatedDoc) {
+			res.send(updatedDoc);
+		}).catch(function (err) {
+			return next(err);
 		});
 	} else {
 		res.send(401);
@@ -167,38 +163,12 @@ app.put(apiBase + '/:collectionName/:id', ensureAuthenticated, function (req, re
 });
 
 app.del('/collections/:collectionName/:id', function(req, res, next) {
-	req.collection.removeById(req.params.id, function (err) {
-		if (err) { return next(err); }
+	req.collection.findOneAndDelete({ _id: req.params.id }).then(function () {
 		res.send(204); // (No Content)
+	}).catch(function (err) {
+		return next(err);
 	});
 });
-
-// --- Uploads & Downloads ---
-
-/*app.post('/upload', function (req, res) {
-	var tempfile = req.files.filename.path;
-	var origname = req.files.filename.name;
-	var writestream = gfs.createWriteStream({ filename: origname });
-	// open a stream to the temporary file created by Express...
-	fs.createReadStream(tempfile)
-		.on('end', function() {
-			res.send('OK');
-		})
-		.on('error', function() {
-			res.send('ERR');
-		})
-		// and pipe it to gfs
-		.pipe(writestream);
-});
-
-app.get('/download/:filename', function (req, res) {
-	// TODO: set proper mime type + filename, handle errors, etc...
-	gfs
-		// create a read stream from gfs...
-		.createReadStream({ filename: req.param('filename') })
-		// and pipe it to Express' response
-		.pipe(res);
-});*/
 
 // --- App Routes ---
 

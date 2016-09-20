@@ -8,14 +8,14 @@
   },
   "main": "server/web.js",
   "dependencies": {
-    "logfmt": "~0.21.0",
     "express": "~3.4.8",
+    "gridfs-stream": "~0.4.1",
+    "logfmt": "~0.21.0",
+    "monk": "^3.1.2",
     "passport": "~0.2.0",
-    "passport-google-oauth": "~0.2.0",
-    "mongoskin": "^1.4.13",
-    "underscore": "~1.6.0",
     "passport-github": "~0.1.5",
-    "gridfs-stream": "~0.4.1"
+    "passport-google-oauth": "~0.2.0",
+    "underscore": "~1.6.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -58,7 +58,7 @@
     "grunt-gss-pull": "~0.1.2"
   },
   "engines": {
-    "node": "~0.10.0"
+    "node": "~0.12.0"
   },
   "scripts": {
     "test": "grunt test"
