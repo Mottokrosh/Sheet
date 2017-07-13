@@ -58,7 +58,7 @@
     "grunt-gss-pull": "~0.1.2"
   },
   "engines": {
-    "node": "~0.12.0"
+    "node": "^6.11.1"
   },
   "scripts": {
     "test": "grunt test"
