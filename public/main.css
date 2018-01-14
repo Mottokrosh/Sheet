@@ -173,3 +173,16 @@ small sup {
 	font-size: 1em;
 	margin-right: 0.2em;
 }
+.important-notice {
+	padding: 30px;
+	background-color: #b81d08;
+}
+.important-notice h1 {
+	margin-top: 0;
+	color: #fff;
+	text-shadow: 3px 3px 0 #6c0505;
+}
+.important-notice p, .important-notice a {
+	color: #fff;
+	text-shadow: 1px 1px 0 #6c0505;
+}
