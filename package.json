@@ -8,7 +8,7 @@
   },
   "main": "server/web.js",
   "dependencies": {
-    "express": "~4.16.0",
+    "express": "^3.4.8",
     "gridfs-stream": "~0.4.1",
     "logfmt": "~0.21.0",
     "monk": "^3.1.2",
