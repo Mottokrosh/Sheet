@@ -751,6 +751,12 @@ footer {
 	color: #fff;
 	text-shadow: 3px 3px 0 #6c0505;
 }
+.important-notice sup {
+	color: #fff;
+	text-shadow: 2px 2px 0 #6c0505;
+	margin-left: 0;
+	font-size: 0.6em;
+}
 .important-notice p, .important-notice a {
 	color: #fff;
 	text-shadow: 1px 1px 0 #6c0505;

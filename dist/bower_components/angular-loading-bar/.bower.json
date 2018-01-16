@@ -23,7 +23,7 @@
     "tag": "0.3.0",
     "commit": "c97fec2201745e803e78da747a46db88c273e0c6"
   },
-  "_source": "git://github.com/chieffancypants/angular-loading-bar.git",
+  "_source": "https://github.com/chieffancypants/angular-loading-bar.git",
   "_target": "~0.3.0",
   "_originalSource": "angular-loading-bar"
 }
