@@ -6,7 +6,7 @@ The instructions assume hosting on [Heroku](https://www.heroku.com/). Adjust as 
 
 1. NodeJS
 2. Grunt
-3. Heroku Toolbelt
+3. Heroku CLI
 
 ## Setup
 
@@ -14,7 +14,7 @@ The instructions assume hosting on [Heroku](https://www.heroku.com/). Adjust as 
 2. Clone the repository
 3. Create a `.env` file in the root of the project and fill it the required configuration, as per the example below.
 4. Run `npm install && bower install` to get all dependencies
-4. Run a development server with `foreman`
+4. Run a development server with `heroku local`
 
 ## .env File
 
@@ -24,7 +24,7 @@ The instructions assume hosting on [Heroku](https://www.heroku.com/). Adjust as 
     GOOGLE_CLIENT_SECRET=<secret>
     GITHUB_CLIENT_ID=<id>
     GITHUB_CLIENT_SECRET=<secret>
-    MONGOLAB_URI=mongodb://<username>:<password>@<db_host>:<port>/<db>
+    MONGOLAB_PAID=mongodb://<username>:<password>@<db_host>:<port>/<db>
 
 ## Routes
 
