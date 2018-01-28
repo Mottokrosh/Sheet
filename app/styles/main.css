@@ -761,3 +761,18 @@ footer {
 	color: #fff;
 	text-shadow: 1px 1px 0 #6c0505;
 }
+
+.support-notice {
+	background-color: #DFCFA6;
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+	align-items: center;
+	margin: -10px 0 0 -10px;
+}
+.support-notice p {
+	margin: 0 3px;
+}
+.support-notice .btn-container {
+	min-width: auto;
+}
