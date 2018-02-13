@@ -773,6 +773,9 @@ footer {
 .support-notice p {
 	margin: 0 3px;
 }
+.support-notice a {
+	color: #473827;
+}
 .support-notice .btn-container {
 	min-width: auto;
 }
