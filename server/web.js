@@ -1,23 +1,36 @@
 var express = require('express');
 var logfmt = require('logfmt');
 var _ = require('underscore');
+var { OAuth2Client } = require('google-auth-library');
 var app = express();
 
 var mongoUri = process.env.MONGOLAB_PAID,
 	port = Number(process.env.PORT || 5000),
 	host = process.env.HOST,
 	appFolder = process.env.APP_FOLDER,
-	GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID,
-	GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET,
 	GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID,
-	GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
+	GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET,
+	NEW_GOOGLE_CLIENT_ID = process.env.NEW_GOOGLE_CLIENT_ID;
 
 var db = require('monk')(mongoUri);
+
+var oAuth2Client = new OAuth2Client(NEW_GOOGLE_CLIENT_ID);
+
+async function verifyGoogleUser(req) {
+	var user = JSON.parse(req.cookies.sheetuser);
+	if (!user) return false;
+	const ticket = await oAuth2Client.verifyIdToken({
+		idToken: user.token,
+		audience: NEW_GOOGLE_CLIENT_ID
+	});
+	// const payload = ticket.getPayload();
+	// const userid = payload['sub'];
+	return true;
+}
 
 // --- Passport ---
 
 var passport = require('passport'),
-	GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
 	GitHubStrategy = require('passport-github').Strategy;
 
 passport.serializeUser(function (user, done) {
@@ -27,17 +40,6 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (obj, done) {
 	done(null, obj);
 });
-
-passport.use(new GoogleStrategy({
-	clientID: GOOGLE_CLIENT_ID,
-	clientSecret: GOOGLE_CLIENT_SECRET,
-	callbackURL: host + '/auth/google/callback'
-},
-function (accessToken, refreshToken, profile, done) {
-	process.nextTick(function () {
-		return done(null, profile);
-	});
-}));
 
 passport.use(new GitHubStrategy({
 	clientID: GITHUB_CLIENT_ID,
@@ -79,29 +81,26 @@ function authCallbackHandler(req, res) {
 // --- Helper Functions ---
 
 function ensureAuthenticated(req, res, next) {
-	if (req.isAuthenticated()) {
-		return next();
-	} else {
-		req.logout();
-		res.clearCookie('sheetuser');
-		res.send(401);
-	}
+	verifyGoogleUser(req)
+		.then(function () {
+			// console.log('SUCCESSFUL GOOGLE TOKEN VERIFICATION');
+			return next();
+		})
+		.catch(function () {
+			if (req.isAuthenticated()) {
+				// console.log('SUCCESSFUL LEGACY VERIFICATION');
+				return next();
+			} else {
+				// console.log('UNAUTHORIZED');
+				req.logout();
+				res.clearCookie('sheetuser');
+				res.send(401);
+			}
+		})
+	;
 }
 
 // --- Auth Routes ---
-
-app.get('/auth/google', passport.authenticate('google', {
-	scope: [
-		'https://www.googleapis.com/auth/userinfo.profile',
-		'https://www.googleapis.com/auth/userinfo.email',
-		'https://www.googleapis.com/auth/plus.login'
-	]
-}));
-
-app.get('/auth/google/callback',
-	passport.authenticate('google', { failureRedirect: appFolder + '/#/login' }),
-	authCallbackHandler
-);
 
 app.get('/auth/github', passport.authenticate('github'));
 

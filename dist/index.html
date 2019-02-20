@@ -9,6 +9,7 @@
 		<title>Pathfinder RPG Digital Character Sheet</title>
 		<meta name="description" content="An online character sheet for the Pathfinder Roleplaying Game, with cloud storage.">
 		<meta name="viewport" content="width=1010">
+		<script src="https://apis.google.com/js/api:client.js"></script>
 		<link href="http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911&v1" rel="stylesheet" type="text/css">
 		<link href="http://fonts.googleapis.com/css?family=Caudex:regular,bold&v1" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="styles/34f6cdb8.main.css"/>
@@ -48,5 +49,47 @@
 		<script src="scripts/aecaa445.modules.js"></script>
 
 		<script src="scripts/b321a8d6.scripts.js"></script>
+
+		<script>
+			var googleUser = {};
+
+			gapi.load('auth2', function() {
+				auth2 = gapi.auth2.init({
+					client_id: '218170156589-45aa1e3r7dq3dnvf7hslg54vafktqct2.apps.googleusercontent.com',
+					cookiepolicy: 'single_host_origin',
+				});
+
+				var googleLoginButton = document.getElementById('google-login-button');
+				
+				if (googleLoginButton) {
+					auth2.attachClickHandler(
+						googleLoginButton,
+						{},
+						function(googleUser) {
+							var profile = googleUser.getBasicProfile();
+							var authedUser = {
+								provider: 'google',
+								id: profile.getId(),
+								displayName: profile.getName(),
+								name: {
+										familyName: profile.getFamilyName(),
+										givenName: profile.getGivenName()
+								},
+								emails: [{ value: profile.getEmail() }],
+								email: profile.getEmail(),
+								avatar: profile.getImageUrl(),
+								token: googleUser.getAuthResponse().id_token
+							};
+							document.cookie = 'sheetuser=' + JSON.stringify(authedUser) + ';max-age=2592000;path=/';
+							location.href = location.hostname === 'localhost' ? '/pathfinder_dev' : '/pathfinder';
+						},
+						function(error) {
+							alert(JSON.stringify(error, undefined, 2));
+						}
+					);
+				}
+			});
+		</script>
+
 	</body>
 </html>
