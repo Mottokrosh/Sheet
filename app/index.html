@@ -79,6 +79,7 @@
 
 		<script>
 			var googleUser = {};
+			var startGoogleAuthAttempts = 0;
 
 			gapi.load('auth2', function() {
 				auth2 = gapi.auth2.init({
@@ -89,7 +90,10 @@
 				function startGoogleAuth() {
 					var googleLoginButton = document.getElementById('google-login-button');
 					if (!googleLoginButton) {
-						window.requestAnimationFrame(startGoogleAuth);
+						startGoogleAuthAttempts++;
+						if (startGoogleAuthAttempts < 100) {
+							window.requestAnimationFrame(startGoogleAuth);
+						}
 					} else {
 						auth2.attachClickHandler(
 							googleLoginButton,
