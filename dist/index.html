@@ -59,35 +59,40 @@
 					cookiepolicy: 'single_host_origin',
 				});
 
-				var googleLoginButton = document.getElementById('google-login-button');
-				
-				if (googleLoginButton) {
-					auth2.attachClickHandler(
-						googleLoginButton,
-						{},
-						function(googleUser) {
-							var profile = googleUser.getBasicProfile();
-							var authedUser = {
-								provider: 'google',
-								id: profile.getId(),
-								displayName: profile.getName(),
-								name: {
-										familyName: profile.getFamilyName(),
-										givenName: profile.getGivenName()
-								},
-								emails: [{ value: profile.getEmail() }],
-								email: profile.getEmail(),
-								avatar: profile.getImageUrl(),
-								token: googleUser.getAuthResponse().id_token
-							};
-							document.cookie = 'sheetuser=' + JSON.stringify(authedUser) + ';max-age=2592000;path=/';
-							location.href = location.hostname === 'localhost' ? '/pathfinder_dev' : '/pathfinder';
-						},
-						function(error) {
-							alert(JSON.stringify(error, undefined, 2));
-						}
-					);
+				function startGoogleAuth() {
+					var googleLoginButton = document.getElementById('google-login-button');
+					if (!googleLoginButton) {
+						window.requestAnimationFrame(startGoogleAuth);
+					} else {
+						auth2.attachClickHandler(
+							googleLoginButton,
+							{},
+							function(googleUser) {
+								var profile = googleUser.getBasicProfile();
+								var authedUser = {
+									provider: 'google',
+									id: profile.getId(),
+									displayName: profile.getName(),
+									name: {
+											familyName: profile.getFamilyName(),
+											givenName: profile.getGivenName()
+									},
+									emails: [{ value: profile.getEmail() }],
+									email: profile.getEmail(),
+									avatar: profile.getImageUrl(),
+									token: googleUser.getAuthResponse().id_token
+								};
+								document.cookie = 'sheetuser=' + JSON.stringify(authedUser) + ';max-age=2592000;path=/';
+								location.href = location.hostname === 'localhost' ? '/pathfinder_dev' : '/pathfinder';
+							},
+							function(error) {
+								console.log(JSON.stringify(error, undefined, 2));
+							}
+						);
+					}
 				}
+
+				startGoogleAuth();
 			});
 		</script>
 
