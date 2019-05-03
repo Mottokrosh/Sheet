@@ -12,6 +12,7 @@
     "google-auth-library": "^3.1.0",
     "gridfs-stream": "~0.4.1",
     "logfmt": "~0.21.0",
+    "mongodb": "^3.2.3",
     "monk": "^3.1.2",
     "passport": "~0.2.0",
     "passport-github": "~0.1.5",

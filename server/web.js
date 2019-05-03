@@ -12,7 +12,9 @@ var mongoUri = process.env.MONGOLAB_PAID,
 	GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET,
 	NEW_GOOGLE_CLIENT_ID = process.env.NEW_GOOGLE_CLIENT_ID;
 
-var db = require('monk')(mongoUri);
+var MongoClient = require('mongodb').MongoClient;
+var dbName = 'heroku_app22202560_copy';
+var collectionName = 'characters';
 
 var oAuth2Client = new OAuth2Client(NEW_GOOGLE_CLIENT_ID);
 
@@ -64,11 +66,6 @@ app.use(express.session({ secret: 'Sho0bd0obe3do0w4h' }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.param('collectionName', function (req, res, next, collectionName) {
-	req.collection = db.get(collectionName);
-	return next();
-});
-
 function authCallbackHandler(req, res) {
 	// write out the user profile into a cookie for the app
 	var user = _.omit(req.user, ['_raw', '_json']);
@@ -100,6 +97,27 @@ function ensureAuthenticated(req, res, next) {
 	;
 }
 
+function pick(o, ...props) {
+	return Object.assign({}, ...props.map(prop => ({[prop]: o[prop]})));
+}
+
+async function query(cb) {
+	const client = new MongoClient(mongoUri);
+
+	try {
+		await client.connect();
+		const db = client.db(dbName);
+		const col = db.collection(collectionName);
+		cb(col);
+		
+	} catch (err) {
+		console.log(err.stack);
+		return next(err);
+	}
+
+	client.close();
+}
+
 // --- Auth Routes ---
 
 app.get('/auth/github', passport.authenticate('github'));
@@ -117,18 +135,47 @@ app.get(apiBase, ensureAuthenticated, function (req, res) {
 	res.send('This is the API service.');
 });
 
-app.get(apiBase + '/:collectionName', ensureAuthenticated, function (req, res, next) {
-	var q = JSON.parse(req.query.q.replace(/@\$/g, '$')),
-		f = JSON.parse(req.query.f);
-	req.collection.find(q, f).then(function (results) {
-		// , { limit: 50, sort: [['_id', -1]] }
-		res.send(results);
-	}).catch(function (err) {
-		return next(err);
+app.get(apiBase + '/characters', ensureAuthenticated, function (req, res, next) {
+	// q={"user.id":"107497536066586108002","status":{"@$ne":"deleted"}}
+	var q = JSON.parse(req.query.q.replace(/@\$/g, '$'));
+	// f={"user":1,"name":1,"modified":1,"race":1,"level":1,"status":1}
+	var f = JSON.parse(req.query.f);
+
+	// (async function() {
+	// 	const client = new MongoClient(mongoUri);
+
+	// 	try {
+	// 		await client.connect();
+	// 		const db = client.db(dbName);
+	// 		const col = db.collection(collectionName);
+	// 		const docs = await col.find(q).toArray();
+	// 		const characters = docs.map(doc => pick(doc, 'user', 'name', 'modified', 'race', 'level', 'status'));
+
+	// 		res.send(characters);
+
+	// 	} catch (err) {
+	// 		console.log(err.stack);
+	// 		return next(err);
+	// 	}
+
+	// 	client.close();
+	// })();
+
+	query(async (col) => {
+		const docs = await col.find(q).toArray();
+		const characters = docs.map(doc => pick(doc, 'user', 'name', 'modified', 'race', 'level', 'status'));
+		res.send(characters);
 	});
+
+	// req.collection.find(q, f).then(function (results) {
+	// 	// , { limit: 50, sort: [['_id', -1]] }
+	// 	res.send(results);
+	// }).catch(function (err) {
+	// 	return next(err);
+	// });
 });
 
-app.post(apiBase + '/:collectionName', ensureAuthenticated, function (req, res, next) {
+app.post(apiBase + '/characters', ensureAuthenticated, function (req, res, next) {
 	// require a user object in the body minimally
 	if (req.body.user && req.body.user.id) {
 		req.collection.insert(req.body).then(function (doc) {
@@ -141,7 +188,7 @@ app.post(apiBase + '/:collectionName', ensureAuthenticated, function (req, res, 
 	}
 });
 
-app.get(apiBase + '/:collectionName/:id', function (req, res, next) { // this call doesn't require auth to allow for statblock sharing
+app.get(apiBase + '/characters/:id', function (req, res, next) { // this call doesn't require auth to allow for statblock sharing
 	req.collection.findOne({ _id: req.params.id }).then(function (doc) {
 		res.send(doc);
 	}).catch(function (err) {
@@ -149,7 +196,7 @@ app.get(apiBase + '/:collectionName/:id', function (req, res, next) { // this ca
 	});
 });
 
-app.put(apiBase + '/:collectionName/:id', ensureAuthenticated, function (req, res, next) {
+app.put(apiBase + '/characters/:id', ensureAuthenticated, function (req, res, next) {
 	if (req.body.user && req.body.user.id) {
 		req.collection.findOneAndUpdate({ _id: req.params.id }, { $set: req.body }).then(function (updatedDoc) {
 			res.send(updatedDoc);
@@ -161,7 +208,7 @@ app.put(apiBase + '/:collectionName/:id', ensureAuthenticated, function (req, re
 	}
 });
 
-app.del('/collections/:collectionName/:id', function(req, res, next) {
+app.del('/collections/characters/:id', function(req, res, next) {
 	req.collection.findOneAndDelete({ _id: req.params.id }).then(function () {
 		res.send(204); // (No Content)
 	}).catch(function (err) {
