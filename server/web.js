@@ -13,6 +13,7 @@ var mongoUri = process.env.MONGOLAB_PAID,
 	NEW_GOOGLE_CLIENT_ID = process.env.NEW_GOOGLE_CLIENT_ID;
 
 var MongoClient = require('mongodb').MongoClient;
+var ObjectId = require('mongodb').ObjectId;
 var dbName = 'heroku_app22202560_copy';
 var collectionName = 'characters';
 
@@ -97,12 +98,8 @@ function ensureAuthenticated(req, res, next) {
 	;
 }
 
-function pick(o, ...props) {
-	return Object.assign({}, ...props.map(prop => ({[prop]: o[prop]})));
-}
-
 async function query(cb) {
-	const client = new MongoClient(mongoUri);
+	const client = new MongoClient(mongoUri, { useNewUrlParser: true });
 
 	try {
 		await client.connect();
@@ -135,84 +132,83 @@ app.get(apiBase, ensureAuthenticated, function (req, res) {
 	res.send('This is the API service.');
 });
 
+// Read All
 app.get(apiBase + '/characters', ensureAuthenticated, function (req, res, next) {
-	// q={"user.id":"107497536066586108002","status":{"@$ne":"deleted"}}
-	var q = JSON.parse(req.query.q.replace(/@\$/g, '$'));
-	// f={"user":1,"name":1,"modified":1,"race":1,"level":1,"status":1}
-	var f = JSON.parse(req.query.f);
-
-	// (async function() {
-	// 	const client = new MongoClient(mongoUri);
-
-	// 	try {
-	// 		await client.connect();
-	// 		const db = client.db(dbName);
-	// 		const col = db.collection(collectionName);
-	// 		const docs = await col.find(q).toArray();
-	// 		const characters = docs.map(doc => pick(doc, 'user', 'name', 'modified', 'race', 'level', 'status'));
-
-	// 		res.send(characters);
-
-	// 	} catch (err) {
-	// 		console.log(err.stack);
-	// 		return next(err);
-	// 	}
-
-	// 	client.close();
-	// })();
+	const q = JSON.parse(req.query.q.replace(/@\$/g, '$'));
+	const f = JSON.parse(req.query.f);
 
 	query(async (col) => {
-		const docs = await col.find(q).toArray();
-		const characters = docs.map(doc => pick(doc, 'user', 'name', 'modified', 'race', 'level', 'status'));
-		res.send(characters);
+		const docs = await col.find(
+			q,
+			{
+				projection: f,
+				sort: [['_id', -1]]
+			}
+		).toArray();
+		res.send(docs);
 	});
-
-	// req.collection.find(q, f).then(function (results) {
-	// 	// , { limit: 50, sort: [['_id', -1]] }
-	// 	res.send(results);
-	// }).catch(function (err) {
-	// 	return next(err);
-	// });
 });
 
+// Create
 app.post(apiBase + '/characters', ensureAuthenticated, function (req, res, next) {
 	// require a user object in the body minimally
 	if (req.body.user && req.body.user.id) {
-		req.collection.insert(req.body).then(function (doc) {
-			res.status(201).send(doc);
-		}).catch(function (err) {
-			return next(err);
+		query(async (col) => {
+			const r = await col.insertOne(req.body);
+			res.status(201).send(r.ops[0]);
 		});
 	} else {
 		res.send(401);
 	}
 });
 
+// Read
 app.get(apiBase + '/characters/:id', function (req, res, next) { // this call doesn't require auth to allow for statblock sharing
-	req.collection.findOne({ _id: req.params.id }).then(function (doc) {
-		res.send(doc);
-	}).catch(function (err) {
-		return next(err);
+	query(async (col) => {
+		try {
+			const doc = await col.findOne({ _id: new ObjectId(req.params.id) });
+			if (doc) {
+				res.send(doc);
+			} else {
+				res.send(404);
+			}
+
+		} catch (err) {
+			return next(err);
+		}
 	});
 });
 
+// Update
 app.put(apiBase + '/characters/:id', ensureAuthenticated, function (req, res, next) {
 	if (req.body.user && req.body.user.id) {
-		req.collection.findOneAndUpdate({ _id: req.params.id }, { $set: req.body }).then(function (updatedDoc) {
-			res.send(updatedDoc);
-		}).catch(function (err) {
-			return next(err);
+		query(async (col) => {
+			try {
+				const r = await col.findOneAndUpdate(
+					{ _id: new ObjectId(req.params.id) },
+					{ $set: req.body },
+					{ returnOriginal: false },
+				);
+				if (r.value) {
+					res.send(r.value);
+				} else {
+					res.send(404);
+				}
+
+			} catch (err) {
+				return next(err);
+			}
 		});
 	} else {
 		res.send(401);
 	}
 });
 
-app.del('/collections/characters/:id', function(req, res, next) {
-	req.collection.findOneAndDelete({ _id: req.params.id }).then(function () {
+// Delete
+app.delete('/collections/characters/:id', function(req, res, next) {
+	query(async (col) => {
+		await col.findOneAndDelete({ _id: new ObjectId(req.params.id) });
 		res.send(204); // (No Content)
-	}).catch(function (err) {
-		return next(err);
 	});
 });
 
