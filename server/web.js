@@ -1,4 +1,6 @@
 var express = require('express');
+var session = require('express-session');
+var MemoryStore = require('memorystore')(session);
 var logfmt = require('logfmt');
 var _ = require('underscore');
 var { OAuth2Client } = require('google-auth-library');
@@ -63,7 +65,13 @@ app.use(express.json()); // this, urlencoded, and multipart supercede bodyParser
 app.use(express.urlencoded());
 app.use(express.multipart());
 app.use(express.methodOverride());
-app.use(express.session({ secret: 'Sho0bd0obe3do0w4h' }));
+app.use(session({
+	cookie: { maxAge: 86400000 },
+	store: new MemoryStore({
+		checkPeriod: 3600000 // prune expired entries every 1h
+	}),
+	secret: 'Sho0bd0obe3do0w4h'
+}))
 app.use(passport.initialize());
 app.use(passport.session());
 
