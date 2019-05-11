@@ -28,9 +28,9 @@ async function verifyGoogleUser(req) {
 		idToken: user.token,
 		audience: NEW_GOOGLE_CLIENT_ID
 	});
-	// const payload = ticket.getPayload();
-	// const userid = payload['sub'];
-	return true;
+	const payload = ticket.getPayload();
+	const userid = payload['sub'];
+	return userid ? true : false;
 }
 
 // --- Passport ---
