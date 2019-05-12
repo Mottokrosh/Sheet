@@ -24,13 +24,12 @@ var oAuth2Client = new OAuth2Client(NEW_GOOGLE_CLIENT_ID);
 async function verifyGoogleUser(req) {
 	var user = JSON.parse(req.cookies.sheetuser);
 	if (!user) return false;
+
 	const ticket = await oAuth2Client.verifyIdToken({
 		idToken: user.token,
 		audience: NEW_GOOGLE_CLIENT_ID
 	});
-	const payload = ticket.getPayload();
-	const userid = payload['sub'];
-	return userid ? true : false;
+	// const payload = ticket.getPayload();
 }
 
 // --- Passport ---
@@ -66,12 +65,15 @@ app.use(express.urlencoded());
 app.use(express.multipart());
 app.use(express.methodOverride());
 app.use(session({
+	name: 'node_session',
 	cookie: { maxAge: 86400000 },
 	store: new MemoryStore({
 		checkPeriod: 3600000 // prune expired entries every 1h
 	}),
-	secret: 'Sho0bd0obe3do0w4h'
-}))
+	secret: 'Sho0bd0obe3do0w4h',
+	saveUninitialized: false,
+	resave: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -92,7 +94,10 @@ function ensureAuthenticated(req, res, next) {
 			// console.log('SUCCESSFUL GOOGLE TOKEN VERIFICATION');
 			return next();
 		})
-		.catch(function () {
+		.catch(function (err) {
+			if (err) {
+				console.log('UNSUCCESSFUL GOOGLE TOKEN VERIFICATION', err);
+			}
 			if (req.isAuthenticated()) {
 				// console.log('SUCCESSFUL LEGACY VERIFICATION');
 				return next();
