@@ -30,6 +30,7 @@ async function verifyGoogleUser(req) {
 		audience: NEW_GOOGLE_CLIENT_ID
 	});
 	// const payload = ticket.getPayload();
+	return ticket;
 }
 
 // --- Passport ---
@@ -90,8 +91,8 @@ function authCallbackHandler(req, res) {
 
 function ensureAuthenticated(req, res, next) {
 	verifyGoogleUser(req)
-		.then(function () {
-			// console.log('SUCCESSFUL GOOGLE TOKEN VERIFICATION');
+		.then(function (ticket) {
+			console.log('SUCCESSFUL GOOGLE TOKEN VERIFICATION', ticket);
 			return next();
 		})
 		.catch(function (err) {
@@ -99,10 +100,10 @@ function ensureAuthenticated(req, res, next) {
 				console.log('UNSUCCESSFUL GOOGLE TOKEN VERIFICATION', err);
 			}
 			if (req.isAuthenticated()) {
-				// console.log('SUCCESSFUL LEGACY VERIFICATION');
+				console.log('SUCCESSFUL LEGACY VERIFICATION', req.cookies.sheetuser);
 				return next();
 			} else {
-				// console.log('UNAUTHORIZED');
+				console.log('UNAUTHORIZED', req.cookies.sheetuser);
 				req.logout();
 				res.clearCookie('sheetuser');
 				res.send(401);
