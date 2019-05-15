@@ -119,14 +119,13 @@ async function query(cb) {
 		await client.connect();
 		const db = client.db(dbName);
 		const col = db.collection(collectionName);
-		cb(col);
+		cb(col, client);
 		
 	} catch (err) {
 		console.log(err.stack);
+		client.close();
 		return next(err);
 	}
-
-	client.close();
 }
 
 // --- Auth Routes ---
@@ -151,7 +150,7 @@ app.get(apiBase + '/characters', ensureAuthenticated, function (req, res, next) 
 	const q = JSON.parse(req.query.q.replace(/@\$/g, '$'));
 	const f = JSON.parse(req.query.f);
 
-	query(async (col) => {
+	query(async (col, client) => {
 		const docs = await col.find(
 			q,
 			{
@@ -160,6 +159,7 @@ app.get(apiBase + '/characters', ensureAuthenticated, function (req, res, next) 
 			}
 		).toArray();
 		res.send(docs);
+		client.close();
 	});
 });
 
@@ -167,9 +167,10 @@ app.get(apiBase + '/characters', ensureAuthenticated, function (req, res, next) 
 app.post(apiBase + '/characters', ensureAuthenticated, function (req, res, next) {
 	// require a user object in the body minimally
 	if (req.body.user && req.body.user.id) {
-		query(async (col) => {
+		query(async (col, client) => {
 			const r = await col.insertOne(req.body);
 			res.status(201).send(r.ops[0]);
+			client.close();
 		});
 	} else {
 		res.send(401);
@@ -178,7 +179,7 @@ app.post(apiBase + '/characters', ensureAuthenticated, function (req, res, next)
 
 // Read
 app.get(apiBase + '/characters/:id', function (req, res, next) { // this call doesn't require auth to allow for statblock sharing
-	query(async (col) => {
+	query(async (col, client) => {
 		try {
 			const doc = await col.findOne({ _id: new ObjectId(req.params.id) });
 			if (doc) {
@@ -186,8 +187,10 @@ app.get(apiBase + '/characters/:id', function (req, res, next) { // this call do
 			} else {
 				res.send(404);
 			}
+			client.close();
 
 		} catch (err) {
+			client.close();
 			return next(err);
 		}
 	});
@@ -196,7 +199,7 @@ app.get(apiBase + '/characters/:id', function (req, res, next) { // this call do
 // Update
 app.put(apiBase + '/characters/:id', ensureAuthenticated, function (req, res, next) {
 	if (req.body.user && req.body.user.id) {
-		query(async (col) => {
+		query(async (col, client) => {
 			try {
 				const r = await col.findOneAndUpdate(
 					{ _id: new ObjectId(req.params.id) },
@@ -208,8 +211,10 @@ app.put(apiBase + '/characters/:id', ensureAuthenticated, function (req, res, ne
 				} else {
 					res.send(404);
 				}
+				client.close();
 
 			} catch (err) {
+				client.close();
 				return next(err);
 			}
 		});
@@ -220,9 +225,10 @@ app.put(apiBase + '/characters/:id', ensureAuthenticated, function (req, res, ne
 
 // Delete
 app.delete('/collections/characters/:id', function(req, res, next) {
-	query(async (col) => {
+	query(async (col, client) => {
 		await col.findOneAndDelete({ _id: new ObjectId(req.params.id) });
 		res.send(204); // (No Content)
+		client.close();
 	});
 });
 
