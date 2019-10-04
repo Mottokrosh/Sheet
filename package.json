@@ -19,7 +19,8 @@
     "mongodb": "^3.2.3",
     "passport": "~0.2.0",
     "passport-github": "~0.1.5",
-    "underscore": "~1.6.0"
+    "underscore": "~1.6.0",
+    "snyk": "^1.230.5"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -53,6 +54,9 @@
     "node": "^8.15.0"
   },
   "scripts": {
-    "test": "grunt test"
-  }
+    "test": "grunt test",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
