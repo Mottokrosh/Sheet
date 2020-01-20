@@ -33,6 +33,10 @@ angular.module('sheetApp', [
 				templateUrl: 'views/sandbox.html',
 				controller: 'SandboxCtrl'
 			})
+			.when('/upload', {
+				templateUrl: 'views/upload.html',
+				controller: 'UploadCtrl',
+			})
 			.otherwise({
 				redirectTo: '/'
 			});

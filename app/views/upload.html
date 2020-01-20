@@ -1,0 +1,43 @@
+<div class="upload">
+<p>Upload existing JSON character sheet</p>
+</div>
+<br />
+
+<form id="upload" ng-submit="uploadFile()">
+
+	<fieldset>
+	
+	<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+	
+	<div>
+		<label for="file-select">Files to upload:</label>
+		<input type="file" id="file-select" name="fileselect[]" multiple="multiple" />
+		<div id="filedrag">or drop files here</div>
+	</div>
+	
+	<div id="submitbutton" style="clear: both;">
+		<button type="submit">Upload Files</button>
+	</div>
+	
+	</fieldset>
+	
+	</form>
+	
+	<div class="upload-error" ng-if="showSizeError">
+		<p>
+			File size was too large.<br />
+			Please upload a new, smaller, file.
+		</p>
+	</div>
+	<div class="upload-error" ng-if="showTypeError">
+		<p>
+			File was the wrong type.<br />
+			Accepted file type is '.json'
+		</p>
+	</div>
+	<div class="upload-error" ng-if="showError">
+		<p>
+			There was an unexpected error while trying to upload your character sheet.<br />
+			Please try again later.
+		</p>
+	</div>
