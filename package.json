@@ -11,7 +11,7 @@
   "license": "MIT",
   "main": "server/web.js",
   "dependencies": {
-    "express": "^3.21.2",
+    "express": "^4.0.0",
     "express-session": "^1.16.1",
     "google-auth-library": "^3.1.0",
     "logfmt": "~0.21.0",
