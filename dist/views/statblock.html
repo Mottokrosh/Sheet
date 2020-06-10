@@ -104,9 +104,9 @@
 	</p>
 	<p>
 		<strong>Base Atk</strong> {{character.bab}};
-		<strong>CMB</strong> {{character.cmb.total}}<span ng-show="character.cmb.miscModifiers || character.cmb.tempModifiers"> (<span ng-show="character.cmb.miscModifiers">{{character.cmb.miscModifiers}}; <span><span ng-show="character.cmb.tempModifiers">{{character.cmb.tempModifiers}}</span>)</span>;
-		<strong>CMD</strong> {{character.cmd.total}}<span ng-show="character.cmd.miscModifiers || character.cmd.tempModifiers"> (<span ng-show="character.cmd.miscModifiers">{{character.cmd.miscModifiers}}; <span><span ng-show="character.cmd.tempModifiers">{{character.cmd.tempModifiers}}</span>)</span>
-	</span></span></span></span></p>
+		<strong>CMB</strong> {{character.cmb.total}}<span ng-show="character.cmb.miscModifiers || character.cmb.tempModifiers"> (<span ng-show="character.cmb.miscModifiers">{{character.cmb.miscModifiers}}; </span><span ng-show="character.cmb.tempModifiers">{{character.cmb.tempModifiers}}</span>)</span>;
+		<strong>CMD</strong> {{character.cmd.total}}<span ng-show="character.cmd.miscModifiers || character.cmd.tempModifiers"> (<span ng-show="character.cmd.miscModifiers">{{character.cmd.miscModifiers}}; </span><span ng-show="character.cmd.tempModifiers">{{character.cmd.tempModifiers}}</span>)</span>
+	</p>
 	<p>
 		<strong>Feats</strong>
 		<span ng-repeat="f in character.feats" title="{{f.notes}}">{{f.name}}{{$last ? '' : ', '}}</span>
