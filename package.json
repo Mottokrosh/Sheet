@@ -54,7 +54,6 @@
     "node": "^8.15.0"
   },
   "scripts": {
-    "test": "grunt test",
-    "build": "grunt build"
+    "test": "grunt test"
   }
 }
