@@ -6,7 +6,7 @@ var _ = require('underscore');
 var { OAuth2Client } = require('google-auth-library');
 var app = express();
 
-var mongoUri = process.env.MONGOLAB_PAID,
+var mongoUri = process.env.DB_URI,
 	port = Number(process.env.PORT || 5000),
 	host = process.env.HOST,
 	appFolder = process.env.APP_FOLDER,
@@ -112,8 +112,8 @@ function ensureAuthenticated(req, res, next) {
 	;
 }
 
-async function query(cb) {
-	const client = new MongoClient(mongoUri, { useNewUrlParser: true });
+async function query(cb, next) {
+	const client = new MongoClient(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 	try {
 		await client.connect();
@@ -160,7 +160,7 @@ app.get(apiBase + '/characters', ensureAuthenticated, function (req, res, next) 
 		).toArray();
 		res.send(docs);
 		client.close();
-	});
+	}, next);
 });
 
 // Create
@@ -171,7 +171,7 @@ app.post(apiBase + '/characters', ensureAuthenticated, function (req, res, next)
 			const r = await col.insertOne(req.body);
 			res.status(201).send(r.ops[0]);
 			client.close();
-		});
+		}, next);
 	} else {
 		res.send(401);
 	}
@@ -193,7 +193,7 @@ app.get(apiBase + '/characters/:id', function (req, res, next) { // this call do
 			client.close();
 			return next(err);
 		}
-	});
+	}, next);
 });
 
 // Update
@@ -217,7 +217,7 @@ app.put(apiBase + '/characters/:id', ensureAuthenticated, function (req, res, ne
 				client.close();
 				return next(err);
 			}
-		});
+		}, next);
 	} else {
 		res.send(401);
 	}
@@ -229,7 +229,7 @@ app.delete('/collections/characters/:id', function(req, res, next) {
 		await col.findOneAndDelete({ _id: new ObjectId(req.params.id) });
 		res.send(204); // (No Content)
 		client.close();
-	});
+	}, next);
 });
 
 // --- App Routes ---
