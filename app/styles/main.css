@@ -809,3 +809,14 @@ footer {
 	text-align: center;
 	float: none;
 }
+
+.logout-container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
+.logout-container > a {
+	font-size: 20px;
+}
