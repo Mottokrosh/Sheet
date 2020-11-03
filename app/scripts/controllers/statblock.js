@@ -53,7 +53,7 @@ angular.module('sheetApp')
 
 			// now save character
 			$scope.character.modified = new Date();
-			$scope.character.saveOrUpdate();
+			$scope.character.updateComments();
 		};
 
 		$scope.deleteComment = function (c) {
@@ -66,7 +66,7 @@ angular.module('sheetApp')
 
 					// save character
 					$scope.character.modified = new Date();
-					$scope.character.saveOrUpdate();
+					$scope.character.updateComments();
 				}
 			}
 		};

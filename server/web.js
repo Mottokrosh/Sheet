@@ -201,6 +201,17 @@ app.put(apiBase + '/characters/:id', ensureAuthenticated, function (req, res, ne
 	if (req.body.user && req.body.user.id) {
 		query(async (col, client) => {
 			try {
+				console.log(req.body);
+				// Currently logged in user's information gets pulled from sheetuser cookie
+				const user = JSON.parse(req.cookies.sheetuser);
+				const { id: userId, provider: userProvider } = user;
+				// The user associated with the character in question is set on req.body
+				// when we call `angular.extend`
+				const { id: creatorId, provider: creatorProvider } = req.body.user;
+				// Diff the ID's (and the providers, to be safe) to see if there's a discrepency
+				if (userId !== creatorId || userProvider !== creatorProvider) {
+					return res.send(403);
+				}
 				const r = await col.findOneAndUpdate(
 					{ _id: new ObjectId(req.params.id) },
 					{ $set: req.body },
@@ -220,6 +231,34 @@ app.put(apiBase + '/characters/:id', ensureAuthenticated, function (req, res, ne
 		}, next);
 	} else {
 		res.send(401);
+	}
+});
+
+// Update Comments
+app.patch(apiBase + '/characters/:id/comment', ensureAuthenticated, async (req, res, next) => {
+	if (req.body.user && req.body.user.id) {
+		query(async (col, client) => {
+			try {
+				const { comments } = req.body;
+				const current = await col.findOne({ _id: new ObjectId(req.params.id) });
+				const updated = { ...current, comments };
+				const r = await col.findOneAndUpdate(
+					{ _id: new ObjectId(req.params.id) },
+					{ $set: updated },
+					{ returnOriginal: false },
+				);
+				if (r.value) {
+					res.send(r.value);
+				} else {
+					res.send(404);
+				}
+				client.close();
+
+			} catch (err) {
+				client.close();
+				return next(err);
+			}
+		});
 	}
 });
 
