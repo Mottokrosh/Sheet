@@ -201,7 +201,6 @@ app.put(apiBase + '/characters/:id', ensureAuthenticated, function (req, res, ne
 	if (req.body.user && req.body.user.id) {
 		query(async (col, client) => {
 			try {
-				console.log(req.body);
 				// Currently logged in user's information gets pulled from sheetuser cookie
 				const user = JSON.parse(req.cookies.sheetuser);
 				const { id: userId, provider: userProvider } = user;
