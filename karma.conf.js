@@ -7,7 +7,7 @@ module.exports = function(config) {
 		basePath: '',
 
 		// testing framework to use (jasmine/mocha/qunit/...)
-		frameworks: ['jasmine'],
+		frameworks: ['jasmine', 'requirejs', 'es6-shim'],
 
 		// list of files / patterns to load in the browser
 		files: [
@@ -17,6 +17,11 @@ module.exports = function(config) {
 			'app/bower_components/angular-cookies/angular-cookies.js',
 			'app/bower_components/angular-sanitize/angular-sanitize.js',
 			'app/bower_components/angular-route/angular-route.js',
+			'app/bower_components/angular-touch/angular-touch.js',
+			'app/bower_components/angular-animate/angular-animate.js',
+			'app/bower_components/ngDialog/js/ngDialog.min.js',
+			'app/bower_components/angular-loading-bar/build/loading-bar.min.js',
+			'app/bower_components/angular-file-upload/angular-file-upload.min.js',
 			'app/scripts/*.js',
 			'app/scripts/**/*.js',
 			'test/mock/**/*.js',
@@ -48,12 +53,15 @@ module.exports = function(config) {
 		// - IE (only Windows)
 		browsers: ['PhantomJS'],
 
+		browserNoActivityTimeout: 60000,
 
 		// Continuous Integration mode
 		// if true, it capture browsers, run tests and exit
 		singleRun: false,
 
 		plugins: [
+			'karma-es6-shim',
+			'karma-requirejs',
 			'karma-chrome-launcher',
 			'karma-jasmine',
 			'karma-phantomjs-launcher',
