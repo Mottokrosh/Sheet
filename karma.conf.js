@@ -51,6 +51,12 @@ module.exports = function(config) {
 
 		// Continuous Integration mode
 		// if true, it capture browsers, run tests and exit
-		singleRun: false
+		singleRun: false,
+
+		plugins: [
+			'karma-chrome-launcher',
+			'karma-jasmine',
+			'karma-phantomjs-launcher',
+		],
 	});
 };
