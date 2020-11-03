@@ -42,7 +42,7 @@ module.exports = function(config) {
 
 		// Continuous Integration mode
 		// if true, it capture browsers, run tests and exit
-		singleRun: false
+		singleRun: true
 
 		// Uncomment the following lines if you are using grunt's server to run the tests
 		// proxies: {

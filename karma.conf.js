@@ -7,7 +7,7 @@ module.exports = function(config) {
 		basePath: '',
 
 		// testing framework to use (jasmine/mocha/qunit/...)
-		frameworks: ['jasmine', 'requirejs', 'es6-shim'],
+		frameworks: ['jasmine'],
 
 		// list of files / patterns to load in the browser
 		files: [
@@ -51,20 +51,15 @@ module.exports = function(config) {
 		// - Safari (only Mac)
 		// - PhantomJS
 		// - IE (only Windows)
-		browsers: ['PhantomJS'],
-
-		browserNoActivityTimeout: 60000,
+		browsers: ['ChromeHeadless'],
 
 		// Continuous Integration mode
 		// if true, it capture browsers, run tests and exit
-		singleRun: false,
+		singleRun: true,
 
 		plugins: [
-			'karma-es6-shim',
-			'karma-requirejs',
 			'karma-chrome-launcher',
 			'karma-jasmine',
-			'karma-phantomjs-launcher',
 		],
 	});
 };
