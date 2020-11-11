@@ -17,6 +17,11 @@ module.exports = function(config) {
 			'app/bower_components/angular-cookies/angular-cookies.js',
 			'app/bower_components/angular-sanitize/angular-sanitize.js',
 			'app/bower_components/angular-route/angular-route.js',
+			'app/bower_components/angular-touch/angular-touch.js',
+			'app/bower_components/angular-animate/angular-animate.js',
+			'app/bower_components/ngDialog/js/ngDialog.min.js',
+			'app/bower_components/angular-loading-bar/build/loading-bar.min.js',
+			'app/bower_components/angular-file-upload/angular-file-upload.min.js',
 			'app/scripts/*.js',
 			'app/scripts/**/*.js',
 			'test/mock/**/*.js',
@@ -46,11 +51,15 @@ module.exports = function(config) {
 		// - Safari (only Mac)
 		// - PhantomJS
 		// - IE (only Windows)
-		browsers: ['PhantomJS'],
-
+		browsers: ['ChromeHeadless'],
 
 		// Continuous Integration mode
 		// if true, it capture browsers, run tests and exit
-		singleRun: false
+		singleRun: true,
+
+		plugins: [
+			'karma-chrome-launcher',
+			'karma-jasmine',
+		],
 	});
 };
