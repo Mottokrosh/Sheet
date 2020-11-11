@@ -9,6 +9,10 @@ angular.module('sheetApp')
 				{ id: '@_id' }, { update: { method: 'PUT' } }
 			);
 
+			var commentResource = $resource('/api/v1/characters/:id/comment',
+				{ id: '@_id' }, { update: { method: 'PATCH' } }
+			);
+
 			resource.getById = function (id, cb, errorcb) {
 				return resource.get({ id: id }, cb, errorcb);
 			};
@@ -24,6 +28,12 @@ angular.module('sheetApp')
 					return this.$save(savecb, errorSavecb);
 				}
 			};
+
+			resource.prototype.updateComments = function (savecb, updatecb, errorSavecb, errorUpdatecb) {
+				if (this._id) {
+					return commentResource.update({ id: this._id }, angular.extend({}, this, { _id: undefined }), updatecb, errorUpdatecb);
+				}
+			}
 
 			resource.prototype.remove = function (cb, errorcb) {
 				return resource.remove({ id: this._id }, cb, errorcb);
