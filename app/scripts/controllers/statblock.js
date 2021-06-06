@@ -32,7 +32,7 @@ angular.module('sheetApp')
 		$scope.extractSenses = function (items) {
 			var result = [];
 			angular.forEach(items, function(sa) {
-				if (sa.name.match(/darkvision/i) || sa.name.match(/low-?light vision/i) || sa.name.match(/true seeing/i)) {
+				if (sa.name.match(/darkvision/i) || sa.name.match(/low-?light vision/i) || sa.name.match(/true seeing/i) || sa.name.match(/scent/i)) {
 					result.push(sa);
 				}
 			});
