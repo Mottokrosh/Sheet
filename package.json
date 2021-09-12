@@ -19,7 +19,7 @@
     "mongodb": "^3.5.9",
     "passport": "~0.2.0",
     "passport-github": "^1.1.0",
-    "underscore": "~1.6.0"
+    "underscore": "~1.12.1"
   },
   "devDependencies": {
     "bower": "^1.8.8",
