@@ -9,7 +9,7 @@ angular.module('sheetApp')
 
 		// get user's characters
 		$scope.characters = Character.query({
-			q: { 'user.id': user.id, 'status': { '@$ne': 'deleted' } },
+			q: { 'user.emails.0.value': user.emails[0].value, 'status': { '@$ne': 'deleted' } },
 			f: { 'user': 1, 'name': 1, 'modified': 1, 'race': 1, 'level': 1, 'status': 1 }
 		}, function() {
 			angular.forEach($scope.characters, function (character) {
