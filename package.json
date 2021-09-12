@@ -18,7 +18,7 @@
     "memorystore": "^1.6.1",
     "mongodb": "^3.5.9",
     "passport": "~0.2.0",
-    "passport-github": "~0.1.5",
+    "passport-github": "^1.1.0",
     "underscore": "~1.6.0"
   },
   "devDependencies": {
