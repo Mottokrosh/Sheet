@@ -8,8 +8,13 @@ angular.module('sheetApp')
 		};
 
 		// get user's characters
+		// because of an update in GitHub's authentication protocol,
+		// we need to check both the integer and string version of the userid
 		$scope.characters = Character.query({
-			q: { 'user.id': user.id, 'status': { '@$ne': 'deleted' } },
+			q: { '@$or': [ 
+				{'user.id': user.id.toString(), 'status': { '@$ne': 'deleted' } },
+				{'user.id': parseInt(user.id, 10), 'status': { '@$ne': 'deleted' } }
+			] },
 			f: { 'user': 1, 'name': 1, 'modified': 1, 'race': 1, 'level': 1, 'status': 1 }
 		}, function() {
 			angular.forEach($scope.characters, function (character) {
