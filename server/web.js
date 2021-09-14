@@ -208,7 +208,7 @@ app.put(apiBase + '/characters/:id', ensureAuthenticated, function (req, res, ne
 				// when we call `angular.extend`
 				const { id: creatorId, provider: creatorProvider } = req.body.user;
 				// Diff the ID's (and the providers, to be safe) to see if there's a discrepency
-				if (userId !== creatorId || userProvider !== creatorProvider) {
+				if (userId.toString() !== creatorId.toString() || userProvider !== creatorProvider) {
 					return res.send(403);
 				}
 				const r = await col.findOneAndUpdate(
