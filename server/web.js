@@ -4,6 +4,7 @@ var MemoryStore = require('memorystore')(session);
 var logfmt = require('logfmt');
 var _ = require('underscore');
 var { OAuth2Client } = require('google-auth-library');
+var enforce = require('express-sslify');
 var app = express();
 
 var mongoUri = process.env.DB_URI,
@@ -59,6 +60,7 @@ function (accessToken, refreshToken, profile, done) {
 
 // --- Configuration ---
 
+app.use(enforce.HTTPS({ trustProtoHeader: true })); // must be first
 app.use(logfmt.requestLogger());
 app.use(express.cookieParser());
 app.use(express.json()); // this, urlencoded, and multipart supercede bodyParser
