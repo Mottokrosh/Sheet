@@ -78,7 +78,7 @@ angular.module('sheetApp')
             c.saveOrUpdate(success, error)
         }
         function success(data) {
-           $location.path(`/sheet/${data._id}`)
+           $location.path('/sheet/' + data._id)
         }
 
         function error(data) {
