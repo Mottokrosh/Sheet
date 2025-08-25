@@ -68,11 +68,9 @@ angular.module('sheetApp', [
 				const info = JSON.parse(
 					window.atob(data.credential.split(".")[1])
 				);
-				console.log(info);
 				if (!info) {
 					return;
 				}
-				console.log(info);
 				const validIssuers = [
 					'accounts.google.com',
 					'https://accounts.google.com',
