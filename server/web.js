@@ -23,15 +23,31 @@ var collectionName = 'characters';
 var oAuth2Client = new OAuth2Client(NEW_GOOGLE_CLIENT_ID);
 
 async function verifyGoogleUser(req) {
-	var user = JSON.parse(req.cookies.sheetuser);
-	if (!user) return false;
-
-	const ticket = await oAuth2Client.verifyIdToken({
-		idToken: user.token,
-		audience: NEW_GOOGLE_CLIENT_ID
-	});
-	// const payload = ticket.getPayload();
-	return ticket;
+	try {
+		const user = JSON.parse(req.cookies.sheetuser);
+		if (!user) {
+			throw new Error('No user.');
+		}
+		const ticket = await oAuth2Client.verifyIdToken({
+			idToken: user.token,
+			audience: process.env.NEW_GOOGLE_CLIENT_ID,
+		});
+		const payload = ticket.getPayload();
+		if (!payload) {
+			throw new Error('No payload.');
+		}
+		const userid = payload['sub'];
+		if (!userid) {
+			throw new Error('No user ID.');
+		}
+		const idMatches = userid === user.id;
+		if (!idMatches) {
+			throw new Error('ID mismatch.');
+		}
+		return ticket;
+	} catch (e) {
+		return Promise.reject(e);
+	}
 }
 
 // --- Passport ---
@@ -207,7 +223,7 @@ app.put(apiBase + '/characters/:id', ensureAuthenticated, function (req, res, ne
 				const user = JSON.parse(req.cookies.sheetuser);
 				const { id: userId, provider: userProvider } = user;
 				// The user associated with the character in question is set on req.body
-				// when we call `angular.extend`
+				// when we call 'angular.extend'
 				const { id: creatorId, provider: creatorProvider } = req.body.user;
 				// Diff the ID's (and the providers, to be safe) to see if there's a discrepency
 				if (userId.toString() !== creatorId.toString() || userProvider !== creatorProvider) {
