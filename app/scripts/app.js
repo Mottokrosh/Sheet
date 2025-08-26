@@ -59,6 +59,57 @@ angular.module('sheetApp', [
 	.factory('user', function ($cookieStore) {
 		return $cookieStore.get('sheetuser') || {};
 	})
+	.factory('googleIdentityClient', function () {
+		const cid =
+			'218170156589-45aa1e3r7dq3dnvf7hslg54vafktqct2.apps.googleusercontent.com';
+		window.google.accounts.id.initialize({
+			client_id: cid,
+			callback: function (data) {
+				const info = JSON.parse(
+					window.atob(data.credential.split(".")[1])
+				);
+				if (!info) {
+					return;
+				}
+				const validIssuers = [
+					'accounts.google.com',
+					'https://accounts.google.com',
+				];
+				const hasExpired = Date.now() > info.exp * 1000;
+				const invalidClient = info.aud !== cid;
+				const invalidIssuer = !validIssuers.includes(info.iss);
+				if (hasExpired || invalidClient || invalidIssuer) {
+					return;
+				}
+				const user = {
+					provider: 'google',
+					id: info.sub,
+					displayName: info.name,
+					name: {
+						givenName: info.given_name,
+						familyName: info.family_name, // No family_name key observed, but possibly not always present
+					},
+					emails: [{ value: info.email }],
+					email: info.email,
+					avatar: info.picture,
+					token: data.credential,
+				};
+				document.cookie =
+					'sheetuser=' +
+					JSON.stringify(user) +
+					';max-age=2592000;path=/';
+				location.href =
+					location.hostname === 'localhost'
+						? '/pathfinder_dev'
+						: '/pathfinder';
+			},
+		});
+		return {
+			renderLoginButton: function (parent, config) {
+				window.google.accounts.id.renderButton(parent, config);
+			},
+		};
+	})
 	.value('cache', {})
 	.filter('range', function() {
 		return function (input, total) {

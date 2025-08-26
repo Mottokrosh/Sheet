@@ -26,7 +26,7 @@ angular.module('sheetApp')
         }
         
         function checkForErrors(file) {
-            const maxFileSize = 35000;
+            const maxFileSize = 50000;
             if (file.type !== 'application/json') {
                 $scope.showTypeError = true;
             }

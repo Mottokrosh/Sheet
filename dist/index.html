@@ -9,10 +9,10 @@
 		<title>Pathfinder RPG Digital Character Sheet</title>
 		<meta name="description" content="An online character sheet for the Pathfinder Roleplaying Game, with cloud storage.">
 		<meta name="viewport" content="width=1010">
-		<script src="https://apis.google.com/js/api:client.js"></script>
+		<script src="https://accounts.google.com/gsi/client"></script>
 		<link href="https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911&v1" rel="stylesheet" type="text/css">
 		<link href="https://fonts.googleapis.com/css?family=Caudex:regular,bold&v1" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="styles/cedd436f.main.css"/>
+		<link rel="stylesheet" href="styles/37d6b4a9.main.css"/>
 	</head>
 	<body ng-app="sheetApp" ng-class="controllerName">
 		<!--[if lt IE 9]>
@@ -28,7 +28,7 @@
 				<p>(<a href="https://mottokrosh.com" target="_blank">Mottokrosh's blog & apps</a>)</p>
 			</div>
 			<header>
-				<p class="logo"><a href="#/"><img src="images/3f0b77df.meocs-logo.png" width="480" alt="Mottokrosh's Eldritch Online Character Sheet for the Pathfinder Roleplaying Game"></a></p>
+				<p class="logo"><a href="#/"><img src="images/c9029499.meocs-logo.png" width="480" alt="Mottokrosh's Eldritch Online Character Sheet for the Pathfinder Roleplaying Game"></a></p>
 			</header>
 			<div class="container" ng-view=""></div>
 		</div>
@@ -48,57 +48,6 @@
 
 		<script src="scripts/aecaa445.modules.js"></script>
 
-		<script src="scripts/6905e63e.scripts.js"></script>
-
-		<script>
-			var googleUser = {};
-			var startGoogleAuthAttempts = 0;
-
-			gapi.load('auth2', function() {
-				auth2 = gapi.auth2.init({
-					client_id: '218170156589-45aa1e3r7dq3dnvf7hslg54vafktqct2.apps.googleusercontent.com',
-					cookiepolicy: 'single_host_origin',
-				});
-
-				function startGoogleAuth() {
-					var googleLoginButton = document.getElementById('google-login-button');
-					if (!googleLoginButton) {
-						startGoogleAuthAttempts++;
-						if (startGoogleAuthAttempts < 100) {
-							window.requestAnimationFrame(startGoogleAuth);
-						}
-					} else {
-						auth2.attachClickHandler(
-							googleLoginButton,
-							{},
-							function(googleUser) {
-								var profile = googleUser.getBasicProfile();
-								var authedUser = {
-									provider: 'google',
-									id: profile.getId(),
-									displayName: profile.getName(),
-									name: {
-											familyName: profile.getFamilyName(),
-											givenName: profile.getGivenName()
-									},
-									emails: [{ value: profile.getEmail() }],
-									email: profile.getEmail(),
-									avatar: profile.getImageUrl(),
-									token: googleUser.getAuthResponse().id_token
-								};
-								document.cookie = 'sheetuser=' + JSON.stringify(authedUser) + ';max-age=2592000;path=/';
-								location.href = location.hostname === 'localhost' ? '/pathfinder_dev' : '/pathfinder';
-							},
-							function(error) {
-								console.log(JSON.stringify(error, undefined, 2));
-							}
-						);
-					}
-				}
-
-				startGoogleAuth();
-			});
-		</script>
-
+		<script src="scripts/ddf8b449.scripts.js"></script>
 	</body>
 </html>

@@ -9,7 +9,7 @@
 		<title>Pathfinder RPG Digital Character Sheet</title>
 		<meta name="description" content="An online character sheet for the Pathfinder Roleplaying Game, with cloud storage.">
 		<meta name="viewport" content="width=1010">
-		<script src="https://apis.google.com/js/api:client.js"></script>
+		<script src="https://accounts.google.com/gsi/client"></script>
 		<link href="https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911&v1" rel="stylesheet" type="text/css">
 		<link href="https://fonts.googleapis.com/css?family=Caudex:regular,bold&v1" rel="stylesheet" type="text/css">
 		<!-- build:css({.tmp,app}) styles/main.css -->
@@ -77,56 +77,5 @@
 		<script src="scripts/directives/abilityModifier.js"></script>
 		<script src="scripts/directives/autoComplete.js"></script>
 		<!-- endbuild -->
-
-		<script>
-			var googleUser = {};
-			var startGoogleAuthAttempts = 0;
-
-			gapi.load('auth2', function() {
-				auth2 = gapi.auth2.init({
-					client_id: '218170156589-45aa1e3r7dq3dnvf7hslg54vafktqct2.apps.googleusercontent.com',
-					cookiepolicy: 'single_host_origin',
-				});
-
-				function startGoogleAuth() {
-					var googleLoginButton = document.getElementById('google-login-button');
-					if (!googleLoginButton) {
-						startGoogleAuthAttempts++;
-						if (startGoogleAuthAttempts < 100) {
-							window.requestAnimationFrame(startGoogleAuth);
-						}
-					} else {
-						auth2.attachClickHandler(
-							googleLoginButton,
-							{},
-							function(googleUser) {
-								var profile = googleUser.getBasicProfile();
-								var authedUser = {
-									provider: 'google',
-									id: profile.getId(),
-									displayName: profile.getName(),
-									name: {
-											familyName: profile.getFamilyName(),
-											givenName: profile.getGivenName()
-									},
-									emails: [{ value: profile.getEmail() }],
-									email: profile.getEmail(),
-									avatar: profile.getImageUrl(),
-									token: googleUser.getAuthResponse().id_token
-								};
-								document.cookie = 'sheetuser=' + JSON.stringify(authedUser) + ';max-age=2592000;path=/';
-								location.href = location.hostname === 'localhost' ? '/pathfinder_dev' : '/pathfinder';
-							},
-							function(error) {
-								console.log(JSON.stringify(error, undefined, 2));
-							}
-						);
-					}
-				}
-
-				startGoogleAuth();
-			});
-		</script>
-
 	</body>
 </html>
