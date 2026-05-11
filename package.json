@@ -17,7 +17,7 @@
     "google-auth-library": "^5.0.0",
     "logfmt": "~0.21.0",
     "memorystore": "^1.6.1",
-    "mongodb": "^3.5.9",
+    "mongodb": "^3.7.4",
     "passport": "~0.2.0",
     "passport-github": "^1.1.0",
     "underscore": "~1.6.0"
