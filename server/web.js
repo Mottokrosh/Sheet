@@ -1,3 +1,14 @@
+// Node >= 12 removed `res._headers`, which express 3's bundled `send` still
+// reads when handling conditional requests (If-Modified-Since / If-None-Match).
+// Without this shim any cached browser reload of a static file crashes the process.
+var http = require('http');
+if (!Object.getOwnPropertyDescriptor(http.ServerResponse.prototype, '_headers')) {
+	Object.defineProperty(http.ServerResponse.prototype, '_headers', {
+		configurable: true,
+		get: function () { return this.getHeaders(); }
+	});
+}
+
 var express = require('express');
 var session = require('express-session');
 var MemoryStore = require('memorystore')(session);
@@ -76,7 +87,9 @@ function (accessToken, refreshToken, profile, done) {
 
 // --- Configuration ---
 
-app.use(enforce.HTTPS({ trustProtoHeader: true })); // must be first
+if (process.env.NODE_ENV !== 'development') {
+	app.use(enforce.HTTPS({ trustProtoHeader: true })); // must be first
+}
 app.use(logfmt.requestLogger());
 app.use(express.cookieParser());
 app.use(express.json()); // this, urlencoded, and multipart supercede bodyParser

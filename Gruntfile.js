@@ -146,6 +146,10 @@ module.exports = function (grunt) {
 						'<%= yeoman.dist %>/scripts/{,*/}*.js',
 						'<%= yeoman.dist %>/styles/{,*/}*.css',
 						'<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+						// House ad covers are referenced from JS at runtime, and
+						// usemin only rewrites HTML/CSS -- revving them would
+						// break those paths in the production build.
+						'!<%= yeoman.dist %>/images/house-ads/*',
 						'<%= yeoman.dist %>/styles/fonts/*'
 					]
 				}
@@ -258,6 +262,15 @@ module.exports = function (grunt) {
 					]
 				}]
 			},
+			// Plain copy replacing imagemin, whose bundled gifsicle/optipng
+			// binaries no longer run on current macOS/Node. Re-enable
+			// 'imagemin' in concurrent.dist if those are ever fixed.
+			images: {
+				expand: true,
+				cwd: '<%= yeoman.app %>/images',
+				dest: '<%= yeoman.dist %>/images',
+				src: '{,*/}*.{png,jpg,jpeg,gif}'
+			},
 			styles: {
 				expand: true,
 				cwd: '<%= yeoman.app %>/styles',
@@ -276,7 +289,7 @@ module.exports = function (grunt) {
 			],
 			dist: [
 				'copy:styles',
-				'imagemin',
+				'copy:images',
 				'svgmin',
 				'htmlmin'
 			]

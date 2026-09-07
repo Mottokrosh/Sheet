@@ -30,12 +30,22 @@
 				<p><script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#473827', 'H2H07VCE');kofiwidget2.draw();</script></p>
 				<p>or</p>
 				<p><a href="https://paypal.me/mottokrosh" target="_blank">Send a Donation</a></p>
-				<p>(<a href="https://mottokrosh.com" target="_blank">Mottokrosh's blog & apps</a>)</p>
+				<p>(Also by Mottokrosh: <a ng-href="{{houseAd.stripUrl}}" target="_blank" rel="noopener">{{houseAd.title}}</a>)</p>
 			</div>
 			<header>
 				<p class="logo"><a href="#/"><img src="images/meocs-logo.png" width="480" alt="Mottokrosh's Eldritch Online Character Sheet for the Pathfinder Roleplaying Game" /></a></p>
 			</header>
 			<div class="container" ng-view=""></div>
+			<div class="site-footer">
+				<a class="site-footer-cover" ng-href="{{houseAd.footerUrl}}" target="_blank" rel="noopener">
+					<img ng-src="{{houseAd.cover}}" alt="Cover of {{houseAd.title}}" width="72" />
+				</a>
+				<p class="site-footer-text">
+					Made by <a ng-href="{{houseAd.footerUrl}}" target="_blank" rel="noopener">Mottokrosh Machinations</a>,
+					makers of <a ng-href="{{houseAd.footerUrl}}" target="_blank" rel="noopener">{{houseAd.title}}</a>
+					<span class="site-footer-tagline">{{houseAd.tagline}}</span>
+				</p>
+			</div>
 		</div>
 
 		<!-- Google Analytics -->
@@ -74,6 +84,7 @@
 		<script src="scripts/controllers/statblock.js"></script>
 		<script src="scripts/controllers/upload.js"></script>
 		<script src="scripts/services/character.js"></script>
+		<script src="scripts/services/houseAd.js"></script>
 		<script src="scripts/directives/abilityModifier.js"></script>
 		<script src="scripts/directives/autoComplete.js"></script>
 		<!-- endbuild -->
