@@ -60,6 +60,7 @@
     "node": "^8.15.0"
   },
   "scripts": {
+    "dev": "NODE_ENV=development PORT=5001 HOST=http://localhost:5001 APP_FOLDER=/pathfinder GITHUB_CLIENT_ID=dummy GITHUB_CLIENT_SECRET=dummy node server/web.js",
     "test": "grunt test"
   }
 }

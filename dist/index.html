@@ -12,7 +12,7 @@
 		<script src="https://accounts.google.com/gsi/client"></script>
 		<link href="https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911&v1" rel="stylesheet" type="text/css">
 		<link href="https://fonts.googleapis.com/css?family=Caudex:regular,bold&v1" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="styles/37d6b4a9.main.css"/>
+		<link rel="stylesheet" href="styles/90277e50.main.css"/>
 	</head>
 	<body ng-app="sheetApp" ng-class="controllerName">
 		<!--[if lt IE 9]>
@@ -25,12 +25,22 @@
 				<p><script type="text/javascript" src="https://ko-fi.com/widgets/widget_2.js"></script><script type="text/javascript">kofiwidget2.init('Buy Me a Coffee', '#473827', 'H2H07VCE');kofiwidget2.draw();</script></p>
 				<p>or</p>
 				<p><a href="https://paypal.me/mottokrosh" target="_blank">Send a Donation</a></p>
-				<p>(<a href="https://mottokrosh.com" target="_blank">Mottokrosh's blog & apps</a>)</p>
+				<p>(Also by Mottokrosh: <a ng-href="{{houseAd.stripUrl}}" target="_blank" rel="noopener">{{houseAd.title}}</a>)</p>
 			</div>
 			<header>
-				<p class="logo"><a href="#/"><img src="images/c9029499.meocs-logo.png" width="480" alt="Mottokrosh's Eldritch Online Character Sheet for the Pathfinder Roleplaying Game"></a></p>
+				<p class="logo"><a href="#/"><img src="images/83c9e335.meocs-logo.png" width="480" alt="Mottokrosh's Eldritch Online Character Sheet for the Pathfinder Roleplaying Game"></a></p>
 			</header>
 			<div class="container" ng-view=""></div>
+			<div class="site-footer">
+				<a class="site-footer-cover" ng-href="{{houseAd.footerUrl}}" target="_blank" rel="noopener">
+					<img ng-src="{{houseAd.cover}}" alt="Cover of {{houseAd.title}}" width="72">
+				</a>
+				<p class="site-footer-text">
+					Made by <a ng-href="{{houseAd.footerUrl}}" target="_blank" rel="noopener">Mottokrosh Machinations</a>,
+					makers of <a ng-href="{{houseAd.footerUrl}}" target="_blank" rel="noopener">{{houseAd.title}}</a>
+					<span class="site-footer-tagline">{{houseAd.tagline}}</span>
+				</p>
+			</div>
 		</div>
 
 		<!-- Google Analytics -->
@@ -48,6 +58,6 @@
 
 		<script src="scripts/aecaa445.modules.js"></script>
 
-		<script src="scripts/ddf8b449.scripts.js"></script>
+		<script src="scripts/f6a644a3.scripts.js"></script>
 	</body>
 </html>

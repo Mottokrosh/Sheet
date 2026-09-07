@@ -162,7 +162,11 @@ angular.module('sheetApp', [
 			return name.replace(/(\d)$/, '').replace(/([a-z])([A-Z])/g, '$1 $2');
 		};
 	})
-	.run(function ($rootScope, $location, user, cache) {
+	.run(function ($rootScope, $location, user, cache, houseAd) {
+		// Chosen once per page load so the footer and support strip agree,
+		// and so the slot doesn't shuffle while someone edits a character.
+		$rootScope.houseAd = houseAd.pick();
+
 		// http://arthur.gonigberg.com/2013/06/29/angularjs-role-based-auth/
 		var routesThatDontRequireAuth = ['/login', '/logout', '/statblock', '/sandbox'];
 

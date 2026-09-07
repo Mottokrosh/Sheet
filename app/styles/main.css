@@ -190,34 +190,34 @@ button, [role='button']:not([id*="gsi"]) {
 	box-sizing: border-box;
 	line-height: 1.33;
 }
-/* https://developers.google.com/identity/branding-guidelines */
+/*
+ * https://developers.google.com/identity/branding-guidelines
+ * Google Identity Services renders its own button at a fixed 400x40 and its
+ * branding guidelines don't allow restyling it, so this wrapper carries no
+ * chrome of its own -- the GitHub button below is sized to match instead.
+ */
 #google-login-container {
-	background: linear-gradient(to bottom, #473827 5%, #382d20 100%);
-	background-color: #473827;
-	color: #ffffff;
-	font-family: 'Goudy Bookletter 1911', times, serif;
-	font-size: 16px;
-	text-shadow: 0 1px 0 #4d3534;
-	text-align: center;
-	box-sizing: border-box;
-	line-height: 1.33;
-	display: inline-flex;
-	flex-direction: column;
-	padding: 5px 10px 10px;
-	border: 1px solid #240d00;
-	border-radius: 3px;
-	width: 100%;
-}
-#google-login-container .provider {
-	margin-bottom: 10px;
-	font-size: 22px;
-}
-#google-branded-button {
-	align-self: center;
+	display: flex;
+	justify-content: center;
+	/* `.container div` floats every div in the view; opt out, or this
+	   collapses its list item and the GitHub button overlaps it. */
+	float: none;
+	margin: 0 0 10px;
 }
 #google-branded-button, #google-branded-button div {
 	padding: 0;
 	margin: 0;
+}
+/* Match Google's 400x40 button. Scoped to .login-providers so the wider
+   nav.main buttons on the character list are left alone. */
+nav.main.login-providers li > [role='button']:not([id*="gsi"]) {
+	display: block;
+	width: 400px;
+	height: 40px;
+	padding: 0 10px;
+	font-size: 18px;
+	line-height: 38px; /* 40px box less its 1px borders */
+	margin: 0 auto 10px;
 }
 button:hover, [role='button']:not([id*="gsi"]):hover {
 	background-color: #382d20;
@@ -807,6 +807,44 @@ footer {
 }
 .support-notice .btn-container {
 	min-width: auto;
+}
+
+/*
+ * House ad footer. Deliberately a div, not a <footer>: the bare `footer`
+ * selector above belongs to the sheet's fixed bottom nav.
+ * Must clear, because .container's children are floated, and must sit clear
+ * of that 80px fixed nav on the sheet route.
+ */
+.site-footer {
+	clear: both;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	margin: 60px 0;
+	color: #473827;
+	font-size: 15px;
+}
+.site-footer-cover {
+	flex: none;
+	margin-right: 14px;
+	line-height: 0;
+}
+.site-footer-cover img {
+	width: 72px;
+	height: auto;
+	border: 1px solid rgba(84, 75, 49, 0.5);
+}
+.site-footer-text {
+	margin: 0;
+}
+.site-footer a {
+	color: #473827;
+}
+.site-footer-tagline {
+	display: block;
+	color: rgba(71, 56, 39, 0.75);
+	font-style: italic;
 }
 
 #filedrag {
