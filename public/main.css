@@ -175,6 +175,11 @@ small sup {
 	font-size: 1em;
 	margin-right: 0.2em;
 }
+/* Buttondown's attribution line: keep the muted `small` look, but without
+   its 3em bottom margin, which is sized for standalone paragraphs. */
+.embeddable-buttondown-form small {
+	margin: 0.5em auto 0 auto;
+}
 .important-notice {
 	padding: 30px;
 	background-color: #b81d08;
